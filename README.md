@@ -10,7 +10,7 @@
 
 **Team Members:**  
 
-1. Jawan Higgins:
+1. Jawan Higgins: (**Primary**: *Code Architect*) (**Secondary**: *Testing*)
 
 
 2. Adele Francois: (**Primary**: *Documentation Lead*) (**Secondary**: *Project Manager*)
