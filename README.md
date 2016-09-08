@@ -16,7 +16,7 @@
 2. Adele Francois: (**Primary**: *Documentation Lead*) (**Secondary**: *Project Manager*)
           
           
-3. John Rose: (**Primary**: *Client Liaison*) (**Secondary**: *Lead Developer*)
+3. John Rose: 
           
           
-4. Adem Aabafogi:
+4. Adem Aabafogi:(**Primary**: *UI/UX design leader*) (**Secondary**: *Database Modeler*)
