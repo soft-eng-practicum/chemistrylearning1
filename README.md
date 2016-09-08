@@ -19,4 +19,4 @@
 3. John Rose: (**Primary**: *Client Liaison*) (**Secondary**: *Lead Developer*)
           
           
-4. Adem Aabafogi:(**Primary**: *UI/UX design leader*) (**Secondary**: *Database Modeler*)
+4. Adem Abafogi:(**Primary**: *UI/UX design leader*) (**Secondary**: *Database Modeler*)
