@@ -1,0 +1,70 @@
+{
+    "easy": {
+        "formula1": {
+            "name": "Calcium Chloride", 
+            "right": "CaCl2", 
+            "wrong1": "CCl2",
+            "wrong2": "CaCl",
+            "wrong3": "CaCl3",
+            "wrong4": "Ca2Cl2",
+            "wrong5": "CCl",
+            "wrong6": "Ca2Cl"
+        },
+
+        "formula2": {
+            "name": "Sodium Chloride", 
+            "right": "NaCl", 
+            "wrong1": "NCl",
+            "wrong2": "NiCl2",
+            "wrong3": "NaCl2",
+            "wrong4": "NaCl3",
+            "wrong5": "NCl2",
+            "wrong6": "SCl2",
+            "wrong7": "SCl",
+            "wrong8": "SoCl2",
+            "wrong9": "SoCl"
+        },
+
+        "formula3": {
+            "name": "Carbon Disulfide", 
+            "right": "CS2", 
+            "wrong1": "CaS2",
+            "wrong2": "CS",
+            "wrong3": "C2S",
+            "wrong4": "C2S2",
+            "wrong5": "CuS2",
+            "wrong6": "Ca2S2"
+        },
+        
+        "formula4": {
+            "name": "Patassium Chlorite", 
+            "right": "KClO2", 
+            "wrong1": "PClO2",
+            "wrong2": "KClO",
+            "wrong3": "KClO3",
+            "wrong4": "KClO4",
+            "wrong5": "PClO4",
+            "wrong6": "NaClO",
+            "wrong7": "CaClO",
+            "wrong8": "PClO3",
+            "wrong9": "KCl",
+            "wrong10": "PCl",
+            "wrong11": "PCl4"
+        },
+        
+        "formula5": {
+            "name": "Ti(IV) Bromide", 
+            "right": "SnBr4", 
+            "wrong1": "TiBr4",
+            "wrong2": "TlBr4",
+            "wrong3": "Sn2Br2",
+            "wrong4": "Ti2Cl2",
+            "wrong5": "Sn4Cl",
+            "wrong6": "Ti4Cl",
+            "wrong7": "Br4Sn",
+            "wrong8": "SnBrO"
+        }
+        
+    }
+}
+
