@@ -1,8 +1,5 @@
-var level4 = function(game){
-    
-};
 
-var level3 = function(game){
+var level4 = function(game){
     
 };
 
@@ -31,16 +28,133 @@ var randomFormula;
 var correct;
 var wrong;
 
+var blackHole;
+var asteroidGroup;
+var cursors;
+var asteroids;
+
+
 level4.prototype = {  
    
     //Main Phaser Create Function
-  	create: function(){ 
+  create: function(){ 
+ 
+
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+   //this.game.stage.backgroundColor = '#2d2d2d';
+
+   asteroidGroup = this.game.add.group();
+   
+   asteroidGroup.createMultiple(250, "asteroid", 0, false);
+
+    blackHole = this.game.add.sprite(400, 500, 'black_hole_blue');
+ 
+
+    this.game.physics.arcade.gravity.y = 400;
+
+    //  Enable physics on everything added to the world so far (the true parameter makes it recurse down into children)
+    this.game.physics.arcade.enable(this.game.world, true);
+
+    blackHole.body.allowGravity = 0;
+    blackHole.body.immovable = true;
+
+    cursors = this.game.input.keyboard.createCursorKeys();
+
+    this.game.time.events.loop(150, this.fire, this);
+
+    this.game.add.text(16, 16, 'Left / Right to move', { font: '18px Arial', fill: '#ffffff' });
+
+},
+ 
+fire: function() {
+
+    asteroids = asteroidGroup.getFirstExists(false);
+
+    if (asteroids)
+    {
+       asteroids.frame = this.game.rnd.integerInRange(0,6);
+       asteroids.exists = true;
+       asteroids.reset(this.game.world.randomX, 0);
+
+       asteroids.body.bounce.y = 0.8;
+    }
+
+},
+
+reflect: function(a, asteroids) {
+
+    if (asteroids.y > (blackHole.y + 5))
+    {
+        return true;
+    }
+    else
+    {
+        asteroids.body.velocity.x = blackHole.body.velocity.x;
+        asteroids.body.velocity.y *= -(asteroids.body.bounce.y);
+
+        return false;
+    }
+
+},
+
+update: function() {
+
+    this.game.physics.arcade.collide(blackHole, asteroidGroup, null,  this.reflect, this);
+
+    blackHole.body.velocity.x = 0;
+
+    if (cursors.left.isDown)
+    {
+        blackHole.body.velocity.x = -200;
+    }
+    else if (cursors.right.isDown)
+    {
+        blackHole.body.velocity.x = 200;
+    }
+
+   asteroidGroup.forEachAlive(this.checkBounds, this);
+
+},
+
+checkBounds: function(ast) {
+
+    if (asteroids.y > 600)
+    {
+        asteroids.kill();
+    }
+
+}
+
+
+ 
+ 
+};
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+		
+		
+		
         
         //Creating JSON 
-        phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula")); 
+   /*     phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula")); 
         
         //Background Image
-        levelBackground =  this.game.add.sprite(0,0,"level1Background");
+        levelBackground =  this.game.add.sprite(0,0,"background_image.");
 		//levelBackground.anchor.setTo(0.2, 0.2);
         levelBackground.scale.setTo(.24, 0.67);
         
@@ -143,7 +257,7 @@ level4.prototype = {
             //Quit Button
             quitButton = this.game.add.button(400,600,"play",this.playTheGame,this);
             quitButton.anchor.setTo(0.5,0.3);
-            quitButton.scale.setTo(1.8, 1.8);*/
+            quitButton.scale.setTo(1.8, 1.8);
         });
 
     // An input listener that returns from being paused
@@ -165,7 +279,7 @@ level4.prototype = {
         };
     },
     
-   /* playTheGame: function(){
+    playTheGame: function(){
         menu.destroy();
         choiceLabel.destroy();
         resumeButton.destroy();
@@ -173,7 +287,7 @@ level4.prototype = {
         
         this.game.paused = false;
         
-    },*/
+    },
 
     //Main Phaser Update Function
     update: function () {
@@ -555,4 +669,3 @@ level4.prototype = {
         instructions.addColor("Yellow", 0);
         instructions.fontSize = 30;   
     }*/
-};

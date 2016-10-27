@@ -43,7 +43,7 @@ gameTitleState.prototype = {
         var random = Math.floor(Math.random() * 2);
 
         //Start Level 1
-        this.game.state.start("Level1");
+        this.game.state.start("Level4");
 	},
     
     gameSetting: function(){

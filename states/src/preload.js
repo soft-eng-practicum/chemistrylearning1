@@ -9,11 +9,11 @@ preloadState.prototype = {
 	preload: function(){ 
         //Load JSON
         this.game.load.text("chemicalFormula", "assets/ChemistryGame.json");
-          
         
         //Load Images
 		this.game.load.image("background","assets/Space.jpg");
-        
+        this.game.load.image("background_star", 'assets/background_star.jpg');
+         this.game.load.image("black_hole_blue", "assets/black_hole_blue.jpg");
         this.game.load.image("titleBackground","assets/gameTitleBackground.jpg");
         
         this.game.load.image("level1Background","assets/Level1Background.jpg");
