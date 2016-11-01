@@ -7,14 +7,15 @@ var countDownLabel;
 var scoreLabel;
 var instructions;
 var timer;
+var started = false;
 var cursors;
 
 var moveTimer;
 var moveCount = 0;
 var isUp = false;
 var isDown = true;
-var counter = 99;
-var delay = 115;
+var counter = 5;
+var delay = 290;
 
 var asteroid;
 var asteroidTween;
@@ -39,6 +40,13 @@ var randomFormula;
 var correct;
 var wrong;
 
+var scaleRatio; 
+
+var pausedCorrect = 150;
+var isTimerPaused = false;
+
+var checkMark;
+
 level1.prototype = {  
    
     //Main Phaser Create Function
@@ -47,17 +55,19 @@ level1.prototype = {
         //Creating JSON 
         phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula")); 
         
+        music.pause();
+        
         //Background Image
         levelBackground =  this.game.add.sprite(0,0,"level1Background");
 		//levelBackground.anchor.setTo(0.2, 0.2);
-        levelBackground.scale.setTo(.24, 0.67);
+        levelBackground.scale.setTo(0.63,0.8);
         
         //Countdown Label
-        countDownLabel = this.game.add.text(150, 10, "", {font: "80px Courier", fill: "#ffffff"});
+        countDownLabel = this.game.add.text(this.game.world.centerX-10, 10, "", {font: "120px Courier", fill: "#ffffff"});
         
         //Instructions Label
         //Or Destroy ALL incorrect Asteroids **Debating**
-        instructions = this.game.add.text(15, 140, "Destroy The Correct Asteroid", {font: "20px Courier", fill: "#ffffff"});
+        instructions = this.game.add.text(this.game.world.centerX-430, 140, "Destroy The Correct Asteroid", {font: "50px Courier", fill: "#ffffff"});
         
         //Creates random numbers to start different questions and answers
         randomElement = 0;//Math.floor(Math.random() * 3);
@@ -69,16 +79,16 @@ level1.prototype = {
         timer.start();
        
         //Score Label
-        scoreLabel = this.game.add.text(250, 30, "Score: ", {font: "20px Courier", fill: "Yellow"});
+        scoreLabel = this.game.add.text(this.game.width-220, 30, "Score: ", {font: "30px Courier", fill: "Yellow"});
         
         //Declaring Score
         score = 0;
         scoreLabel.setText("Score: " + score);
         
         //Spacecraft created
-        this.spaceCraft = this.game.add.sprite(-10,200,"spaceCraft");
-		//this.spaceCraft.anchor.setTo(0.5, 0.5);
-        this.spaceCraft.scale.setTo(0.2, 0.3);
+        this.spaceCraft = this.game.add.sprite(-10, 200,"spaceCraft");
+       // this.spaceCraft.scale.setTo(scaleRatio, scaleRatio);
+        this.spaceCraft.scale.setTo(0.5, 0.6);
         this.game.physics.enable(this.spaceCraft, Phaser.Physics.ARCADE);
         
         //Space ship move timer
@@ -88,23 +98,24 @@ level1.prototype = {
         
         //Creating a Group of Asteroids
         asteroid = this.game.add.group();
+        //asteroid.scale.setTo(scaleRatio, 1);
         asteroid.enableBody = true;
         asteroid.physicsBodyType = Phaser.Physics.ARCADE;
         asteroid.inputEnabled = true;
-            
+        
         //Created 3 Asteroids from Group
-        a1 = asteroid.create(280, 200, "asteroid"); 
+        a1 = asteroid.create(this.game.width-220, this.game.height-610, "asteroid"); 
 
-        a2 = asteroid.create(280, 380, "asteroid"); 
+        a2 = asteroid.create(this.game.width-220, this.game.height-390, "asteroid"); 
 
-        a3 = asteroid.create(280, 560, "asteroid"); 
+        a3 = asteroid.create(this.game.width-220, this.game.height-170, "asteroid"); 
 
         //Sets styling for Answer Text on Asteroids
-        var style = { font: "25px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a1.width, align: "center", backgroundColor: "" };
+        var style = { font: "40px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a1.width, align: "center", backgroundColor: "" };
         
-        var style = { font: "25px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a2.width, align: "center", backgroundColor: "" };
+        var style = { font: "40px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a2.width, align: "center", backgroundColor: "" };
         
-        var style = { font: "25px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a3.width, align: "center", backgroundColor: "" };
+        var style = { font: "40px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a3.width, align: "center", backgroundColor: "" };
 
         //Create Text1 on Asteroids
         text1 = this.game.add.text(a1.x, a1.y, "", style, asteroid);
@@ -129,6 +140,21 @@ level1.prototype = {
         //Positions Text3
         text3.x = Math.floor((a3.x + a3.width / 2) - 5);
         text3.y = Math.floor(a3.y + a3.height / 2);
+        
+        checkMark = this.game.add.sprite(a1.x, a1.y,"checkMark");
+        checkMark.visible = false;
+        checkMark.scale.setTo(0.8, 0.8);
+        checkMark.anchor.set(-0.5, .5);
+        
+        checkMark = this.game.add.sprite(a2.x, a2.y,"checkMark");
+        checkMark.visible = false;
+        checkMark.scale.setTo(0.8, 0.8);
+        checkMark.anchor.set(-0.5, .5);
+        
+        checkMark = this.game.add.sprite(a3.x, a3.y,"checkMark");
+        checkMark.visible = false;
+        checkMark.scale.setTo(0.8, 0.8);
+        checkMark.anchor.set(-0.5, .5);
 
         //Movement of Asteroid
         // asteroidTween = this.game.add.tween(asteroid).to({x:-600}, 13500, Phaser.Easing.Linear.None, true, 2000, 10, false);
@@ -138,10 +164,16 @@ level1.prototype = {
         bullets.enableBody = true;
         bullets.physicsBodyType = Phaser.Physics.ARCADE;
         bullets.createMultiple(30, "bullet");
-        bullets.setAll("anchor.x", -0.2);
+        bullets.setAll("anchor.x", -2);
         bullets.setAll("anchor.y", -1.5);
         bullets.setAll("outOfBoundsKill", true);
         bullets.setAll("checkWorldBounds", true);
+        
+        //Resets time and delay for formulas
+        counter = 5;
+        delay = 290;
+        isDown = true;
+        isTimerPaused = false;
         
         //Fires bullet when Spacebar is pressed
         fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -151,7 +183,7 @@ level1.prototype = {
         //Code for the pause menu
 
         //Create a pause label to use as a button
-        pause_label = this.game.add.text(pauseW, 40, "PAUSE", { font: '20px Arial', fill: 'RED' });
+        pause_label = this.game.add.text(pauseW, 40, "PAUSE", { font: '30px Arial', fill: 'RED' });
         pause_label.inputEnabled = true;
 
         pause_label.events.onInputUp.add(function() {
@@ -162,10 +194,6 @@ level1.prototype = {
             menu = this.game.add.sprite(pauseW, pauseH, "background");
             menu.anchor.setTo(0.1, 0.5);
             menu.scale.setTo(0.5, 0.75);
-
-            //A Choice label to illustrate which menu item was chosen.
-            choiceLabel = this.game.add.text(this.game.world.centerX, pauseH-300, 'Click to continue', { font: '50px Arial', fill: '#fff' });
-            choiceLabel.anchor.setTo(0.5, 0.5);
 
             //Resume Button
             resumeButton = this.game.add.button(400,600,"play",this.playTheGame,this);
@@ -197,7 +225,7 @@ level1.prototype = {
         };
     },
     
-   /* playTheGame: function(){
+    playTheGame: function(){
         menu.destroy();
         choiceLabel.destroy();
         resumeButton.destroy();
@@ -205,16 +233,17 @@ level1.prototype = {
         
         this.game.paused = false;
         
-    },*/
+    },
 
-    //Main Phaser Update Function
+     //Main Phaser Update Function
     update: function () {
         
         //Spacecraft Movement Up and Down
+        if(started) {
         if(isDown) {
             this.spaceCraft.y += moveCount;
 
-            if(this.spaceCraft.y >= (window.innerHeight *   window.devicePixelRatio) - 60) {
+            if(this.spaceCraft.y >= (this.game.height - 70)) {
                 isDown = false;
                 isUp = true;  
             }
@@ -223,7 +252,7 @@ level1.prototype = {
         if(isUp) {
             this.spaceCraft.y -= moveCount;
 
-            if(this.spaceCraft.y <= 160) {
+            if(this.spaceCraft.y <= 140) {
                 isUp = false;
                 isDown = true;
             }
@@ -235,8 +264,9 @@ level1.prototype = {
         }
 
         //Fires weapon
-        if (fireButton.isDown) {
-            this.fireBullet();
+            if (this.game.input.activePointer.isDown) {
+                this.fireBullet();
+            }
         }
         
          scoreLabel.setText("Score: " + score);
@@ -247,12 +277,9 @@ level1.prototype = {
         //Applies overlap physics for Collision of Spacecraft & Asteroids
         this.game.physics.arcade.overlap(this.spaceCraft, asteroid, this.collisionHandlerSpaceCraft, null, this);
 
-        //Delay for respawn of formulas
-        delay--;
 
-        if(delay == 0) {
-            this.handleData();
-            delay = 10;   
+        if(started) {
+            this.handleData(); 
         }
     },
     
@@ -267,7 +294,7 @@ level1.prototype = {
                 // Location from where the bullet is being fired
                 bullet.reset(this.spaceCraft.x + 85, this.spaceCraft.y);
                 // Set the y component of velocity
-                bullet.body.velocity.x = 400;
+                bullet.body.velocity.x = 600;
                 // Set the time between the bullets to the current time + 200
                 bulletTime = this.game.time.now + 250;
              }
@@ -305,21 +332,37 @@ level1.prototype = {
         countDownLabel.setText(counter);
         
         //Chnages Count Down Label Red
-        if(counter == 5) {
+        if(counter <= 5) {
             countDownLabel.addColor("RED", 0);
+        }
+        else if(counter > 5) {
+            countDownLabel.addColor("#ffffff", 0);
         }
     },  
 
     //Update Time Countdown 
-    updateCounter: function() {            
-        counter--;
+    updateCounter: function() {  
         
-        //Time Expired
-        if(counter < 0) { 
-            counter = 12;
-            timer.stop();
-           // moveTimer.stop();
-           // this.game.state.start("GameTitle");
+        //Game Time not started 
+        if(started == false) {
+            counter--;
+            if(counter <= 0) { 
+                counter = 10;
+                started = true;
+            }
+        }
+        //Game Time has started 
+        else if(started == true) {
+                counter--;
+        
+            if(counter < 1) {
+                counter = 10;
+                timer.pause();
+                isTimerPaused = true;
+               // timer.stop();
+                // moveTimer.stop();
+                // this.game.state.start("Level1");
+            }        
         }
     },
     
@@ -350,10 +393,13 @@ level1.prototype = {
                      randomElement = 1;
                     }
                 if(a2.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
+                    
                     }
                 if(a3.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                     }
             }
             else if(randomFormula == 1){ 
@@ -362,7 +408,8 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula1.wrong4);
 
                 if(a1.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a2.visible == false) {
                     correct = true;
@@ -374,7 +421,8 @@ level1.prototype = {
                     
                 }
                 if(a3.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
             }
             else if(randomFormula == 2){ 
@@ -383,10 +431,12 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula1.right);
 
                 if(a1.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a2.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a3.visible == false) {
                     correct = true;
@@ -417,10 +467,12 @@ level1.prototype = {
                      randomElement = 2;
                 }
                 if(a2.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a3.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
             }
             else if(randomFormula == 1){ 
@@ -429,7 +481,8 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula2.wrong4);
 
                 if(a1.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a2.visible == false) {
                     correct = true;
@@ -440,7 +493,8 @@ level1.prototype = {
                     randomElement = 2;
                 }
                 if(a3.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
             }
             else if(randomFormula == 2){ 
@@ -449,10 +503,12 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula2.right);
 
                 if(a1.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a2.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a3.visible == false) {
                     correct = true;
@@ -483,10 +539,12 @@ level1.prototype = {
                      randomElement = 3;
                 }
                 if(a2.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a3.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
             }
             else if(randomFormula == 1){ 
@@ -495,7 +553,8 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula3.wrong4);
 
                 if(a1.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a2.visible == false) {
                     correct = true;
@@ -506,7 +565,8 @@ level1.prototype = {
                     randomElement = 3;
                 }
                 if(a3.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
             }
             else if(randomFormula == 2){ 
@@ -515,10 +575,12 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula3.right);
 
                 if(a1.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a2.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a3.visible == false) {
                     correct = true;
@@ -549,10 +611,12 @@ level1.prototype = {
                      randomElement = 4;
                 }
                 if(a2.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a3.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
             }
             else if(randomFormula == 1){ 
@@ -561,7 +625,8 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula4.wrong4);
 
                 if(a1.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a2.visible == false) {
                     correct = true;
@@ -572,7 +637,8 @@ level1.prototype = {
                     randomElement = 4;
                 }
                 if(a3.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
             }
             else if(randomFormula == 2){ 
@@ -581,10 +647,12 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula4.right);
 
                 if(a1.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a2.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a3.visible == false) {
                     correct = true;
@@ -612,13 +680,15 @@ level1.prototype = {
                     a1.visible = true;
                     text1.visible = true;
                     randomFormula = Math.floor(Math.random() * 3);
-                    this.game.state.start("Level2");
+                    this.game.state.start("Level5");
                 }
                 if(a2.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a3.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
             }
             else if(randomFormula == 1){ 
@@ -627,7 +697,8 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula5.wrong4);
 
                 if(a1.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a2.visible == false) {
                     correct = true;
@@ -635,10 +706,11 @@ level1.prototype = {
                     a2.visible = true;
                     text2.visible = true;
                     randomFormula = Math.floor(Math.random() * 3);
-                    this.game.state.start("Level2");
+                    this.game.state.start("Level5");
                 }
                 if(a3.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
             }
             else if(randomFormula == 2){ 
@@ -647,10 +719,12 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula5.right);
 
                 if(a1.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a2.visible == false) {
-                     wrong = true;
+                    wrong = true;
+                    this.game.state.start("GameOver");
                 }
                 if(a3.visible == false) {
                     correct = true;
@@ -658,14 +732,14 @@ level1.prototype = {
                     a3.visible = true;
                     text3.visible = true;
                     randomFormula = Math.floor(Math.random() * 3);
-                    this.game.state.start("Level2");
+                    this.game.state.start("Level5");
                 }
             }
         }
 
         //Adjusting Instruction label for Chemical Names 
-        instructions.anchor.setTo(-0.1, 0);
+        instructions.anchor.setTo(-0.4, 0.3);
         instructions.addColor("Yellow", 0);
-        instructions.fontSize = 30;   
+        instructions.fontSize = 50;   
     }
 };
