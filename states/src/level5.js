@@ -38,6 +38,19 @@ var wrong;
 var pausedCorrect = 150;
 var isTimerPaused = false;
 var checkMark;
+var xMark;
+var pos1 = false;
+var pos2 = false;
+
+var heart1;
+var heart2;
+var heart3;
+var lives = 3;
+
+var switchJSON;
+
+var correctSound;
+var wrongSound;
 
 level5.prototype = {  
    
@@ -45,7 +58,14 @@ level5.prototype = {
   	create: function(){ 
         
         //Creating JSON 
-        phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula")); 
+        switchJSON = Math.floor(Math.random() * 2);
+        
+        if(switchJSON == 0){
+            phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula")); 
+        }
+        else if(switchJSON == 1){
+            phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula2"));
+        } 
         
         //Pauses the Game Title Music when Game starts
         music.pause();
@@ -181,10 +201,48 @@ level5.prototype = {
         checkMark.visible = false;
         checkMark.scale.setTo(0.8, 0.8);
         checkMark.anchor.set(-.25, .9);
+        
+        //Creates check marks for right answers
+        xMark = this.game.add.sprite(f1.x, f1.y,"xMark");
+        xMark.visible = false;
+        xMark.scale.setTo(0.8, 0.8);
+        
+        xMark = this.game.add.sprite(f2.x, f2.y,"xMark");
+        xMark.visible = false;
+        xMark.scale.setTo(0.8, 0.8);
+        
+        xMark = this.game.add.sprite(f3.x, f3.y,"xMark");
+        xMark.visible = false;
+        xMark.scale.setTo(0.8, 0.8);
+        xMark.anchor.set(0.4, 0.8);
+        
+        xMark = this.game.add.sprite(f4.x, f4.y,"xMark");
+        xMark.visible = false;
+        xMark.scale.setTo(0.8, 0.8);
+        xMark.anchor.set(0.4, 0.8);
+        
+        //Creates Hearts for Lives 
+        heart1 = this.game.add.sprite(770, 90,"heart");
+
+        heart2 = this.game.add.sprite(820, 90,"heart");
+        
+        heart3 = this.game.add.sprite(870, 90,"heart");
+        
+        //Creates audio
+        correctSound = this.game.add.audio("correctSound");
+        correctSound.volume = .5;
+        
+        wrongSound = this.game.add.audio("wrongSound");
+        wrongSound.volume = .5;
 
         //Resets time and delay for formulas
         counterLevel5 = 5;
         isTimerPaused = false;
+        lives = 3;
+        correct = false;
+        wrong = false;
+        pos1 = false;
+        pos2 = false;
                           
         //Code for the pause menu
         //Create a pause label to use as a button
@@ -284,6 +342,17 @@ level5.prototype = {
         if(startedLevel5){
             this.handleData();   
         }
+        
+        //Deduct lives with each wrong answer
+        if(lives == 2){
+            heart1.visible = false;
+        }
+        else if(lives == 1){
+            heart2.visible = false;
+        }
+        else if(lives == 0){            
+            this.game.state.start("GameOver");
+        }
     },
     
     
@@ -354,9 +423,24 @@ level5.prototype = {
         
             if(counterLevel5 < 1) {
               
-                counterLevel5 = 0;
-                timerLevel5.pause();
-                isTimerPaused = true;                 
+               // counterLevel5 = 0;
+               // timerLevel5.pause();
+               // isTimerPaused = true;
+                
+                 wrongSound.play();
+                
+                if(lives == 3){
+                    lives=2;
+                    counter = 10;
+                    }
+                else if(lives == 2){
+                    lives=1;
+                    counter = 10;
+                }
+                else{
+                    lives=0;
+                    counter = 0;
+                }
             }        
         }
     },

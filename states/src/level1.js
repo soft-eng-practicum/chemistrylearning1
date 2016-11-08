@@ -15,7 +15,6 @@ var isUp = false;
 var isDown = true;
 var counter = 5;
 
-var change;
 var asteroid;
 var asteroidTween;
 var bullets;
