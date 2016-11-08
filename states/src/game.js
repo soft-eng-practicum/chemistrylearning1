@@ -1,4 +1,8 @@
-var game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.CANVAS, "gameDiv");
+var gameWidth = 1000;
+var gameHeight = 800;
+
+//Creating Game with Width & Height parameters
+var game = new Phaser.Game(gameWidth, gameHeight, Phaser.CANVAS, "gameDiv");
 
     game.state.add("Boot",bootState);
     game.state.add("Preload",preloadState);
@@ -9,8 +13,8 @@ var game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.i
     game.state.add("Level2",level2);
     game.state.add("Level3",level3);
     game.state.add("Level4",level4);
+    game.state.add("Level5",level5);
+    game.state.add("GameOver",gameOverState);
 
-   // game.state.add("GameOver",gameOverState);
-
-
+    //Starts Boot
     game.state.start("Boot");
