@@ -2,20 +2,8 @@ var level2 = function (game) {
     
 };
 
-// Variables for width and height
-//var width = 1000;
-//var height = 800;
-// Instantiate Phaser game object
-//var game = new Phaser.Game(width, height, Phaser.Auto);
-
 // Create background variable
 var background;
-
-// Create game timer variable
-//var game_timer;
-//var game_timer_display;
-//var game_timer_counter;
-//var isStarted = false;
 
 // Create varibale for group of bubbles
 var bubbles;
@@ -39,7 +27,7 @@ var spike_set_01, spike_set_02, spike_set_03, spike_set_04;
 var score;
 var score_text;
 
-// Create variable toooo hold the delay value for the respawn of chemical formulas
+// Create variable to hold the delay value for the respawn of chemical formulas
 var delay = 215;
 
 // Create a variable to display chemical formula name
@@ -64,30 +52,17 @@ level2.prototype = {
     // Create funion runs one time only
     create: function () {
        
-        background = this.game.add.tileSprite(0, 0, this.width, this.height,'level_2_background_image');
-        
-        // Create the text display for the game timer
-      /*  game_timer_display = this.game.add.text(this.game.world.centerX - 40, 10, "", {font: "120px Courier", fill: "#ffffff"});
-        
-        game_timer_counter = 5;
-        game_timer = game.time.create(false);
-        game_timer.loop(1000, this.updateGameTimerCounter, this);
-        game_timer.start(); */
-        
+        background = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'level_2_background_image');
+    
         // Asign the chemical name text display a value
         // Display basic game instructions first
         chemical_formula_text_display = this.game.add.text(0, 0, "Please select the correct \nbubble before they \nhit the spikes.", {font: "40px Courier", fill: "Yellow"});
       
         // Add spike image and set visible to false
         // Image is only used for size attributes it is not displayed in the game
-        spikes = this.game.add.sprite(game.world.centerX, game.world.centerY + 250, 'spike_image');
+        spikes = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY + 250, 'spike_image');
         spikes.visible = false;
-        
-        // Handles the responsive design
-        this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        this.scale.pageAlignHorizontally = true;
-        this.scale.pageAlignVertically = true;
-         
+    
         // Parse the text back to a JSON object
         level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON'));
         
@@ -121,7 +96,7 @@ level2.prototype = {
         bubble_labels.physicsBodyType = Phaser.Physics.ARCADE;
         
         // Create 3 individual bubbles and allow them to be selected and add them to the bubbles group
-        bubble_01 = bubbles.create(width/6, 0, 'bubble_image');
+        bubble_01 = bubbles.create(this.game.width/6, 0, 'bubble_image');
         bubble_01.events.onInputDown.add(selectedBubble, this);
         bubble_01.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
@@ -171,10 +146,10 @@ level2.prototype = {
         
         
         //	Emitters have a center point and a width/height, which extends from their center point to the left/right and up/down
-        emitter = this.game.add.emitter(game.world.centerX, 200, 200);
+        emitter = this.game.add.emitter(this.game.world.centerX, 200, 200);
 
         //	This emitter will have a width of 800px, so a particle can emit from anywhere in the range emitter.x += emitter.width / 2
-        emitter.width = width - 50;
+        emitter.width = this.game.width - 50;
 
         emitter.makeParticles('emitter_bubble_image');
 
@@ -249,51 +224,10 @@ level2.prototype = {
     
     // Function holds information for things that move 50fps
     render: function () {
- /*         game_timer_display.setText(game_timer_counter);
-        
-        //Changes game_timer_counter font to red
-        if (game_timer_counter <= 5) {
-            game_timer_display.addColor("RED", 0);
-        }
-        else if (game_timer_counter > 5) {
-            game_timer_display.addColor("#ffffff", 0);
-        } */
+
     } 
 
 };
-
-/*function updateGameTimerCounter() {  
-        
-        //Game Time not started 
-        if (isStarted == false) {
-            game_timer_counter--;
-            if (game_timer_counter <= 0) { 
-                 game_timer_counter = 10;
-                 isStarted = true;
-            }
-        }
-        //Game Time has started 
-        else if (isStarted == true) {
-                game_timer_counter--;
-        
-            if (game_timer_counter < 1) {
-             //   wrongSound.play();
-                
-               if (lives == 3){
-                    lives=2;
-                    game_timer_counter = 10;
-                }
-                else if (lives == 2){
-                    lives=1;
-                    game_timer_counter = 10;
-               }
-                else {
-                    lives=0;
-                    game_timer_counter = 0;
-                } 
-            }
-        }
-} */
 
 // Collision handler for bubbles and spikes
 function bubbleHitSpike(input_bubble) {
@@ -348,7 +282,7 @@ function checkIfSelectedBubbleIsCorrect(input_bubble_text) {
         input_bubble_text === level_2_data.chemical_formulas.formula1.wrong6 ||
         input_bubble_text === level_2_data.chemical_formulas.formula1.wrong7 ) {
         
-        score -= 25;
+        score -= 50;
         bubbles_velocity += 0.5;
     }
     
@@ -374,7 +308,7 @@ function checkIfSelectedBubbleIsCorrect(input_bubble_text) {
         input_bubble_text === level_2_data.chemical_formulas.formula2.wrong8 ||
         input_bubble_text === level_2_data.chemical_formulas.formula2.wrong9 ) {
         
-        score -= 25;
+        score -= 50;
        
         bubbles_velocity += 0.5;
     }
@@ -398,7 +332,7 @@ function checkIfSelectedBubbleIsCorrect(input_bubble_text) {
         input_bubble_text === level_2_data.chemical_formulas.formula3.wrong5 ||
         input_bubble_text === level_2_data.chemical_formulas.formula3.wrong6 ) {
         
-        score -= 25;
+        score -= 50;
         
         bubbles_velocity += 0.5;
     }
@@ -427,7 +361,7 @@ function checkIfSelectedBubbleIsCorrect(input_bubble_text) {
         input_bubble_text === level_2_data.chemical_formulas.formula4.wrong10 ||
         input_bubble_text === level_2_data.chemical_formulas.formula4.wrong11 ) {
         
-        score -= 25;
+        score -= 50;
         
         bubbles_velocity += 0.5;
     }
@@ -454,7 +388,7 @@ function checkIfSelectedBubbleIsCorrect(input_bubble_text) {
         input_bubble_text === level_2_data.chemical_formulas.formula5.wrong7 ||
         input_bubble_text === level_2_data.chemical_formulas.formula5.wrong8 ) {
         
-        score -= 25;
+        score -= 50;
         
         bubbles_velocity += 0.5;
     }
