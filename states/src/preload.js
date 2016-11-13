@@ -59,7 +59,7 @@ preloadState.prototype = {
         
         
         
-        //SETTINGS IMAGES& SOUNDS
+        //SETTINGS IMAGES & SOUNDS
         
         this.game.load.image("musicToggle","assets/musicButton.png");
         
