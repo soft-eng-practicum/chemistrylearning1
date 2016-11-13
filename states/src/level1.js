@@ -1818,7 +1818,7 @@ level1.prototype = {
 
                 if(paused < 1){
                     if(correct){
-                        this.game.state.start("Level5");
+                        this.game.state.start("Level2");
                     }
                     timer.resume();
                     checkMark.visible = false;
@@ -1914,7 +1914,7 @@ level1.prototype = {
 
                 if(paused < 1){
                     if(correct){
-                        this.game.state.start("Level5");
+                        this.game.state.start("Level2");
                     }
                     timer.resume();
                     checkMark.visible = false;
@@ -2010,7 +2010,7 @@ level1.prototype = {
 
                 if(paused < 1){
                     if(correct){
-                        this.game.state.start("Level5");
+                        this.game.state.start("Level2");
                     }
                     timer.resume();
                     checkMark.visible = false;
