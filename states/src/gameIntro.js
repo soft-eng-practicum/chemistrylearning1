@@ -23,17 +23,16 @@ gameIntroState.prototype = {
     background_velocity = 2;
 
     //Creates the Title Label
-    titleLabel = this.game.add.text(this.game.world.centerX-150, 300, "GAME INTRO", {font: "50px Courier", fill: "#ffffff"});
-    titleLabel.alpha = 0.1;
+    titleLabel = this.game.add.text(0, 0, "", {font: "50px Courier", fill: "#ffffff"});
 
     //Creates a Tween for the Title Label  
-    timeTween = this.game.add.tween(titleLabel).to( { alpha: 1 }, /*5000/*/0, "Linear", true, 300);
+    timeTween = this.game.add.tween(titleLabel).to( { alpha: 1 }, 6000/*0*/, "Linear", true, 300);
 
     timeTween.onComplete.add(this.onComplete, this);    
     
     //Creates Logo that moves around the screen
-    logo = this.add.sprite(0, 0, "IntroLogo");
-    logo.scale.set(0.5);
+   logo = this.add.sprite(0, 0, "redFlask");
+    logo.scale.set(0.3);
 
     var w = game.width - logo.width;
     var h = game.height - logo.height;
@@ -43,11 +42,12 @@ gameIntroState.prototype = {
 
     //Creates a sprite in the middle of the screen 
     sprite = game.add.sprite(game.world.centerX, game.world.centerY, 'IntroLogo');
-    sprite.anchor.setTo(0.5, 0.5);
-    sprite.alpha = 0;
+    sprite.anchor.setTo(0.45, 0.7);
+    sprite.scale.set(2);
+    sprite.alpha = 0.2;
 
     //Fades in sprite
-    game.add.tween(sprite).to( { alpha: 1 }, 5000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+    game.add.tween(sprite).to( { alpha: 1 }, 6000, Phaser.Easing.Linear.None, true, 0, 1000, true);
     
     //Creates audio
     music = this.game.add.audio("sound");

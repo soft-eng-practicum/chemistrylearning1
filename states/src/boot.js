@@ -11,10 +11,10 @@ bootState.prototype = {
         //Sets view for Desktop
         if (this.game.device.desktop){                  
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;        
-            this.scale.minWidth = gameWidth/2;            
-            this.scale.minHeight = gameHeight/2;            
-            this.scale.maxWidth = gameWidth;            
-            this.scale.maxHeight = gameHeight;            
+            this.scale.minWidth = width/2;            
+            this.scale.minHeight = height/2;            
+            this.scale.maxWidth = width;            
+            this.scale.maxHeight = height;            
             this.scale.pageAlignHorizontally = true;        
             this.scale.pageAlignVertically = true;          
             }        
@@ -22,10 +22,10 @@ bootState.prototype = {
         //Sets view for mobile
         else{           
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;            
-            this.scale.minWidth = gameWidth/2;         
-            this.scale.minHeight = gameHeight/2;      
-            this.scale.maxWidth = gameWidth;           
-            this.scale.maxHeight = gameHeight; 
+            this.scale.minWidth = width/2;         
+            this.scale.minHeight = height/2;      
+            this.scale.maxWidth = width;           
+            this.scale.maxHeight = height; 
             this.scale.pageAlignHorizontally = true;            
             this.scale.pageAlignVertically = true;   
             this.scale.forceOrientation(true, false);     

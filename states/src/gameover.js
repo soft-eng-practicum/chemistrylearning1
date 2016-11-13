@@ -22,6 +22,11 @@ gameOverState.prototype = {
         //Creates the Game Over Title
         titleLabel = this.game.add.text(this.game.world.centerX-160, 150, "GAME OVER", {font: "55px Courier", fill: "#ffffff"});
         
+        //Checks score before High Score is displayed
+        if(score < 0){
+            score = 0;
+        }
+        
         //Creates the High Score label
         scoreLabel = this.game.add.text(this.game.world.centerX-200, 280, "HIGH SCORE: " + score, {font: "55px Courier", fill: "#ffffff"});
         
@@ -39,9 +44,8 @@ gameOverState.prototype = {
             music.volume = .5;
             music.play();
         }
-        else{
-            
-        }           
+        else{    
+        }    
 	},
     
     /*Function: playTheGame()

@@ -36,7 +36,7 @@ gameTitleState.prototype = {
         //Starts the Game Sound 
         if (!music.isPlaying){  
             music.loop = true;
-            music.volume = .5;
+            music.volume = .2;
             music.play();
         }
         else{

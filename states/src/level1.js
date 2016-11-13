@@ -56,6 +56,9 @@ var correctSound;
 var wrongSound;
 var bulletSound;
 
+var shortBeep;
+var longBeep;
+
 level1.prototype = {  
    
     //Main Phaser Create Function
@@ -82,7 +85,14 @@ level1.prototype = {
         countDownLabel = this.game.add.text(this.game.world.centerX-40, 10, "", {font: "120px Courier", fill: "#ffffff"});
         
         //Creates the Instructions Label
-        instructions = this.game.add.text(this.game.world.centerX-430, 140, "Destroy The Correct Asteroid", {font: "50px Courier", fill: "#ffffff"});
+        instructions = this.game.add.text(this.game.world.centerX-430, 130, "Destroy The Correct Asteroid", {font: "50px Courier", fill: "#ffffff"});
+        
+        //Creates short and long beeps for countdown
+        shortBeep = this.game.add.audio("shortBeep");
+        shortBeep.volume = .1;
+        
+        longBeep = this.game.add.audio("longBeep");
+        longBeep.volume = .1;
         
         //Creates random numbers to randomize answers to the questions
         randomElement = 0;
@@ -203,13 +213,13 @@ level1.prototype = {
         
         //Creates audio
         correctSound = this.game.add.audio("correctSound");
-        correctSound.volume = .5;
+        correctSound.volume = .1;
         
         wrongSound = this.game.add.audio("wrongSound");
-        wrongSound.volume = .5;
+        wrongSound.volume = .1;
         
         bulletSound = this.game.add.audio("bulletSound");
-        bulletSound.volume = .5;
+        bulletSound.volume = .3;
         
         
         //Resets time and delay for formulas
@@ -289,14 +299,7 @@ level1.prototype = {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     /*Function: update()
     *
@@ -327,6 +330,11 @@ level1.prototype = {
             //Controls the delay in speed of the Spacecraft
             if(moveCount > 1) {
                 moveCount = 0;
+            }
+            
+            //Stopping score from being Negative
+            if(score < 0){
+                score = 0;
             }
 
             //Fires weapon
@@ -447,6 +455,13 @@ level1.prototype = {
         //Game Time not started 
         if(started == false) {
             counter--;
+            shortBeep.play();
+            
+            if(counter < 1){
+                shortBeep.pause();
+                longBeep.play();
+            }
+            
             if(counter <= 0) { 
                 counter = 10;
                 started = true;
@@ -520,6 +535,8 @@ level1.prototype = {
                     }
                 //Sets asteroid 2 visible to false
                 if(a2.visible == false) {
+                    //Decrease score
+                    score = score - 50;
                     //Looses 1 life 
                     if(lives == 2){
                         lives=1;
@@ -547,6 +564,8 @@ level1.prototype = {
                 }
                 //Sets asteroid 3 visible to false
                 if(a3.visible == false) {
+                    //Decrease score
+                    score = score - 50;
                     //Looses 1 life 
                     if(lives == 2){
                         lives=1;
@@ -650,6 +669,7 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula1.wrong4);
 
                 if(a1.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -677,6 +697,7 @@ level1.prototype = {
                     correctSound.play();
                 }
                 if(a3.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -748,6 +769,7 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula1.right);
 
                 if(a1.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -766,6 +788,7 @@ level1.prototype = {
                     wrongSound.play();
                 }
                 if(a2.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -860,6 +883,7 @@ level1.prototype = {
                      correctSound.play();
                 }
                 if(a2.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -878,6 +902,7 @@ level1.prototype = {
                     wrongSound.play();
                 }
                 if(a3.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -949,6 +974,7 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula2.wrong4);
 
                 if(a1.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -976,6 +1002,7 @@ level1.prototype = {
                     correctSound.play();
                 }
                 if(a3.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1047,6 +1074,7 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula2.right);
 
                 if(a1.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1065,6 +1093,7 @@ level1.prototype = {
                     wrongSound.play();
                 }
                 if(a2.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1158,6 +1187,7 @@ level1.prototype = {
                      correctSound.play();
                 }
                 if(a2.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1176,6 +1206,7 @@ level1.prototype = {
                     wrongSound.play();
                 }
                 if(a3.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1247,6 +1278,7 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula3.wrong4);
 
                 if(a1.visible == false) {
+                    score = score - 50;
                    if(lives == 2){
                         lives=1;
                     }
@@ -1274,6 +1306,7 @@ level1.prototype = {
                     correctSound.play();
                 }
                 if(a3.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1345,6 +1378,7 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula3.right);
 
                 if(a1.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1363,6 +1397,7 @@ level1.prototype = {
                     wrongSound.play();
                 }
                 if(a2.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1448,7 +1483,7 @@ level1.prototype = {
 
                  if(a1.visible == false) {
                      correct = true;
-                     score =+ 50;
+                     score = score + 50;
                      a1.visible = true;
                      text1.visible = true;
                      timer.pause();
@@ -1456,6 +1491,7 @@ level1.prototype = {
                      correctSound.play();
                 }
                 if(a2.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1474,6 +1510,7 @@ level1.prototype = {
                     wrongSound.play();
                 }
                 if(a3.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1545,6 +1582,7 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula4.wrong4);
 
                 if(a1.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1572,6 +1610,7 @@ level1.prototype = {
                     correctSound.play();
                 }
                 if(a3.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1643,6 +1682,7 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula4.right);
 
                 if(a1.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1661,6 +1701,7 @@ level1.prototype = {
                     wrongSound.play();
                 }
                 if(a2.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1754,6 +1795,7 @@ level1.prototype = {
                     correctSound.play();
                 }
                 if(a2.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1772,6 +1814,7 @@ level1.prototype = {
                     wrongSound.play();
                 }
                 if(a3.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1840,6 +1883,7 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula5.wrong4);
 
                 if(a1.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1867,6 +1911,7 @@ level1.prototype = {
                     correctSound.play();
                 }
                 if(a3.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1937,6 +1982,7 @@ level1.prototype = {
                 text3.setText(phaserJSON.easy.formula5.right);
 
                 if(a1.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
@@ -1955,6 +2001,7 @@ level1.prototype = {
                     wrongSound.play();
                 }
                 if(a2.visible == false) {
+                    score = score - 50;
                     if(lives == 2){
                         lives=1;
                     }
