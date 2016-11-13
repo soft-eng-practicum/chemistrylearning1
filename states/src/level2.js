@@ -1,17 +1,21 @@
+var level2 = function (game) {
+    
+};
+
 // Variables for width and height
-var width = 1000;
-var height = 800;
+//var width = 1000;
+//var height = 800;
 // Instantiate Phaser game object
-var game = new Phaser.Game(width, height, Phaser.Auto);
+//var game = new Phaser.Game(width, height, Phaser.Auto);
 
 // Create background variable
 var background;
 
 // Create game timer variable
-var game_timer;
-var game_timer_display;
-var game_timer_counter;
-var isStarted = false;
+//var game_timer;
+//var game_timer_display;
+//var game_timer_counter;
+//var isStarted = false;
 
 // Create varibale for group of bubbles
 var bubbles;
@@ -55,27 +59,12 @@ var emitter;
 
 
 // Create an array of the main functions of the game 
-var mainState = {
-
-    // Preload function will run  before the game starts and load images to memory
-    preload: function () {
-        game.load.image('level_2_background_image', "assets/level_2_background.jpg");
-        game.load.image('bubble_image', "assets/bubble256.png");
-        
-        //Load JSON file as a text file
-        game.load.text('level_2_JSON', "assets/game_data/level_2_data.json");
-        
-        // Load spike image
-        game.load.image('spike_image', "assets/spikes.png");
-        
-        // Load bubble image for  emitter
-        game.load.image('emitter_bubble_image', "assets/bubble.png");
-    },
+level2.prototype = {
 
     // Create funion runs one time only
     create: function () {
        
-        background = game.add.tileSprite(0, 0, width, height,'level_2_background_image');
+        background = this.game.add.tileSprite(0, 0, this.width, this.height,'level_2_background_image');
         
         // Create the text display for the game timer
       /*  game_timer_display = this.game.add.text(this.game.world.centerX - 40, 10, "", {font: "120px Courier", fill: "#ffffff"});
@@ -87,11 +76,11 @@ var mainState = {
         
         // Asign the chemical name text display a value
         // Display basic game instructions first
-        chemical_formula_text_display = game.add.text(game.world.centerX - 100, 0, "Please select the correct \nbubble before they \nhit the spikes.", {font: "40px Courier", fill: "Yellow"});
+        chemical_formula_text_display = this.game.add.text(0, 0, "Please select the correct \nbubble before they \nhit the spikes.", {font: "40px Courier", fill: "Yellow"});
       
         // Add spike image and set visible to false
         // Image is only used for size attributes it is not displayed in the game
-        spikes = game.add.sprite(game.world.centerX, game.world.centerY + 250, 'spike_image');
+        spikes = this.game.add.sprite(game.world.centerX, game.world.centerY + 250, 'spike_image');
         spikes.visible = false;
         
         // Handles the responsive design
@@ -111,12 +100,12 @@ var mainState = {
         
         // Assign score a value and the score text display
         score = 0;
-        score_text = game.add.text(30, 30, "", {font: "40px Courier", fill: "Yellow"});
+        score_text = this.game.add.text(30, 30, "", {font: "40px Courier", fill: "Yellow"});
         score_text.setText("Score: " + score);
         score_text.visible = false;
         
         // Create group of bubbles
-        bubbles = game.add.group();
+        bubbles = this.game.add.group();
        
         // Enables all kinds of input actions on the bubble group (Click, etc....)
         bubbles.inputEnableChildren = true;
@@ -127,7 +116,7 @@ var mainState = {
         bubbles_velocity = 0.7;
         
         // Create group for bubble labels
-        bubble_labels = game.add.group();
+        bubble_labels = this.game.add.group();
         bubble_labels.enableBody = true;
         bubble_labels.physicsBodyType = Phaser.Physics.ARCADE;
         
@@ -140,7 +129,7 @@ var mainState = {
         var style_01 = { font: "42px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: bubble_01.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
        
         // Create a text label and add it to the bubble_labels group
-        bubble_text_01 = game.add.text(Math.floor(bubble_01.x + bubble_01.width/2), Math.floor(bubble_01.y + bubble_01.height/2), "", style_01, bubble_labels);
+        bubble_text_01 = this.game.add.text(Math.floor(bubble_01.x + bubble_01.width/2), Math.floor(bubble_01.y + bubble_01.height/2), "", style_01, bubble_labels);
         
         bubble_text_01.anchor.set(0.5);
         bubble_text_01.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
@@ -152,7 +141,7 @@ var mainState = {
         
         var style_02 = { font: "42px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: bubble_02.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
        
-        bubble_text_02 = game.add.text(Math.floor(bubble_02.x + bubble_02.width/2), Math.floor(bubble_02.y + bubble_02.height/2), "", style_02, bubble_labels);
+        bubble_text_02 = this.game.add.text(Math.floor(bubble_02.x + bubble_02.width/2), Math.floor(bubble_02.y + bubble_02.height/2), "", style_02, bubble_labels);
         bubble_text_02.anchor.set(0.5);
         bubble_text_02.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
@@ -163,7 +152,7 @@ var mainState = {
         
         var style_03 = { font: "42px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: bubble_03.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
         
-        bubble_text_03 = game.add.text(Math.floor(bubble_03.x + bubble_03.width/2), Math.floor(bubble_03.y + bubble_03.height/2), "", style_03, bubble_labels);
+        bubble_text_03 = this.game.add.text(Math.floor(bubble_03.x + bubble_03.width/2), Math.floor(bubble_03.y + bubble_03.height/2), "", style_03, bubble_labels);
         bubble_text_03.anchor.set(0.5);
         bubble_text_03.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
        
@@ -172,7 +161,7 @@ var mainState = {
        
         
         // Create a group of spike sets
-        spike_group = game.add.group();
+        spike_group = this.game.add.group();
         spike_group.enableBody = true;
         
         spike_set_01 = spike_group.create(0, height - spikes.height, 'spike_image', spike_group);
@@ -182,7 +171,7 @@ var mainState = {
         
         
         //	Emitters have a center point and a width/height, which extends from their center point to the left/right and up/down
-        emitter = game.add.emitter(game.world.centerX, 200, 200);
+        emitter = this.game.add.emitter(game.world.centerX, 200, 200);
 
         //	This emitter will have a width of 800px, so a particle can emit from anywhere in the range emitter.x += emitter.width / 2
         emitter.width = width - 50;
@@ -240,7 +229,7 @@ var mainState = {
         
         
         // Set whats happens when bubbles hit spikes
-        game.physics.arcade.overlap(bubbles, spike_group, bubbleHitSpike, null, this);
+        this.game.physics.arcade.overlap(bubbles, spike_group, bubbleHitSpike, null, this);
        
         
         score_text.setText("Score: " + score);
@@ -451,6 +440,8 @@ function checkIfSelectedBubbleIsCorrect(input_bubble_text) {
         
         resetBubblesPosition();
         bubbles_velocity = 0.7;
+        
+        this.game.state.start('Level5');
     }
     
      // Condition for what happens if user gets formula 5 wrong
@@ -891,6 +882,4 @@ function handleData() {
 // Closes method        
 }
     
-game.state.add('mainState', mainState);
 
-game.state.start('mainState');
