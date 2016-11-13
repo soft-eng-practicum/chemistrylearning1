@@ -38,19 +38,21 @@ var wrong;
 var pausedCorrect = 150;
 var isTimerPaused = false;
 var checkMark;
-var xMark;
+var xMark1, xMark2, xMark3, xMark4;
 var pos1 = false;
 var pos2 = false;
 
 var heart1;
 var heart2;
 var heart3;
-var lives = 3;
+//var lives = 3;
 
 var switchJSON;
 
 var correctSound;
 var wrongSound;
+var shortBeep;
+var longBeep;
 
 level5.prototype = {  
    
@@ -78,7 +80,14 @@ level5.prototype = {
         countDownLabel = this.game.add.text(this.game.world.centerX-40, 10, "", {font: "120px Courier", fill: "#ffffff"});
         
         //Creates the Instructions Label
-        instructions = this.game.add.text(this.game.world.centerX-430, 130, "Tap Under The Correct Flask", {font: "50px Courier", fill: "#ffffff"});
+        instructions = this.game.add.text(this.game.world.centerX-470, 130, "Tap Under The Correct Colored Flask", {font: "45px Courier", fill: "YELLOW"});
+        
+        //Creates short and long beeps for countdown
+        shortBeep = this.game.add.audio("shortBeep");
+        shortBeep.volume = .1;
+        
+        longBeep = this.game.add.audio("longBeep");
+        longBeep.volume = .1;
         
         //Creates random numbers to randomize answers to the questions
         randomElement = 0;
@@ -121,16 +130,16 @@ level5.prototype = {
 
         f3 = flask.create(500, 180, "blueFlask");
         
-        f4 = flask.create(725, 180, "redFlask");
+        f4 = flask.create(725, 180, "purpleFlask");
         
         //Sets styling for Answer Text on flask
-        var style1 = { font: "40px Arial", fill: "YELLOW", wordWrap: true, wordWrapWidth: f1.width, align: "center", backgroundColor: "" };
+        var style1 = { font: "40px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f1.width, align: "center", backgroundColor: "" };
         
-        var style2 = { font: "40px Arial", fill: "YELLOW", wordWrap: true, wordWrapWidth: f2.width, align: "center", backgroundColor: "" };
+        var style2 = { font: "40px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f2.width, align: "center", backgroundColor: "" };
         
-        var style3 = { font: "40px Arial", fill: "YELLOW", wordWrap: true, wordWrapWidth: f3.width, align: "center", backgroundColor: "" };
+        var style3 = { font: "40px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f3.width, align: "center", backgroundColor: "" };
         
-        var style4 = { font: "40px Arial", fill: "YELLOW", wordWrap: true, wordWrapWidth: f4.width, align: "center", backgroundColor: "" };
+        var style4 = { font: "40px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f4.width, align: "center", backgroundColor: "" };
 
         //Create Text1 on flask
         text1 = this.game.add.text(f1.x, f1.y, "", style1, flask);
@@ -180,46 +189,34 @@ level5.prototype = {
         blueCircle.drawCircle(640, 740, 75);
         
         //Creates a Red circle
-        var redCircle = this.game.add.graphics(0, 0);
+      /*  var redCircle = this.game.add.graphics(0, 0);
         redCircle.beginFill(0xFF0000, 1);
-        redCircle.drawCircle(880, 740, 75);
+        redCircle.drawCircle(880, 740, 75);*/
+        
+        //Creates a Purple circle
+        var purpleCircle = this.game.add.graphics(0, 0);
+        purpleCircle.beginFill(0xCB5ED4, 1);
+        purpleCircle.drawCircle(880, 740, 75);
         
         //Creates check marks for right answers
-        checkMark = this.game.add.sprite(f1.x, f1.y,"checkMark");
-        checkMark.visible = false;
-        checkMark.scale.setTo(0.8, 0.8);
-        
-        checkMark = this.game.add.sprite(f2.x, f2.y,"checkMark");
-        checkMark.visible = false;
-        checkMark.scale.setTo(0.8, 0.8);
-        
-        checkMark = this.game.add.sprite(f3.x, f3.y,"checkMark");
-        checkMark.visible = false;
-        checkMark.scale.setTo(0.8, 0.8);
-        
-        checkMark = this.game.add.sprite(f4.x, f4.y,"checkMark");
+        checkMark = this.game.add.sprite(0, 0,"checkMark");
         checkMark.visible = false;
         checkMark.scale.setTo(0.8, 0.8);
         checkMark.anchor.set(-.25, .9);
         
         //Creates check marks for right answers
-        xMark = this.game.add.sprite(f1.x, f1.y,"xMark");
-        xMark.visible = false;
-        xMark.scale.setTo(0.8, 0.8);
+        xMark1 = this.game.add.sprite(f1.x, f1.y,"xMark");
+        xMark1.visible = false;
+        xMark1.scale.setTo(0.8, 0.8);
         
-        xMark = this.game.add.sprite(f2.x, f2.y,"xMark");
-        xMark.visible = false;
-        xMark.scale.setTo(0.8, 0.8);
+        xMark2 = this.game.add.sprite(f2.x, f2.y,"xMark");
+        xMark2.visible = false;
+        xMark2.scale.setTo(0.8, 0.8);
         
-        xMark = this.game.add.sprite(f3.x, f3.y,"xMark");
-        xMark.visible = false;
-        xMark.scale.setTo(0.8, 0.8);
-        xMark.anchor.set(0.4, 0.8);
-        
-        xMark = this.game.add.sprite(f4.x, f4.y,"xMark");
-        xMark.visible = false;
-        xMark.scale.setTo(0.8, 0.8);
-        xMark.anchor.set(0.4, 0.8);
+        xMark3 = this.game.add.sprite(f3.x, f3.y,"xMark");
+        xMark3.visible = false;
+        xMark3.scale.setTo(0.8, 0.8);
+
         
         //Creates Hearts for Lives 
         heart1 = this.game.add.sprite(770, 90,"heart");
@@ -230,15 +227,15 @@ level5.prototype = {
         
         //Creates audio
         correctSound = this.game.add.audio("correctSound");
-        correctSound.volume = .5;
+        correctSound.volume = .1;
         
         wrongSound = this.game.add.audio("wrongSound");
-        wrongSound.volume = .5;
+        wrongSound.volume = .1;
 
         //Resets time and delay for formulas
         counterLevel5 = 5;
         isTimerPaused = false;
-        lives = 3;
+        //lives = 3;
         correct = false;
         wrong = false;
         pos1 = false;
@@ -348,10 +345,16 @@ level5.prototype = {
             heart1.visible = false;
         }
         else if(lives == 1){
+            heart1.visible = false;
             heart2.visible = false;
         }
         else if(lives == 0){            
             this.game.state.start("GameOver");
+        }
+        
+        //Stopping score from being Negative
+        if(score < 0){
+            score = 0;
         }
     },
     
@@ -373,7 +376,6 @@ level5.prototype = {
     *Guy and Flask Collision
     */
     collisionHandlerFlask: function(guy, flask) {
-        //guy.kill();
         guy.visible = false;
     },
 
@@ -405,10 +407,16 @@ level5.prototype = {
         
         //Game Time not started 
         if(startedLevel5 == false) {
-            
             counterLevel5--;
+            shortBeep.play();
+            
+            if(counterLevel5 < 1){
+                shortBeep.pause();
+                longBeep.play();
+            }
+            
             if(counterLevel5 <= 0) { 
-                counterLevel5 = 10;
+                counterLevel5 = 7;
                 startedLevel5 = true;
             }
         }
@@ -423,24 +431,9 @@ level5.prototype = {
         
             if(counterLevel5 < 1) {
               
-               // counterLevel5 = 0;
-               // timerLevel5.pause();
-               // isTimerPaused = true;
-                
-                 wrongSound.play();
-                
-                if(lives == 3){
-                    lives=2;
-                    counter = 10;
-                    }
-                else if(lives == 2){
-                    lives=1;
-                    counter = 10;
-                }
-                else{
-                    lives=0;
-                    counter = 0;
-                }
+                counterLevel5 = 0;
+                timerLevel5.pause();
+                isTimerPaused = true;
             }        
         }
     },
@@ -476,32 +469,70 @@ level5.prototype = {
                     formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
                     flaskTween.onComplete.add(function(){
-                         if(guy.visible == true){     
-                                score = score + 50;
+                        if(guy.visible == true){    
+                            correct = true;
+                            correctSound.play();
+                            score = score + 50;
                         }                                    
                         else{
-                            this.game.state.start("GameOver");
+                            wrong = true;
+                            wrongSound.play();
+                            score = score - 50;
+                            if(lives == 2){
+                                lives=1;
+                            }
+                            else if(lives == 1){
+                                lives=0;
+                            }
+                            else{
+                                lives=2;
+                            }
                         }
                         }, this);
-
-                        counterLevel5 = 10;
+                        counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                            checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
                             }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 20);
+                                xMark1.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
+                            
+                        }
                         
                         if(pausedCorrect < 1){
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 1;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }     
                     
             }
@@ -525,23 +556,55 @@ level5.prototype = {
                 formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
                 flaskTween.onComplete.add(function(){
-                     if(guy.visible == true){     
-                                score = score + 50;
+                     if(guy.visible == true){ 
+                         correct = true;
+                         correctSound.play();
+                         score = score + 50;
                         } 
                         else{
-                            this.game.state.start("GameOver");
+                            wrong = true;
+                            wrongSound.play();
+                            score = score - 50;
+                            if(lives == 2){
+                                lives=1;
+                            }
+                            else if(lives == 1){
+                                lives=0;
+                            }
+                            else{
+                                lives=2;
+                            }
                         }
                         }, this);
             
-                            counterLevel5 = 10;
+                            counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                            checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                            }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -549,8 +612,14 @@ level5.prototype = {
                             randomElement = 1;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
 
             }
@@ -574,23 +643,55 @@ level5.prototype = {
                 formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
                 flaskTween.onComplete.add(function(){ 
-                     if(guy.visible == true){     
-                                score = score + 50;
+                     if(guy.visible == true){
+                         correct = true;
+                         correctSound.play();
+                         score = score + 50;
                         } 
                         else{
-                            this.game.state.start("GameOver");
+                            wrong = true;
+                            wrongSound.play();
+                            score = score - 50;
+                            if(lives == 2){
+                                lives=1;
+                            }
+                            else if(lives == 1){
+                                lives=0;
+                            }
+                            else{
+                                lives=2;
+                            }
                         }
                         }, this);
                    
-                    counterLevel5 = 10;
+                    counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                            checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -598,8 +699,14 @@ level5.prototype = {
                             randomElement = 1;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         } 
                 
             }
@@ -624,22 +731,54 @@ level5.prototype = {
 
                 flaskTween.onComplete.add(function(){ 
                      if(guy.visible == true){     
-                                score = score + 50;
+                         correct = true;
+                         correctSound.play();
+                         score = score + 50;
                         } 
                         else{
-                            this.game.state.start("GameOver");
+                            wrong = true;
+                            wrongSound.play();
+                            score = score - 50;
+                            if(lives == 2){
+                                lives=1;
+                            }
+                            else if(lives == 1){
+                                lives=0;
+                            }
+                            else{
+                                lives=2;
+                            }
                         }
                         }, this);
                    
-                 counterLevel5 = 10;
+                 counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                            checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f3.x + f3.width / 2));
+                                xMark3.y = Math.floor(f3.y + f3.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -647,8 +786,14 @@ level5.prototype = {
                             randomElement = 1;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         } 
                 
             }
@@ -679,23 +824,55 @@ level5.prototype = {
                     
                     flaskTween.onComplete.add(function(){
                          if(guy.visible == true){
-                                score = score + 50;
-                             }
+                            correct = true;
+                             correctSound.play();
+                            score = score + 50;
+                            }
                         else{
-                            this.game.state.start("GameOver");
+                            wrong = true;
+                            wrongSound.play();
+                            score = score - 50;
+                            if(lives == 2){
+                                lives=1;
+                            }
+                            else if(lives == 1){
+                                lives=0;
+                            }
+                            else{
+                                lives=2;
+                            }
                         }
                         }, this);
                      
-                   counterLevel5 = 10;
+                   counterLevel5 = 7;
             
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                            checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 20);
+                                xMark1.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -703,8 +880,14 @@ level5.prototype = {
                             randomElement = 2;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         } 
             }
             else if(randomFormula == 1){ 
@@ -729,22 +912,54 @@ level5.prototype = {
                 
                 flaskTween.onComplete.add(function(){
                      if(guy.visible == true){
-                            score = score + 50;
-                         }
+                         correct = true;
+                         correctSound.play();
+                         score = score + 50;
+                    }
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
+                        }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
                         }
                     }, this);
                     
-                    counterLevel5 = 10;
+                    counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                            checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -752,8 +967,14 @@ level5.prototype = {
                             randomElement = 2;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         } 
             }
             else if(randomFormula == 2){ 
@@ -777,22 +998,54 @@ level5.prototype = {
 
                 flaskTween.onComplete.add(function(){ 
                      if(guy.visible == true){
-                            score = score + 50;
-                         }
+                        correct = true;
+                        correctSound.play();
+                        score = score + 50;
+                    }
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
+                        }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
                         }
                     }, this);
    
-                    counterLevel5 = 10;
+                    counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                            checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -800,8 +1053,14 @@ level5.prototype = {
                             randomElement = 2;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         } 
             }
             else if(randomFormula == 3){ 
@@ -825,22 +1084,54 @@ level5.prototype = {
 
                 flaskTween.onComplete.add(function(){ 
                      if(guy.visible == true){
-                            score = score + 50;
-                         }
+                        correct = true;
+                        correctSound.play();
+                        score = score + 50;
+                    }
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
+                        }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
                         }
                     }, this);
                 
-                    counterLevel5 = 10;
+                    counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                            checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f3.x + f3.width / 2));
+                                xMark3.y = Math.floor(f3.y + f3.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -848,8 +1139,14 @@ level5.prototype = {
                             randomElement = 2;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         } 
             }
         }
@@ -864,8 +1161,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula3.wrong2);
                 text4.setText(phaserJSON.easy.formula3.wrong3);
                 
-                checkMark.visible = false;
-
                  if(counterLevel5 < 1){
                     flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
@@ -881,22 +1176,54 @@ level5.prototype = {
                     
                     flaskTween.onComplete.add(function(){
                         if(guy.visible == true){
-                            score = score + 50;
+                           correct = true;
+                           correctSound.play();
+                           score = score + 50;
                          }
                         else{
-                            this.game.state.start("GameOver");
+                            wrong = true;
+                            wrongSound.play();
+                            score = score - 50;
+                            if(lives == 2){
+                                lives=1;
+                            }
+                            else if(lives == 1){
+                                lives=0;
+                            }
+                            else{
+                                lives=2;
+                            }
                         }
                         }, this);
                     
-                    counterLevel5 = 10;
+                    counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                            checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 20);
+                                xMark1.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -904,8 +1231,14 @@ level5.prototype = {
                             randomElement = 3;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
             else if(randomFormula == 1){ 
@@ -914,8 +1247,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula3.wrong4);
                 text4.setText(phaserJSON.easy.formula3.wrong5);
                 
-                checkMark.visible = false;
-
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
@@ -932,22 +1263,54 @@ level5.prototype = {
                 
                 flaskTween.onComplete.add(function(){
                     if(guy.visible == true){
-                            score = score + 50;
-                         }
+                        correct = true;
+                        correctSound.play();
+                        score = score + 50;
+                    }
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
+                        }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
                         }
                     }, this);
           
-                counterLevel5 = 10;
+                counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                            checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6); 
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -955,8 +1318,14 @@ level5.prototype = {
                             randomElement = 3;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
             else if(randomFormula == 2){ 
@@ -965,8 +1334,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula3.right);
                 text4.setText(phaserJSON.easy.formula3.wrong1);
                 
-                checkMark.visible = false;
-
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
@@ -982,22 +1349,54 @@ level5.prototype = {
 
                 flaskTween.onComplete.add(function(){ 
                     if(guy.visible == true){
-                            score = score + 50;
-                         } 
+                        correct = true;
+                        correctSound.play();
+                        score = score + 50;
+                    } 
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
                         }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
+                    }
                     }, this);
                     
-                counterLevel5 = 10;
+                counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                            checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -1005,8 +1404,14 @@ level5.prototype = {
                             randomElement = 3;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
             else if(randomFormula == 3){ 
@@ -1015,8 +1420,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula3.wrong2);
                 text4.setText(phaserJSON.easy.formula3.right);
                 
-                checkMark.visible = false;
-
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
@@ -1032,22 +1435,54 @@ level5.prototype = {
 
                 flaskTween.onComplete.add(function(){ 
                     if(guy.visible == true){
-                            score = score + 50;
-                         } 
+                        correct = true;
+                        correctSound.play();
+                        score = score + 50;
+                    } 
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
+                        }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
                         }
                     }, this);
                     
-                  counterLevel5 = 10;
+                  counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                            checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f3.x + f3.width / 2));
+                                xMark3.y = Math.floor(f3.y + f3.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -1055,8 +1490,14 @@ level5.prototype = {
                             randomElement = 3;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
         }
@@ -1071,8 +1512,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula4.wrong2);
                 text4.setText(phaserJSON.easy.formula4.wrong3);
                 
-                checkMark.visible = false;
-
                  if(counterLevel5 < 1){
                     flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
@@ -1088,22 +1527,54 @@ level5.prototype = {
                     
                     flaskTween.onComplete.add(function(){
                         if(guy.visible == true){
+                            correct = true;
+                            correctSound.play();
                             score = score + 50;
                          }
                         else{
-                            this.game.state.start("GameOver");
+                            wrong = true;
+                            wrongSound.play();
+                            score = score - 50;
+                            if(lives == 2){
+                                lives=1;
+                            }
+                            else if(lives == 1){
+                                lives=0;
+                            }
+                            else{
+                                lives=2;
+                            }
                         }
                         }, this);
                         
-                     counterLevel5 = 10;
+                     counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                            checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 20);
+                                xMark1.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -1111,8 +1582,14 @@ level5.prototype = {
                             randomElement = 4;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
             else if(randomFormula == 1){ 
@@ -1121,8 +1598,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula4.wrong4);
                 text4.setText(phaserJSON.easy.formula4.wrong5);
                 
-                checkMark.visible = false;
-
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
@@ -1139,22 +1614,54 @@ level5.prototype = {
                 
                 flaskTween.onComplete.add(function(){
                     if(guy.visible == true){
-                            score = score + 50;
-                         } 
+                        correct = true;
+                        correctSound.play();
+                        score = score + 50;
+                    } 
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
+                        }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
                         }
                     }, this);
     
-                  counterLevel5 = 10;
+                  counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                            checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -1162,8 +1669,14 @@ level5.prototype = {
                             randomElement = 4;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
             else if(randomFormula == 2){ 
@@ -1172,8 +1685,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula4.right);
                 text4.setText(phaserJSON.easy.formula4.wrong1);
                 
-                checkMark.visible = false;
-
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
@@ -1189,22 +1700,54 @@ level5.prototype = {
 
                 flaskTween.onComplete.add(function(){ 
                     if(guy.visible == true){
-                            score = score + 50;
-                         }
+                        correct = true;
+                        correctSound.play();
+                        score = score + 50;
+                    }
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
+                        }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
                         }
                     }, this);
                
-                  counterLevel5 = 10;
+                  counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                            checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -1212,8 +1755,14 @@ level5.prototype = {
                             randomElement = 4;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
             else if(randomFormula == 3){ 
@@ -1222,8 +1771,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula4.wrong2);
                 text4.setText(phaserJSON.easy.formula4.right);
                 
-                checkMark.visible = false;
-
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
@@ -1239,22 +1786,54 @@ level5.prototype = {
 
                 flaskTween.onComplete.add(function(){ 
                     if(guy.visible == true){
-                            score = score + 50;
-                         }
+                        correct = true;
+                        correctSound.play();
+                         score = score + 50;
+                    }
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
+                        }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
                         }
                     }, this);
                
-                  counterLevel5 = 10;
+                  counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                            checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f3.x + f3.width / 2));
+                                xMark3.y = Math.floor(f3.y + f3.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -1262,8 +1841,14 @@ level5.prototype = {
                             randomElement = 4;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
         }
@@ -1278,8 +1863,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula5.wrong2);
                 text4.setText(phaserJSON.easy.formula5.wrong3);
                 
-                checkMark.visible = false;
-
                  if(counterLevel5 < 1){
                     flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
@@ -1295,22 +1878,54 @@ level5.prototype = {
                     
                     flaskTween.onComplete.add(function(){
                         if(guy.visible == true){
+                            correct = true;
+                            correctSound.play();
                             score = score + 50;
                          }
                         else{
-                            this.game.state.start("GameOver");
+                            wrong = true;
+                            wrongSound.play();
+                            score = score - 50;
+                            if(lives == 2){
+                                lives=1;
+                            }
+                            else if(lives == 1){
+                                lives=0;
+                            }
+                            else{
+                                lives=2;
+                            }
                         }
                     }, this);
                 
-                    counterLevel5 = 10;
+                    counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                            checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 20);
+                                xMark1.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -1318,8 +1933,14 @@ level5.prototype = {
                             randomElement = 0;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
             else if(randomFormula == 1){ 
@@ -1328,8 +1949,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula5.wrong4);
                 text4.setText(phaserJSON.easy.formula5.wrong5);
                 
-                checkMark.visible = false;
-
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
@@ -1346,22 +1965,54 @@ level5.prototype = {
                 
                 flaskTween.onComplete.add(function(){
                     if(guy.visible == true){
-                            score = score + 50;
-                         }
+                        correct = true;
+                        correctSound.play();
+                         score = score + 50;
+                    }
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
+                        }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
                         }
                     }, this);
              
-                  counterLevel5 = 10;
+                  counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                            checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -1369,8 +2020,14 @@ level5.prototype = {
                             randomElement = 0;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
             else if(randomFormula == 2){ 
@@ -1379,8 +2036,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula5.right);
                 text4.setText(phaserJSON.easy.formula5.wrong1);
                 
-                checkMark.visible = false;
-
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
@@ -1396,22 +2051,54 @@ level5.prototype = {
 
                 flaskTween.onComplete.add(function(){ 
                     if(guy.visible == true){
-                            score = score + 50;
-                         }
+                        correct = true;
+                        correctSound.play();
+                         score = score + 50;
+                    }
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
+                        }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
                         }
                     }, this);
                 
-                    counterLevel5 = 10;
+                    counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                            checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f4.x + f4.width / 2));
+                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -1419,8 +2106,14 @@ level5.prototype = {
                             randomElement = 0;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
             else if(randomFormula == 3){ 
@@ -1429,8 +2122,6 @@ level5.prototype = {
                 text3.setText(phaserJSON.easy.formula5.wrong2);
                 text4.setText(phaserJSON.easy.formula5.right);
                 
-                checkMark.visible = false;
-
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
@@ -1446,22 +2137,54 @@ level5.prototype = {
 
                 flaskTween.onComplete.add(function(){ 
                     if(guy.visible == true){
-                            score = score + 50;
-                         }
+                        correct = true;
+                        correctSound.play();
+                         score = score + 50;
+                    }
                     else{
-                            this.game.state.start("GameOver");
+                        wrong = true;
+                        wrongSound.play();
+                        score = score - 50;
+                        if(lives == 2){
+                            lives=1;
+                        }
+                        else if(lives == 1){
+                            lives=0;
+                        }
+                        else{
+                            lives=2;
+                        }
                         }
                     }, this);
                 
-                    counterLevel5 = 10;
+                    counterLevel5 = 7;
                         }
                 
                         if(isTimerPaused){
                             pausedCorrect--;
                             
-                            checkMark.visible = true;
-                            checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                            checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                            if(correct){
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                }
+                            else if(wrong){ 
+                                checkMark.visible = true;
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                
+                                xMark1.visible = true;
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
+                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                
+                                xMark2.visible = true;
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
+                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                
+                                xMark3.visible = true;
+                                xMark3.x = Math.floor((f3.x + f3.width / 2));
+                                xMark3.y = Math.floor(f3.y + f3.height / 1.6);
+                            }
                             }
                         
                         if(pausedCorrect < 1){
@@ -1469,8 +2192,14 @@ level5.prototype = {
                             randomElement = 0;
                             timerLevel5.resume();
                             checkMark.visible = false;
+                            xMark1.visible = false;
+                            xMark2.visible = false;
+                            xMark3.visible = false;
                             isTimerPaused = false;
                             pausedCorrect = 150;
+                            guy.visible = true;
+                            correct = false;
+                            wrong = false;
                         }
             }
         }

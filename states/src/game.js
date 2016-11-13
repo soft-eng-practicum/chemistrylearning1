@@ -1,8 +1,8 @@
-var gameWidth = 1000;
-var gameHeight = 800;
+var width = 1000;
+var height = 800;
 
 //Creating Game with Width & Height parameters
-var game = new Phaser.Game(gameWidth, gameHeight, Phaser.CANVAS, "gameDiv");
+var game = new Phaser.Game(width, height, Phaser.CANVAS, "gameDiv");
 
     game.state.add("Boot",bootState);
     game.state.add("Preload",preloadState);

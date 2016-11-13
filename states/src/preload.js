@@ -3,6 +3,9 @@ var preloadState = function(game){
 };
 
 var loadingLabel;
+var progressDisplay;
+var loadingText;
+var timerEvt;
 
 preloadState.prototype = {
     
@@ -16,13 +19,29 @@ preloadState.prototype = {
         
         //Loading Label
         
-        loadingLabel = this.game.add.text(this.game.world.centerX-140, 300, "Loading...", {font: "50px Courier", fill: "#ffffff"});
+        loadingText = this.game.add.text(this.game.world.centerX-250, 350, "Loading... 0%", { font: "70px Courier", fill: "#ffffff"});
+
+        progressDisplay = 0;
         
-        
+        timerEvt = this.game.time.events.loop(100, function (){
+
+            if(progressDisplay < 100){
+
+                if(progressDisplay < this.game.load.progress){
+                    loadingText.text = 'loading... '+(++progressDisplay)+'%';
+                }
+            }
+            else{
+
+                loadingText.text = 'Ready, Go!';
+                this.game.time.events.remove(timerEvt);
+            }
+        }, this);
+          
         
         //INTRO IMAGES & SOUNDS
         
-        this.game.load.image("IntroLogo","assets/Asteroid.png");
+        this.game.load.image("IntroLogo","assets/LifeGamezLogo.png");
         
         this.game.load.image('space_background', "assets/space_background.jpg");
         
@@ -74,6 +93,10 @@ preloadState.prototype = {
         
         this.game.load.audio("bulletSound", "assets/bulletSound.wav");
         
+        this.game.load.audio("shortBeep", "assets/shortBeep.wav");
+        
+        this.game.load.audio("longBeep", "assets/longBeep.wav");
+        
 
     
         
@@ -122,5 +145,5 @@ preloadState.prototype = {
   	create: function(){
         //Starts Game Intro
 		this.game.state.start("GameIntro");
-	}
+    }
 };
