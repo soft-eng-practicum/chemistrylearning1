@@ -18,7 +18,9 @@ gameTitleState.prototype = {
         gameTitleBackground.scale.setTo(1.3, 1.1);
         
         //Creates the Game Title
-        titleLabel = this.game.add.text(this.game.world.centerX-160, 150, "XENON", {font: "100px Courier", fill: "#ffffff"});
+        titleLabel = this.game.add.sprite(250,100,"logo");
+        titleLabel.scale.setTo(.8, .8);
+        //titleLabel = this.game.add.text(this.game.world.centerX-160, 150, "XENON", {font: "100px Courier", fill: "#ffffff"});
         
         //Creates the Play Button
 		playButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY,"play",this.playTheGame,this);

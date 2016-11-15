@@ -42,9 +42,8 @@ gameIntroState.prototype = {
     tween = game.add.tween(logo).to( { x: [ w, w, 0, 0 ], y: [ 0, h, h, 0 ] }, 4000, "Sine.easeInOut", true, -1, false);
 
     //Creates a sprite in the middle of the screen 
-    sprite = game.add.sprite(game.world.centerX, game.world.centerY, 'IntroLogo');
-    sprite.anchor.setTo(0.45, 0.7);
-    sprite.scale.set(2);
+    sprite = game.add.sprite(game.world.centerX - 240, game.world.centerY -200, 'robot');
+    sprite.scale.set(0.7, 0.5);
     sprite.alpha = 0.2;
 
     //Fades in sprite
