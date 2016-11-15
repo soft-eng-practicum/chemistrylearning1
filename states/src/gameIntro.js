@@ -10,6 +10,7 @@ var logo;
 var text;
 var tween;
 var sprite;
+var levelMusic;
    
 gameIntroState.prototype = {
     
@@ -51,6 +52,8 @@ gameIntroState.prototype = {
     
     //Creates audio
     music = this.game.add.audio("sound");
+        
+    //levelMusic = this.game.add.audio("levelMusic");
 
     },
     
