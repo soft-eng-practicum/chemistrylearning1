@@ -40,8 +40,7 @@ preloadState.prototype = {
           
         
         //INTRO IMAGES & SOUNDS
-        
-        this.game.load.image("IntroLogo","assets/LifeGamezLogo.png");
+         this.game.load.image("IntroLogo","assets/LifeGamezLogo.png");
         
         this.game.load.image('space_background', "assets/space_background.jpg");
         

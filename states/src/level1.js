@@ -58,6 +58,7 @@ var bulletSound;
 
 var shortBeep;
 var longBeep;
+//var levelMusic;
 
 level1.prototype = {  
    
@@ -76,6 +77,8 @@ level1.prototype = {
         
         //Pauses the Game Title Music when Game starts
         music.pause();
+        
+        levelMusic.play();
         
         //Creates the Background Image
         levelBackground =  this.game.add.sprite(0,0,"level1Background");
@@ -165,17 +168,7 @@ level1.prototype = {
         text3.y = Math.floor(a3.y + a3.height / 2);
         
         //Creates check marks for right answers
-        checkMark = this.game.add.sprite(a1.x, a1.y,"checkMark");
-        checkMark.visible = false;
-        checkMark.scale.setTo(0.8, 0.8);
-        checkMark.anchor.set(0, 1.5);
-        
-        checkMark = this.game.add.sprite(a2.x, a2.y,"checkMark");
-        checkMark.visible = false;
-        checkMark.scale.setTo(0.8, 0.8);
-        checkMark.anchor.set(0, 1.5);
-        
-        checkMark = this.game.add.sprite(a3.x, a3.y,"checkMark");
+        checkMark = this.game.add.sprite(0, 0,"checkMark");
         checkMark.visible = false;
         checkMark.scale.setTo(0.8, 0.8);
         checkMark.anchor.set(0, 1.5);
@@ -221,6 +214,7 @@ level1.prototype = {
         bulletSound = this.game.add.audio("bulletSound");
         bulletSound.volume = .3;
         
+       // levelMusic = this.game.add.audio("levelMusic");
         
         //Resets time and delay for formulas
         counter = 5;
@@ -436,7 +430,7 @@ level1.prototype = {
 
         countDownLabel.setText(counter);
         
-        //Chnages Count Down Label Red
+        //Changes Count Down Label Red
         if(counter <= 5) {
             countDownLabel.addColor("RED", 0);
         }
@@ -470,7 +464,7 @@ level1.prototype = {
         //Game Time has started 
         else if(started == true) {
                 counter--;
-        
+            
             if(counter < 1) {
                 wrongSound.play();
                 
