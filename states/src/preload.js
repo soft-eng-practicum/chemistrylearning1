@@ -45,12 +45,17 @@ preloadState.prototype = {
         
         this.game.load.image('space_background', "assets/space_background.jpg");
         
+        this.game.load.image('robot', "assets/robot.png");
+        
         
         
         //GAME TITLE SCREEN IMAGES & SOUNDS
-        this.game.load.image("titleBackground","assets/gameTitleBackground.jpg");
+        //this.game.load.image("titleBackground","assets/gameTitleBackground.jpg");
+        this.game.load.image("titleBackground","assets/titleBackground.png");
         
         this.game.load.image("play","assets/button.png");
+        
+        this.game.load.image("logo","assets/gameTitleLogo.png");
         
         this.game.load.image("settings","assets/settingsButton.png");
         
@@ -96,6 +101,8 @@ preloadState.prototype = {
         this.game.load.audio("shortBeep", "assets/shortBeep.wav");
         
         this.game.load.audio("longBeep", "assets/longBeep.wav");
+        
+        this.game.load.audio("levelMusic", "assets/levelMusic.mp3");
         
 
     
