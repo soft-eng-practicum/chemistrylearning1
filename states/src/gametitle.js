@@ -15,7 +15,7 @@ gameTitleState.prototype = {
         
         //Creates the Background
 		gameTitleBackground = this.game.add.sprite(0,0,"titleBackground");
-        gameTitleBackground.scale.setTo(.52, 0.74);
+        gameTitleBackground.scale.setTo(1.3, 1.2);
         
         //Creates the Game Title
         titleLabel = this.game.add.text(this.game.world.centerX-160, 150, "XENON", {font: "100px Courier", fill: "#ffffff"});

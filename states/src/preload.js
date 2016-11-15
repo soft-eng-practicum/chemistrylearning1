@@ -48,7 +48,8 @@ preloadState.prototype = {
         
         
         //GAME TITLE SCREEN IMAGES & SOUNDS
-        this.game.load.image("titleBackground","assets/gameTitleBackground.jpg");
+        //this.game.load.image("titleBackground","assets/gameTitleBackground.jpg");
+        this.game.load.image("titleBackground","assets/titleBackground.png");
         
         this.game.load.image("play","assets/button.png");
         
@@ -96,6 +97,8 @@ preloadState.prototype = {
         this.game.load.audio("shortBeep", "assets/shortBeep.wav");
         
         this.game.load.audio("longBeep", "assets/longBeep.wav");
+        
+        this.game.load.audio("levelMusic", "assets/levelMusic.mp3");
         
 
     
