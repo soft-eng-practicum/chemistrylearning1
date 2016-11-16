@@ -14,7 +14,7 @@ settingsState.prototype = {
         
         //Creates the Settings Background
 		gameSettingBackground = this.game.add.sprite(0,0,"titleBackground");
-		gameSettingBackground.scale.setTo(.52, 0.74);
+		gameSettingBackground.scale.setTo(1.3, 1.1);
         
         //Creates the Settings Label
         settings = this.game.add.text(this.game.world.centerX-200, 100, "Settings", {font: "90px Courier", fill: "#ffffff"});
@@ -40,11 +40,11 @@ settingsState.prototype = {
     toggleSound: function(){
        if (!this.game.sound.mute) {
             this.game.sound.mute = true;
-            this.soundButton.tint = 16711680;
+            this.musicButton.tint = 16711680;
         } 
         else {
             this.game.sound.mute = false;
-            this.soundButton.tint = 16777215;
+            this.musicButton.tint = 16777215;
         }  
     },
     

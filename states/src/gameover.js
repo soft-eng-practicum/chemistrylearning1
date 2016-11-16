@@ -17,7 +17,7 @@ gameOverState.prototype = {
         
         //Creates the Game Over Background
 		gameOverBackground = this.game.add.sprite(0,0,"titleBackground");
-        gameOverBackground.scale.setTo(.52, 0.74);
+        gameOverBackground.scale.setTo(1.3, 1.1);
         
         //Creates the Game Over Title
         titleLabel = this.game.add.text(this.game.world.centerX-160, 150, "GAME OVER", {font: "55px Courier", fill: "#ffffff"});

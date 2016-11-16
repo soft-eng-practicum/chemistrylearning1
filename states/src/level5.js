@@ -79,7 +79,7 @@ level5.prototype = {
         countDownLabel = this.game.add.text(this.game.world.centerX-40, 10, "", {font: "120px Courier", fill: "#ffffff"});
         
         //Creates the Instructions Label
-        instructions = this.game.add.text(this.game.world.centerX-470, 130, "Select Under The Correct Colored Flask", {font: "45px Courier", fill: "YELLOW"});
+        instructions = this.game.add.text(this.game.world.centerX-470, 130, "Select Under The Correct Colored Flask", {font: "40px Courier", fill: "YELLOW"});
         
         //Creates short and long beeps for countdown
         shortBeep = this.game.add.audio("shortBeep");
@@ -234,7 +234,6 @@ level5.prototype = {
         //Resets time and delay for formulas
         counterLevel5 = 5;
         isTimerPaused = false;
-        //lives = 3;
         correct = false;
         wrong = false;
         pos1 = false;

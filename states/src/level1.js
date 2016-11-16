@@ -78,7 +78,8 @@ level1.prototype = {
         //Pauses the Game Title Music when Game starts
         music.pause();
         
-        levelMusic.play();
+       // gameIntro
+        //levelMusic.play();
         
         //Creates the Background Image
         levelBackground =  this.game.add.sprite(0,0,"level1Background");

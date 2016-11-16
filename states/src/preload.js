@@ -6,6 +6,7 @@ var loadingLabel;
 var progressDisplay;
 var loadingText;
 var timerEvt;
+var backgroundColor;
 
 preloadState.prototype = {
     
@@ -18,7 +19,6 @@ preloadState.prototype = {
         this.game.load.text("chemicalFormula2", "assets/ChemistryGame2.json");
         
         //Loading Label
-        
         loadingText = this.game.add.text(this.game.world.centerX-250, 350, "Loading... 0%", { font: "70px Courier", fill: "#ffffff"});
 
         progressDisplay = 0;
