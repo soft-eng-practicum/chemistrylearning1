@@ -44,7 +44,7 @@ preloadState.prototype = {
         
         this.game.load.image('space_background', "assets/space_background.jpg");
         
-        this.game.load.image('robot', "assets/robot.png");
+        this.game.load.image('Astronaut', "assets/Astronaut.png");
         
         
         
@@ -78,13 +78,15 @@ preloadState.prototype = {
 		//this.game.load.image("background","assets/Space.jpg");
         
         this.game.load.image("heart","assets/heart.png");
-        this.game.load.image("level1Background","assets/Level1Background.jpg");
+        //this.game.load.image("level1Background","assets/Level1Background.jpg");
         
-        this.game.load.image("spaceCraft", "assets/Spacecraft.png");
+        this.game.load.image("level1Background","assets/Space_Level1.png");
+        
+        this.game.load.image("spaceCraft", "assets/rocket.png");
         
         this.game.load.image("bullet", "assets/Bullets.png");
         
-        this.game.load.image("asteroid", "assets/Asteroid.png");
+        this.game.load.image("asteroid", "assets/Asteroids.png");
         
         this.game.load.image("checkMark", "assets/checkMark.png");
         
