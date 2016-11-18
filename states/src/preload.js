@@ -14,9 +14,9 @@ preloadState.prototype = {
 	preload: function(){ 
         //Load JSON
         
-        this.game.load.text("chemicalFormula", "assets/ChemistryGame.json");
+      //  this.game.load.text("chemicalFormula", "assets/ChemistryGame.json");
         
-        this.game.load.text("chemicalFormula2", "assets/ChemistryGame2.json");
+      //  this.game.load.text("chemicalFormula2", "assets/ChemistryGame2.json");
         
         //Loading Label
         loadingText = this.game.add.text(this.game.world.centerX-250, 350, "Loading... 0%", { font: "70px Courier", fill: "#ffffff"});
@@ -74,9 +74,10 @@ preloadState.prototype = {
         this.game.load.image("creditsButton","assets/creditsButton.png");
         
            
-        //LEVEL 1 IMAGES & SOUNDS
+        //LEVEL 1 IMAGES, SOUNDS, & JSON
 		//this.game.load.image("background","assets/Space.jpg");
         
+        this.game.load.text('level_1_JSON', "assets/game_data/level_1_data.json");
         this.game.load.image("heart","assets/heart.png");
         this.game.load.image("level1Background","assets/Level1Background.jpg");
         
@@ -106,7 +107,7 @@ preloadState.prototype = {
 
     
         
-        //LEVEL 2 IMAGES & SOUNDS
+        //LEVEL 2 IMAGES, SOUNDS, & JSON
         
         this.game.load.image('level_2_background_image', "assets/level_2_background.jpg");
         this.game.load.image('bubble_image', "assets/bubble256.png");
@@ -137,8 +138,10 @@ preloadState.prototype = {
         
         
         
-        //LEVEL 5 IMAGES & SOUNDS
+        //LEVEL 5 IMAGES, SOUNDS, & JSON
         this.game.load.image("level5Background","assets/Lab_Background.jpg");
+        
+        this.game.load.text('level_5_JSON', "assets/game_data/level_5_data.json");
         
         this.game.load.image("blueFlask", "assets/blue_flask.png");
         
@@ -151,6 +154,7 @@ preloadState.prototype = {
         this.game.load.image("orangeFlask", "assets/orangeFlask.png"); 
 
         this.game.load.spritesheet("guy", "assets/man_walking.png", 124, 254);
+        
         
 	},
     
