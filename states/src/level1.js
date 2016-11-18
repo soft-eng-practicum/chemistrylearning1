@@ -85,7 +85,7 @@ level1.prototype = {
         
         //Creates the Background Image
         levelBackground =  this.game.add.sprite(0,0,"level1Background");
-        levelBackground.scale.setTo(0.63,0.8);
+        levelBackground.scale.setTo(1.39,1.12);
         
         //Creates the Countdown Label
         countDownLabel = this.game.add.text(this.game.world.centerX-40, 10, "", {font: "120px Courier", fill: "#ffffff"});
@@ -117,7 +117,7 @@ level1.prototype = {
         scoreLabel.setText("Score: " + score);
         
         //Spacecraft created
-        this.spaceCraft = this.game.add.sprite(-10, 200,"spaceCraft");
+        this.spaceCraft = this.game.add.sprite(10, 200,"spaceCraft");
         this.spaceCraft.scale.setTo(0.5, 0.6);
         this.game.physics.enable(this.spaceCraft, Phaser.Physics.ARCADE);
         
@@ -202,7 +202,7 @@ level1.prototype = {
         bullets.enableBody = true;
         bullets.physicsBodyType = Phaser.Physics.ARCADE;
         bullets.createMultiple(30, "bullet");
-        bullets.setAll("anchor.x", -2);
+        bullets.setAll("anchor.x", -.8);
         bullets.setAll("anchor.y", -1.5);
         bullets.setAll("outOfBoundsKill", true);
         bullets.setAll("checkWorldBounds", true);
@@ -309,7 +309,7 @@ level1.prototype = {
             if(isDown) {
                 this.spaceCraft.y += moveCount;
 
-                if(this.spaceCraft.y >= (this.game.height - 70)) {
+                if(this.spaceCraft.y >= (this.game.height - 120)) {
                     isDown = false;
                     isUp = true;  
                 }
