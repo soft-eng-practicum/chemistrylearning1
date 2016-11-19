@@ -27,7 +27,7 @@ gameIntroState.prototype = {
     titleLabel = this.game.add.text(0, 0, "", {font: "50px Courier", fill: "#ffffff"});
 
     //Creates a Tween for the Title Label  
-    timeTween = this.game.add.tween(titleLabel).to( { alpha: 1 }, 6000/*0*/, "Linear", true, 300);
+    timeTween = this.game.add.tween(titleLabel).to( { alpha: 1 }, /*6000*/0, "Linear", true, 300);
 
     timeTween.onComplete.add(this.onComplete, this);    
     

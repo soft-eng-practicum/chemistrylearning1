@@ -73,13 +73,13 @@ level5.prototype = {
         
         //Creates the Background Image
         levelBackground =  this.game.add.sprite(0,0,"level5Background");
-        levelBackground.scale.setTo(1.12, 1.098);
+        levelBackground.scale.setTo(.67, 1.1);
         
         //Creates the Countdown Label
-        countDownLabel = this.game.add.text(this.game.world.centerX-40, 10, "", {font: "120px Courier", fill: "#ffffff"});
+        countDownLabel = this.game.add.text(this.game.world.centerX-60, 10, "", {font: "120px Courier", fill: "#ffffff"});
         
         //Creates the Instructions Label
-        instructions = this.game.add.text(this.game.world.centerX-470, 130, "Select Under The Correct Colored Flask", {font: "40px Courier", fill: "YELLOW"});
+        instructions = this.game.add.text(this.game.world.centerX-295, 130, "Press Under The Correct Flask", {font: "34px Courier", fill: "WHITE"});
         
         //Creates short and long beeps for countdown
         shortBeep = this.game.add.audio("shortBeep");
@@ -98,14 +98,14 @@ level5.prototype = {
         timerLevel5.start();
        
         //Creates the Score Label
-        scoreLabel = this.game.add.text(this.game.width-220, 30, "Score: ", {font: "30px Courier", fill: "Yellow"});
+        scoreLabel = this.game.add.text(this.game.width-195, 30, "Score: ", {font: "30px Courier", fill: "Yellow"});
         
         //Declaring and setting text to Score
         //score = 0;
         scoreLabel.setText("Score: " + score);
         
         //Created the GUY
-        guy = this.game.add.sprite(450,440,"guy");
+        guy = this.game.add.sprite(150,440,"guy");
         guy.frame = 0;
         guy.scale.setTo(1, 1);
         guy.smoothed = false;
@@ -118,27 +118,29 @@ level5.prototype = {
         
         //Creates a Group of flasks
         flask = this.game.add.group();
-        flask.scale.setTo(1.1, 1.1);
+        flask.scale.setTo(1, 1);
         flask.enableBody = true;
         flask.physicsBodyType = Phaser.Physics.ARCADE;
           
         //Created 4 flasks from Group
-        f1 = flask.create(50, 180, "greenFlask"/*"purpleFlask"*/);
+        f1 = flask.create(5, 200, "greenFlask"/*"redFlask"*/);
 
-        f2 = flask.create(275, 180, "orangeFlask"); 
+        f2 = flask.create(f1.x + 149, 200, "orangeFlask"); 
 
-        f3 = flask.create(500, 180, "blueFlask");
+        f3 = flask.create(f2.x + 150, 200, "blueFlask");
         
-        f4 = flask.create(725, 180, "purpleFlask");
+        f4 = flask.create(f3.x + 150, 200, "purpleFlask");
+        
+        
         
         //Sets styling for Answer Text on flask
-        var style1 = { font: "40px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f1.width, align: "center", backgroundColor: "" };
+        var style1 = { font: "37px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f1.width, align: "center", backgroundColor: "" };
         
-        var style2 = { font: "40px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f2.width, align: "center", backgroundColor: "" };
+        var style2 = { font: "37px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f2.width, align: "center", backgroundColor: "" };
         
-        var style3 = { font: "40px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f3.width, align: "center", backgroundColor: "" };
+        var style3 = { font: "37px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f3.width, align: "center", backgroundColor: "" };
         
-        var style4 = { font: "40px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f4.width, align: "center", backgroundColor: "" };
+        var style4 = { font: "37px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f4.width, align: "center", backgroundColor: "" };
 
         //Create Text1 on flask
         text1 = this.game.add.text(f1.x, f1.y, "", style1, flask);
@@ -175,17 +177,17 @@ level5.prototype = {
         //Creates a Green circle 
         var greenCircle = this.game.add.graphics(0, 0);
         greenCircle.beginFill(0x44FF0D, 1);
-        greenCircle.drawCircle(130, 740, 75);
+        greenCircle.drawCircle(80, 740, 75);
         
         //Creates a Orange circle
         var orangeCircle = this.game.add.graphics(0, 0);
         orangeCircle.beginFill(0xE88200, 1);
-        orangeCircle.drawCircle(380, 740, 75);
+        orangeCircle.drawCircle(225, 740, 75);
         
         //Creates a Blue circle
         var blueCircle = this.game.add.graphics(0, 0);
         blueCircle.beginFill(0x2D11FF, 1);
-        blueCircle.drawCircle(640, 740, 75);
+        blueCircle.drawCircle(370, 740, 75);
         
         //Creates a Red circle
       /*  var redCircle = this.game.add.graphics(0, 0);
@@ -195,7 +197,7 @@ level5.prototype = {
         //Creates a Purple circle
         var purpleCircle = this.game.add.graphics(0, 0);
         purpleCircle.beginFill(0xCB5ED4, 1);
-        purpleCircle.drawCircle(880, 740, 75);
+        purpleCircle.drawCircle(515, 740, 75);
         
         //Creates check marks for right answers
         checkMark = this.game.add.sprite(0, 0,"checkMark");
@@ -218,11 +220,11 @@ level5.prototype = {
 
         
         //Creates Hearts for Lives 
-        heart1 = this.game.add.sprite(770, 90,"heart");
+        heart1 = this.game.add.sprite(this.game.world.centerX+120, this.game.world.centerY-320,"heart");
 
-        heart2 = this.game.add.sprite(820, 90,"heart");
+        heart2 = this.game.add.sprite(this.game.world.centerX+170, this.game.world.centerY-320,"heart");
         
-        heart3 = this.game.add.sprite(870, 90,"heart");
+        heart3 = this.game.add.sprite(this.game.world.centerX+220, this.game.world.centerY-320,"heart");
         
         //Creates audio
         correctSound = this.game.add.audio("correctSound");
@@ -442,7 +444,7 @@ level5.prototype = {
     *Handles the data from JSON files, and right and wrong answers
     */
     handleData: function() {
-               
+
         if(randomElement == 0){
 
           instructions.setText(phaserJSON.easy.formula1.name);
@@ -495,25 +497,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 50);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.6);
                             }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 50);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 20);
-                                xMark1.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark1.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark2.y = Math.floor(f3.y + f3.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) -  70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             
                         }
@@ -583,25 +585,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 50);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.6);
                             }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 50);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark2.y = Math.floor(f3.y + f3.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -670,25 +672,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 50);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 50);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark2.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -757,25 +759,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 50);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 50);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark2.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f3.x + f3.width / 2));
-                                xMark3.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark3.x = Math.floor((f3.x + f3.width / 2)- 70);
+                                xMark3.y = Math.floor(f3.y + f3.height / 3);
                             }
                             }
                         
@@ -851,25 +853,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 50);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 50);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 20);
-                                xMark1.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark1.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark2.y = Math.floor(f3.y + f3.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -938,25 +940,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 50);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 50);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark2.y = Math.floor(f3.y + f3.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -1024,25 +1026,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 50);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 50);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark2.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -1110,25 +1112,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 50);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 50);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark2.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f3.x + f3.width / 2));
-                                xMark3.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark3.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark3.y = Math.floor(f3.y + f3.height / 3);
                             }
                             }
                         
@@ -1202,25 +1204,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 50);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 50);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 20);
-                                xMark1.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark1.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark2.y = Math.floor(f3.y + f3.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -1289,25 +1291,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 50);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 50);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark2.y = Math.floor(f3.y + f3.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6); 
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3); 
                             }
                             }
                         
@@ -1375,25 +1377,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 50);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 50);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark2.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -1461,25 +1463,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 50);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 50);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark2.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f3.x + f3.width / 2));
-                                xMark3.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark3.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark3.y = Math.floor(f3.y + f3.height / 3);
                             }
                             }
                         
@@ -1553,25 +1555,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 50);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 50);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 20);
-                                xMark1.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark1.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark2.y = Math.floor(f3.y + f3.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -1640,25 +1642,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 50);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 50);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark2.y = Math.floor(f3.y + f3.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -1726,25 +1728,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 50);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 50);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark2.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -1812,25 +1814,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 50);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 50);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark2.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f3.x + f3.width / 2));
-                                xMark3.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark3.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark3.y = Math.floor(f3.y + f3.height / 3);
                             }
                             }
                         
@@ -1904,25 +1906,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 50);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
-                                checkMark.y = Math.floor(f1.y + f1.height / 1.3);
+                                checkMark.x = Math.floor((f1.x + f1.width / 2) - 50);
+                                checkMark.y = Math.floor(f1.y + f1.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 20);
-                                xMark1.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark1.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark1.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark2.y = Math.floor(f3.y + f3.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -1991,25 +1993,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 50);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                checkMark.y = Math.floor(f2.y + f2.height / 1.3);
+                                checkMark.x = Math.floor((f2.x + f2.width / 2) - 50);
+                                checkMark.y = Math.floor(f2.y + f2.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                xMark2.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark2.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark2.y = Math.floor(f3.y + f3.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -2077,25 +2079,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 50);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
-                                checkMark.y = Math.floor(f3.y + f3.height / 1.3);
+                                checkMark.x = Math.floor((f3.x + f3.width / 2) - 50);
+                                checkMark.y = Math.floor(f3.y + f3.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark2.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f4.x + f4.width / 2));
-                                xMark3.y = Math.floor(f4.y + f4.height / 1.6);
+                                xMark3.x = Math.floor((f4.x + f4.width / 2) - 70);
+                                xMark3.y = Math.floor(f4.y + f4.height / 3);
                             }
                             }
                         
@@ -2163,25 +2165,25 @@ level5.prototype = {
                             
                             if(correct){
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 50);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.6);
                                 }
                             else if(wrong){ 
                                 checkMark.visible = true;
-                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
-                                checkMark.y = Math.floor(f4.y + f4.height / 1.3);
+                                checkMark.x = Math.floor((f4.x + f4.width / 2) - 50);
+                                checkMark.y = Math.floor(f4.y + f4.height / 1.6);
                                 
                                 xMark1.visible = true;
-                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 20);
-                                xMark1.y = Math.floor(f1.y + f1.height / 1.6);
+                                xMark1.x = Math.floor((f1.x + f1.width / 2) - 70);
+                                xMark1.y = Math.floor(f1.y + f1.height / 3);
                                 
                                 xMark2.visible = true;
-                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 15);
-                                xMark2.y = Math.floor(f2.y + f2.height / 1.6);
+                                xMark2.x = Math.floor((f2.x + f2.width / 2) - 70);
+                                xMark2.y = Math.floor(f2.y + f2.height / 3);
                                 
                                 xMark3.visible = true;
-                                xMark3.x = Math.floor((f3.x + f3.width / 2));
-                                xMark3.y = Math.floor(f3.y + f3.height / 1.6);
+                                xMark3.x = Math.floor((f3.x + f3.width / 2) - 70);
+                                xMark3.y = Math.floor(f3.y + f3.height / 3);
                             }
                             }
                         
@@ -2203,8 +2205,8 @@ level5.prototype = {
         }
 
         //Adjusting Instruction label for Chemical Names 
-        instructions.anchor.setTo(-0.25, 0.15);
+        instructions.anchor.setTo(-0.1, 0.15);
         instructions.addColor("Yellow", 0);
-        instructions.fontSize = 60;   
+        instructions.fontSize = 47;   
     }
 };

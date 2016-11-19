@@ -83,13 +83,13 @@ level1.prototype = {
         
         //Creates the Background Image
         levelBackground =  this.game.add.sprite(0,0,"level1Background");
-        levelBackground.scale.setTo(1.39,1.12);
+        levelBackground.scale.setTo(.83,1.12);
         
         //Creates the Countdown Label
-        countDownLabel = this.game.add.text(this.game.world.centerX-40, 10, "", {font: "120px Courier", fill: "#ffffff"});
+        countDownLabel = this.game.add.text(this.game.world.centerX-60, 10, "", {font: "120px Courier", fill: "#ffffff"});
         
         //Creates the Instructions Label
-        instructions = this.game.add.text(this.game.world.centerX-430, 130, "Destroy The Correct Asteroid", {font: "50px Courier", fill: "#ffffff"});
+        instructions = this.game.add.text(this.game.world.centerX-290, 130, "Destroy The Correct Asteroid", {font: "34px Courier", fill: "#ffffff"});
         
         //Creates short and long beeps for countdown
         shortBeep = this.game.add.audio("shortBeep");
@@ -108,7 +108,7 @@ level1.prototype = {
         timer.start();
        
         //Creates the Score Label
-        scoreLabel = this.game.add.text(this.game.width-220, 30, "Score: ", {font: "30px Courier", fill: "Yellow"});
+        scoreLabel = this.game.add.text(this.game.width-195, 30, "Score: ", {font: "30px Courier", fill: "Yellow"});
         
         //Declaring and setting text to Score
         score = 0;
@@ -131,18 +131,18 @@ level1.prototype = {
         asteroid.inputEnabled = true;
         
         //Created 3 Asteroids from Group
-        a1 = asteroid.create(this.game.width-220, this.game.height-610, "asteroid"); 
+        a1 = asteroid.create(this.game.width-160, this.game.height-610, "asteroid"); 
 
-        a2 = asteroid.create(this.game.width-220, this.game.height-390, "asteroid"); 
+        a2 = asteroid.create(this.game.width-160, this.game.height-390, "asteroid"); 
 
-        a3 = asteroid.create(this.game.width-220, this.game.height-170, "asteroid"); 
+        a3 = asteroid.create(this.game.width-160, this.game.height-170, "asteroid"); 
 
         //Sets styling for Text Answers on Asteroids
-        var style = { font: "40px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a1.width, align: "center", backgroundColor: "" };
+        var style = { font: "37px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a1.width, align: "center", backgroundColor: "" };
         
-        var style = { font: "40px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a2.width, align: "center", backgroundColor: "" };
+        var style = { font: "37px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a2.width, align: "center", backgroundColor: "" };
         
-        var style = { font: "40px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a3.width, align: "center", backgroundColor: "" };
+        var style = { font: "37px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a3.width, align: "center", backgroundColor: "" };
 
         //Creates Text1 on Asteroids
         text1 = this.game.add.text(a1.x, a1.y, "", style, asteroid);
@@ -171,8 +171,8 @@ level1.prototype = {
         //Creates check marks for right answers
         checkMark = this.game.add.sprite(0, 0,"checkMark");
         checkMark.visible = false;
-        checkMark.scale.setTo(0.8, 0.8);
-        checkMark.anchor.set(0, 1.5);
+        checkMark.scale.setTo(0.6, 0.6);
+        checkMark.anchor.set(0, 1.6);
         
         //Creates check marks for right answers
         xMark = this.game.add.sprite(a1.x, a1.y,"xMark");
@@ -189,11 +189,11 @@ level1.prototype = {
         xMark.anchor.set(0.4, 0.8);
         
         //Creates Hearts for Lives 
-        heart1 = this.game.add.sprite(770, 90,"heart");
+        heart1 = this.game.add.sprite(this.game.world.centerX+120, this.game.world.centerY-320,"heart");
 
-        heart2 = this.game.add.sprite(820, 90,"heart");
+        heart2 = this.game.add.sprite(this.game.world.centerX+170, this.game.world.centerY-320,"heart");
         
-        heart3 = this.game.add.sprite(870, 90,"heart");
+        heart3 = this.game.add.sprite(this.game.world.centerX+220, this.game.world.centerY-320,"heart");
         
         //Creates Bullets Group
         bullets = this.game.add.group();
@@ -2069,8 +2069,8 @@ level1.prototype = {
         }
 
         //Adjusting Instruction label for Chemical Names 
-        instructions.anchor.setTo(-0.3, 0.3);
+        instructions.anchor.setTo(-0.1, 0.3);
         instructions.addColor("Yellow", 0);
-        instructions.fontSize = 55;   
+        instructions.fontSize = 47;   
     }
 };

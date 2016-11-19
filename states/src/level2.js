@@ -35,7 +35,7 @@ var level_2_data;
 // Create random variables for the formulas and the name
 var current_round, randomFormula;
 
-var SCALE_FOR_ANSWER_BUBBLE = 0.75;
+var SCALE_FOR_ANSWER_BUBBLE = 0.62;
 
 var correct_answer, wrong_answer;
 
@@ -89,15 +89,15 @@ level2.prototype = {
        
         background = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'level_2_background_image');
     
-        count_down_label = this.game.add.text(this.game.world.centerX - 40, 10, "", {font: "120px Courier", fill: "#ffffff"});
+        count_down_label = this.game.add.text(this.game.world.centerX-60, 10, "", {font: "120px Courier", fill: "#ffffff"});
         
         game_timer = this.game.time.create(false);
         game_timer.loop(1000, updateCounter, this);
         game_timer.start();
         
-        heart_1 = this.game.add.sprite(770, 90, 'heart');
-        heart_2 = this.game.add.sprite(heart_1.x + 50, 90, 'heart');
-        heart_3 = this.game.add.sprite(heart_2.x + 50, 90, 'heart');
+        heart_1 = this.game.add.sprite(this.game.world.centerX+120, this.game.world.centerY-320, 'heart');
+        heart_2 = this.game.add.sprite(this.game.world.centerX+170, this.game.world.centerY-320, 'heart');
+        heart_3 = this.game.add.sprite(this.game.world.centerX+220, this.game.world.centerY-320, 'heart');
    
         correct_sound = this.game.add.audio('correctSound');
         correct_sound.volume = 0.1;
@@ -107,7 +107,7 @@ level2.prototype = {
         
         // Asign the chemical name text display a value
         // Display basic game instructions first
-        chemical_formula_text_display = this.game.add.text(this.game.world.centerX - 335, 130, "Select The Correct Bubble", {font: "50px Courier", fill: "White"});
+        chemical_formula_text_display = this.game.add.text(this.game.world.centerX-290, 130, "Select The Correct Bubble", {font: "37px Courier", fill: "White"});
       
         // Pause the main theme music
         music.pause();
@@ -137,7 +137,7 @@ level2.prototype = {
         randomFormula = Math.floor(Math.random() * 3);
         
         // Assign score a value and the score text display
-        score_text = this.game.add.text(this.game.width - 200, 30, "", {font: "30px Courier", fill: "Yellow"});
+        score_text = this.game.add.text(this.game.width-195, 30, "", {font: "30px Courier", fill: "Yellow"});
         score_text.setText("Score: " + score);
         
         // Create group of bubbles
@@ -149,7 +149,7 @@ level2.prototype = {
         bubbles.physicsBodyType = Phaser.Physics.ARCADE;
         
         // Set bubbles_velocity
-        bubbles_velocity = 0.63;
+        bubbles_velocity = 0.7317;
         
         // Create group for bubble labels
         bubble_labels = this.game.add.group();
@@ -157,7 +157,7 @@ level2.prototype = {
         bubble_labels.physicsBodyType = Phaser.Physics.ARCADE;
         
         // Create 3 individual bubbles and allow them to be selected and add them to the bubbles group
-        bubble_01 = bubbles.create(this.game.width/6, 0, 'bubble_image');
+        bubble_01 = bubbles.create(this.game.width/30, -50, 'bubble_image');
         bubble_01.events.onInputDown.add(selectedBubble, this);
         bubble_01.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
@@ -171,7 +171,7 @@ level2.prototype = {
         bubble_text_01.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
        
         // Create a text label and add it to the bubble_labels group
-        bubble_02 = bubbles.create(bubble_01.x + 250, 0, 'bubble_image');
+        bubble_02 = bubbles.create(bubble_01.x + 200, -50, 'bubble_image');
         bubble_02.events.onInputDown.add(selectedBubble, this);    
         bubble_02.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
@@ -182,7 +182,7 @@ level2.prototype = {
         bubble_text_02.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
         // Create a text label and add it to the bubble_labels group
-        bubble_03 = bubbles.create(bubble_02.x + 250, 0, 'bubble_image');
+        bubble_03 = bubbles.create(bubble_02.x + 200, -50, 'bubble_image');
         bubble_03.events.onInputDown.add(selectedBubble, this);
         bubble_03.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
@@ -197,7 +197,7 @@ level2.prototype = {
         
         check_mark = this.game.add.sprite(0, 0,"checkMark");
         check_mark.visible = false;
-        check_mark.scale.setTo(0.8, 0.8);
+        check_mark.scale.setTo(0.6, 0.6);
         
         x_mark = this.game.add.sprite(0, 0,"xMark");
         x_mark.visible = false;
@@ -269,7 +269,7 @@ level2.prototype = {
                
                if(bubble_01.visible == false){
                     check_mark.x = bubble_01.x + 70;
-                    check_mark.y = bubble_01.y + 130;
+                    check_mark.y = bubble_01.y + 170;
                     check_mark.visible = true;
                     x_mark.y = bubble_01.y + 200;
                     bubble_01.visible = true;
@@ -277,7 +277,7 @@ level2.prototype = {
                 }
                 else if (bubble_02.visible == false){
                     check_mark.x = bubble_02.x + 70;
-                    check_mark.y = bubble_02.y + 130;
+                    check_mark.y = bubble_02.y + 170;
                     check_mark.visible = true;
                     x_mark.y = bubble_02.y + 200;
                     bubble_02.visible = true;
@@ -285,7 +285,7 @@ level2.prototype = {
                 }
                 else if(bubble_03.visible == false){
                     check_mark.x = bubble_03.x + 70;
-                    check_mark.y = bubble_03.y + 130;
+                    check_mark.y = bubble_03.y + 170;
                     check_mark.visible = true;
                     x_mark.y = bubble_03.y + 200;
                     bubble_03.visible = true;
@@ -296,7 +296,7 @@ level2.prototype = {
                     check_mark.visible = false;
                     correct = false;
                     pause_delay = 150;
-                    bubbles_velocity = 0.63;
+                    bubbles_velocity = 0.7317;
                     counter_level_2 = 8;
                     game_timer.resume();
                   
@@ -439,8 +439,8 @@ function markAnswerRightOrWrong(input_bubble) {
 function bubbleHitSpike(input_bubble) {
   //  input_bubble.visible = false;
   //  bubble_labels.visible = false;
-    bubbles.y = bubble_01.y + 170;
-    bubble_labels.y = bubble_01.y + 170;
+    bubbles.y = bubble_01.height + 55;
+    bubble_labels.y = bubble_01.height + 55;
 }
 
 // Collision handler for selected bubble
@@ -492,7 +492,7 @@ function stuffThatHappensWhenAnswerIsCorrect() {
     resetBubblesPosition();
     
     // Reset the velocity of the bubbles
-    bubbles_velocity = 0.7;
+   // bubbles_velocity = 0.7;
     
     // Reset the counter to 8
     counter_level_2 = 8;
@@ -514,7 +514,7 @@ function stuffThatHappensWhenAnswerIsWrong() {
     score -= 50;
     // Increase bubbles velocity
     //bubbles_velocity += 0.5;
-    bubbles_velocity = 0.7;
+    //bubbles_velocity = 0.7;
     // Play sound for wrong answer
     incorrect_sound.play();
     
@@ -629,8 +629,8 @@ function checkIfSelectedBubbleIsCorrect(input_bubble_text) {
 
 // Function will reset the y position of the bubbles
 function resetBubblesPosition() {
-    bubbles.y =  bubble_01.height;
-    bubble_labels.y = bubble_01.height;
+    bubbles.y =  bubble_01.height + 55;
+    bubble_labels.y = bubble_01.height + 55;
 }
 
 /* 
@@ -749,9 +749,9 @@ function handleData() {
     }
     
             //Adjusting Instruction label for Chemical Names 
-            chemical_formula_text_display.anchor.setTo(-0.1, 0);
+            chemical_formula_text_display.anchor.setTo(-0.1, 0.2);
             chemical_formula_text_display.addColor("Yellow", 0);
-            chemical_formula_text_display.fontSize = 50;
+            chemical_formula_text_display.fontSize = 47;
 }
 
 // Closes method        

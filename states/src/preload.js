@@ -19,7 +19,7 @@ preloadState.prototype = {
         this.game.load.text("chemicalFormula2", "assets/ChemistryGame2.json");
         
         //Loading Label
-        loadingText = this.game.add.text(this.game.world.centerX-250, 350, "Loading... 0%", { font: "70px Courier", fill: "#ffffff"});
+        loadingText = this.game.add.text(this.game.world.centerX-250, 350, "Loading... 0%", { font: "60px Courier", fill: "#ffffff"});
 
         progressDisplay = 0;
         
@@ -39,9 +39,7 @@ preloadState.prototype = {
         }, this);
           
         
-        //INTRO IMAGES & SOUNDS
-         this.game.load.image("IntroLogo","assets/LifeGamezLogo.png");
-        
+        //INTRO IMAGES & SOUNDS        
         this.game.load.image('space_background', "assets/space_background.jpg");
         
         this.game.load.image('Astronaut', "assets/Astronaut.png");
