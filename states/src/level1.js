@@ -65,15 +65,17 @@ level1.prototype = {
     //Main Phaser Create Function
   	create: function(){ 
         
-        //Creating JSON 
-        switchJSON = Math.floor(Math.random() * 2);
+        //Creating JSON
+        level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON'));
+        
+       /* switchJSON = Math.floor(Math.random() * 2);
         
         if(switchJSON == 0){
             phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula")); 
         }
         else if(switchJSON == 1){
             phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula2"));
-        }
+        }  */
         
         //Pauses the Game Title Music when Game starts
         music.pause();
@@ -504,12 +506,12 @@ level1.prototype = {
                
         if(randomElement == 0){
 
-          instructions.setText(phaserJSON.easy.formula1.name);
+          instructions.setText(level_1_data.chemical_formulas.formula1.name);
 
             if(randomFormula == 0){ 
-                text1.setText(phaserJSON.easy.formula1.right);
-                text2.setText(phaserJSON.easy.formula1.wrong1);
-                text3.setText(phaserJSON.easy.formula1.wrong2);
+                text1.setText(level_1_data.chemical_formulas.formula1.right);
+                text2.setText(level_1_data.chemical_formulas.formula1.wrong1);
+                text3.setText(level_1_data.chemical_formulas.formula1.wrong2);
 
                 //Sets asteroid 1 visible to false
                 if(a1.visible == false) {
@@ -659,9 +661,9 @@ level1.prototype = {
             
 //NEXT FORMULA
             else if(randomFormula == 1){ 
-                text1.setText(phaserJSON.easy.formula1.wrong3);
-                text2.setText(phaserJSON.easy.formula1.right);
-                text3.setText(phaserJSON.easy.formula1.wrong4);
+                text1.setText(level_1_data.chemical_formulas.formula1.wrong3);
+                text2.setText(level_1_data.chemical_formulas.formula1.right);
+                text3.setText(level_1_data.chemical_formulas.formula1.wrong4);
 
                 if(a1.visible == false) {
                     score = score - 50;
@@ -759,9 +761,9 @@ level1.prototype = {
     
 //NEXT FORMULA
             else if(randomFormula == 2){ 
-                text1.setText(phaserJSON.easy.formula1.wrong5);
-                text2.setText(phaserJSON.easy.formula1.wrong6);
-                text3.setText(phaserJSON.easy.formula1.right);
+                text1.setText(level_1_data.chemical_formulas.formula1.wrong5);
+                text2.setText(level_1_data.chemical_formulas.formula1.wrong6);
+                text3.setText(level_1_data.chemical_formulas.formula1.right);
 
                 if(a1.visible == false) {
                     score = score - 50;
@@ -860,13 +862,13 @@ level1.prototype = {
         
 /////////////////////////////////////////////////////////////////////////////////////////
         if(randomElement == 1){
-          instructions.setText(phaserJSON.easy.formula2.name);
+          instructions.setText(level_1_data.chemical_formulas.formula2.name);
           
 
             if(randomFormula == 0){ 
-                text1.setText(phaserJSON.easy.formula2.right);
-                text2.setText(phaserJSON.easy.formula2.wrong1);
-                text3.setText(phaserJSON.easy.formula2.wrong2);
+                text1.setText(level_1_data.chemical_formulas.formula2.right);
+                text2.setText(level_1_data.chemical_formulas.formula2.wrong1);
+                text3.setText(level_1_data.chemical_formulas.formula2.wrong2);
 
                  if(a1.visible == false) {
                      correct = true;
@@ -964,9 +966,9 @@ level1.prototype = {
             
 //NEXT FORMULA
             else if(randomFormula == 1){ 
-                text1.setText(phaserJSON.easy.formula2.wrong3);
-                text2.setText(phaserJSON.easy.formula2.right);
-                text3.setText(phaserJSON.easy.formula2.wrong4);
+                text1.setText(level_1_data.chemical_formulas.formula2.wrong3);
+                text2.setText(level_1_data.chemical_formulas.formula2.right);
+                text3.setText(level_1_data.chemical_formulas.formula2.wrong4);
 
                 if(a1.visible == false) {
                     score = score - 50;
@@ -1064,9 +1066,9 @@ level1.prototype = {
 
 //NEXT FORMULA
             else if(randomFormula == 2){ 
-                text1.setText(phaserJSON.easy.formula2.wrong5);
-                text2.setText(phaserJSON.easy.formula2.wrong6);
-                text3.setText(phaserJSON.easy.formula2.right);
+                text1.setText(level_1_data.chemical_formulas.formula2.wrong5);
+                text2.setText(level_1_data.chemical_formulas.formula2.wrong6);
+                text3.setText(level_1_data.chemical_formulas.formula2.right);
 
                 if(a1.visible == false) {
                     score = score - 50;
@@ -1165,12 +1167,12 @@ level1.prototype = {
         
 //////////////////////////////////////////////////////////////////////////////////////////
         if(randomElement == 2){
-          instructions.setText(phaserJSON.easy.formula3.name);
+          instructions.setText(level_1_data.chemical_formulas.formula3.name);
 
             if(randomFormula == 0){ 
-                text1.setText(phaserJSON.easy.formula3.right);
-                text2.setText(phaserJSON.easy.formula3.wrong1);
-                text3.setText(phaserJSON.easy.formula3.wrong2);
+                text1.setText(level_1_data.chemical_formulas.formula3.right);
+                text2.setText(level_1_data.chemical_formulas.formula3.wrong1);
+                text3.setText(level_1_data.chemical_formulas.formula3.wrong2);
 
                  if(a1.visible == false) {
                      correct = true;
@@ -1268,9 +1270,9 @@ level1.prototype = {
             
 //NEXT FORMULA
             else if(randomFormula == 1){ 
-                text1.setText(phaserJSON.easy.formula3.wrong3);
-                text2.setText(phaserJSON.easy.formula3.right);
-                text3.setText(phaserJSON.easy.formula3.wrong4);
+                text1.setText(level_1_data.chemical_formulas.formula3.wrong3);
+                text2.setText(level_1_data.chemical_formulas.formula3.right);
+                text3.setText(level_1_data.chemical_formulas.formula3.wrong4);
 
                 if(a1.visible == false) {
                     score = score - 50;
@@ -1368,9 +1370,9 @@ level1.prototype = {
             
 //NEXT FORMULA
             else if(randomFormula == 2){ 
-                text1.setText(phaserJSON.easy.formula3.wrong5);
-                text2.setText(phaserJSON.easy.formula3.wrong6);
-                text3.setText(phaserJSON.easy.formula3.right);
+                text1.setText(level_1_data.chemical_formulas.formula3.wrong5);
+                text2.setText(level_1_data.chemical_formulas.formula3.wrong6);
+                text3.setText(level_1_data.chemical_formulas.formula3.right);
 
                 if(a1.visible == false) {
                     score = score - 50;
@@ -1469,12 +1471,12 @@ level1.prototype = {
  
 ////////////////////////////////////////////////////////////////////////////////////////      
         if(randomElement == 3){
-          instructions.setText(phaserJSON.easy.formula4.name);
+          instructions.setText(level_1_data.chemical_formulas.formula4.name);
 
             if(randomFormula == 0){ 
-                text1.setText(phaserJSON.easy.formula4.right);
-                text2.setText(phaserJSON.easy.formula4.wrong1);
-                text3.setText(phaserJSON.easy.formula4.wrong2);
+                text1.setText(level_1_data.chemical_formulas.formula4.right);
+                text2.setText(level_1_data.chemical_formulas.formula4.wrong1);
+                text3.setText(level_1_data.chemical_formulas.formula4.wrong2);
 
                  if(a1.visible == false) {
                      correct = true;
@@ -1572,9 +1574,9 @@ level1.prototype = {
             
 //NEXT FORMULA
             else if(randomFormula == 1){ 
-                text1.setText(phaserJSON.easy.formula4.wrong3);
-                text2.setText(phaserJSON.easy.formula4.right);
-                text3.setText(phaserJSON.easy.formula4.wrong4);
+                text1.setText(level_1_data.chemical_formulas.formula4.wrong3);
+                text2.setText(level_1_data.chemical_formulas.formula4.right);
+                text3.setText(level_1_data.chemical_formulas.formula4.wrong4);
 
                 if(a1.visible == false) {
                     score = score - 50;
@@ -1672,9 +1674,9 @@ level1.prototype = {
             
 //NEXT FORMULA
             else if(randomFormula == 2){ 
-                text1.setText(phaserJSON.easy.formula4.wrong5);
-                text2.setText(phaserJSON.easy.formula4.wrong6);
-                text3.setText(phaserJSON.easy.formula4.right);
+                text1.setText(level_1_data.chemical_formulas.formula4.wrong5);
+                text2.setText(level_1_data.chemical_formulas.formula4.wrong6);
+                text3.setText(level_1_data.chemical_formulas.formula4.right);
 
                 if(a1.visible == false) {
                     score = score - 50;
@@ -1773,12 +1775,12 @@ level1.prototype = {
  
 //////////////////////////////////////////////////////////////////////////////////////        
         if(randomElement == 4){
-          instructions.setText(phaserJSON.easy.formula5.name);
+          instructions.setText(level_1_data.chemical_formulas.formula5.name);
 
             if(randomFormula == 0){ 
-                text1.setText(phaserJSON.easy.formula5.right);
-                text2.setText(phaserJSON.easy.formula5.wrong1);
-                text3.setText(phaserJSON.easy.formula5.wrong2);
+                text1.setText(level_1_data.chemical_formulas.formula5.right);
+                text2.setText(level_1_data.chemical_formulas.formula5.wrong1);
+                text3.setText(level_1_data.chemical_formulas.formula5.wrong2);
 
                  if(a1.visible == false) {
                     correct = true;
@@ -1873,9 +1875,9 @@ level1.prototype = {
             
 //NEXT FORMULA
             else if(randomFormula == 1){ 
-                text1.setText(phaserJSON.easy.formula5.wrong3);
-                text2.setText(phaserJSON.easy.formula5.right);
-                text3.setText(phaserJSON.easy.formula5.wrong4);
+                text1.setText(level_1_data.chemical_formulas.formula5.wrong3);
+                text2.setText(level_1_data.chemical_formulas.formula5.right);
+                text3.setText(level_1_data.chemical_formulas.formula5.wrong4);
 
                 if(a1.visible == false) {
                     score = score - 50;
@@ -1972,9 +1974,9 @@ level1.prototype = {
             
 //NEXT FORMULA
             else if(randomFormula == 2){ 
-                text1.setText(phaserJSON.easy.formula5.wrong5);
-                text2.setText(phaserJSON.easy.formula5.wrong6);
-                text3.setText(phaserJSON.easy.formula5.right);
+                text1.setText(level_1_data.chemical_formulas.formula5.wrong5);
+                text2.setText(level_1_data.chemical_formulas.formula5.wrong6);
+                text3.setText(level_1_data.chemical_formulas.formula5.right);
 
                 if(a1.visible == false) {
                     score = score - 50;
