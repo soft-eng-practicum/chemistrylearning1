@@ -29,7 +29,7 @@ var quitButton;
 var pauseW = 30;
 var pauseH = 600;
 
-var phaserJSON;
+var level_5_data;
 var randomElement;
 var randomFormula;
 var correct;
@@ -56,17 +56,18 @@ var longBeep;
 level5.prototype = {  
    
     //Main Phaser Create Function
-  	create: function(){ 
+  	create: function() { 
         
         //Creating JSON 
-        switchJSON = Math.floor(Math.random() * 2);
+        level_5_data = JSON.parse(this.game.cache.getText('level_5_JSON'));
+       /* switchJSON = Math.floor(Math.random() * 2);
         
         if(switchJSON == 0){
             phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula")); 
         }
         else if(switchJSON == 1){
             phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula2"));
-        } 
+        } */
         
         //Pauses the Game Title Music when Game starts
         music.pause();
@@ -275,9 +276,9 @@ level5.prototype = {
     *
     *Handles the functions in the pause menu
     */
-    function unpause(event){
+    function unpause(event) {
         // Only act if paused
-        if(this.game.paused){
+        if (this.game.paused) {
           
             menu.destroy();
             choiceLabel.destroy();
@@ -312,7 +313,7 @@ level5.prototype = {
     update: function () {
         
         //Guy Movement Left and Right
-        if(startedLevel5) {
+        if (startedLevel5) {
                           
             if(this.game.input.activePointer.x < guy.x){
             guy.animations.play("left");
@@ -339,14 +340,14 @@ level5.prototype = {
         }
         
         //Deduct lives with each wrong answer
-        if(lives == 2){
+        if (lives == 2) {
             heart1.visible = false;
         }
-        else if(lives == 1){
+        else if (lives == 1) {
             heart1.visible = false;
             heart2.visible = false;
         }
-        else if(lives == 0){            
+        else if (lives == 0) {            
             this.game.state.start("GameOver");
         }
         
@@ -387,10 +388,10 @@ level5.prototype = {
         countDownLabel.setText(counterLevel5);
         
         //Chnages Count Down Label Red
-        if(counterLevel5 <= 5) {
+        if (counterLevel5 <= 5) {
             countDownLabel.addColor("RED", 0);
         }
-        else if(counterLevel5 > 5) {
+        else if (counterLevel5 > 5) {
             countDownLabel.addColor("#ffffff", 0);
         }        
     },  
@@ -404,30 +405,30 @@ level5.prototype = {
         //Counter starts at 5 for Countdown
         
         //Game Time not started 
-        if(startedLevel5 == false) {
+        if (startedLevel5 == false) {
             counterLevel5--;
             shortBeep.play();
             
-            if(counterLevel5 < 1){
+            if (counterLevel5 < 1) {
                 shortBeep.pause();
                 longBeep.play();
             }
             
-            if(counterLevel5 <= 0) { 
+            if (counterLevel5 <= 0) { 
                 counterLevel5 = 7;
                 startedLevel5 = true;
             }
         }
         //Game Time has started 
-        else if(startedLevel5 == true) {
+        else if (startedLevel5 == true) {
                 counterLevel5--;
             
             //Tweens Flasks to shake
-            if(counterLevel5 <= 5){
+            if (counterLevel5 <= 5) {
                 flaskTween = this.game.add.tween(flask).to({ x: 5}, 50, Phaser.Easing.Linear.None, true, 0, 0, true);
             }
         
-            if(counterLevel5 < 1) {
+            if (counterLevel5 < 1) {
               
                 counterLevel5 = 0;
                 timerLevel5.pause();
@@ -443,17 +444,17 @@ level5.prototype = {
     */
     handleData: function() {
                
-        if(randomElement == 0){
+        if (randomElement == 0) {
 
-          instructions.setText(phaserJSON.easy.formula1.name);
+          instructions.setText(level_5_data.chemical_formulas.formula1.name);
 
-            if(randomFormula == 0){ 
-                text1.setText(phaserJSON.easy.formula1.right);
-                text2.setText(phaserJSON.easy.formula1.wrong1);
-                text3.setText(phaserJSON.easy.formula1.wrong2);
-                text4.setText(phaserJSON.easy.formula1.wrong3);
+            if (randomFormula == 0) { 
+                text1.setText(level_5_data.chemical_formulas.formula1.right);
+                text2.setText(level_5_data.chemical_formulas.formula1.wrong1);
+                text3.setText(level_5_data.chemical_formulas.formula1.wrong2);
+                text4.setText(level_5_data.chemical_formulas.formula1.wrong3);
                                 
-                    if(counterLevel5 < 1){
+                    if (counterLevel5 < 1) {
                     flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
                     flaskTween = this.game.add.tween(f3).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -466,23 +467,23 @@ level5.prototype = {
                         
                     formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
-                    flaskTween.onComplete.add(function(){
-                        if(guy.visible == true){    
+                    flaskTween.onComplete.add(function() {
+                        if (guy.visible == true) {    
                             correct = true;
                             correctSound.play();
                             score = score + 50;
                         }                                    
-                        else{
+                        else {
                             wrong = true;
                             wrongSound.play();
                             score = score - 50;
-                            if(lives == 2){
+                            if (lives == 2) {
                                 lives=1;
                             }
-                            else if(lives == 1){
+                            else if (lives == 1) {
                                 lives=0;
                             }
-                            else{
+                            else {
                                 lives=2;
                             }
                         }
@@ -490,15 +491,15 @@ level5.prototype = {
                         counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
                                 checkMark.y = Math.floor(f1.y + f1.height / 1.3);
                             }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
                                 checkMark.y = Math.floor(f1.y + f1.height / 1.3);
@@ -518,7 +519,7 @@ level5.prototype = {
                             
                         }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 1;
                             timerLevel5.resume();
@@ -534,13 +535,13 @@ level5.prototype = {
                         }     
                     
             }
-            else if(randomFormula == 1){ 
-                text1.setText(phaserJSON.easy.formula1.wrong3);
-                text2.setText(phaserJSON.easy.formula1.right);
-                text3.setText(phaserJSON.easy.formula1.wrong4);
-                text4.setText(phaserJSON.easy.formula1.wrong5);
+            else if (randomFormula == 1) { 
+                text1.setText(level_5_data.chemical_formulas.formula1.wrong3);
+                text2.setText(level_5_data.chemical_formulas.formula1.right);
+                text3.setText(level_5_data.chemical_formulas.formula1.wrong4);
+                text4.setText(level_5_data.chemical_formulas.formula1.wrong5);
                                 
-                if(counterLevel5 < 1){
+                if (counterLevel5 < 1) {
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
                 flaskTween = this.game.add.tween(f3).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -553,23 +554,23 @@ level5.prototype = {
                     
                 formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
-                flaskTween.onComplete.add(function(){
-                     if(guy.visible == true){ 
+                flaskTween.onComplete.add(function() {
+                     if (guy.visible == true) { 
                          correct = true;
                          correctSound.play();
                          score = score + 50;
                         } 
-                        else{
+                        else {
                             wrong = true;
                             wrongSound.play();
                             score = score - 50;
-                            if(lives == 2){
+                            if (lives == 2) {
                                 lives=1;
                             }
-                            else if(lives == 1){
+                            else if (lives == 1) {
                                 lives=0;
                             }
-                            else{
+                            else {
                                 lives=2;
                             }
                         }
@@ -578,15 +579,15 @@ level5.prototype = {
                             counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
                                 checkMark.y = Math.floor(f2.y + f2.height / 1.3);
                             }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
                                 checkMark.y = Math.floor(f2.y + f2.height / 1.3);
@@ -605,7 +606,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 1;
                             timerLevel5.resume();
@@ -621,13 +622,13 @@ level5.prototype = {
                         }
 
             }
-            else if(randomFormula == 2){ 
-                text1.setText(phaserJSON.easy.formula1.wrong5);
-                text2.setText(phaserJSON.easy.formula1.wrong6);
-                text3.setText(phaserJSON.easy.formula1.right);
-                text4.setText(phaserJSON.easy.formula1.wrong1);
+            else if (randomFormula == 2) { 
+                text1.setText(level_5_data.chemical_formulas.formula1.wrong5);
+                text2.setText(level_5_data.chemical_formulas.formula1.wrong6);
+                text3.setText(level_5_data.chemical_formulas.formula1.right);
+                text4.setText(level_5_data.chemical_formulas.formula1.wrong1);
                                 
-                if(counterLevel5 < 1){
+                if (counterLevel5 < 1) {
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
                 flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -640,23 +641,23 @@ level5.prototype = {
                     
                 formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
-                flaskTween.onComplete.add(function(){ 
-                     if(guy.visible == true){
+                flaskTween.onComplete.add(function() { 
+                     if (guy.visible == true) {
                          correct = true;
                          correctSound.play();
                          score = score + 50;
                         } 
-                        else{
+                        else {
                             wrong = true;
                             wrongSound.play();
                             score = score - 50;
-                            if(lives == 2){
+                            if (lives == 2) {
                                 lives=1;
                             }
-                            else if(lives == 1){
+                            else if (lives == 1) {
                                 lives=0;
                             }
-                            else{
+                            else {
                                 lives=2;
                             }
                         }
@@ -665,15 +666,15 @@ level5.prototype = {
                     counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
                                 checkMark.y = Math.floor(f3.y + f3.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
                                 checkMark.y = Math.floor(f3.y + f3.height / 1.3);
@@ -692,7 +693,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 1;
                             timerLevel5.resume();
@@ -708,13 +709,13 @@ level5.prototype = {
                         } 
                 
             }
-            else if(randomFormula == 3){ 
-                text1.setText(phaserJSON.easy.formula1.wrong5);
-                text2.setText(phaserJSON.easy.formula1.wrong6);
-                text3.setText(phaserJSON.easy.formula1.wrong2);
-                text4.setText(phaserJSON.easy.formula1.right);
+            else if (randomFormula == 3) { 
+                text1.setText(level_5_data.chemical_formulas.formula1.wrong5);
+                text2.setText(level_5_data.chemical_formulas.formula1.wrong6);
+                text3.setText(level_5_data.chemical_formulas.formula1.wrong2);
+                text4.setText(level_5_data.chemical_formulas.formula1.right);
                                 
-                if(counterLevel5 < 1){
+                if (counterLevel5 < 1) {
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
                 flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -727,23 +728,23 @@ level5.prototype = {
                     
                 formulaTween = this.game.add.tween(text3).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
-                flaskTween.onComplete.add(function(){ 
-                     if(guy.visible == true){     
+                flaskTween.onComplete.add(function() { 
+                     if (guy.visible == true) {     
                          correct = true;
                          correctSound.play();
                          score = score + 50;
                         } 
-                        else{
+                        else {
                             wrong = true;
                             wrongSound.play();
                             score = score - 50;
-                            if(lives == 2){
+                            if (lives == 2) {
                                 lives=1;
                             }
-                            else if(lives == 1){
+                            else if (lives == 1) {
                                 lives=0;
                             }
-                            else{
+                            else {
                                 lives=2;
                             }
                         }
@@ -752,15 +753,15 @@ level5.prototype = {
                  counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
                                 checkMark.y = Math.floor(f4.y + f4.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
                                 checkMark.y = Math.floor(f4.y + f4.height / 1.3);
@@ -779,7 +780,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 1;
                             timerLevel5.resume();
@@ -798,16 +799,16 @@ level5.prototype = {
         }
         
 /////////////////////////////////////////////////////////////////////////////////////////
-        if(randomElement == 1){
-          instructions.setText(phaserJSON.easy.formula2.name);
+        if (randomElement == 1) {
+          instructions.setText(level_5_data.chemical_formulas.formula2.name);
 
-            if(randomFormula == 0){ 
-                text1.setText(phaserJSON.easy.formula2.right);
-                text2.setText(phaserJSON.easy.formula2.wrong1);
-                text3.setText(phaserJSON.easy.formula2.wrong2);
-                text4.setText(phaserJSON.easy.formula2.wrong3);
+            if (randomFormula == 0) { 
+                text1.setText(level_5_data.chemical_formulas.formula2.right);
+                text2.setText(level_5_data.chemical_formulas.formula2.wrong1);
+                text3.setText(level_5_data.chemical_formulas.formula2.wrong2);
+                text4.setText(level_5_data.chemical_formulas.formula2.wrong3);
 
-                 if(counterLevel5 < 1){
+                 if (counterLevel5 < 1) {
                     flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
                     flaskTween = this.game.add.tween(f3).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -821,22 +822,22 @@ level5.prototype = {
                     formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
                     flaskTween.onComplete.add(function(){
-                         if(guy.visible == true){
+                         if (guy.visible == true) {
                             correct = true;
                              correctSound.play();
                             score = score + 50;
                             }
-                        else{
+                        else {
                             wrong = true;
                             wrongSound.play();
                             score = score - 50;
-                            if(lives == 2){
+                            if (lives == 2) {
                                 lives=1;
                             }
-                            else if(lives == 1){
+                            else if (lives == 1) {
                                 lives=0;
                             }
-                            else{
+                            else {
                                 lives=2;
                             }
                         }
@@ -846,15 +847,15 @@ level5.prototype = {
             
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
                                 checkMark.y = Math.floor(f1.y + f1.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
                                 checkMark.y = Math.floor(f1.y + f1.height / 1.3);
@@ -873,7 +874,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 2;
                             timerLevel5.resume();
@@ -888,13 +889,13 @@ level5.prototype = {
                             wrong = false;
                         } 
             }
-            else if(randomFormula == 1){ 
-                text1.setText(phaserJSON.easy.formula2.wrong3);
-                text2.setText(phaserJSON.easy.formula2.right);
-                text3.setText(phaserJSON.easy.formula2.wrong4);
-                text4.setText(phaserJSON.easy.formula2.wrong5);
+            else if (randomFormula == 1) { 
+                text1.setText(level_5_data.chemical_formulas.formula2.wrong3);
+                text2.setText(level_5_data.chemical_formulas.formula2.right);
+                text3.setText(level_5_data.chemical_formulas.formula2.wrong4);
+                text4.setText(level_5_data.chemical_formulas.formula2.wrong5);
                 
-                if(counterLevel5 < 1){
+                if (counterLevel5 < 1) {
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
                 flaskTween = this.game.add.tween(f3).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -908,20 +909,20 @@ level5.prototype = {
                 formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
                 
-                flaskTween.onComplete.add(function(){
-                     if(guy.visible == true){
+                flaskTween.onComplete.add(function() {
+                     if (guy.visible == true) {
                          correct = true;
                          correctSound.play();
                          score = score + 50;
                     }
-                    else{
+                    else {
                         wrong = true;
                         wrongSound.play();
                         score = score - 50;
-                        if(lives == 2){
+                        if (lives == 2) {
                             lives=1;
                         }
-                        else if(lives == 1){
+                        else if (lives == 1) {
                             lives=0;
                         }
                         else{
@@ -933,15 +934,15 @@ level5.prototype = {
                     counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
                                 checkMark.y = Math.floor(f2.y + f2.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
                                 checkMark.y = Math.floor(f2.y + f2.height / 1.3);
@@ -960,7 +961,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 2;
                             timerLevel5.resume();
@@ -975,13 +976,13 @@ level5.prototype = {
                             wrong = false;
                         } 
             }
-            else if(randomFormula == 2){ 
-                text1.setText(phaserJSON.easy.formula2.wrong5);
-                text2.setText(phaserJSON.easy.formula2.wrong6);
-                text3.setText(phaserJSON.easy.formula2.right);
-                text4.setText(phaserJSON.easy.formula2.wrong1);
+            else if (randomFormula == 2) { 
+                text1.setText(level_5_data.chemical_formulas.formula2.wrong5);
+                text2.setText(level_5_data.chemical_formulas.formula2.wrong6);
+                text3.setText(level_5_data.chemical_formulas.formula2.right);
+                text4.setText(level_5_data.chemical_formulas.formula2.wrong1);
                 
-                if(counterLevel5 < 1){
+                if (counterLevel5 < 1) {
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
                 flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -994,40 +995,40 @@ level5.prototype = {
                     
                 formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
-                flaskTween.onComplete.add(function(){ 
-                     if(guy.visible == true){
+                flaskTween.onComplete.add(function() { 
+                     if (guy.visible == true) {
                         correct = true;
                         correctSound.play();
                         score = score + 50;
                     }
-                    else{
+                    else {
                         wrong = true;
                         wrongSound.play();
                         score = score - 50;
-                        if(lives == 2){
+                        if (lives == 2) {
                             lives=1;
                         }
-                        else if(lives == 1){
+                        else if (lives == 1) {
                             lives=0;
                         }
-                        else{
+                        else {
                             lives=2;
                         }
-                        }
+                    }
                     }, this);
    
                     counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
                                 checkMark.y = Math.floor(f3.y + f3.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
                                 checkMark.y = Math.floor(f3.y + f3.height / 1.3);
@@ -1046,7 +1047,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 2;
                             timerLevel5.resume();
@@ -1061,11 +1062,11 @@ level5.prototype = {
                             wrong = false;
                         } 
             }
-            else if(randomFormula == 3){ 
-                text1.setText(phaserJSON.easy.formula2.wrong5);
-                text2.setText(phaserJSON.easy.formula2.wrong6);
-                text3.setText(phaserJSON.easy.formula2.wrong2);
-                text4.setText(phaserJSON.easy.formula2.right);
+            else if (randomFormula == 3) { 
+                text1.setText(level_5_data.chemical_formulas.formula2.wrong5);
+                text2.setText(level_5_data.chemical_formulas.formula2.wrong6);
+                text3.setText(level_5_data.chemical_formulas.formula2.wrong2);
+                text4.setText(level_5_data.chemical_formulas.formula2.right);
                 
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -1080,23 +1081,23 @@ level5.prototype = {
                     
                 formulaTween = this.game.add.tween(text3).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
-                flaskTween.onComplete.add(function(){ 
-                     if(guy.visible == true){
+                flaskTween.onComplete.add(function() { 
+                     if (guy.visible == true) {
                         correct = true;
                         correctSound.play();
                         score = score + 50;
                     }
-                    else{
+                    else {
                         wrong = true;
                         wrongSound.play();
                         score = score - 50;
-                        if(lives == 2){
+                        if (lives == 2) {
                             lives=1;
                         }
-                        else if(lives == 1){
+                        else if (lives == 1) {
                             lives=0;
                         }
-                        else{
+                        else {
                             lives=2;
                         }
                         }
@@ -1105,15 +1106,15 @@ level5.prototype = {
                     counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
                                 checkMark.y = Math.floor(f4.y + f4.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
                                 checkMark.y = Math.floor(f4.y + f4.height / 1.3);
@@ -1132,7 +1133,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 2;
                             timerLevel5.resume();
@@ -1150,16 +1151,16 @@ level5.prototype = {
         }
         
 //////////////////////////////////////////////////////////////////////////////////////////
-        if(randomElement == 2){
-          instructions.setText(phaserJSON.easy.formula3.name);
+        if (randomElement == 2) {
+          instructions.setText(level_5_data.chemical_formulas.formula3.name);
 
-            if(randomFormula == 0){ 
-                text1.setText(phaserJSON.easy.formula3.right);
-                text2.setText(phaserJSON.easy.formula3.wrong1);
-                text3.setText(phaserJSON.easy.formula3.wrong2);
-                text4.setText(phaserJSON.easy.formula3.wrong3);
+            if (randomFormula == 0) { 
+                text1.setText(level_5_data.chemical_formulas.formula3.right);
+                text2.setText(level_5_data.chemical_formulas.formula3.wrong1);
+                text3.setText(level_5_data.chemical_formulas.formula3.wrong2);
+                text4.setText(level_5_data.chemical_formulas.formula3.wrong3);
                 
-                 if(counterLevel5 < 1){
+                 if (counterLevel5 < 1) {
                     flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
                     flaskTween = this.game.add.tween(f3).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -1172,24 +1173,24 @@ level5.prototype = {
                      
                     formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
-                    flaskTween.onComplete.add(function(){
-                        if(guy.visible == true){
+                    flaskTween.onComplete.add(function() {
+                        if (guy.visible == true) {
                            correct = true;
                            correctSound.play();
                            score = score + 50;
                          }
-                        else{
+                        else {
                             wrong = true;
                             wrongSound.play();
                             score = score - 50;
-                            if(lives == 2){
-                                lives=1;
+                            if (lives == 2) {
+                                lives = 1;
                             }
-                            else if(lives == 1){
-                                lives=0;
+                            else if (lives == 1) {
+                                lives = 0;
                             }
-                            else{
-                                lives=2;
+                            else {
+                                lives = 2;
                             }
                         }
                         }, this);
@@ -1197,15 +1198,15 @@ level5.prototype = {
                     counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
                                 checkMark.y = Math.floor(f1.y + f1.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
                                 checkMark.y = Math.floor(f1.y + f1.height / 1.3);
@@ -1224,7 +1225,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 3;
                             timerLevel5.resume();
@@ -1239,11 +1240,11 @@ level5.prototype = {
                             wrong = false;
                         }
             }
-            else if(randomFormula == 1){ 
-                text1.setText(phaserJSON.easy.formula3.wrong3);
-                text2.setText(phaserJSON.easy.formula3.right);
-                text3.setText(phaserJSON.easy.formula3.wrong4);
-                text4.setText(phaserJSON.easy.formula3.wrong5);
+            else if (randomFormula == 1) { 
+                text1.setText(level_5_data.chemical_formulas.formula3.wrong3);
+                text2.setText(level_5_data.chemical_formulas.formula3.right);
+                text3.setText(level_5_data.chemical_formulas.formula3.wrong4);
+                text4.setText(level_5_data.chemical_formulas.formula3.wrong5);
                 
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -1327,10 +1328,10 @@ level5.prototype = {
                         }
             }
             else if(randomFormula == 2){ 
-                text1.setText(phaserJSON.easy.formula3.wrong5);
-                text2.setText(phaserJSON.easy.formula3.wrong6);
-                text3.setText(phaserJSON.easy.formula3.right);
-                text4.setText(phaserJSON.easy.formula3.wrong1);
+                text1.setText(level_5_data.chemical_formulas.formula3.wrong5);
+                text2.setText(level_5_data.chemical_formulas.formula3.wrong6);
+                text3.setText(level_5_data.chemical_formulas.formula3.right);
+                text4.setText(level_5_data.chemical_formulas.formula3.wrong1);
                 
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -1413,10 +1414,10 @@ level5.prototype = {
                         }
             }
             else if(randomFormula == 3){ 
-                text1.setText(phaserJSON.easy.formula3.wrong5);
-                text2.setText(phaserJSON.easy.formula3.wrong6);
-                text3.setText(phaserJSON.easy.formula3.wrong2);
-                text4.setText(phaserJSON.easy.formula3.right);
+                text1.setText(level_5_data.chemical_formulas.formula3.wrong5);
+                text2.setText(level_5_data.chemical_formulas.formula3.wrong6);
+                text3.setText(level_5_data.chemical_formulas.formula3.wrong2);
+                text4.setText(level_5_data.chemical_formulas.formula3.right);
                 
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -1502,13 +1503,13 @@ level5.prototype = {
  
 ////////////////////////////////////////////////////////////////////////////////////////      
         if(randomElement == 3){
-          instructions.setText(phaserJSON.easy.formula4.name);
+          instructions.setText(level_5_data.chemical_formulas.formula4.name);
 
             if(randomFormula == 0){ 
-                text1.setText(phaserJSON.easy.formula4.right);
-                text2.setText(phaserJSON.easy.formula4.wrong1);
-                text3.setText(phaserJSON.easy.formula4.wrong2);
-                text4.setText(phaserJSON.easy.formula4.wrong3);
+                text1.setText(level_5_data.chemical_formulas.formula4.right);
+                text2.setText(level_5_data.chemical_formulas.formula4.wrong1);
+                text3.setText(level_5_data.chemical_formulas.formula4.wrong2);
+                text4.setText(level_5_data.chemical_formulas.formula4.wrong3);
                 
                  if(counterLevel5 < 1){
                     flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -1591,10 +1592,10 @@ level5.prototype = {
                         }
             }
             else if(randomFormula == 1){ 
-                text1.setText(phaserJSON.easy.formula4.wrong3);
-                text2.setText(phaserJSON.easy.formula4.right);
-                text3.setText(phaserJSON.easy.formula4.wrong4);
-                text4.setText(phaserJSON.easy.formula4.wrong5);
+                text1.setText(level_5_data.chemical_formulas.formula4.wrong3);
+                text2.setText(level_5_data.chemical_formulas.formula4.right);
+                text3.setText(level_5_data.chemical_formulas.formula4.wrong4);
+                text4.setText(level_5_data.chemical_formulas.formula4.wrong5);
                 
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -1610,40 +1611,40 @@ level5.prototype = {
                 formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
                 
-                flaskTween.onComplete.add(function(){
-                    if(guy.visible == true){
+                flaskTween.onComplete.add(function() {
+                    if (guy.visible == true) {
                         correct = true;
                         correctSound.play();
                         score = score + 50;
                     } 
-                    else{
+                    else {
                         wrong = true;
                         wrongSound.play();
                         score = score - 50;
-                        if(lives == 2){
+                        if (lives == 2) {
                             lives=1;
                         }
-                        else if(lives == 1){
+                        else if (lives == 1) {
                             lives=0;
                         }
-                        else{
+                        else {
                             lives=2;
                         }
                         }
                     }, this);
     
                   counterLevel5 = 7;
-                        }
+                }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
                                 checkMark.y = Math.floor(f2.y + f2.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
                                 checkMark.y = Math.floor(f2.y + f2.height / 1.3);
@@ -1660,9 +1661,9 @@ level5.prototype = {
                                 xMark3.x = Math.floor((f4.x + f4.width / 2));
                                 xMark3.y = Math.floor(f4.y + f4.height / 1.6);
                             }
-                            }
+                        }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 4;
                             timerLevel5.resume();
@@ -1677,11 +1678,11 @@ level5.prototype = {
                             wrong = false;
                         }
             }
-            else if(randomFormula == 2){ 
-                text1.setText(phaserJSON.easy.formula4.wrong5);
-                text2.setText(phaserJSON.easy.formula4.wrong6);
-                text3.setText(phaserJSON.easy.formula4.right);
-                text4.setText(phaserJSON.easy.formula4.wrong1);
+            else if (randomFormula == 2) { 
+                text1.setText(level_5_data.chemical_formulas.formula4.wrong5);
+                text2.setText(level_5_data.chemical_formulas.formula4.wrong6);
+                text3.setText(level_5_data.chemical_formulas.formula4.right);
+                text4.setText(level_5_data.chemical_formulas.formula4.wrong1);
                 
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -1696,40 +1697,40 @@ level5.prototype = {
                     
                 formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
-                flaskTween.onComplete.add(function(){ 
-                    if(guy.visible == true){
+                flaskTween.onComplete.add(function() { 
+                    if (guy.visible == true) {
                         correct = true;
                         correctSound.play();
                         score = score + 50;
                     }
-                    else{
+                    else {
                         wrong = true;
                         wrongSound.play();
                         score = score - 50;
-                        if(lives == 2){
-                            lives=1;
+                        if (lives == 2) {
+                            lives = 1;
                         }
-                        else if(lives == 1){
-                            lives=0;
+                        else if (lives == 1) {
+                            lives = 0;
                         }
-                        else{
-                            lives=2;
+                        else {
+                            lives = 2;
                         }
-                        }
+                    }
                     }, this);
                
                   counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
                                 checkMark.y = Math.floor(f3.y + f3.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
                                 checkMark.y = Math.floor(f3.y + f3.height / 1.3);
@@ -1748,7 +1749,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 4;
                             timerLevel5.resume();
@@ -1763,11 +1764,11 @@ level5.prototype = {
                             wrong = false;
                         }
             }
-            else if(randomFormula == 3){ 
-                text1.setText(phaserJSON.easy.formula4.wrong5);
-                text2.setText(phaserJSON.easy.formula4.wrong6);
-                text3.setText(phaserJSON.easy.formula4.wrong2);
-                text4.setText(phaserJSON.easy.formula4.right);
+            else if (randomFormula == 3) { 
+                text1.setText(level_5_data.chemical_formulas.formula4.wrong5);
+                text2.setText(level_5_data.chemical_formulas.formula4.wrong6);
+                text3.setText(level_5_data.chemical_formulas.formula4.wrong2);
+                text4.setText(level_5_data.chemical_formulas.formula4.right);
                 
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -1783,25 +1784,25 @@ level5.prototype = {
                 formulaTween = this.game.add.tween(text3).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
                 flaskTween.onComplete.add(function(){ 
-                    if(guy.visible == true){
+                    if (guy.visible == true) {
                         correct = true;
                         correctSound.play();
                          score = score + 50;
                     }
-                    else{
+                    else {
                         wrong = true;
                         wrongSound.play();
                         score = score - 50;
-                        if(lives == 2){
+                        if (lives == 2) {
                             lives=1;
                         }
-                        else if(lives == 1){
+                        else if (lives == 1) {
                             lives=0;
                         }
-                        else{
+                        else {
                             lives=2;
                         }
-                        }
+                    }
                     }, this);
                
                   counterLevel5 = 7;
@@ -1834,7 +1835,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 4;
                             timerLevel5.resume();
@@ -1852,16 +1853,16 @@ level5.prototype = {
         }
  
 //////////////////////////////////////////////////////////////////////////////////////        
-        if(randomElement == 4){
-          instructions.setText(phaserJSON.easy.formula5.name);
+        if (randomElement == 4) {
+          instructions.setText(level_5_data.chemical_formulas.formula5.name);
 
-            if(randomFormula == 0){ 
-                text1.setText(phaserJSON.easy.formula5.right);
-                text2.setText(phaserJSON.easy.formula5.wrong1);
-                text3.setText(phaserJSON.easy.formula5.wrong2);
-                text4.setText(phaserJSON.easy.formula5.wrong3);
+            if (randomFormula == 0) { 
+                text1.setText(level_5_data.chemical_formulas.formula5.right);
+                text2.setText(level_5_data.chemical_formulas.formula5.wrong1);
+                text3.setText(level_5_data.chemical_formulas.formula5.wrong2);
+                text4.setText(level_5_data.chemical_formulas.formula5.wrong3);
                 
-                 if(counterLevel5 < 1){
+                 if (counterLevel5 < 1) {
                     flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
                     flaskTween = this.game.add.tween(f3).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -1874,23 +1875,23 @@ level5.prototype = {
                      
                     formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
-                    flaskTween.onComplete.add(function(){
-                        if(guy.visible == true){
+                    flaskTween.onComplete.add(function() {
+                        if (guy.visible == true) {
                             correct = true;
                             correctSound.play();
                             score = score + 50;
                          }
-                        else{
+                        else {
                             wrong = true;
                             wrongSound.play();
                             score = score - 50;
-                            if(lives == 2){
+                            if (lives == 2) {
                                 lives=1;
                             }
-                            else if(lives == 1){
+                            else if (lives == 1) {
                                 lives=0;
                             }
-                            else{
+                            else {
                                 lives=2;
                             }
                         }
@@ -1899,15 +1900,15 @@ level5.prototype = {
                     counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
                                 checkMark.y = Math.floor(f1.y + f1.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f1.x + f1.width / 2) - 15);
                                 checkMark.y = Math.floor(f1.y + f1.height / 1.3);
@@ -1926,7 +1927,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 0;
                             timerLevel5.resume();
@@ -1941,13 +1942,13 @@ level5.prototype = {
                             wrong = false;
                         }
             }
-            else if(randomFormula == 1){ 
-                text1.setText(phaserJSON.easy.formula5.wrong3);
-                text2.setText(phaserJSON.easy.formula5.right);
-                text3.setText(phaserJSON.easy.formula5.wrong4);
-                text4.setText(phaserJSON.easy.formula5.wrong5);
+            else if (randomFormula == 1) { 
+                text1.setText(level_5_data.chemical_formulas.formula5.wrong3);
+                text2.setText(level_5_data.chemical_formulas.formula5.right);
+                text3.setText(level_5_data.chemical_formulas.formula5.wrong4);
+                text4.setText(level_5_data.chemical_formulas.formula5.wrong5);
                 
-                if(counterLevel5 < 1){
+                if (counterLevel5 < 1) {
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
                 flaskTween = this.game.add.tween(f3).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -1961,23 +1962,23 @@ level5.prototype = {
                 formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
                 
-                flaskTween.onComplete.add(function(){
-                    if(guy.visible == true){
+                flaskTween.onComplete.add(function() {
+                    if (guy.visible == true) {
                         correct = true;
                         correctSound.play();
                          score = score + 50;
                     }
-                    else{
+                    else {
                         wrong = true;
                         wrongSound.play();
                         score = score - 50;
-                        if(lives == 2){
+                        if (lives == 2) {
                             lives=1;
                         }
-                        else if(lives == 1){
+                        else if (lives == 1) {
                             lives=0;
                         }
-                        else{
+                        else {
                             lives=2;
                         }
                         }
@@ -1986,15 +1987,15 @@ level5.prototype = {
                   counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
                                 checkMark.y = Math.floor(f2.y + f2.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f2.x + f2.width / 2) - 15);
                                 checkMark.y = Math.floor(f2.y + f2.height / 1.3);
@@ -2013,7 +2014,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 0;
                             timerLevel5.resume();
@@ -2028,13 +2029,13 @@ level5.prototype = {
                             wrong = false;
                         }
             }
-            else if(randomFormula == 2){ 
-                text1.setText(phaserJSON.easy.formula5.wrong5);
-                text2.setText(phaserJSON.easy.formula5.wrong6);
-                text3.setText(phaserJSON.easy.formula5.right);
-                text4.setText(phaserJSON.easy.formula5.wrong1);
+            else if (randomFormula == 2) { 
+                text1.setText(level_5_data.chemical_formulas.formula5.wrong5);
+                text2.setText(level_5_data.chemical_formulas.formula5.wrong6);
+                text3.setText(level_5_data.chemical_formulas.formula5.right);
+                text4.setText(level_5_data.chemical_formulas.formula5.wrong1);
                 
-                if(counterLevel5 < 1){
+                if (counterLevel5 < 1) {
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
                     
                 flaskTween = this.game.add.tween(f2).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -2047,40 +2048,40 @@ level5.prototype = {
                     
                 formulaTween = this.game.add.tween(text4).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
-                flaskTween.onComplete.add(function(){ 
-                    if(guy.visible == true){
+                flaskTween.onComplete.add(function() { 
+                    if (guy.visible == true) {
                         correct = true;
                         correctSound.play();
                          score = score + 50;
                     }
-                    else{
+                    else {
                         wrong = true;
                         wrongSound.play();
                         score = score - 50;
-                        if(lives == 2){
+                        if (lives == 2) {
                             lives=1;
                         }
-                        else if(lives == 1){
+                        else if (lives == 1) {
                             lives=0;
                         }
-                        else{
+                        else {
                             lives=2;
                         }
-                        }
+                    }
                     }, this);
                 
                     counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
                                 checkMark.y = Math.floor(f3.y + f3.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f3.x + f3.width / 2) - 15);
                                 checkMark.y = Math.floor(f3.y + f3.height / 1.3);
@@ -2099,7 +2100,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 0;
                             timerLevel5.resume();
@@ -2114,11 +2115,11 @@ level5.prototype = {
                             wrong = false;
                         }
             }
-            else if(randomFormula == 3){ 
-                text1.setText(phaserJSON.easy.formula5.wrong5);
-                text2.setText(phaserJSON.easy.formula5.wrong6);
-                text3.setText(phaserJSON.easy.formula5.wrong2);
-                text4.setText(phaserJSON.easy.formula5.right);
+            else if (randomFormula == 3) { 
+                text1.setText(level_5_data.chemical_formulas.formula5.wrong5);
+                text2.setText(level_5_data.chemical_formulas.formula5.wrong6);
+                text3.setText(level_5_data.chemical_formulas.formula5.wrong2);
+                text4.setText(level_5_data.chemical_formulas.formula5.right);
                 
                 if(counterLevel5 < 1){
                 flaskTween = this.game.add.tween(f1).to({ y: 500}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -2133,40 +2134,40 @@ level5.prototype = {
                     
                 formulaTween = this.game.add.tween(text3).to({ y: 600}, 250, Phaser.Easing.Linear.None, true, 0, 0, true);
 
-                flaskTween.onComplete.add(function(){ 
-                    if(guy.visible == true){
+                flaskTween.onComplete.add(function() { 
+                    if (guy.visible == true) {
                         correct = true;
                         correctSound.play();
                          score = score + 50;
                     }
-                    else{
+                    else {
                         wrong = true;
                         wrongSound.play();
                         score = score - 50;
-                        if(lives == 2){
-                            lives=1;
+                        if (lives == 2) {
+                            lives = 1;
                         }
-                        else if(lives == 1){
-                            lives=0;
+                        else if (lives == 1) {
+                            lives = 0;
                         }
-                        else{
+                        else {
                             lives=2;
                         }
-                        }
+                    }
                     }, this);
                 
                     counterLevel5 = 7;
                         }
                 
-                        if(isTimerPaused){
+                        if (isTimerPaused) {
                             pausedCorrect--;
                             
-                            if(correct){
+                            if (correct) {
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
                                 checkMark.y = Math.floor(f4.y + f4.height / 1.3);
                                 }
-                            else if(wrong){ 
+                            else if (wrong) { 
                                 checkMark.visible = true;
                                 checkMark.x = Math.floor((f4.x + f4.width / 2) - 15);
                                 checkMark.y = Math.floor(f4.y + f4.height / 1.3);
@@ -2185,7 +2186,7 @@ level5.prototype = {
                             }
                             }
                         
-                        if(pausedCorrect < 1){
+                        if (pausedCorrect < 1) {
                             randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 0;
                             timerLevel5.resume();

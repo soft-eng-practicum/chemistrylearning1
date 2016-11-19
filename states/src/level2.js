@@ -257,17 +257,17 @@ level2.prototype = {
         score_text.setText("Score: " + score);
       
        if (is_started) {
-           if(first_go){
+           if (first_go) {
                 handleData();
                 first_go = false;
            }
            bubbles.visible = true;
            
-           if(correct == true){
+           if (correct == true) {
                pause_delay--;
                game_timer.pause();
                
-               if(bubble_01.visible == false){
+               if(bubble_01.visible == false) {
                     check_mark.x = bubble_01.x + 70;
                     check_mark.y = bubble_01.y + 130;
                     check_mark.visible = true;
@@ -275,7 +275,7 @@ level2.prototype = {
                     bubble_01.visible = true;
                     bubbles_velocity = 0;
                 }
-                else if (bubble_02.visible == false){
+                else if (bubble_02.visible == false) {
                     check_mark.x = bubble_02.x + 70;
                     check_mark.y = bubble_02.y + 130;
                     check_mark.visible = true;
@@ -283,7 +283,7 @@ level2.prototype = {
                     bubble_02.visible = true;
                     bubbles_velocity = 0;
                 }
-                else if(bubble_03.visible == false){
+                else if (bubble_03.visible == false) {
                     check_mark.x = bubble_03.x + 70;
                     check_mark.y = bubble_03.y + 130;
                     check_mark.visible = true;
@@ -292,7 +292,7 @@ level2.prototype = {
                     bubbles_velocity = 0;
                 }
                
-                if(pause_delay < 1){
+                if (pause_delay < 1) {
                     check_mark.visible = false;
                     correct = false;
                     pause_delay = 150;
@@ -309,7 +309,7 @@ level2.prototype = {
                }
              }
            
-           if(wrong == true){
+           if (wrong == true) {
                pause_delay = pause_delay - 10;
                
                if(bubble_01.visible == false){
@@ -339,8 +339,7 @@ level2.prototype = {
                }
              }
            }
-       
-        
+
         // Handle hearts and lives 
         if (lives == 2) {
             
@@ -372,8 +371,6 @@ level2.prototype = {
         else if (counter_level_2 > 5) {
             count_down_label.addColor("#ffffff", 0);
         } 
-        
-       // markAnswerRightOrWrong(current_bubble);
     } 
 };
 
@@ -418,22 +415,6 @@ function updateCounter() {
     }
 // Closes method
 }
-
-/*
-function markAnswerRightOrWrong(input_bubble) {
-    
-    // Update the check mark position when correct answer is chosen
-    if (right_mark.visible == true) {
-        right_mark.x = Math.floor(input_bubble.x + input_bubble.width/2);
-        right_mark.y = Math.floor(input_bubble.y + input_bubble.height/2);
-    } 
-    
-    if (wrong_mark.visible == true) {
-        wrong_mark.x = Math.floor(input_bubble.x + input_bubble.width/2);
-        wrong_mark.y = Math.floor(input_bubble.y + input_bubble.height/2);
-    }
-}
-*/
 
 // Collision handler for bubbles and spikes
 function bubbleHitSpike(input_bubble) {
