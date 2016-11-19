@@ -1,4 +1,4 @@
-var gameIntroState = function(game){
+var transitionState = function(game){
     
 };
   
@@ -12,7 +12,7 @@ var tween;
 var sprite;
 var levelMusic;
    
-gameIntroState.prototype = {
+transitionState.prototype = {
     
   	create: function(){
   
@@ -27,7 +27,7 @@ gameIntroState.prototype = {
     titleLabel = this.game.add.text(0, 0, "", {font: "50px Courier", fill: "#ffffff"});
 
     //Creates a Tween for the Title Label  
-    timeTween = this.game.add.tween(titleLabel).to( { alpha: 1 }, /*6000*/0, "Linear", true, 300);
+    timeTween = this.game.add.tween(titleLabel).to( { alpha: 1 }, 6000/*0*/, "Linear", true, 300);
 
     timeTween.onComplete.add(this.onComplete, this);    
     
@@ -50,9 +50,9 @@ gameIntroState.prototype = {
     game.add.tween(sprite).to( { alpha: 1 }, 6000, Phaser.Easing.Linear.None, true, 0, 1000, true);
     
     //Creates audio
-    music = this.game.add.audio("sound");
+   // music = this.game.add.audio("sound");
         
-    //levelMusic = this.game.add.audio("levelMusic");
+    //levelMusic = this.game.add.audio("levelMusic");*/
 
     },
     
@@ -64,7 +64,7 @@ gameIntroState.prototype = {
     onComplete: function() {
 
         //Starts Game Title
-        this.game.state.start("GameTitle");
+        //this.game.state.start("GameTitle");
     },
     
     //Main Phaser Update Function
