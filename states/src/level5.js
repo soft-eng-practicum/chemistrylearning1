@@ -445,13 +445,10 @@ level5.prototype = {
     *Handles the data from JSON files, and right and wrong answers
     */
     handleData: function() {
-<<<<<<< HEAD
+//<<<<<<< HEAD
                
-        if (randomElement == 0) {
-=======
-
         if(randomElement == 0){
->>>>>>> db2dcea83adcc7adb7c8e41c140dec8a099e3744
+//>>>>>>> db2dcea83adcc7adb7c8e41c140dec8a099e3744
 
           instructions.setText(level_5_data.chemical_formulas.formula1.name);
 
