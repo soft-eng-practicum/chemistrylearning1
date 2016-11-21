@@ -56,6 +56,8 @@ gameOverState.prototype = {
 
         started = false;
         startedLevel5 = false;
+        level_2_Transition = false;
+        level_5_Transition = false;
         
         //Start Level 1
         this.game.state.start("GameTitle");

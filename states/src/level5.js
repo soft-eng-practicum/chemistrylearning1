@@ -59,15 +59,14 @@ level5.prototype = {
   	create: function() { 
         
         //Creating JSON 
-        level_5_data = JSON.parse(this.game.cache.getText('level_5_JSON'));
-       /* switchJSON = Math.floor(Math.random() * 2);
+        switchJSON = Math.floor(Math.random() * 2);
         
         if(switchJSON == 0){
-            phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula")); 
+            level_5_data = JSON.parse(this.game.cache.getText('level_5_JSON')); 
         }
         else if(switchJSON == 1){
-            phaserJSON = JSON.parse(this.game.cache.getText("chemicalFormula2"));
-        } */
+            level_5_data = JSON.parse(this.game.cache.getText('level_5_JSON_series_2'));
+        } 
         
         //Pauses the Game Title Music when Game starts
         music.pause();
@@ -135,13 +134,13 @@ level5.prototype = {
         
         
         //Sets styling for Answer Text on flask
-        var style1 = { font: "37px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f1.width, align: "center", backgroundColor: "" };
+        var style1 = { font: "27px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: f1.width, align: "center", backgroundColor: "" };
         
-        var style2 = { font: "37px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f2.width, align: "center", backgroundColor: "" };
+        var style2 = { font: "27px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: f2.width, align: "center", backgroundColor: "" };
         
-        var style3 = { font: "37px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f3.width, align: "center", backgroundColor: "" };
+        var style3 = { font: "27px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: f3.width, align: "center", backgroundColor: "" };
         
-        var style4 = { font: "37px Arial", fill: "WHITE", wordWrap: true, wordWrapWidth: f4.width, align: "center", backgroundColor: "" };
+        var style4 = { font: "27px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: f4.width, align: "center", backgroundColor: "" };
 
         //Create Text1 on flask
         text1 = this.game.add.text(f1.x, f1.y, "", style1, flask);
@@ -203,7 +202,7 @@ level5.prototype = {
         //Creates check marks for right answers
         checkMark = this.game.add.sprite(0, 0,"checkMark");
         checkMark.visible = false;
-        checkMark.scale.setTo(0.8, 0.8);
+        checkMark.scale.setTo(0.7, 0.7);
         checkMark.anchor.set(-.25, .9);
         
         //Creates check marks for right answers
@@ -241,6 +240,8 @@ level5.prototype = {
         wrong = false;
         pos1 = false;
         pos2 = false;
+        level_2_Transition = false;
+        level_5_Transition = false;
                           
         //Code for the pause menu
         //Create a pause label to use as a button
@@ -445,12 +446,25 @@ level5.prototype = {
     *Handles the data from JSON files, and right and wrong answers
     */
     handleData: function() {
-//<<<<<<< HEAD
+        
+        //Adjusting Instruction label color 
+        instructions.addColor("Yellow", 0);
+        instructions.anchor.setTo(-0.1, 0.2);
                
         if(randomElement == 0){
-//>>>>>>> db2dcea83adcc7adb7c8e41c140dec8a099e3744
-
           instructions.setText(level_5_data.chemical_formulas.formula1.name);
+            
+          if(level_5_data.chemical_formulas.formula1.name.length < 20){
+            
+                //Adjusting Instruction label Font Size
+                instructions.fontSize = 47;  
+            }
+            else{
+                //Adjusting Instruction label for Chemical Names
+                instructions.anchor.setTo(0, 0.3);
+                //Adjusting Instruction label Font Size
+                instructions.fontSize = 40;
+            }
 
             if (randomFormula == 0) { 
                 text1.setText(level_5_data.chemical_formulas.formula1.right);
@@ -805,6 +819,18 @@ level5.prototype = {
 /////////////////////////////////////////////////////////////////////////////////////////
         if (randomElement == 1) {
           instructions.setText(level_5_data.chemical_formulas.formula2.name);
+            
+          if(level_5_data.chemical_formulas.formula2.name.length < 20){
+            
+                //Adjusting Instruction label Font Size
+                instructions.fontSize = 47;  
+            }
+            else{
+                //Adjusting Instruction label for Chemical Names
+                instructions.anchor.setTo(0, 0.3);
+                //Adjusting Instruction label Font Size
+                instructions.fontSize = 40;
+            }
 
             if (randomFormula == 0) { 
                 text1.setText(level_5_data.chemical_formulas.formula2.right);
@@ -1157,6 +1183,18 @@ level5.prototype = {
 //////////////////////////////////////////////////////////////////////////////////////////
         if (randomElement == 2) {
           instructions.setText(level_5_data.chemical_formulas.formula3.name);
+            
+          if(level_5_data.chemical_formulas.formula3.name.length < 20){
+            
+                //Adjusting Instruction label Font Size
+                instructions.fontSize = 47;  
+            }
+            else{
+                //Adjusting Instruction label for Chemical Names
+                instructions.anchor.setTo(0, 0.3);
+                //Adjusting Instruction label Font Size
+                instructions.fontSize = 40;
+            }
 
             if (randomFormula == 0) { 
                 text1.setText(level_5_data.chemical_formulas.formula3.right);
@@ -1508,6 +1546,18 @@ level5.prototype = {
 ////////////////////////////////////////////////////////////////////////////////////////      
         if(randomElement == 3){
           instructions.setText(level_5_data.chemical_formulas.formula4.name);
+            
+          if(level_5_data.chemical_formulas.formula4.name.length < 20){
+            
+                //Adjusting Instruction label Font Size
+                instructions.fontSize = 47;  
+            }
+            else{
+                //Adjusting Instruction label for Chemical Names
+                instructions.anchor.setTo(0, 0.3);
+                //Adjusting Instruction label Font Size
+                instructions.fontSize = 40;
+            }
 
             if(randomFormula == 0){ 
                 text1.setText(level_5_data.chemical_formulas.formula4.right);
@@ -1859,6 +1909,18 @@ level5.prototype = {
 //////////////////////////////////////////////////////////////////////////////////////        
         if (randomElement == 4) {
           instructions.setText(level_5_data.chemical_formulas.formula5.name);
+            
+          if(level_5_data.chemical_formulas.formula5.name.length < 20){
+            
+                //Adjusting Instruction label Font Size
+                instructions.fontSize = 47;  
+            }
+            else{
+                //Adjusting Instruction label for Chemical Names
+                instructions.anchor.setTo(0, 0.3);
+                //Adjusting Instruction label Font Size
+                instructions.fontSize = 40;
+            }
 
             if (randomFormula == 0) { 
                 text1.setText(level_5_data.chemical_formulas.formula5.right);
@@ -1932,8 +1994,6 @@ level5.prototype = {
                             }
                         
                         if (pausedCorrect < 1) {
-                            randomFormula = Math.floor(Math.random() * 4);
-                            randomElement = 0;
                             timerLevel5.resume();
                             checkMark.visible = false;
                             xMark1.visible = false;
@@ -1942,8 +2002,16 @@ level5.prototype = {
                             isTimerPaused = false;
                             pausedCorrect = 150;
                             guy.visible = true;
-                            correct = false;
-                            wrong = false;
+                            
+                            if(correct){
+                                this.game.state.start("Winner");
+                            }
+                            else{
+                                correct = false;
+                                wrong = false;
+                                randomFormula = Math.floor(Math.random() * 4);
+                                randomElement = Math.floor(Math.random() * 4);
+                            }
                         }
             }
             else if (randomFormula == 1) { 
@@ -2019,7 +2087,6 @@ level5.prototype = {
                             }
                         
                         if (pausedCorrect < 1) {
-                            randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 0;
                             timerLevel5.resume();
                             checkMark.visible = false;
@@ -2029,8 +2096,16 @@ level5.prototype = {
                             isTimerPaused = false;
                             pausedCorrect = 150;
                             guy.visible = true;
-                            correct = false;
-                            wrong = false;
+                            
+                            if(correct){
+                                this.game.state.start("Winner");
+                            }
+                            else{
+                                correct = false;
+                                wrong = false;
+                                randomFormula = Math.floor(Math.random() * 4);
+                                randomElement = Math.floor(Math.random() * 4);
+                            }
                         }
             }
             else if (randomFormula == 2) { 
@@ -2105,7 +2180,6 @@ level5.prototype = {
                             }
                         
                         if (pausedCorrect < 1) {
-                            randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 0;
                             timerLevel5.resume();
                             checkMark.visible = false;
@@ -2115,8 +2189,16 @@ level5.prototype = {
                             isTimerPaused = false;
                             pausedCorrect = 150;
                             guy.visible = true;
-                            correct = false;
-                            wrong = false;
+                            
+                            if(correct){
+                                this.game.state.start("Winner");
+                            }
+                            else{
+                                correct = false;
+                                wrong = false;
+                                randomFormula = Math.floor(Math.random() * 4);
+                                randomElement = Math.floor(Math.random() * 4);
+                            }
                         }
             }
             else if (randomFormula == 3) { 
@@ -2191,7 +2273,6 @@ level5.prototype = {
                             }
                         
                         if (pausedCorrect < 1) {
-                            randomFormula = Math.floor(Math.random() * 4);
                             randomElement = 0;
                             timerLevel5.resume();
                             checkMark.visible = false;
@@ -2201,15 +2282,18 @@ level5.prototype = {
                             isTimerPaused = false;
                             pausedCorrect = 150;
                             guy.visible = true;
-                            correct = false;
-                            wrong = false;
+                            
+                            if(correct){
+                                this.game.state.start("Winner");
+                            }
+                            else{
+                                correct = false;
+                                wrong = false;
+                                randomFormula = Math.floor(Math.random() * 4);
+                                randomElement = Math.floor(Math.random() * 4);
+                            }
                         }
-            }
+                }
         }
-
-        //Adjusting Instruction label for Chemical Names 
-        instructions.anchor.setTo(-0.1, 0.15);
-        instructions.addColor("Yellow", 0);
-        instructions.fontSize = 47;   
     }
 };

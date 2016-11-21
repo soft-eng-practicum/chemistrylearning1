@@ -71,11 +71,20 @@ preloadState.prototype = {
         
         this.game.load.image("creditsButton","assets/creditsButton.png");
         
+        
+        //TRANSITION SCREEN IMAGE
+        
+        this.game.load.image("transitionBackground","assets/transitionBackground.png");
+        
+        
            
         //LEVEL 1 IMAGES, SOUNDS, & JSON
 		//this.game.load.image("background","assets/Space.jpg");
         
         this.game.load.text('level_1_JSON', "assets/game_data/level_1_data.json");
+        
+        this.game.load.text('level_1_JSON_series_2', "assets/game_data/level_1_data_series_2.json");
+        
         this.game.load.image("heart","assets/heart.png");
         //this.game.load.image("level1Background","assets/Level1Background.jpg");
         
@@ -115,6 +124,8 @@ preloadState.prototype = {
         //Load JSON file as a text file
         this.game.load.text('level_2_JSON', "assets/game_data/level_2_data.json");
         
+        this.game.load.text('level_2_JSON_series_2', "assets/game_data/level_2_data_series_2.json");
+        
         // Load spike image
         this.game.load.image('spike_image', "assets/spikes.png");
         
@@ -142,6 +153,8 @@ preloadState.prototype = {
         this.game.load.image("level5Background","assets/Lab_Background.jpg");
         
         this.game.load.text('level_5_JSON', "assets/game_data/level_5_data.json");
+        
+        this.game.load.text('level_5_JSON_series_2', "assets/game_data/level_5_data_series_2.json");
         
         this.game.load.image("blueFlask", "assets/blue_flask.png");
         

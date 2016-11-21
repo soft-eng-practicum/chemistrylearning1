@@ -2,57 +2,44 @@ var transitionState = function(game){
     
 };
   
-var gameTitleBackground;
+var levelBackground;
 var titleLabel;
 var timeTween;
-var background_velocity;
 var logo;
 var text;
 var tween;
 var sprite;
 var levelMusic;
+var scoreLabel;
    
 transitionState.prototype = {
     
   	create: function(){
   
     //Creates background
-    gameTitleBackground = this.game.add.tileSprite(0, 0, 1750,1200, "space_background");
-    gameTitleBackground.scale.setTo(0.575,0.67);
+    levelBackground =  this.game.add.sprite(0,0,"transitionBackground");
+    levelBackground.scale.setTo(.84,1.2);
     
-    //Sets the speed of the GIF background
-    background_velocity = 2;
-
+    //Creates the High Score label
+    scoreLabel = this.game.add.text(this.game.world.centerX-200, 280, "SCORE: " + score, {font: "55px Courier", fill: "#ffffff"});
+        
     //Creates the Title Label
     titleLabel = this.game.add.text(0, 0, "", {font: "50px Courier", fill: "#ffffff"});
 
-    //Creates a Tween for the Title Label  
-    timeTween = this.game.add.tween(titleLabel).to( { alpha: 1 }, 6000/*0*/, "Linear", true, 300);
+    //Creates a Tween for the Score Label  
+    timeTween = this.game.add.tween(scoreLabel).to( { alpha: 1 }, 3000/*0*/, "Linear", true, 300);
 
     timeTween.onComplete.add(this.onComplete, this);    
-    
-    //Creates Logo that moves around the screen
-    logo = this.add.sprite(0, 0, "redFlask");
-    logo.scale.set(0.3);
-
-    var w = (game.width) - logo.width;
-    var h = (game.height) - logo.height;
-
-    //Creates a Tween for the Logo
-    tween = game.add.tween(logo).to( { x: [ w, w, 0, 0 ], y: [ 0, h, h, 0 ] }, 4000, "Sine.easeInOut", true, -1, false);
 
     //Creates a sprite in the middle of the screen 
-    sprite = game.add.sprite(game.world.centerX - 240, game.world.centerY -200, 'Astronaut');
-   // sprite.scale.set(0.7, 0.5);
-    sprite.alpha = 0.2;
-
-    //Fades in sprite
-    game.add.tween(sprite).to( { alpha: 1 }, 6000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+    sprite = game.add.sprite(game.world.centerX - 125, game.world.centerY - 50, 'Astronaut');
     
+    
+    music.pause();
     //Creates audio
    // music = this.game.add.audio("sound");
         
-    //levelMusic = this.game.add.audio("levelMusic");*/
+    //levelMusic = this.game.add.audio("levelMusic");
 
     },
     
@@ -63,15 +50,13 @@ transitionState.prototype = {
     */
     onComplete: function() {
 
-        //Starts Game Title
-        //this.game.state.start("GameTitle");
-    },
-    
-    //Main Phaser Update Function
-    update: function() {
-        //Sets the direction of the velocity of the GIF background
-        gameTitleBackground.tilePosition.y += background_velocity;
-    
+        //Starts Next Level
+        if(level_2_Transition){
+            this.game.state.start("Level2");
+        }
+        else if(level_5_Transition){
+            this.game.state.start("Level5");
+        }
     }
   
 };
