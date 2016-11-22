@@ -13,23 +13,19 @@ settingsState.prototype = {
   	create: function(){
         
         //Creates the Settings Background
-		gameSettingBackground = this.game.add.sprite(0,0,"titleBackground");
-		gameSettingBackground.scale.setTo(1.3, 1.1);
+		gameSettingBackground = this.game.add.sprite(0,0,"settingsBackground");
+		gameSettingBackground.scale.setTo(.83, 1.1);
         
         //Creates the Settings Label
         settings = this.game.add.text(this.game.world.centerX-200, 100, "Settings", {font: "90px Courier", fill: "#ffffff"});
         
         //Creates the Sound Button 
 		musicButton = this.game.add.button(this.game.world.centerX-140,this.game.world.centerY,"musicToggle",this.toggleSound,this);
-        musicButton.scale.setTo(1.4, 1.4);
-        
-        //Creates the Credits button 
-        creditsButton = this.game.add.button(this.game.world.centerX-90,this.game.world.centerY+120,"creditsButton",this.credits,this);
-        creditsButton.scale.setTo(1.4, 1.4);
+        musicButton.scale.setTo(1, 1);
         
         //Creates the Back button
-        backButton = this.game.add.button(this.game.world.centerX-70,this.game.world.centerY+240,"backButton",this.returnHome,this);
-        backButton.scale.setTo(1.4, 1.4);              
+        backButton = this.game.add.button(this.game.world.centerX-250,this.game.world.centerY+240,"backButton",this.returnHome,this);
+        backButton.scale.setTo(1, 1);              
 	},
     
     

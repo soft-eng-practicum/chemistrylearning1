@@ -69,7 +69,7 @@ level1.prototype = {
         
         //Creating JSON
         
-        switchJSON = Math.floor(Math.random() * 2);
+        switchJSON = Math.floor(Math.random() * 3);
         
         if(switchJSON == 0){
             level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON')); 
@@ -77,6 +77,9 @@ level1.prototype = {
         else if(switchJSON == 1){
             level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_2'));
         }  
+        else if(switchJSON == 2){
+            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_3'));
+        }
         
         //Pauses the Game Title Music when Game starts
         music.pause();
@@ -248,8 +251,8 @@ level1.prototype = {
 
             //Creates the Resume Button
             resumeButton = this.game.add.button(400,600,"play",this.playTheGame,this);
-            resumeButton.anchor.setTo(0.5,1.7);
-            resumeButton.scale.setTo(1.8, 1.8);
+            resumeButton.anchor.setTo(1,4);
+            resumeButton.scale.setTo(1, 1);
 
             //Creates the Quit Button
           /*  quitButton = this.game.add.button(400,700,"play",this.playTheGame,this);

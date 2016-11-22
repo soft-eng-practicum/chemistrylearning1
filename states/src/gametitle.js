@@ -15,25 +15,25 @@ gameTitleState.prototype = {
         
         //Creates the Background
 		gameTitleBackground = this.game.add.sprite(0,0,"titleBackground");
-        gameTitleBackground.scale.setTo(.8, 1.2);
-        
-        //Creates the Game Title
-        titleLabel = this.game.add.sprite(this.game.world.centerX-200,this.game.world.centerY-300,"logo");
-        titleLabel.scale.setTo(.7, .7);
-        //titleLabel = this.game.add.text(this.game.world.centerX-160, 150, "XENON", {font: "100px Courier", fill: "#ffffff"});
+        gameTitleBackground.scale.setTo(1, 1.35);
         
         //Creates the Play Button
-		playButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY,"play",this.playTheGame,this);
+		playButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY - 60,"play",this.playTheGame,this);
 		//playButton.anchor.setTo(0.5,0.5);
-        playButton.scale.setTo(1.4, 1.4);
-        
-        //Creates the Settings Button
-        settingsButton = this.game.add.button(this.game.world.centerX-110,this.game.world.centerY+120,"settings",this.gameSetting,this);
-        settingsButton.scale.setTo(1.4, 1.4);
+        playButton.scale.setTo(1, 1);
         
         //Creates the Leaderboard Button
-		leaderBoardButton = this.game.add.button(this.game.world.centerX-130,620,"leaderboardButton",this.playTheGame,this);
-        leaderBoardButton.scale.setTo(1.4, 1.4);
+		leaderBoardButton = this.game.add.button(this.game.world.centerX-140,this.game.world.centerY+50,"leaderboardButton",this.leaderBoard,this);
+        leaderBoardButton.scale.setTo(1, 1);
+        
+        //Creates the Settings Button
+        settingsButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY+150,"settings",this.gameSetting,this);
+        settingsButton.scale.setTo(1, 1);
+        
+        //Creates the Play Button
+		creditsButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY+250,"credits",this.credits,this);
+		//playButton.anchor.setTo(0.5,0.5);
+        creditsButton.scale.setTo(1, 1);
         
         //Starts the Game Sound 
         if (!music.isPlaying){  
@@ -56,6 +56,15 @@ gameTitleState.prototype = {
         this.game.state.start("Level1");
 	},
     
+    /*Function: leaderBoard()
+    *
+    *Starts LeaderBoard
+    */
+	leaderBoard: function(){
+        //Starts LeaderBoard
+        this.game.state.start("Leaderboard");
+	},
+    
     
     /*Function: gameSetting()
     *
@@ -64,6 +73,15 @@ gameTitleState.prototype = {
     gameSetting: function(){
         //Starts Settings
 		this.game.state.start("Settings");
-    }
+    },
+    
+    /*Function: credits()
+    *
+    *Starts Credits
+    */
+	credits: function(){
+        //Starts Credits
+        this.game.state.start("Credits");
+	}
     
 };
