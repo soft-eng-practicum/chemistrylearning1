@@ -1,10 +1,11 @@
+<p align="center">
+<img src ="https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/states/assets/XE1.png">
+</p>
 
-
+# XENON
 [![npm](https://img.shields.io/badge/platform-mobile web-lightgrey.svg)]()
 [![npm](https://img.shields.io/badge/docs-complete-brightgreen.svg)]()
 [![npm](https://img.shields.io/npm/l/express.svg)]()
-
-# XENON
 
 <p align="center">
 <b><a href="#overview">Overview</a></b>
