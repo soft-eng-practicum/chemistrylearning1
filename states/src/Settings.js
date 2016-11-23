@@ -4,27 +4,64 @@ var settingsState = function(game){
 
 var gameSettingBackground;
 var settings;
-var playButton;
-var settingsButton;
+var musicButton;
+var creditsButton;
+var backButton;
 
 settingsState.prototype = {
   
   	create: function(){
-        //Settings Background
-		gameSettingBackground = this.game.add.sprite(0,0,"");
-		gameTitleBackground.anchor.setTo(0.4,0.4);
         
-        //Settings Label
-        settings = this.game.add.text(110, 100, "Settings", {font: "90px Courier", fill: "#ffffff"});
+        //Creates the Settings Background
+		gameSettingBackground = this.game.add.sprite(0,0,"settingsBackground");
+		gameSettingBackground.scale.setTo(.83, 1.1);
         
-		playButton = this.game.add.button(320,400,"play",this.playTheGame,this);
-		playButton.anchor.setTo(0.5,0.5);
-        playButton.scale.setTo(1.8, 1.8);
+        //Creates the Settings Label
+        settings = this.game.add.text(this.game.world.centerX-200, 100, "Settings", {font: "90px Courier", fill: "#ffffff"});
         
-        settingsButton = this.game.add.button(320,550,"settings",this.gameSetting,this);
-		settingsButton.anchor.setTo(0.5,0.5);
-        settingsButton.scale.setTo(1.8, 1.8);
-                   
-	}
+        //Creates the Sound Button 
+		musicButton = this.game.add.button(this.game.world.centerX-140,this.game.world.centerY,"musicToggle",this.toggleSound,this);
+        musicButton.scale.setTo(1, 1);
         
+        //Creates the Back button
+        backButton = this.game.add.button(this.game.world.centerX-250,this.game.world.centerY+240,"backButton",this.returnHome,this);
+        backButton.scale.setTo(1, 1);              
+	},
+    
+    
+    /*Function: toggleSound()
+    *
+    *Toggles the sound On & Off
+    */
+    toggleSound: function(){
+       if (!this.game.sound.mute) {
+            this.game.sound.mute = true;
+            this.musicButton.tint = 16711680;
+        } 
+        else {
+            this.game.sound.mute = false;
+            this.musicButton.tint = 16777215;
+        }  
+    },
+    
+    
+    /*Function: returnHome()
+    *
+    *Starts the Game Title screen
+    */
+    returnHome: function(){
+        
+        this.game.state.start("GameTitle"); 
+    },
+    
+    
+    /*Function: credits()
+    *
+    *
+    */
+    credits: function(){
+        
+           
+        
+    }
 };

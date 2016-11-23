@@ -1,0 +1,70 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Calcium Chloride", 
+            "right": "CaCl\u2082", 
+            "wrong1": "CCl\u2082",
+            "wrong2": "CaCl",
+            "wrong3": "CaCl\u2083",
+            "wrong4": "Ca\u2082Cl\u2082",
+            "wrong5": "CCl",
+            "wrong6": "Ca\u2082Cl"
+        },
+
+        "formula2": {
+            "name": "Sodium Chloride", 
+            "right": "NaCl", 
+            "wrong1": "NCl",
+            "wrong2": "NiCl\u2082",
+            "wrong3": "NaCl\u2082",
+            "wrong4": "NaCl\u2082",
+            "wrong5": "NCl\u2082",
+            "wrong6": "SCl\u2082",
+            "wrong7": "SCl",
+            "wrong8": "SoCl\u2082",
+            "wrong9": "SoCl"
+        },
+
+        "formula3": {
+            "name": "Carbon Disulfide", 
+            "right": "CS\u2082", 
+            "wrong1": "CaS\u2082",
+            "wrong2": "CS",
+            "wrong3": "C\u2082S",
+            "wrong4": "C\u2082S\u2082",
+            "wrong5": "CuS\u2082",
+            "wrong6": "Ca\u2082S\u2082"
+        },
+        
+        "formula4": {
+            "name": "Potassium Chlorite", 
+            "right": "KClO\u2082", 
+            "wrong1": "PClO\u2082",
+            "wrong2": "KClO",
+            "wrong3": "KClO\u2083",
+            "wrong4": "KClO\u2084",
+            "wrong5": "PClO\u2084",
+            "wrong6": "NaClO",
+            "wrong7": "CaClO",
+            "wrong8": "PClO\u2083",
+            "wrong9": "KCl",
+            "wrong10": "PCl",
+            "wrong11": "PCl\u2084"
+        },
+        
+        "formula5": {
+            "name": "Tin(IV) Bromide", 
+            "right": "SnBr\u2084", 
+            "wrong1": "TiBr\u2084",
+            "wrong2": "TlBr\u2084",
+            "wrong3": "Sn\u2082Br\u2082",
+            "wrong4": "Ti\u2082Cl\u2082",
+            "wrong5": "Sn\u2084Cl",
+            "wrong6": "Ti\u2084Cl",
+            "wrong7": "Br\u2084Sn",
+            "wrong8": "SnBrO"
+        }
+        
+    }
+}
+

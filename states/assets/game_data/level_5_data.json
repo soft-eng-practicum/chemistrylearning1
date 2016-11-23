@@ -1,0 +1,70 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Ammonium Nitrate", 
+            "right": "NH\u2084NO\u2083", 
+            "wrong1": "NH\u2084NO\u2082",
+            "wrong2": "NH\u2084NO",
+            "wrong3": "NO\u2083NH\u2084",
+            "wrong4": "N\u2083NO\u2083",
+            "wrong5": "AmNO\u2083",
+            "wrong6": "NNO\u2083"
+        },
+
+        "formula2": {
+            "name": "Copper(I) Chloride", 
+            "right": "CuCl", 
+            "wrong1": "ClCu",
+            "wrong2": "CoCl\u2082",
+            "wrong3": "CoCl\u2082",
+            "wrong4": "CuCl\u2082",
+            "wrong5": "Cl\u2082Cu",
+            "wrong6": "CpCl",
+            "wrong7": "KuCl",
+            "wrong8": "KCl",
+            "wrong9": "CCl"
+        },
+
+        "formula3": {
+            "name": "Manganese(V) Bromide", 
+            "right": "MnBr\u2085", 
+            "wrong1": "MgBr\u2085",
+            "wrong2": "Mn\u2085Br",
+            "wrong3": "MNBr\u2085",
+            "wrong4": "MnB\u2085",
+            "wrong5": "Mg\u2085Br\u2085",
+            "wrong6": "BrMn\u2085"
+        },
+        
+        "formula4": {
+            "name": "Lead(II) Sulfide", 
+            "right": "PbS\u2082", 
+            "wrong1": "PS",
+            "wrong2": "LdS",
+            "wrong3": "Ld\u2082S",
+            "wrong4": "LaS",
+            "wrong5": "Le\u2082S\u2082",
+            "wrong6": "PbSO\u2084",
+            "wrong7": "PbSO\u2083",
+            "wrong8": "SPb",
+            "wrong9": "PbS\u2082",
+            "wrong10": "LeS",
+            "wrong11": "La\u2082S\u2082"
+        },
+        
+        "formula5": {
+            "name": "Sodium Nitride", 
+            "right": "Na\u2083N", 
+            "wrong1": "S\u2083Ni\u2083",
+            "wrong2": "NaN",
+            "wrong3": "K\u2083N",
+            "wrong4": "NaNH\u2083",
+            "wrong5": "NaNH\u2082",
+            "wrong6": "Na\u2082N",
+            "wrong7": "NNa\u2082",
+            "wrong8": "So\u2083N"
+        }
+        
+    }
+}
+

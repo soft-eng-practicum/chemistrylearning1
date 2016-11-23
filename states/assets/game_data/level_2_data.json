@@ -1,0 +1,71 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Magnesium Chloride", 
+            "right": "MgCl\u2082", 
+            "wrong1": "MCl\u2082",
+            "wrong2": "MnCl\u2082",
+            "wrong3": "MgCl",
+            "wrong4": "MgC\u2082",
+            "wrong5": "Mg(II)Cl\u2082",
+            "wrong6": "Mg(I)Cl",
+            "wrong7": "MCl"
+        },
+
+        "formula2": {
+            "name": "Barium Chloride", 
+            "right": "BaCl\u2082", 
+            "wrong1": "BCl\u2082",
+            "wrong2": "BCl",
+            "wrong3": "Cl\u2082Ba",
+            "wrong4": "ClB",
+            "wrong5": "BrCl\u2082",
+            "wrong6": "Ba\u00B2Cl",
+            "wrong7": "Ba\u2082Cl\u2082",
+            "wrong8": "B\u2082Cl",
+            "wrong9": "BCl\u2083"
+        },
+
+        "formula3": {
+            "name": "Calcium Sulfide", 
+            "right": "CaS", 
+            "wrong1": "Ca\u2082S",
+            "wrong2": "KaS",
+            "wrong3": "CaSO",
+            "wrong4": "CaSO\u2083",
+            "wrong5": "CaSO\u2084",
+            "wrong6": "KSO\u2084"
+        },
+        
+        "formula4": {
+            "name": "Lithium Sulfide", 
+            "right": "Li\u2082S", 
+            "wrong1": "LiO",
+            "wrong2": "LiS",
+            "wrong3": "SLi",
+            "wrong4": "LiSO\u2084",
+            "wrong5": "La\u2084S",
+            "wrong6": "LiS\u2083",
+            "wrong7": "Li\u2082S\u2082",
+            "wrong8": "Li\u2083O",
+            "wrong9": "LaSO\u2083",
+            "wrong10": "SO\u2084La",
+            "wrong11": "L\u2082O"
+        },
+        
+        "formula5": {
+            "name": "Copper(II) Chloride", 
+            "right": "CuCl\u2082", 
+            "wrong1": "Cl\u2082Cu",
+            "wrong2": "CuCl",
+            "wrong3": "CoCl\u2082",
+            "wrong4": "ClCu",
+            "wrong5": "CCl\u2082",
+            "wrong6": "KuCl",
+            "wrong7": "KCl\u2082",
+            "wrong8": "CrCl\u2082"
+        }
+        
+    }
+}
+

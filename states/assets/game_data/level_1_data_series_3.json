@@ -1,0 +1,59 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Potassium Chloride", 
+            "right": "KCl", 
+            "wrong1": "PCl",
+            "wrong2": "K\u2082Cl\u2082",
+            "wrong3": "K\u2082Cl",
+            "wrong4": "ClK",
+            "wrong5": "PC",
+            "wrong6": "KC"
+        },
+
+        "formula2": {
+            "name": "Sodium Iodide", 
+            "right": "NaI", 
+            "wrong1": "SI",
+            "wrong2": "Na\u2082I",
+            "wrong3": "NaI\u2082",
+            "wrong4": "NaIO\u2083",
+            "wrong5": "Na\u2082I\u2082",
+            "wrong6": "N\u2082I\u2082"
+        },
+
+        "formula3": {
+            "name": "Potassium Iodide", 
+            "right": "KI", 
+            "wrong1": "IK",
+            "wrong2": "PI",
+            "wrong3": "IP",
+            "wrong4": "KIO",
+            "wrong5": "K\u2082I\u2082",
+            "wrong6": "KIO\u2083"
+        },
+        
+        "formula4": {
+            "name": "Aluminum Nitride", 
+            "right": "AlN", 
+            "wrong1": "AlNH\u2083",
+            "wrong2": "AN",
+            "wrong3": "NAl\u2083",
+            "wrong4": "AlNH\u2082",
+            "wrong5": "AlNO\u2083",
+            "wrong6": "AlNO\u2082"
+        },
+        
+        "formula5": {
+            "name": "Sodium Peroxide", 
+            "right": "Na\u2082O\u2082", 
+            "wrong1": "NaO",
+            "wrong2": "NaO\u2082",
+            "wrong3": "NO\u2082",
+            "wrong4": "NONO",
+            "wrong5": "Na\u2082O",
+            "wrong6": "Na\u2082O\u2083"
+        }    
+    }
+}
+
