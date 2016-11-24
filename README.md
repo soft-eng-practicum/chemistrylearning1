@@ -22,21 +22,24 @@
 
 **Team Name:** XE1
 
-**Repo URL:**  [Check Out Our Code!] (https://github.com/soft-eng-practicum/chemistrylearning1.git)
+**Repository:**  [Check Out Our Code!] (https://github.com/soft-eng-practicum/chemistrylearning1.git)
 
-**Process Tool & URL:** [Pivotal Tracker] (https://www.pivotaltracker.com/n/projects/1858563)
+**Process Tool:** [Pivotal Tracker] (https://www.pivotaltracker.com/n/projects/1858563)
 
-**Other Communication Tools:** [Slack Channel] (https://ggc-dev.slack.com/messages/chemteam/details/)
-
-**Team Members:**  
-
-1. Jawan Higgins: (**Primary**: *Code Architect*) (**Secondary**: *Testing*)
+**Communication Tool:** [Slack Channel] (https://ggc-dev.slack.com/messages/chemteam/details/)
 
 
-2. Adele Francois: (**Primary**: *Documentation Lead*) (**Secondary**: *Project Manager*)
+
+
           
-          
-3. John Rose: (**Primary**: *Client Liaison*) (**Secondary**: *Lead Developer*)
-          
-          
-4. Adem Abafogi:(**Primary**: *UI/UX design leader*) (**Secondary**: *Database Modeler*)
+
+##  CREDITS
+
+This project could not have been possible without the following indivduals and their assigned roles:
+
+* Adele Francois [[@skyyfall007]] (https://github.com/skyyfall007) :  ***Documentation Specialist*** & ***Project Manager***
+* Jawan Higgins  [[@Jwork26]]      (https://github.com/Jwork26)    :  ***Code Architect*** & ***Testing***
+* John Rose [[@jrose27]]           (https://github.com/jrose27)    :  ***Client Liaison*** & ***Lead Developer***
+* Adem Abafogi [[@aabafogi]]      (https://github.com/aabafogi)    :  ***Database Modeler*** & ***UI/UX Design***
+* Dr. Cengiz Gunay [[@cengique]]  (https://github.com/cengique)    :  ***Sponsor***
+* Dr. Thomas Gluick                                                :  ***Partner***
