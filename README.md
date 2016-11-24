@@ -29,7 +29,11 @@
 **Communication Tool:** [Slack Channel] (https://ggc-dev.slack.com/messages/chemteam/details/)
 
 
+##  OVERVIEW
 
+##  FEATURES
+
+##  INSTALLATION
 
           
 
@@ -43,3 +47,6 @@ This project could not have been possible without the following indivduals and t
 * Adem Abafogi [[@aabafogi]]      (https://github.com/aabafogi)    :  ***Database Modeler*** & ***UI/UX Design***
 * Dr. Cengiz Gunay [[@cengique]]  (https://github.com/cengique)    :  ***Sponsor***
 * Dr. Thomas Gluick                                                :  ***Partner***
+
+
+##  LICENSE
