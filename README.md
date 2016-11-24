@@ -42,7 +42,7 @@
 This project could not have been possible without the following indivduals and their assigned roles:
 
 * Adele Francois [[@skyyfall007]] (https://github.com/skyyfall007) :  ***Documentation Specialist*** & ***Project Manager***
-* Jawan Higgins  [[@Jwork26]]      (https://github.com/Jwork26)    :  ***Code Architect*** & ***Testing***
+* Jawan Higgins  [[@Jwork26]]      (https://github.com/Jwork26)    :  ***Code Architect*** & ***Software Testing***
 * John Rose [[@jrose27]]           (https://github.com/jrose27)    :  ***Client Liaison*** & ***Lead Developer***
 * Adem Abafogi [[@aabafogi]]      (https://github.com/aabafogi)    :  ***Database Modeler*** & ***UI/UX Design***
 * Dr. Cengiz Gunay [[@cengique]]  (https://github.com/cengique)    :  ***Sponsor***
