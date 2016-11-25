@@ -31,6 +31,9 @@
 
 ##  OVERVIEW
 
+Xenon is a optimized mobile web game that allows students to practice and master the skill of naming chemical
+formulas/nomenclature in a fun format!
+
 ##  FEATURES
 
 ##  DOCUMENTATION
