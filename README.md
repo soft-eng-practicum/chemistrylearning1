@@ -35,6 +35,9 @@
 
 ##  DOCUMENTATION
 
+Documentation process involves separate folder to accommodate the parties of:
+
+[ ***DEVELOPERS*** | ***CLIENT*** | ***USER*** ] (https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation)
           
 
 ##  CREDITS
