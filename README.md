@@ -4,7 +4,7 @@
 
 # XENON
 [![npm](https://img.shields.io/badge/platform-mobile web-lightgrey.svg)]()
-[![npm](https://img.shields.io/badge/docs-complete-brightgreen.svg)]()
+[![npm](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation)
 [![npm](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg)](https://creativecommons.org/licenses/by-nc/4.0/legalcode)
 
 <p align="center">
