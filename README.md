@@ -12,7 +12,7 @@
 |
 <b><a href="#features">Features</a></b>
 |
-<b><a href="#installation">Installation</a></b>
+<b><a href="#documentation">Documentation</a></b>
 |
 <b><a href="#credits">Credits</a></b>
 |
@@ -33,7 +33,7 @@
 
 ##  FEATURES
 
-##  INSTALLATION
+##  DOCUMENTATION
 
           
 
