@@ -61,4 +61,4 @@ This project could not have been possible without the following indivduals and t
 The properties of Xenon are protected under the following INTELLECTUAL PROPERTY AND LICENSING AGREEMENT:
 
 
-[XE1 Agreement](https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/XE1%20Intellectual%20Property%20and%20Licensing%20Agreement.pdf)
+[XE1 Agreement](https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/Final%20XE1%20Intellectual%20Property%20and%20Licensing%20Agreement.pdf)
