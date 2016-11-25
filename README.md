@@ -35,7 +35,7 @@
 
 ##  DOCUMENTATION
 
-Documentation process involves separate folder to accommodate the parties of:
+Documentation process involves separate folders to accommodate the parties of:
 
 [***DEVELOPER***](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation/dev-docs)
 |
