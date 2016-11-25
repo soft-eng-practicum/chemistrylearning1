@@ -37,14 +37,12 @@
 
 Documentation process involves separate folder to accommodate the parties of:
 
-<p align="center">
-<b><a href="#developer">DEVELOPER</a></b>
+[***DEVELOPER***](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation/dev-docs)
 |
-<b><a href="#client">CLIENT</a></b>
+[***CLIENT***](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation/client-docs)
 |
-<b><a href="#user">USER</a></b>
-</p>
-          
+[***USER***](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation/user-docs)
+
 
 ##  CREDITS
 
