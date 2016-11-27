@@ -1,6 +1,4 @@
-
-var leaderboard = function(game) {
-    
+var leaderboardState = function(game){
     
 };
 
@@ -14,15 +12,11 @@ var leaderboard_title;
 
 var home_screen_button;
 
-var filter;
-var sprite;
 
-leaderboard.prototype = {
- 
-    //Main Phaser Create Function
-  	create: function() {
- 
-        //Creates the Background
+leaderboardState.prototype = {
+  
+  	create: function(){
+         //Creates the Background
 		leaderboard_background = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'leaderboard_background_image');
         leaderboard_background_velocity = 0.5;
         
@@ -39,6 +33,11 @@ leaderboard.prototype = {
         // Grab the data from the file and display it to the screen
         leaderboard_data = JSON.parse(this.game.cache.getText('leaderboard_JSON'));
         
+        
+        /*
+            Put for loops for getting data from JSON file and printing 
+            that data to the screen in try/cath to handle TypeError
+        */
         try {
             
             // Create text fields and put them into the leaderboard_text_array
@@ -56,15 +55,18 @@ leaderboard.prototype = {
             }
             
         } catch (err) {
+            // Print error to console
             console.log("This is the problem --> " + err.name);
         }
         
         //Creates the Leaderboard Button
-		home_screen_button = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 320, "home_button_image", this.returnHome, this);
+		home_screen_button = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 320, "home_button_image", this.returnHome, this);  
         home_screen_button.anchor.set(0.5);
         home_screen_button.align = 'center';
         home_screen_button.scale.setTo(0.95, 0.95);
         
+        
+        // Print the crap I am after to the console to see if it is working
         console.log("This is the first value in JSON file: "+leaderboard_data.leaderboard[0].name +
                         " " + leaderboard_data.leaderboard[0].high_score);
         
@@ -77,8 +79,18 @@ leaderboard.prototype = {
         leaderboard_background.tilePosition.y += leaderboard_background_velocity;
     },
     
+    /*
+        Function returns user back to game tittle state if home button is pressed
+    */
     returnHome: function() {
         this.game.state.start("GameTitle");
+    }, 
+    
+    /*
+    *   Function: credits()
+    *
+    */
+    credits: function(){
+    
     }
-
 };
