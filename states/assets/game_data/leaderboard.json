@@ -1,0 +1,14 @@
+{ 
+    "leaderboard": [
+        
+        {"name": "JH", "high_score": "9,000,000"},
+        {"name": "JR", "high_score": "8,000,000"},
+        {"name": "AF", "high_score": "7,000,000"},
+        {"name": "AA", "high_score": "6,000,000"},
+        {"name": "CG", "high_score": "5,000,000"},
+        {"name": "JC", "high_score": "4,000,000"},
+        {"name": "RD", "high_score": "3,000,000"},
+        {"name": "FT", "high_score": "2,000,000"},
+        {"name": "SD", "high_score": "1,000,000"}
+   ]
+}
