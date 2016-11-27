@@ -28,10 +28,10 @@ gameOverState.prototype = {
         }
         
         //Creates the High Score label
-        scoreLabel = this.game.add.text(this.game.world.centerX-200, 380, "HIGH SCORE: " + score, {font: "55px Courier", fill: "#ffffff"});
+        scoreLabel = this.game.add.text(this.game.world.centerX-230, 380, "HIGH SCORE: " + score, {font: "55px Courier", fill: "#ffffff"});
         
         //Creates the Play Button
-		playButton = this.game.add.button(this.game.world.centerX-100,500,"play",this.playTheGame,this);
+		playButton = this.game.add.button(this.game.world.centerX-100,500,"Gameover_Home",this.playTheGame,this);
         playButton.scale.setTo(1, 1);
         
         //Creates the Leaderboard Button

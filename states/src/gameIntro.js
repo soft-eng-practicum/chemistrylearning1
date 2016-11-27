@@ -31,6 +31,7 @@ gameIntroState.prototype = {
 
     timeTween.onComplete.add(this.onComplete, this);    
     
+   
     //Creates a sprite in the middle of the screen 
     sprite = game.add.sprite(game.world.centerX - 300, game.world.centerY -100, 'XE1');
    // sprite.scale.set(0.7, 0.5);
