@@ -27,22 +27,12 @@ gameIntroState.prototype = {
     titleLabel = this.game.add.text(0, 0, "", {font: "50px Courier", fill: "#ffffff"});
 
     //Creates a Tween for the Title Label  
-    timeTween = this.game.add.tween(titleLabel).to( { alpha: 1 }, /*6000*/0, "Linear", true, 300);
+    timeTween = this.game.add.tween(titleLabel).to( { alpha: 1 }, 6000/*0*/, "Linear", true, 300);
 
     timeTween.onComplete.add(this.onComplete, this);    
     
-    //Creates Logo that moves around the screen
-    logo = this.add.sprite(0, 0, "redFlask");
-    logo.scale.set(0.3);
-
-    var w = (game.width) - logo.width;
-    var h = (game.height) - logo.height;
-
-    //Creates a Tween for the Logo
-    tween = game.add.tween(logo).to( { x: [ w, w, 0, 0 ], y: [ 0, h, h, 0 ] }, 4000, "Sine.easeInOut", true, -1, false);
-
     //Creates a sprite in the middle of the screen 
-    sprite = game.add.sprite(game.world.centerX - 240, game.world.centerY -200, 'Astronaut');
+    sprite = game.add.sprite(game.world.centerX - 300, game.world.centerY -100, 'XE1');
    // sprite.scale.set(0.7, 0.5);
     sprite.alpha = 0.2;
 
@@ -52,7 +42,7 @@ gameIntroState.prototype = {
     //Creates audio
     music = this.game.add.audio("sound");
         
-    //levelMusic = this.game.add.audio("levelMusic");
+    levelMusic = this.game.add.audio("levelMusic");
 
     },
     

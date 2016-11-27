@@ -26,8 +26,8 @@ var choiceLabel;
 var menu;
 var resumeButton;
 var quitButton;
-var pauseW = 30;
-var pauseH = 600;
+var pauseW = 600;
+var pauseH = 800;
 
 var level_5_data;
 var randomElement;
@@ -79,7 +79,7 @@ level5.prototype = {
         countDownLabel = this.game.add.text(this.game.world.centerX-60, 10, "", {font: "120px Courier", fill: "#ffffff"});
         
         //Creates the Instructions Label
-        instructions = this.game.add.text(this.game.world.centerX-295, 130, "Press Under The Correct Flask", {font: "34px Courier", fill: "WHITE"});
+        instructions = this.game.add.text(this.game.world.centerX-295, 130, "Press Under The Correct Flask", {font: "34px Courier", fill: "BLACK"});
         
         //Creates short and long beeps for countdown
         shortBeep = this.game.add.audio("shortBeep");
@@ -132,15 +132,14 @@ level5.prototype = {
         f4 = flask.create(f3.x + 150, 200, "purpleFlask");
         
         
-        
         //Sets styling for Answer Text on flask
-        var style1 = { font: "27px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: f1.width, align: "center", backgroundColor: "" };
+        var style1 = { font: "30px Arial", fill: "white", wordWrap: true, wordWrapWidth: f1.width, align: "center", backgroundColor: "" };
         
-        var style2 = { font: "27px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: f2.width, align: "center", backgroundColor: "" };
+        var style2 = { font: "30px Arial", fill: "white", wordWrap: true, wordWrapWidth: f2.width, align: "center", backgroundColor: "" };
         
-        var style3 = { font: "27px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: f3.width, align: "center", backgroundColor: "" };
+        var style3 = { font: "30px Arial", fill: "white", wordWrap: true, wordWrapWidth: f3.width, align: "center", backgroundColor: "" };
         
-        var style4 = { font: "27px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: f4.width, align: "center", backgroundColor: "" };
+        var style4 = { font: "30px Arial", fill: "white", wordWrap: true, wordWrapWidth: f4.width, align: "center", backgroundColor: "" };
 
         //Create Text1 on flask
         text1 = this.game.add.text(f1.x, f1.y, "", style1, flask);
@@ -245,31 +244,20 @@ level5.prototype = {
                           
         //Code for the pause menu
         //Create a pause label to use as a button
-        pause_label = this.game.add.text(pauseW, 40, "PAUSE", { font: '30px Arial', fill: 'RED' });
+        pause_label = this.game.add.text(30, 40, "PAUSE", { font: '30px Arial', fill: 'RED' });
         pause_label.inputEnabled = true;
 
         pause_label.events.onInputUp.add(function() {
             //When the pause button is pressed, the game is paused
             this.game.paused = true;
+            
+            pauseBackground = this.game.add.sprite(0,0,"space_background");
+            pauseBackground.scale.setTo(.6, .8);
 
-            //Creates the pause menu
-            menu = this.game.add.sprite(pauseW, pauseH, "background");
-            menu.anchor.setTo(0.1, 0.5);
-            menu.scale.setTo(0.5, 0.75);
+            //Creates the pause menu picture
+            menu = this.game.add.sprite(pauseW/2 + 135, pauseH/2 + 90, "menu");
+            menu.anchor.setTo(1, 1);
 
-            //A Choice label to illustrate which menu item was chosen.
-            choiceLabel = this.game.add.text(this.game.world.centerX, pauseH-300, 'Click to continue', { font: '50px Arial', fill: '#fff' });
-            choiceLabel.anchor.setTo(0.5, 0.5);
-
-            //Creates the Resume Button
-            resumeButton = this.game.add.button(400,600,"play",this.playTheGame,this);
-            resumeButton.anchor.setTo(0.5,1.7);
-            resumeButton.scale.setTo(1.8, 1.8);
-
-            //Creates the Quit Button
-            quitButton = this.game.add.button(400,600,"play",this.playTheGame,this);
-            quitButton.anchor.setTo(0.5,0.3);
-            quitButton.scale.setTo(1.8, 1.8);
         });
 
     // An input listener that returns from being paused
@@ -282,32 +270,34 @@ level5.prototype = {
     function unpause(event) {
         // Only act if paused
         if (this.game.paused) {
-          
-            menu.destroy();
-            choiceLabel.destroy();
-            resumeButton.destroy();
-            quitButton.destroy();
-
-            // Unpause the game
-            this.game.paused = false;
+                        
+            //calculate corners of menu
+            var x1 = pauseW/2 - 270/2, x2 = pauseW/2 + 270/2,
+                y1 = pauseH/2 - 180/2, y2 = pauseH/2 + 180/2;
+            
+            //Check if the click was inside the menu
+            if(event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2){
+                var choiceMap = ['Resume', 'Resume', 'Resume', 'Quit', 'Quit', 'Quit'];
+                
+                var x = event.x - x1;
+                var y = event.y - y1;
+                
+                var choice = Math.floor(x / 90) + 3*Math.floor(y / 90);
+                
+                if(choiceMap[choice] == "Quit"){
+                    this.game.paused = false;
+                    this.game.state.start("GameOver");
+                }
+                if(choiceMap[choice] == "Resume"){
+                    pauseBackground.visible = false;
+                    this.game.paused = false;
+                    menu.destroy();
+                }
             }
+          }
         };
     },
     
-    
-    /*Function: playTheGame()
-    *
-    *Kills or Destroys the Pause Menu
-    */
-    playTheGame: function(){
-        menu.destroy();
-        choiceLabel.destroy();
-        resumeButton.destroy();
-        quitButton.destroy();
-        
-        this.game.paused = false;  
-    },
-
     
     /*Function: update()
     *
@@ -368,7 +358,7 @@ level5.prototype = {
     moveSprite: function(pointer) {
         
         var duration = (this.game.physics.arcade.distanceToPointer(guy, pointer) / 300) * 400; 
-        
+
         guyTween = this.game.add.tween(guy).to({ x: pointer.x -50 }, duration, Phaser.Easing.Linear.None, true);
     },
     

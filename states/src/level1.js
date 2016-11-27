@@ -33,6 +33,7 @@ var resumeButton;
 var quitButton;
 var pauseW = 30;
 var pauseH = 600;
+var pauseBackground;
 
 var phaserJSON;
 var randomElement;
@@ -83,6 +84,14 @@ level1.prototype = {
         
         //Pauses the Game Title Music when Game starts
         music.pause();
+        
+        //Starts the Level Sound 
+        if (!music.isPlaying){  
+           levelMusic.play();
+        }
+        else{
+            
+        }
         
         //levelMusic.play();
         
@@ -235,31 +244,22 @@ level1.prototype = {
         level_2_Transition = true;
                   
         //Code for the pause menu
-        //Creates a pause label to use as a button
+        //Create a pause label to use as a button
         pause_label = this.game.add.text(30, 40, "PAUSE", { font: '30px Arial', fill: 'RED' });
         pause_label.inputEnabled = true;
 
         pause_label.events.onInputUp.add(function() {
-            
             //When the pause button is pressed, the game is paused
             this.game.paused = true;
+            
+            pauseBackground = this.game.add.sprite(0,0,"space_background");
+            pauseBackground.scale.setTo(.6, .8);
 
-            //Creates the pause menu
-          //  menu = this.game.add.sprite(pauseW, pauseH, "background");
-          //  menu.anchor.setTo(0.1, 0.5);
-          //  menu.scale.setTo(0.5, 0.75);
+            //Creates the pause menu picture
+            menu = this.game.add.sprite(pauseW/2 + 135, pauseH/2 + 90, "menu");
+            menu.anchor.setTo(1, 1);
 
-            //Creates the Resume Button
-            resumeButton = this.game.add.button(400,600,"play",this.playTheGame,this);
-            resumeButton.anchor.setTo(1,4);
-            resumeButton.scale.setTo(1, 1);
-
-            //Creates the Quit Button
-          /*  quitButton = this.game.add.button(400,700,"play",this.playTheGame,this);
-            quitButton.anchor.setTo(0.5,0.3);
-            quitButton.scale.setTo(1.8, 1.8);*/
         });
-    
 
     // An input listener that returns from being paused
     this.game.input.onDown.add(unpause, self);
@@ -268,18 +268,34 @@ level1.prototype = {
     *
     *Handles the functions in the pause menu
     */
-    function unpause(event){
+    function unpause(event) {
         // Only act if paused
-        if(this.game.paused){
-          
-           // menu.destroy();
-            //choiceLabel.destroy();
-            resumeButton.destroy();
-            //quitButton.destroy();
-
-            // Unpause the game
-            this.game.paused = false;
+        if (this.game.paused) {
+            
+            //calculate corners of menu
+            var x1 = pauseW/2 - 270/2, x2 = pauseW/2 + 270/2,
+                y1 = pauseH/2 - 180/2, y2 = pauseH/2 + 180/2;
+            
+            //Check if the click was inside the menu
+            if(event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2){
+                var choiceMap = ['Resume', 'Resume', 'Resume', 'Quit', 'Quit', 'Quit'];
+                
+                var x = event.x - x1;
+                var y = event.y - y1;
+                
+                var choice = Math.floor(x / 90) + 3*Math.floor(y / 90);
+                
+                if(choiceMap[choice] == "Quit"){
+                    this.game.paused = false;
+                    this.game.state.start("GameOver");
+                }
+                if(choiceMap[choice] == "Resume"){
+                    pauseBackground.visible = false;
+                    this.game.paused = false;
+                    menu.destroy();
+                }
             }
+          }
         };
     },
     

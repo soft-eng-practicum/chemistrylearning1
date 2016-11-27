@@ -12,11 +12,16 @@ preloadState.prototype = {
     
     //Main Phaser Preload Function
 	preload: function(){ 
+
         //Load JSON
         
       //  this.game.load.text("chemicalFormul   a", "assets/ChemistryGame.json");
         
       //  this.game.load.text("chemicalFormula2", "assets/ChemistryGame2.json");
+     
+        //FONTS
+        this.game.load.script("gameFont1", "assets/GOOGLE_FONTS/Bangers/Bangers.ttf");
+
         
         //Loading Label
         loadingText = this.game.add.text(this.game.world.centerX-250, 350, "Loading... 0%", { font: "60px Courier", fill: "#ffffff"});
@@ -43,6 +48,8 @@ preloadState.prototype = {
         this.game.load.image('space_background', "assets/space_background.jpg");
         
         this.game.load.image('Astronaut', "assets/Astronaut.png");
+        
+        this.game.load.image('XE1', "assets/XE1.png");
         
         
         
@@ -71,7 +78,10 @@ preloadState.prototype = {
         
         //SETTINGS IMAGES & SOUNDS
         this.game.load.image("settingsBackground","assets/settingsBackground.png");
-        this.game.load.image("musicToggle","assets/musicButton.png");
+        
+        this.game.load.image("musicOn","assets/Sound_On_Button.png");
+        
+        this.game.load.image("musicOff","assets/Sound_Off_Button.png");
         
         this.game.load.image("backButton","assets/Back_Button.png");
         
@@ -106,6 +116,8 @@ preloadState.prototype = {
         
         this.game.load.image("level1Background","assets/Space_Level1.png");
         
+        this.game.load.image("menu","assets/Resume_Quit.png");
+        
         this.game.load.image("spaceCraft", "assets/rocket.png");
         
         this.game.load.image("bullet", "assets/Bullets.png");
@@ -134,7 +146,8 @@ preloadState.prototype = {
         
         //LEVEL 2 IMAGES, SOUNDS, & JSON
         
-        this.game.load.image('level_2_background_image', "assets/level_2_background.jpg");
+        this.game.load.image('level_2_background_image', "assets/bubble background.png");
+        
         this.game.load.image('bubble_image', "assets/bubble256.png");
         
         //Load JSON file as a text file
@@ -150,16 +163,14 @@ preloadState.prototype = {
         
         
         //LEVEL 3 IMAGES & SOUNDS
-<<<<<<< HEAD
-        this.game.load.text('level_3_JSON', "assets/game_data/level_3_data.json");
+	this.game.load.text('level_3_JSON', "assets/game_data/level_3_data.json");
         
         
         
         
-=======
+
         
  
->>>>>>> 9485265703c7e0f85f8b753e104fc986de5494b9
         
         //LEVEL 4 IMAGES & SOUNDS
         
