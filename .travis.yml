@@ -1,8 +1,7 @@
 language: node_js
 
 node_js:
-  - "6.1"
-  - "iojs"
+  - "6.9.1"
   
 before_script:
   - composer install --no-interaction
