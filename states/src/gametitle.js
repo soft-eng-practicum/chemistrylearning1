@@ -23,23 +23,19 @@ gameTitleState.prototype = {
         playButton.scale.setTo(1, 1);
         
         //Creates the Leaderboard Button
-		leaderBoardButton = this.game.add.button(this.game.world.centerX-140,this.game.world.centerY+50,"leaderboardButton",this.leaderBoard,this);
+		leaderBoardButton = this.game.add.button(this.game.world.centerX-140, this.game.world.centerY + 50,"leaderboardButton", this.leaderBoard, this);
         leaderBoardButton.scale.setTo(1, 1);
         
         //Creates the Settings Button
         settingsButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY+150,"settings",this.gameSetting,this);
         settingsButton.scale.setTo(1, 1);
         
-<<<<<<< HEAD
-        //Creates the Leaderboard Button
-		leaderBoardButton = this.game.add.button(this.game.world.centerX-130,620,"leaderboardButton",this.showLeaderboard,this);
-        leaderBoardButton.scale.setTo(1.4, 1.4);
-=======
+        
         //Creates the Play Button
 		creditsButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY+250,"credits",this.credits,this);
 		//playButton.anchor.setTo(0.5,0.5);
         creditsButton.scale.setTo(1, 1);
->>>>>>> 9485265703c7e0f85f8b753e104fc986de5494b9
+
         
         //Starts the Game Sound 
         if (!music.isPlaying){  
@@ -81,13 +77,6 @@ gameTitleState.prototype = {
 		this.game.state.start("Settings");
     },
     
-<<<<<<< HEAD
-   //Show leaderboard 
-    showLeaderboard: function() {
-    
-        this.game.state.start("Leaderboard");
-    }
-=======
     /*Function: credits()
     *
     *Starts Credits
@@ -96,7 +85,7 @@ gameTitleState.prototype = {
         //Starts Credits
         this.game.state.start("Credits");
 	}
->>>>>>> 9485265703c7e0f85f8b753e104fc986de5494b9
+
     
   
     

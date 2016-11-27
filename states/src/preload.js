@@ -93,16 +93,8 @@ preloadState.prototype = {
         //CREDITS SCREEN IMAGES
         this.game.load.image("creditsText","assets/Credits_Text.png");
         
-        
-        
         //TRANSITION SCREEN IMAGES
         this.game.load.image("transitionBackground","assets/transitionBackground.png");
-        
-        
-        
-        //LEADERBOARD SCREEN IMAGES
-        
-        
            
         //LEVEL 1 IMAGES, SOUNDS, & JSON
         
