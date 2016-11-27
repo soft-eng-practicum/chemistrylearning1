@@ -33,7 +33,7 @@ preloadState.prototype = {
             if(progressDisplay < 100){
 
                 if(progressDisplay < this.game.load.progress){
-                    loadingText.text = 'loading... '+(++progressDisplay)+'%';
+                    loadingText.text = 'Loading... '+(++progressDisplay)+'%';
                 }
             }
             else{
@@ -65,12 +65,15 @@ preloadState.prototype = {
         
         this.game.load.image("credits","assets/Home_Screen_Credits.png");
         
-        this.game.load.image("Gameover_Home","assets/Gameover_Home.png");
-
         
         //Load Audio
         this.game.load.audio("sound", "assets/Autumn Nights.mp3");
         
+        
+        
+        //GAMEOVER IMAGES
+        this.game.load.image("Gameover_Home","assets/Gameover_Home.png");   
+        this.game.load.image("Gameover_Label","assets/Game_Over_Pink.png");
         
         
         //LEADERBOARD IMAGES & JSON
@@ -81,6 +84,8 @@ preloadState.prototype = {
         this.game.load.image('home_button_image',"assets/home_button.png");
         
         this.game.load.image('High_Scores_Label',"assets/High_Scores_Label.png");
+        
+        
         
         //SETTINGS IMAGES & SOUNDS
         this.game.load.image("settingsBackground","assets/settingsBackground.png");
@@ -94,6 +99,9 @@ preloadState.prototype = {
         this.game.load.image("leaderboardButton","assets/Home_Screen_Leaderboard.png");
         
         this.game.load.image("creditsButton","assets/creditsButton.png");
+        
+        this.game.load.image("Settings_Label","assets/Settings_Label.png");
+        
         
         
         //CREDITS SCREEN IMAGES
