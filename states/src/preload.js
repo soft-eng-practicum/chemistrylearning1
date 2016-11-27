@@ -14,7 +14,7 @@ preloadState.prototype = {
 	preload: function(){ 
         //Load JSON
         
-      //  this.game.load.text("chemicalFormula", "assets/ChemistryGame.json");
+      //  this.game.load.text("chemicalFormul   a", "assets/ChemistryGame.json");
         
       //  this.game.load.text("chemicalFormula2", "assets/ChemistryGame2.json");
         
@@ -59,7 +59,12 @@ preloadState.prototype = {
         //Load Audio
         this.game.load.audio("sound", "assets/Autumn Nights.mp3");
         
+        //LEADERBOARD IMAGES & JSON
+        this.game.load.image('leaderboard_background_image', "assets/space_background.jpg");
         
+        this.game.load.text('leaderboard_JSON', "assets/game_data/leaderboard.json");
+        
+        this.game.load.image('home_button_image',"assets/home_button.png");
         
         //SETTINGS IMAGES & SOUNDS
         
@@ -123,7 +128,7 @@ preloadState.prototype = {
         
         
         //LEVEL 3 IMAGES & SOUNDS
-        
+        this.game.load.text('level_3_JSON', "assets/game_data/level_3_data.json");
         
         
         

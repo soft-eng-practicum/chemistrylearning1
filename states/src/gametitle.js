@@ -32,7 +32,7 @@ gameTitleState.prototype = {
         settingsButton.scale.setTo(1.4, 1.4);
         
         //Creates the Leaderboard Button
-		leaderBoardButton = this.game.add.button(this.game.world.centerX-130,620,"leaderboardButton",this.playTheGame,this);
+		leaderBoardButton = this.game.add.button(this.game.world.centerX-130,620,"leaderboardButton",this.showLeaderboard,this);
         leaderBoardButton.scale.setTo(1.4, 1.4);
         
         //Starts the Game Sound 
@@ -64,6 +64,15 @@ gameTitleState.prototype = {
     gameSetting: function(){
         //Starts Settings
 		this.game.state.start("Settings");
+    },
+    
+   //Show leaderboard 
+    showLeaderboard: function() {
+    
+        this.game.state.start("Leaderboard");
     }
+    
+  
+    
     
 };
