@@ -1,5 +1,5 @@
 
-var leaderboard = function(game) {
+var leaderboardState = function(game) {
     
     
 };
@@ -14,7 +14,7 @@ var leaderboard_title;
 
 var home_screen_button;
 
-leaderboard.prototype = {
+leaderboardState.prototype = {
  
     //Main Phaser Create Function
   	create: function() {
