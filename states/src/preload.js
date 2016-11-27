@@ -33,7 +33,7 @@ preloadState.prototype = {
             if(progressDisplay < 100){
 
                 if(progressDisplay < this.game.load.progress){
-                    loadingText.text = 'loading... '+(++progressDisplay)+'%';
+                    loadingText.text = 'Loading... '+(++progressDisplay)+'%';
                 }
             }
             else{
@@ -64,10 +64,17 @@ preloadState.prototype = {
         this.game.load.image("settings","assets/Home_Screen_Settings.png");
         
         this.game.load.image("credits","assets/Home_Screen_Credits.png");
-
+        
         
         //Load Audio
         this.game.load.audio("sound", "assets/Autumn Nights.mp3");
+        
+        
+        
+        //GAMEOVER IMAGES
+        this.game.load.image("Gameover_Home","assets/Gameover_Home.png");   
+        this.game.load.image("Gameover_Label","assets/Game_Over_Pink.png");
+        
         
         //LEADERBOARD IMAGES & JSON
         this.game.load.image('leaderboard_background_image', "assets/space_background.jpg");
@@ -75,6 +82,10 @@ preloadState.prototype = {
         this.game.load.text('leaderboard_JSON', "assets/game_data/leaderboard.json");
         
         this.game.load.image('home_button_image',"assets/home_button.png");
+        
+        this.game.load.image('High_Scores_Label',"assets/High_Scores_Label.png");
+        
+        
         
         //SETTINGS IMAGES & SOUNDS
         this.game.load.image("settingsBackground","assets/settingsBackground.png");
@@ -89,13 +100,20 @@ preloadState.prototype = {
         
         this.game.load.image("creditsButton","assets/creditsButton.png");
         
+        this.game.load.image("Settings_Label","assets/Settings_Label.png");
+        
+        
         
         //CREDITS SCREEN IMAGES
         this.game.load.image("creditsText","assets/Credits_Text.png");
         
+        
+        
         //TRANSITION SCREEN IMAGES
         this.game.load.image("transitionBackground","assets/transitionBackground.png");
            
+        
+        
         //LEVEL 1 IMAGES, SOUNDS, & JSON
         
         this.game.load.text('level_1_JSON', "assets/game_data/level_1_data.json");
@@ -108,7 +126,7 @@ preloadState.prototype = {
         
         this.game.load.image("level1Background","assets/Space_Level1.png");
         
-        this.game.load.image("menu","assets/Resume_Quit.png");
+        this.game.load.image("menu","assets/Resume_Quit_Button.png");
         
         this.game.load.image("spaceCraft", "assets/rocket.png");
         
@@ -119,6 +137,8 @@ preloadState.prototype = {
         this.game.load.image("checkMark", "assets/checkMark.png");
         
         this.game.load.image("xMark", "assets/xMark.png");
+        
+        this.game.load.image("Pause_Button","assets/Pause_Button.png");
         
         //Load Audio
         this.game.load.audio("correctSound", "assets/correctSound.wav");

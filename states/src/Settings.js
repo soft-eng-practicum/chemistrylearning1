@@ -18,7 +18,7 @@ settingsState.prototype = {
 		gameSettingBackground.scale.setTo(.83, 1.1);
         
         //Creates the Settings Label
-        settings = this.game.add.text(this.game.world.centerX-200, 100, "Settings", {font: "90px Courier", fill: "#ffffff"});
+        settings = this.game.add.sprite(this.game.world.centerX-250, 100, "Settings_Label");
         
         //Creates the Sound Button 
 		musicOnButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY - 100,"musicOn",this.toggleSoundOn,this);

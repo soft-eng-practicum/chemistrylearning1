@@ -23,15 +23,8 @@ leaderboardState.prototype = {
 		leaderboard_background = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'leaderboard_background_image');
         leaderboard_background_velocity = 0.5;
         
-        leaderboard_title = this.game.add.text(this.game.world.centerX, 70, "High Scores");
-        leaderboard_title.anchor.set(0.5);
-        leaderboard_title.align = 'center';
-        leaderboard_title.font = ' Arial';
-        leaderboard_title.fontSize = 85;
-        leaderboard_title.fontWeight = 'bold';
-        leaderboard_title.stroke = '#ffff00';
-        leaderboard_title.strokeThickness = 8;
-        leaderboard_title.fill = '#0000ff';
+        leaderboard_title = this.game.add.sprite(this.game.world.centerX - 250, 20, "High_Scores_Label");
+        leaderboard_title.scale.setTo(1, 1);
        
         // Grab the data from the file and display it to the screen
         leaderboard_data = JSON.parse(this.game.cache.getText('leaderboard_JSON'));
@@ -56,11 +49,6 @@ leaderboardState.prototype = {
             console.log("This is the problem --> " + err.name);
         }
         
-        //Creates the Leaderboard Button
-		//home_screen_button = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 320, "home_button_image", this.returnHome, this);
-       // home_screen_button.anchor.set(0.5);
-      //  home_screen_button.align = 'center';
-     //   home_screen_button.scale.setTo(0.95, 0.95);
         
         backButton = this.game.add.button(this.game.world.centerX-250,this.game.world.centerY+240,"backButton",this.returnHome,this);
         backButton.scale.setTo(1, 1);
