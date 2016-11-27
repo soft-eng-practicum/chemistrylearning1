@@ -4,7 +4,8 @@ var settingsState = function(game){
 
 var gameSettingBackground;
 var settings;
-var musicButton;
+var musicOnButton;
+var musicOffButton;
 var creditsButton;
 var backButton;
 
@@ -20,8 +21,12 @@ settingsState.prototype = {
         settings = this.game.add.text(this.game.world.centerX-200, 100, "Settings", {font: "90px Courier", fill: "#ffffff"});
         
         //Creates the Sound Button 
-		musicButton = this.game.add.button(this.game.world.centerX-140,this.game.world.centerY,"musicToggle",this.toggleSound,this);
-        musicButton.scale.setTo(1, 1);
+		musicOnButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY - 100,"musicOn",this.toggleSoundOn,this);
+        musicOnButton.scale.setTo(1, 1);
+        
+        //Creates the Sound Button 
+		musicOffButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY + 50,"musicOff",this.toggleSoundOff,this);
+        musicOffButton.scale.setTo(1, 1);
         
         //Creates the Back button
         backButton = this.game.add.button(this.game.world.centerX-250,this.game.world.centerY+240,"backButton",this.returnHome,this);
@@ -29,19 +34,21 @@ settingsState.prototype = {
 	},
     
     
-    /*Function: toggleSound()
+    /*Function: toggleSoundOn()
     *
-    *Toggles the sound On & Off
+    *Toggles the sound On
     */
-    toggleSound: function(){
-       if (!this.game.sound.mute) {
-            this.game.sound.mute = true;
-            this.musicButton.tint = 16711680;
-        } 
-        else {
-            this.game.sound.mute = false;
-            this.musicButton.tint = 16777215;
-        }  
+    toggleSoundOn: function(){
+        this.game.sound.mute = false;
+   
+    },
+    
+    /*Function: toggleSoundOff()
+    *
+    *Toggles the sound Off
+    */
+    toggleSoundOff: function(){
+        this.game.sound.mute = true;
     },
     
     
@@ -52,16 +59,5 @@ settingsState.prototype = {
     returnHome: function(){
         
         this.game.state.start("GameTitle"); 
-    },
-    
-    
-    /*Function: credits()
-    *
-    *
-    */
-    credits: function(){
-        
-           
-        
     }
 };

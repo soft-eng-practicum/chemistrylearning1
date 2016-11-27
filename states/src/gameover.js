@@ -17,10 +17,10 @@ gameOverState.prototype = {
         
         //Creates the Game Over Background
 		gameOverBackground = this.game.add.sprite(0,0,"titleBackground");
-        gameOverBackground.scale.setTo(1.3, 1.1);
+        gameOverBackground.scale.setTo(1, 1.35);
         
         //Creates the Game Over Title
-        titleLabel = this.game.add.text(this.game.world.centerX-160, 150, "GAME OVER", {font: "55px Courier", fill: "#ffffff"});
+        titleLabel = this.game.add.text(this.game.world.centerX-160, 300, "GAME OVER", {font: "55px Courier", fill: "#ffffff"});
         
         //Checks score before High Score is displayed
         if(score < 0){
@@ -28,15 +28,15 @@ gameOverState.prototype = {
         }
         
         //Creates the High Score label
-        scoreLabel = this.game.add.text(this.game.world.centerX-200, 280, "HIGH SCORE: " + score, {font: "55px Courier", fill: "#ffffff"});
+        scoreLabel = this.game.add.text(this.game.world.centerX-200, 380, "HIGH SCORE: " + score, {font: "55px Courier", fill: "#ffffff"});
         
         //Creates the Play Button
-		playButton = this.game.add.button(this.game.world.centerX-120,400,"play",this.playTheGame,this);
-        playButton.scale.setTo(1.4, 1.4);
+		playButton = this.game.add.button(this.game.world.centerX-100,500,"play",this.playTheGame,this);
+        playButton.scale.setTo(1, 1);
         
         //Creates the Leaderboard Button
-		leaderBoardButton = this.game.add.button(this.game.world.centerX-150,550,"leaderboardButton",this.playTheGame,this);
-        leaderBoardButton.scale.setTo(1.4, 1.4);
+		leaderBoardButton = this.game.add.button(this.game.world.centerX-140,650,"leaderboardButton",this.playTheGame,this);
+        leaderBoardButton.scale.setTo(1, 1);
         
         //Starts music
         if (!music.isPlaying){  

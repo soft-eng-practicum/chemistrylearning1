@@ -15,7 +15,7 @@ bootState.prototype = {
         
         //Sets view for Desktop
         if (this.game.device.desktop){                  
-            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;        
+            this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;        
             this.scale.minWidth = width/2;            
             this.scale.minHeight = height/2;            
             this.scale.maxWidth = width;            
