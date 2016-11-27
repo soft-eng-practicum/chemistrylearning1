@@ -55,7 +55,7 @@ gameTitleState.prototype = {
     */
 	playTheGame: function(){
         //Starts Level 1
-        this.game.state.start("Winner");
+        this.game.state.start("Level1");
 	},
     
     /*Function: leaderBoard()
