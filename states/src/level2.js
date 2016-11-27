@@ -86,6 +86,16 @@ level2.prototype = {
 
     // Create funion runs one time only
     create: function () {
+        
+        // Parse the text back to a JSON object
+        switchJSON = Math.floor(Math.random() * 2);
+        
+        if(switchJSON == 0){
+            level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON')); 
+        }
+        else if(switchJSON == 1){
+            level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON_series_2'));
+        }
        
         background = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'level_2_background_image');
     
@@ -124,12 +134,6 @@ level2.prototype = {
         spikes = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY + 250, 'spike_image');
         spikes.visible = false;
     
-        // Parse the text back to a JSON object
-        level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON'));
-        
-        // Print data to the console
-        console.log("You made it this far!!" + level_2_data);
-        
         // Set current round to zero
         current_round = 0;
        
@@ -162,7 +166,7 @@ level2.prototype = {
         bubble_01.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
         // Create variable to hold the font style crap
-        var style_01 = { font: "50px Arial", fill: "White", wordWrap: true, wordWrapWidth: bubble_01.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
+        var style_01 = { font: "50px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: bubble_01.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
        
         // Create a text label and add it to the bubble_labels group
         bubble_text_01 = this.game.add.text(Math.floor(bubble_01.x + bubble_01.width/2), Math.floor(bubble_01.y + bubble_01.height/2), "", style_01, bubble_labels);
@@ -175,7 +179,7 @@ level2.prototype = {
         bubble_02.events.onInputDown.add(selectedBubble, this);    
         bubble_02.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
-        var style_02 = { font: "50px Arial", fill: "White", wordWrap: true, wordWrapWidth: bubble_02.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
+        var style_02 = { font: "50px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: bubble_02.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
        
         bubble_text_02 = this.game.add.text(Math.floor(bubble_02.x + bubble_02.width/2), Math.floor(bubble_02.y + bubble_02.height/2), "", style_02, bubble_labels);
         bubble_text_02.anchor.set(0.5);
@@ -186,7 +190,7 @@ level2.prototype = {
         bubble_03.events.onInputDown.add(selectedBubble, this);
         bubble_03.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
-        var style_03 = { font: "50px Arial", fill: "White", wordWrap: true, wordWrapWidth: bubble_03.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
+        var style_03 = { font: "50px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: bubble_03.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
         
         bubble_text_03 = this.game.add.text(Math.floor(bubble_03.x + bubble_03.width/2), Math.floor(bubble_03.y + bubble_03.height/2), "", style_03, bubble_labels);
         bubble_text_03.anchor.set(0.5);
@@ -240,7 +244,9 @@ level2.prototype = {
         correct = false;
         wrong = false;
         first_go = true;
-        
+        level_2_Transition = false;
+        level_5_Transition = true;
+
     },
 
     // Function holds information for things that move 24fps 
@@ -300,11 +306,11 @@ level2.prototype = {
                     counter_level_2 = 8;
                     game_timer.resume();
                   
-                    if(current_round != 4){
+                    if(current_round < 5){
                         handleData();
                     }
-                    else if (current_round == 4) {
-                        this.game.state.start('Level5');
+                    else if (current_round > 4) {
+                        this.game.state.start('Transition');
                     } 
                }
              }
@@ -621,8 +627,24 @@ function resetBubblesPosition() {
 */
 function handleData() {
     
+    //Adjusting Instruction label color
+    chemical_formula_text_display.anchor.setTo(-0.1, 0.2);
+    chemical_formula_text_display.addColor("Yellow", 0);
+    
     if (current_round == 0) {
         chemical_formula_text_display.setText(level_2_data.chemical_formulas.formula1.name);
+        
+        if(level_2_data.chemical_formulas.formula1.name.length < 20){
+            
+            //Adjusting Instruction label Font Size
+            chemical_formula_text_display.fontSize = 47;  
+        }
+        else{
+            //Adjusting Instruction label for Chemical Names
+            chemical_formula_text_display.anchor.setTo(0, 0.3);
+            //Adjusting Instruction label Font Size
+            chemical_formula_text_display.fontSize = 42;
+        }
             
         if (randomFormula == 0) { 
             bubble_text_01.setText(level_2_data.chemical_formulas.formula1.right);
@@ -638,13 +660,25 @@ function handleData() {
             bubble_text_01.setText(level_2_data.chemical_formulas.formula1.wrong5);
             bubble_text_02.setText(level_2_data.chemical_formulas.formula1.wrong6);
             bubble_text_03.setText(level_2_data.chemical_formulas.formula1.right);
-        }      
+        }
     }
         
         
 /////////////////////////////////////////////////////////////////////////////////////////
     if (current_round == 1) {
         chemical_formula_text_display.setText(level_2_data.chemical_formulas.formula2.name);
+        
+        if(level_2_data.chemical_formulas.formula2.name.length < 20){
+            
+            //Adjusting Instruction label Font Size
+            chemical_formula_text_display.fontSize = 47;  
+        }
+        else{
+            //Adjusting Instruction label for Chemical Names
+            chemical_formula_text_display.anchor.setTo(0, 0.3);
+            //Adjusting Instruction label Font Size
+            chemical_formula_text_display.fontSize = 42;
+        }
 
         if (randomFormula == 0) { 
             bubble_text_01.setText(level_2_data.chemical_formulas.formula2.right);
@@ -668,6 +702,18 @@ function handleData() {
 //////////////////////////////////////////////////////////////////////////////////////////
        if (current_round == 2) {
          chemical_formula_text_display.setText(level_2_data.chemical_formulas.formula3.name);
+           
+           if(level_2_data.chemical_formulas.formula3.name.length < 20){
+            
+            //Adjusting Instruction label Font Size
+            chemical_formula_text_display.fontSize = 47;  
+            }
+            else{
+                //Adjusting Instruction label for Chemical Names
+                chemical_formula_text_display.anchor.setTo(0, 0.3);
+                //Adjusting Instruction label Font Size
+                chemical_formula_text_display.fontSize = 42;
+            }
 
            if (randomFormula == 0) { 
                bubble_text_01.setText(level_2_data.chemical_formulas.formula3.right);
@@ -689,6 +735,18 @@ function handleData() {
 ////////////////////////////////////////////////////////////////////////////////////////      
     if (current_round == 3) {
         chemical_formula_text_display.setText(level_2_data.chemical_formulas.formula4.name);
+        
+        if(level_2_data.chemical_formulas.formula4.name.length < 20){
+            
+            //Adjusting Instruction label Font Size
+            chemical_formula_text_display.fontSize = 47;  
+        }
+        else{
+            //Adjusting Instruction label for Chemical Names
+            chemical_formula_text_display.anchor.setTo(0, 0.3);
+            //Adjusting Instruction label Font Size
+            chemical_formula_text_display.fontSize = 42;
+        }
 
         if (randomFormula == 0) { 
             bubble_text_01.setText(level_2_data.chemical_formulas.formula4.right);
@@ -711,6 +769,18 @@ function handleData() {
     if (current_round == 4) {
          
         chemical_formula_text_display.setText(level_2_data.chemical_formulas.formula5.name);
+        
+        if(level_2_data.chemical_formulas.formula5.name.length < 20){
+            
+            //Adjusting Instruction label Font Size
+            chemical_formula_text_display.fontSize = 47;  
+        }
+        else{
+            //Adjusting Instruction label for Chemical Names
+            chemical_formula_text_display.anchor.setTo(0, 0.3);
+            //Adjusting Instruction label Font Size
+            chemical_formula_text_display.fontSize = 42;
+        }
 
         if (randomFormula == 0) { 
             bubble_text_01.setText(level_2_data.chemical_formulas.formula5.right);
@@ -728,11 +798,6 @@ function handleData() {
             bubble_text_03.setText(level_2_data.chemical_formulas.formula5.right);
         }   
     }
-    
-            //Adjusting Instruction label for Chemical Names 
-            chemical_formula_text_display.anchor.setTo(-0.1, 0.2);
-            chemical_formula_text_display.addColor("Yellow", 0);
-            chemical_formula_text_display.fontSize = 47;
 }
 
 // Closes method        

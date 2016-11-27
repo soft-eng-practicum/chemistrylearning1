@@ -1,0 +1,59 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Calcium Bromide", 
+            "right": "CaBr\u2082", 
+            "wrong1": "CBr\u2082",
+            "wrong2": "Br\u2082Ca",
+            "wrong3": "Ca\u2082Br\u2082",
+            "wrong4": "CaB\u2082",
+            "wrong5": "BrCa",
+            "wrong6": "CaBr"
+        },
+
+        "formula2": {
+            "name": "Sodium Oxide", 
+            "right": "Na\u2082O", 
+            "wrong1": "SO",
+            "wrong2": "SO\u2082",
+            "wrong3": "NaO",
+            "wrong4": "NO",
+            "wrong5": "NO\u2082",
+            "wrong6": "KO\u2082"
+        },
+
+        "formula3": {
+            "name": "Sodium Sulfide", 
+            "right": "Na\u2082S", 
+            "wrong1": "NaS",
+            "wrong2": "KS",
+            "wrong3": "RbS\u2082",
+            "wrong4": "NaSO",
+            "wrong5": "NaSO\u2084",
+            "wrong6": "NaSO\u2083"
+        },
+        
+        "formula4": {
+            "name": "Sodium Bromide", 
+            "right": "NaBr", 
+            "wrong1": "NBr\u2083",
+            "wrong2": "NBr",
+            "wrong3": "NBr\u2082",
+            "wrong4": "N\u2082Br\u2082",
+            "wrong5": "NaBr\u2082",
+            "wrong6": "Na\u2082Br\u2082"
+        },
+        
+        "formula5": {
+            "name": "Tin(IV) Oxide", 
+            "right": "SnO\u2082", 
+            "wrong1": "TiO\u2082",
+            "wrong2": "TO\u2082",
+            "wrong3": "SO\u2082",
+            "wrong4": "TiO",
+            "wrong5": "Sn\u2084O",
+            "wrong6": "Ti\u2084O"
+        }    
+    }
+}
+

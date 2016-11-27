@@ -1,0 +1,59 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Magnesium Oxide", 
+            "right": "MgO", 
+            "wrong1": "MnO",
+            "wrong2": "MO\u2082",
+            "wrong3": "MgO\u2082",
+            "wrong4": "Mn\u2082O",
+            "wrong5": "M\u2082O",
+            "wrong6": "MgO\u2083"
+        },
+
+        "formula2": {
+            "name": "Potassium Hydride", 
+            "right": "KH", 
+            "wrong1": "HK",
+            "wrong2": "HCl",
+            "wrong3": "HBr",
+            "wrong4": "HP",
+            "wrong5": "PH",
+            "wrong6": "KH\u2082"
+        },
+
+        "formula3": {
+            "name": "Aluminum Chloride", 
+            "right": "AlCl\u2083", 
+            "wrong1": "Al\u2082Cl\u2083",
+            "wrong2": "Al\u2082Cl\u2082",
+            "wrong3": "AsCl\u2083",
+            "wrong4": "Al\u2083Cl",
+            "wrong5": "Cl\u2083Al",
+            "wrong6": "AlC\u2083"
+        },
+        
+        "formula4": {
+            "name": "Potassium Oxide", 
+            "right": "K\u2082O", 
+            "wrong1": "KaO",
+            "wrong2": "Ka\u2082O",
+            "wrong3": "P\u2082O",
+            "wrong4": "PO",
+            "wrong5": "KO\u2082",
+            "wrong6": "NaO\u2082"
+        },
+        
+        "formula5": {
+            "name": "Chromium(III) Chloride", 
+            "right": "CrCl\u2083", 
+            "wrong1": "CrCl\u2082",
+            "wrong2": "CrCl",
+            "wrong3": "Cr\u2083Cl",
+            "wrong4": "Cr\u2083Cl\u2083",
+            "wrong5": "Cl\u2082Cr",
+            "wrong6": "CCl\u2083"
+        }    
+    }
+}
+

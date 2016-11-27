@@ -1,22 +1,67 @@
-# chemistrylearning1
+<p align="center">
+<img src ="https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/states/assets/XE1.png">
+</p>
 
-**Team Name:** Chemistry Learning 1
+# XENON
+[![npm](https://img.shields.io/badge/platform-mobile web-lightgrey.svg)](http://xe1.duckdns.org)
+[![npm](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation)
+[![npm](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg)](https://creativecommons.org/licenses/by-nc/4.0/legalcode)
 
-**Repo URL:**  [Link to Repo.] (https://github.com/soft-eng-practicum/chemistrylearning1.git)
+<p align="center">
+<b><a href="#overview">Overview</a></b>
+|
+<b><a href="#features">Features</a></b>
+|
+<b><a href="#documentation">Documentation</a></b>
+|
+<b><a href="#credits">Credits</a></b>
+|
+<b><a href="#license">License</a></b>
+</p>
 
-**Process Tool & URL:** [Link to Pivotal Tracker] (https://www.pivotaltracker.com/n/projects/1858563)
 
-**Other Communication Tools:** [Link to Slack Channel] (https://ggc-dev.slack.com/messages/chemteam/details/)
+**Team Name:** XE1
 
-**Team Members:**  
+**Repository:**  [Check Out Our Code!] (https://github.com/soft-eng-practicum/chemistrylearning1.git)
 
-1. Jawan Higgins: (**Primary**: *Code Architect*) (**Secondary**: *Testing*)
+**Process Tool:** [Pivotal Tracker] (https://www.pivotaltracker.com/n/projects/1858563)
+
+**Communication Tool:** [Slack Channel] (https://ggc-dev.slack.com/messages/chemteam/details/)
 
 
-2. Adele Francois: (**Primary**: *Documentation Lead*) (**Secondary**: *Project Manager*)
-          
-          
-3. John Rose: (**Primary**: *Client Liaison*) (**Secondary**: *Lead Developer*)
-          
-          
-4. Adem Abafogi:(**Primary**: *UI/UX design leader*) (**Secondary**: *Database Modeler*)
+##  OVERVIEW
+
+Xenon is a optimized mobile web game that allows students to practice and master the skill of naming chemical
+formulas/nomenclature in a fun format!
+
+##  FEATURES
+
+##  DOCUMENTATION
+
+Documentation process involves separate folders to accommodate the parties of:
+
+[***DEVELOPER***](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation/dev-docs)
+|
+[***CLIENT***](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation/client-docs)
+|
+[***USER***](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation/user-docs)
+
+
+##  CREDITS
+
+This project could not have been possible without the following indivduals and their assigned roles:
+
+* Adele Francois [[@skyyfall007]] (https://github.com/skyyfall007) :  ***Documentation Specialist*** & ***Project Manager***
+* Jawan Higgins  [[@Jwork26]]      (https://github.com/Jwork26)    :  ***Code Architect*** & ***Software Testing***
+* John Rose [[@jrose27]]           (https://github.com/jrose27)    :  ***Client Liaison*** & ***Lead Developer***
+* Adem Abafogi [[@aabafogi]]      (https://github.com/aabafogi)    :  ***Database Modeler*** & ***UI/UX Design***
+* Dr. Cengiz Gunay [[@cengique]]  (https://github.com/cengique)    :  ***Sponsor***
+* Dr. Thomas Gluick                                                :  ***Partner***
+
+
+##  LICENSE
+
+The properties of Xenon are protected under the following INTELLECTUAL PROPERTY AND LICENSING AGREEMENT:
+
+
+[XE1 Agreement](https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/Final%20XE1%20Intellectual%20Property%20and%20Licensing%20Agreement.pdf)
