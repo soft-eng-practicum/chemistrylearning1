@@ -57,10 +57,13 @@ leaderboardState.prototype = {
         }
         
         //Creates the Leaderboard Button
-		home_screen_button = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 320, "home_button_image", this.returnHome, this);
-        home_screen_button.anchor.set(0.5);
-        home_screen_button.align = 'center';
-        home_screen_button.scale.setTo(0.95, 0.95);
+		//home_screen_button = this.game.add.button(this.game.world.centerX, this.game.world.centerY + 320, "home_button_image", this.returnHome, this);
+       // home_screen_button.anchor.set(0.5);
+      //  home_screen_button.align = 'center';
+     //   home_screen_button.scale.setTo(0.95, 0.95);
+        
+        backButton = this.game.add.button(this.game.world.centerX-250,this.game.world.centerY+240,"backButton",this.returnHome,this);
+        backButton.scale.setTo(1, 1);
         
         console.log("This is the first value in JSON file: "+leaderboard_data.leaderboard[0].name +
                         " " + leaderboard_data.leaderboard[0].high_score);
