@@ -12,9 +12,16 @@ preloadState.prototype = {
     
     //Main Phaser Preload Function
 	preload: function(){ 
+
+        //Load JSON
+        
+      //  this.game.load.text("chemicalFormul   a", "assets/ChemistryGame.json");
+        
+      //  this.game.load.text("chemicalFormula2", "assets/ChemistryGame2.json");
      
         //FONTS
         this.game.load.script("gameFont1", "assets/GOOGLE_FONTS/Bangers/Bangers.ttf");
+
         
         //Loading Label
         loadingText = this.game.add.text(this.game.world.centerX-250, 350, "Loading... 0%", { font: "60px Courier", fill: "#ffffff"});
@@ -62,7 +69,12 @@ preloadState.prototype = {
         //Load Audio
         this.game.load.audio("sound", "assets/Autumn Nights.mp3");
         
+        //LEADERBOARD IMAGES & JSON
+        this.game.load.image('leaderboard_background_image', "assets/space_background.jpg");
         
+        this.game.load.text('leaderboard_JSON', "assets/game_data/leaderboard.json");
+        
+        this.game.load.image('home_button_image',"assets/home_button.png");
         
         //SETTINGS IMAGES & SOUNDS
         this.game.load.image("settingsBackground","assets/settingsBackground.png");
@@ -81,16 +93,8 @@ preloadState.prototype = {
         //CREDITS SCREEN IMAGES
         this.game.load.image("creditsText","assets/Credits_Text.png");
         
-        
-        
         //TRANSITION SCREEN IMAGES
         this.game.load.image("transitionBackground","assets/transitionBackground.png");
-        
-        
-        
-        //LEADERBOARD SCREEN IMAGES
-        
-        
            
         //LEVEL 1 IMAGES, SOUNDS, & JSON
         
@@ -151,6 +155,12 @@ preloadState.prototype = {
         
         
         //LEVEL 3 IMAGES & SOUNDS
+	this.game.load.text('level_3_JSON', "assets/game_data/level_3_data.json");
+        
+        
+        
+        
+
         
  
         

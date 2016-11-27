@@ -23,17 +23,19 @@ gameTitleState.prototype = {
         playButton.scale.setTo(1, 1);
         
         //Creates the Leaderboard Button
-		leaderBoardButton = this.game.add.button(this.game.world.centerX-140,this.game.world.centerY+50,"leaderboardButton",this.leaderBoard,this);
+		leaderBoardButton = this.game.add.button(this.game.world.centerX-140, this.game.world.centerY + 50,"leaderboardButton", this.leaderBoard, this);
         leaderBoardButton.scale.setTo(1, 1);
         
         //Creates the Settings Button
         settingsButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY+150,"settings",this.gameSetting,this);
         settingsButton.scale.setTo(1, 1);
         
+        
         //Creates the Play Button
 		creditsButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY+250,"credits",this.credits,this);
 		//playButton.anchor.setTo(0.5,0.5);
         creditsButton.scale.setTo(1, 1);
+
         
         //Starts the Game Sound 
         if (!music.isPlaying){  
@@ -83,5 +85,9 @@ gameTitleState.prototype = {
         //Starts Credits
         this.game.state.start("Credits");
 	}
+
+    
+  
+    
     
 };
