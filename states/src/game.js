@@ -8,7 +8,6 @@ var game = new Phaser.Game(width, height, Phaser.CANVAS, "gameDiv");
     game.state.add("Preload",preloadState);
     game.state.add("GameIntro",gameIntroState);
     game.state.add("GameTitle",gameTitleState);
-    game.state.add("Leaderboard",leaderboard);
     game.state.add("Settings",settingsState);
     game.state.add("Credits",creditsState);
     game.state.add("Leaderboard",leaderboardState);
