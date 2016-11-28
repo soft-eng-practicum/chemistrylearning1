@@ -5,6 +5,7 @@ var level1 = function(game){
 // Create transition variables and set them to false
 var level_2_Transition = false;
 var level_5_Transition = false;
+var level_4_Transition = false;
 
 var levelBackground;
 var countDownLabel;

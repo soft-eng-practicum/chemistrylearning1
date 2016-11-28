@@ -59,18 +59,10 @@ var heart_1, heart_2, heart_3;
 var short_beep;
 var long_beep;
 
-var right_mark;
-var wrong_mark;
-
 var correct_sound;
 var incorrect_sound;
 
-var is_correct = false;
-var is_wrong = false;
-
 var pause_delay = 150;
-
-var current_bubble;
 
 var check_mark;
 var x_mark;
@@ -301,7 +293,7 @@ level2.prototype = {
         wrong = false;
         first_go = true;
         level_2_Transition = false;
-        level_5_Transition = true;
+        level_4_Transition = true;
 
     },
 
@@ -495,20 +487,16 @@ function selectedBubble(input_bubble) {
         if (input_bubble === bubble_01) { 
             bubble_01.visible = false;
             checkIfSelectedBubbleIsCorrect(bubble_text_01.text);
-            // Assign a value to current bubble to the input bubble
-            current_bubble = bubble_01;
             } 
 
         if (input_bubble === bubble_02) {
             bubble_02.visible = false;
-            checkIfSelectedBubbleIsCorrect(bubble_text_02.text);
-            current_bubble = bubble_02;    
+            checkIfSelectedBubbleIsCorrect(bubble_text_02.text);    
         } 
 
         if (input_bubble === bubble_03) { 
             bubble_03.visible = false;
             checkIfSelectedBubbleIsCorrect(bubble_text_03.text);
-            current_bubble = bubble_03;
         }
     }
 }

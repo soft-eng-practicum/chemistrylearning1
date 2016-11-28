@@ -168,15 +168,15 @@ preloadState.prototype = {
         
         this.game.load.image('bubble_image', "assets/bubble256.png");
         
-        //Load JSON file as a text file
+        // JSON file as a text file
         this.game.load.text('level_2_JSON', "assets/game_data/level_2_data.json");
         
         this.game.load.text('level_2_JSON_series_2', "assets/game_data/level_2_data_series_2.json");
         
-        // Load spike image
+        // spike image
         this.game.load.image('spike_image', "assets/spikes.png");
         
-        // Load bubble image for  emitter
+        // bubble image for  emitter
         this.game.load.image('emitter_bubble_image', "assets/bubble.png");
         
         
@@ -185,8 +185,11 @@ preloadState.prototype = {
         
         
         //LEVEL 4 IMAGES & SOUNDS
+        this.game.load.image('level_4_background_image', "assets/level_4_background.jpg");
         
+        this.game.load.text('level_4_JSON', "assets/game_data/level_4_data.json");
         
+        this.game.load.text('level_4_JSON_series_2', "assets/game_data/level_4_data_series_2.json");
         
         //LEVEL 5 IMAGES, SOUNDS, & JSON
         this.game.load.image("level5Background","assets/Lab_Background.jpg");
