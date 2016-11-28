@@ -70,6 +70,12 @@ preloadState.prototype = {
         this.game.load.audio("sound", "assets/Autumn Nights.mp3");
         
         
+        //WINNER SCREEN IMAGES
+        this.game.load.image("Thanks_Logo","assets/Thanks_Logo.png");
+        
+        this.game.load.image("Win_Logo","assets/Win_Logo.png");
+        
+        
         
         //GAMEOVER IMAGES
         this.game.load.image("Gameover_Home","assets/Gameover_Home.png");   
