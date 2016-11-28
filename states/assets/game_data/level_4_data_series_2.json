@@ -1,70 +1,60 @@
 {
     "chemical_formulas": {
         "formula1": {
-            "name": "Potassium Chloride", 
-            "right": "KCl", 
-            "wrong1": "PCl",
-            "wrong2": "K\u2082Cl\u2082",
-            "wrong3": "K\u2082Cl",
-            "wrong4": "ClK",
-            "wrong5": "ClP",
-            "wrong6": "K\u2082Cl\u2082",
-            "wrong7": "PC",
-            "wrong8": "KC"
+            "name": "Sodium Bicarbonate", 
+            "right": "NaHCO\u2083", 
+            "wrong1": "Na\u2082HCO\u2082",
+            "wrong2": "Na\u2082H\u2082CO\u2082",
+            "wrong3": "SaHCO\u2083",
+            "wrong4": "NHCO\u2083",
+            "wrong5": "SHCO\u2083",
+            "wrong6": "So\u2082HCO\u2083"
         },
 
         "formula2": {
-            "name": "Sodium Chloride", 
-            "right": "NaCl", 
-            "wrong1": "NCl",
-            "wrong2": "NiCl\u2082",
-            "wrong3": "NaCl\u2082",
-            "wrong4": "NaCl\u2082",
-            "wrong5": "NCl\u2082",
-            "wrong6": "SCl\u2082",
-            "wrong7": "SCl",
-            "wrong8": "SoCl\u2082",
-            "wrong9": "SoCl"
+            "name": "Ammonium Sulfate", 
+            "right": "(NH\u2084)\u2082SO\u2084", 
+            "wrong1": "(NH\u2083)\u2082SO\u2084",
+            "wrong2": "(NH\u2082)SO\u2082",
+            "wrong3": "NH\u2084SO\u2084",
+            "wrong4": "NH\u2083SO\u2084",
+            "wrong5": "(NH\u2083)\u2083SO\u2083",
+            "wrong6": "(Am\u2084)\u2082SO\u2084"
         },
 
         "formula3": {
-            "name": "Carbon Disulfide", 
-            "right": "CS\u2082", 
-            "wrong1": "CaS\u2082",
-            "wrong2": "CS",
-            "wrong3": "C\u2082S",
-            "wrong4": "C\u2082S\u2082",
-            "wrong5": "CuS\u2082",
-            "wrong6": "Ca\u2082S\u2082"
+            "name": "Calcium Acetate", 
+            "right": "Ca(C\u2082H\u2083O\u2082)\u2082", 
+            "wrong1": "CaC\u2082H\u2083O\u2082",
+            "wrong2": "CaC\u2082O\u2083",
+            "wrong3": "C(Ca\u2082O\u2082)\u2082",
+            "wrong4": "K(C\u2082H\u2083O\u2082)\u2082",
+            "wrong5": "KC\u2082H\u2083O\u208",
+            "wrong6": "Ca(CO\u2084)\u2082"
         },
         
         "formula4": {
-            "name": "Potassium Chlorite", 
-            "right": "KClO\u2082", 
-            "wrong1": "PClO\u2082",
-            "wrong2": "KClO",
-            "wrong3": "KClO\u2083",
-            "wrong4": "KClO\u2084",
-            "wrong5": "PClO\u2084",
-            "wrong6": "NaClO",
-            "wrong7": "CaClO",
-            "wrong8": "PClO\u2083",
-            "wrong9": "KCl",
-            "wrong10": "PCl",
-            "wrong11": "PCl\u2084"
+            "name": "Ammonium Phosphate", 
+            "right": "(NH\u2084)\u2083PO\u2084", 
+            "wrong1": "(NH\u2083)\u2082PO\u2084",
+            "wrong2": "NH\u2083PO\u2084",
+            "wrong3": "(NH\u2082)\u2084PO\u2082",
+            "wrong4": "NH\u2083PO\u2083",
+            "wrong5": "(NH\u2082)\u2083PO",
+            "wrong6": "NH\u2083P\u2083"
+            
         },
         
         "formula5": {
-            "name": "Tin(IV) Bromide", 
-            "right": "SnBr\u2084", 
-            "wrong1": "TiBr\u2084",
-            "wrong2": "TlBr\u2084",
-            "wrong3": "Sn\u2082Br\u2082",
-            "wrong4": "Ti\u2082Cl\u2082",
-            "wrong5": "Sn\u2084Cl",
-            "wrong6": "Ti\u2084Cl",
-            "wrong7": "Br\u2084Sn",
-            "wrong8": "SnBrO"
+            "name": "Potassium Dichromate", 
+            "right": "K\u2082Cr\u2082O\u2087", 
+            "wrong1": "P\u2082Cr\u2082O\u2087",
+            "wrong2": "K\u2083Cr\u2083O\u2084",
+            "wrong3": "KCo\u2082O\u2087",
+            "wrong4": "K\u2087Cr\u2082O\u2082",
+            "wrong5": "Po\u2082Cr\u2082",
+            "wrong6": "KCr\u2083"
+    
         }
         
     }
