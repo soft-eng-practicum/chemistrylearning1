@@ -78,14 +78,16 @@ level4.prototype = {
   	create: function(){ 
 		
  // Parse the text back to a JSON object
-        switchJSON = Math.floor(Math.random() * 2);
+    /*    switchJSON = Math.floor(Math.random() * 2);
         
         if(switchJSON == 0){
             level_4_data = JSON.parse(this.game.cache.getText('level_4_JSON')); 
         }
         else if(switchJSON == 1){
             level_4_data = JSON.parse(this.game.cache.getText('level_4_JSON_series_2'));
-        }
+        } */
+        
+        level_4_data = JSON.parse(this.game.cache.getText('level_4_JSON'));
        
         level_4_background = this.game.add.sprite(0, 0,'level_4_background_image');
         
@@ -671,7 +673,7 @@ function level4HandleData() {
             //Adjusting Instruction label for Chemical Names
             level_4_chemical_formula_text_display.anchor.setTo(0, 0.3);
             //Adjusting Instruction label Font Size
-            level_4_chemical_formula_text_display.fontSize = 42;
+            level_4_chemical_formula_text_display.fontSize = 38;
         }
             
         if (level_4_randomFormula == 0) { 
@@ -705,7 +707,7 @@ function level4HandleData() {
             //Adjusting Instruction label for Chemical Names
             level_4_chemical_formula_text_display.anchor.setTo(0, 0.3);
             //Adjusting Instruction label Font Size
-            level_4_chemical_formula_text_display.fontSize = 42;
+            level_4_chemical_formula_text_display.fontSize = 38;
         }
 
         if (level_4_randomFormula == 0) { 
@@ -740,7 +742,7 @@ function level4HandleData() {
                 //Adjusting Instruction label for Chemical Names
                 level_4_chemical_formula_text_display.anchor.setTo(0, 0.3);
                 //Adjusting Instruction label Font Size
-                level_4_chemical_formula_text_display.fontSize = 42;
+                level_4_chemical_formula_text_display.fontSize = 38;
             }
 
            if (level_4_randomFormula == 0) { 
@@ -773,7 +775,7 @@ function level4HandleData() {
             //Adjusting Instruction label for Chemical Names
             level_4_chemical_formula_text_display.anchor.setTo(0, 0.3);
             //Adjusting Instruction label Font Size
-            level_4_chemical_formula_text_display.fontSize = 42;
+            level_4_chemical_formula_text_display.fontSize = 38;
         }
 
         if (level_4_randomFormula == 0) { 
@@ -807,7 +809,7 @@ function level4HandleData() {
             //Adjusting Instruction label for Chemical Names
             level_4_chemical_formula_text_display.anchor.setTo(0, 0.3);
             //Adjusting Instruction label Font Size
-            level_4_chemical_formula_text_display.fontSize = 42;
+            level_4_chemical_formula_text_display.fontSize = 38;
         }
 
         if (level_4_randomFormula == 0) { 
