@@ -43,10 +43,9 @@
             "wrong4": "Hg\u2082Cl",
             "wrong5": "Me\u2082Cl",
             "wrong6": "Me\u2082Cl\u2082"
-         
         },
         
-        "Mercury(II) Chloride": {
+        "formula5": {
             "name": "Sodium Hydrogen Phosphate", 
             "right": "NaHPO\u2084", 
             "wrong1": "NHPO\u2084",
@@ -54,10 +53,8 @@
             "wrong3": "NaHPh\u2084",
             "wrong4": "SoHPO\u2084",
             "wrong5": "NaPHO\u2082",
-            "wrong6": "NaHPO\u2083"
-         
-        }
-        
+            "wrong6": "NaHPO\u2083"   
+        }   
     }
 }
 
