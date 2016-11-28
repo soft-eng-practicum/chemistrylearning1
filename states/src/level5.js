@@ -2001,7 +2001,7 @@ level5.prototype = {
                                 correct = false;
                                 wrong = false;
                                 randomFormula = Math.floor(Math.random() * 4);
-                                randomElement = Math.floor(Math.random() * 4);
+                                randomElement = 4;//Math.floor(Math.random() * 4);
                             }
                         }
             }
@@ -2095,7 +2095,7 @@ level5.prototype = {
                                 correct = false;
                                 wrong = false;
                                 randomFormula = Math.floor(Math.random() * 4);
-                                randomElement = Math.floor(Math.random() * 4);
+                                randomElement = 4;//Math.floor(Math.random() * 4);
                             }
                         }
             }
@@ -2188,7 +2188,7 @@ level5.prototype = {
                                 correct = false;
                                 wrong = false;
                                 randomFormula = Math.floor(Math.random() * 4);
-                                randomElement = Math.floor(Math.random() * 4);
+                                randomElement = 4;//Math.floor(Math.random() * 4);
                             }
                         }
             }
@@ -2281,7 +2281,7 @@ level5.prototype = {
                                 correct = false;
                                 wrong = false;
                                 randomFormula = Math.floor(Math.random() * 4);
-                                randomElement = Math.floor(Math.random() * 4);
+                                randomElement = 4;//Math.floor(Math.random() * 4);
                             }
                         }
                 }
