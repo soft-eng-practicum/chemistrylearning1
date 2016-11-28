@@ -1,0 +1,19 @@
+{
+  "name": "Xenon",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/nightwatch;"
+  },
+  "keywords": [],
+  "author": "Xenon",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soft-eng-practicum/chemistrylearning1.git"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "https://github.com/soft-eng-practicum/chemistrylearning1"
+}
