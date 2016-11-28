@@ -33,7 +33,6 @@ gameTitleState.prototype = {
         
         //Creates the Play Button
 		creditsButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY+250,"credits",this.credits,this);
-		//playButton.anchor.setTo(0.5,0.5);
         creditsButton.scale.setTo(1, 1);
 
         
