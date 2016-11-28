@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/nightwatch/bin/nightwatch.json"
+    "test": "node_modules/nightwatch/bin/tests --recursive"
+      missing something here
   },
   "keywords": [],
   "author": "Xenon",
