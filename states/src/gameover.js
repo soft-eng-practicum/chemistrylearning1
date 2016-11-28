@@ -17,7 +17,7 @@ gameOverState.prototype = {
         
         //Creates the Game Over Background
 		gameOverBackground = this.game.add.sprite(0,0,"settingsBackground");
-        gameOverBackground.scale.setTo(0.5, 0.5);
+        gameOverBackground.scale.setTo(.83, 1.1);
         
         //Creates the Game Over Title
         titleLabel = this.game.add.sprite(this.game.world.centerX-180, 50, "Gameover_Label");
@@ -52,6 +52,7 @@ gameOverState.prototype = {
         started = false;
         startedLevel5 = false;
         level_2_Transition = false;
+        level_4_Transition = false;
         level_5_Transition = false;
 	},
     
