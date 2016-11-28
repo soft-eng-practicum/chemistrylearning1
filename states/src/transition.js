@@ -55,7 +55,7 @@ transitionState.prototype = {
             this.game.state.start("Level2");
         }
         
-        else if (level_2_Transition && level_5_Transition === true) {
+        else if (level_5_Transition === true) {
             this.game.state.start("Level5");
         }
     }
