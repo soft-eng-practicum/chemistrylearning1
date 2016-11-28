@@ -124,26 +124,4 @@ checkBounds: function(asteroids) {
     }
 
 }
-
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
 };

@@ -35,7 +35,9 @@ gameOverState.prototype = {
         homeButton.scale.setTo(1, 1);
         
         //Creates the Leaderboard Button
+
 		leaderBoardButton = this.game.add.button(this.game.world.centerX-140,650,"leaderboardButton",this.leaderboard,this);
+        
         leaderBoardButton.scale.setTo(1, 1);
         
         //Starts music
@@ -61,7 +63,7 @@ gameOverState.prototype = {
         
         //Start Level 1
         this.game.state.start("GameTitle");
-	},  
+	},
     
     /*Function: leaderboard()
     *

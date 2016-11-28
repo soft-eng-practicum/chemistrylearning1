@@ -1,14 +1,16 @@
 {
     "chemical_formulas": {
         "formula1": {
-            "name": "Calcium Chloride", 
-            "right": "CaCl\u2082", 
-            "wrong1": "CCl\u2082",
-            "wrong2": "CaCl",
-            "wrong3": "CaCl\u2083",
-            "wrong4": "Ca\u2082Cl\u2082",
-            "wrong5": "CCl",
-            "wrong6": "Ca\u2082Cl"
+            "name": "Potassium Chloride", 
+            "right": "KCl", 
+            "wrong1": "PCl",
+            "wrong2": "K\u2082Cl\u2082",
+            "wrong3": "K\u2082Cl",
+            "wrong4": "ClK",
+            "wrong5": "ClP",
+            "wrong6": "K\u2082Cl\u2082",
+            "wrong7": "PC",
+            "wrong8": "KC"
         },
 
         "formula2": {
@@ -67,4 +69,3 @@
         
     }
 }
-
