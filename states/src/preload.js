@@ -175,14 +175,8 @@ preloadState.prototype = {
         
         
         //LEVEL 3 IMAGES & SOUNDS
-	this.game.load.text('level_3_JSON', "assets/game_data/level_3_data.json");
+	    this.game.load.text('level_3_JSON', "assets/game_data/level_3_data.json");
         
-        
-        
-        
-
-        
- 
         
         //LEVEL 4 IMAGES & SOUNDS
         
@@ -215,4 +209,5 @@ preloadState.prototype = {
         //Starts Game Intro
 		this.game.state.start("GameIntro");
     }
+    
 };

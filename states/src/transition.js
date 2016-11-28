@@ -51,10 +51,11 @@ transitionState.prototype = {
     onComplete: function() {
 
         //Starts Next Level
-        if(level_2_Transition){
+        if (level_2_Transition === true) {
             this.game.state.start("Level2");
         }
-        else if(level_5_Transition){
+        
+        else if (level_2_Transition && level_5_Transition === true) {
             this.game.state.start("Level5");
         }
     }
