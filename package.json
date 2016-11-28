@@ -12,5 +12,15 @@
     "type": "git",
     "url": "https://github.com/soft-eng-practicum/chemistrylearning1.git"
   },
+    "selenium" : {
+    "start_process" : true,
+    "server_path" : "./node_modules/nightwatch/bin/selenium-server-standalone-2.53.1.jar",
+    "log_path" : "",
+    "host" : "127.0.0.1",
+    "port" : 4444,
+    "cli_args" : {
+      "webdriver.chrome.driver" : "./node_modules/nightwatch/bin/chromedriver"
+    }
+  },
   "homepage": "https://github.com/soft-eng-practicum/chemistrylearning1"
 }
