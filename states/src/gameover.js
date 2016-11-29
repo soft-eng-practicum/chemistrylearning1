@@ -75,5 +75,4 @@ gameOverState.prototype = {
         //Start Leaderboard
         this.game.state.start("Leaderboard");
 	}
-    
 };
