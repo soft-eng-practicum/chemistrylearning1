@@ -21,6 +21,7 @@ gameOverState.prototype = {
         
         //Creates the Game Over Title
         titleLabel = this.game.add.sprite(this.game.world.centerX-180, 50, "Gameover_Label");
+        gameOverBackground.scale.setTo(1, 1);
         
         //Checks score before High Score is displayed
         if(score < 0){
