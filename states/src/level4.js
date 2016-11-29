@@ -35,7 +35,8 @@ var level_4_data;
 // Create random variables for the formulas and the name
 var level_4_current_round, level_4_randomFormula;
 
-var LEVEL_4_SCALE_FOR_ANSWER_BUBBLE = 0.62;
+var LEVEL_4_SCALE_FOR_ANSWER_BUBBLE = 0.67;
+var LEVEL_4_SCALE_FOR_ANSWER_BUBBLE_TEXT = 0.62;
 
 var level_4_emitter;
 
@@ -78,16 +79,16 @@ level4.prototype = {
   	create: function(){ 
 		
  // Parse the text back to a JSON object
-    /*    switchJSON = Math.floor(Math.random() * 2);
+        switchJSON = Math.floor(Math.random() * 2);
         
-        if(switchJSON == 0){
+        if (switchJSON == 0) {
             level_4_data = JSON.parse(this.game.cache.getText('level_4_JSON')); 
         }
-        else if(switchJSON == 1){
+        else if (switchJSON == 1) {
             level_4_data = JSON.parse(this.game.cache.getText('level_4_JSON_series_2'));
-        } */
+        } 
         
-        level_4_data = JSON.parse(this.game.cache.getText('level_4_JSON'));
+        // level_4_data = JSON.parse(this.game.cache.getText('level_4_JSON'));
        
         level_4_background = this.game.add.sprite(0, 0,'level_4_background_image');
         
@@ -164,7 +165,7 @@ level4.prototype = {
         level_4_bubble_text_01 = this.game.add.text(Math.floor(level_4_bubble_01.x + level_4_bubble_01.width/2), Math.floor(level_4_bubble_01.y + level_4_bubble_01.height/2), "", style_04, level_4_bubble_labels);
         
         level_4_bubble_text_01.anchor.set(0.5);
-        level_4_bubble_text_01.scale.setTo(LEVEL_4_SCALE_FOR_ANSWER_BUBBLE, LEVEL_4_SCALE_FOR_ANSWER_BUBBLE);
+        level_4_bubble_text_01.scale.setTo(LEVEL_4_SCALE_FOR_ANSWER_BUBBLE_TEXT, LEVEL_4_SCALE_FOR_ANSWER_BUBBLE_TEXT);
        
         // Create a text label and add it to the bubble_labels group
         level_4_bubble_02 = level_4_bubbles.create(level_4_bubble_01.x + 200, -50, 'bubble_image');
@@ -175,7 +176,7 @@ level4.prototype = {
        
         level_4_bubble_text_02 = this.game.add.text(Math.floor(level_4_bubble_02.x + level_4_bubble_02.width/2), Math.floor(level_4_bubble_02.y + level_4_bubble_02.height/2), "", style_05, level_4_bubble_labels);
         level_4_bubble_text_02.anchor.set(0.5);
-        level_4_bubble_text_02.scale.setTo(LEVEL_4_SCALE_FOR_ANSWER_BUBBLE, LEVEL_4_SCALE_FOR_ANSWER_BUBBLE);
+        level_4_bubble_text_02.scale.setTo(LEVEL_4_SCALE_FOR_ANSWER_BUBBLE_TEXT, LEVEL_4_SCALE_FOR_ANSWER_BUBBLE_TEXT);
         
         // Create a text label and add it to the bubble_labels group
         level_4_bubble_03 = level_4_bubbles.create(level_4_bubble_02.x + 200, -50, 'bubble_image');
@@ -186,7 +187,7 @@ level4.prototype = {
         
         level_4_bubble_text_03 = this.game.add.text(Math.floor(level_4_bubble_03.x + level_4_bubble_03.width/2), Math.floor(level_4_bubble_03.y + level_4_bubble_03.height/2), "", style_06, level_4_bubble_labels);
         level_4_bubble_text_03.anchor.set(0.5);
-        level_4_bubble_text_03.scale.setTo(LEVEL_4_SCALE_FOR_ANSWER_BUBBLE, LEVEL_4_SCALE_FOR_ANSWER_BUBBLE);
+        level_4_bubble_text_03.scale.setTo(LEVEL_4_SCALE_FOR_ANSWER_BUBBLE_TEXT, LEVEL_4_SCALE_FOR_ANSWER_BUBBLE_TEXT);
        
         // Set bubbles not visible 
         level_4_bubbles.visible = false;
@@ -673,7 +674,7 @@ function level4HandleData() {
             //Adjusting Instruction label for Chemical Names
             level_4_chemical_formula_text_display.anchor.setTo(0, 0.3);
             //Adjusting Instruction label Font Size
-            level_4_chemical_formula_text_display.fontSize = 38;
+            level_4_chemical_formula_text_display.fontSize = 39;
         }
             
         if (level_4_randomFormula == 0) { 
@@ -707,7 +708,7 @@ function level4HandleData() {
             //Adjusting Instruction label for Chemical Names
             level_4_chemical_formula_text_display.anchor.setTo(0, 0.3);
             //Adjusting Instruction label Font Size
-            level_4_chemical_formula_text_display.fontSize = 38;
+            level_4_chemical_formula_text_display.fontSize = 39;
         }
 
         if (level_4_randomFormula == 0) { 
@@ -742,7 +743,7 @@ function level4HandleData() {
                 //Adjusting Instruction label for Chemical Names
                 level_4_chemical_formula_text_display.anchor.setTo(0, 0.3);
                 //Adjusting Instruction label Font Size
-                level_4_chemical_formula_text_display.fontSize = 38;
+                level_4_chemical_formula_text_display.fontSize = 39;
             }
 
            if (level_4_randomFormula == 0) { 
@@ -775,7 +776,7 @@ function level4HandleData() {
             //Adjusting Instruction label for Chemical Names
             level_4_chemical_formula_text_display.anchor.setTo(0, 0.3);
             //Adjusting Instruction label Font Size
-            level_4_chemical_formula_text_display.fontSize = 38;
+            level_4_chemical_formula_text_display.fontSize = 39;
         }
 
         if (level_4_randomFormula == 0) { 
@@ -809,7 +810,7 @@ function level4HandleData() {
             //Adjusting Instruction label for Chemical Names
             level_4_chemical_formula_text_display.anchor.setTo(0, 0.3);
             //Adjusting Instruction label Font Size
-            level_4_chemical_formula_text_display.fontSize = 38;
+            level_4_chemical_formula_text_display.fontSize = 39;
         }
 
         if (level_4_randomFormula == 0) { 
