@@ -41,7 +41,7 @@ winState.prototype = {
         homeButton.scale.setTo(1, 1);
         
         //Creates the Leaderboard Button
-		leaderBoardButton = this.game.add.button(this.game.world.centerX-140,620,"leaderboardButton",this.playTheGame,this);
+		leaderBoardButton = this.game.add.button(this.game.world.centerX-140,620,"leaderboardButton",this.leaderboard,this);
         leaderBoardButton.scale.setTo(1, 1);
         
         //Starts music
@@ -51,7 +51,13 @@ winState.prototype = {
             music.play();
         }
         else{    
-        }    
+        }  
+        
+        started = false;
+        startedLevel5 = false;
+        level_2_Transition = false;
+        level_4_Transition = false;
+        level_5_Transition = false;
 	},
     
     /*Function: playTheGame()
@@ -59,13 +65,18 @@ winState.prototype = {
     *Starts the Game Title Screen
     */
 	playTheGame: function(){
-
-        started = false;
-        startedLevel5 = false;
-        level_2_Transition = false;
-        level_5_Transition = false;
         
         //Start Level 1
         this.game.state.start("GameTitle");
-	}    
+	},
+    
+    /*Function: leaderboard()
+    *
+    *Starts the Leaderboard
+    */
+	leaderboard: function(){
+        
+        //Start Leaderboard
+        this.game.state.start("Leaderboard");
+	}
 };

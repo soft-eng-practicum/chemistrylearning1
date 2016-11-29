@@ -61,7 +61,6 @@ transitionState.prototype = {
             this.game.state.start("Level5");
         }
     }
-  
 };
 
 
