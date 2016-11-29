@@ -89,7 +89,8 @@ level4.prototype = {
         
         level_4_data = JSON.parse(this.game.cache.getText('level_4_JSON'));
        
-        level_4_background = this.game.add.sprite(0, 0,'level_4_background_image');
+        level_4_background = this.game.add.sprite(0, 0,'rain_Background');
+        level_4_background.scale.setTo(.9, 1.6);
         
         level_4_count_down_label = this.game.add.text(this.game.world.centerX-60, 10, "", {font: "120px Courier", fill: "#ffffff"});
         

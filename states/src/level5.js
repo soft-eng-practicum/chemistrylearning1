@@ -125,21 +125,21 @@ level5.prototype = {
         //Created 4 flasks from Group
         f1 = flask.create(5, 200, "greenFlask"/*"redFlask"*/);
 
-        f2 = flask.create(f1.x + 149, 200, "orangeFlask"); 
+        f2 = flask.create(f1.x + 149, 200, "purpleFlask"); 
 
-        f3 = flask.create(f2.x + 150, 200, "blueFlask");
+        f3 = flask.create(f2.x + 150, 200, "redFlask");
         
-        f4 = flask.create(f3.x + 150, 200, "purpleFlask");
+        f4 = flask.create(f3.x + 150, 200, "orangeFlask");
         
         
         //Sets styling for Answer Text on flask
-        var style1 = { font: "30px Arial", fill: "white", wordWrap: true, wordWrapWidth: f1.width, align: "center", backgroundColor: "" };
+        var style1 = { font: "35px Arial", fill: "BLACK", wordWrap: true, wordWrapWidth: f1.width, align: "center", backgroundColor: "" };
         
-        var style2 = { font: "30px Arial", fill: "white", wordWrap: true, wordWrapWidth: f2.width, align: "center", backgroundColor: "" };
+        var style2 = { font: "35px Arial", fill: "BLACK", wordWrap: true, wordWrapWidth: f2.width, align: "center", backgroundColor: "" };
         
-        var style3 = { font: "30px Arial", fill: "white", wordWrap: true, wordWrapWidth: f3.width, align: "center", backgroundColor: "" };
+        var style3 = { font: "35px Arial", fill: "BLACK", wordWrap: true, wordWrapWidth: f3.width, align: "center", backgroundColor: "" };
         
-        var style4 = { font: "30px Arial", fill: "white", wordWrap: true, wordWrapWidth: f4.width, align: "center", backgroundColor: "" };
+        var style4 = { font: "35px Arial", fill: "BLACK", wordWrap: true, wordWrapWidth: f4.width, align: "center", backgroundColor: "" };
 
         //Create Text1 on flask
         text1 = this.game.add.text(f1.x, f1.y, "", style1, flask);
@@ -178,25 +178,25 @@ level5.prototype = {
         greenCircle.beginFill(0x44FF0D, 1);
         greenCircle.drawCircle(80, 740, 75);
         
-        //Creates a Orange circle
-        var orangeCircle = this.game.add.graphics(0, 0);
-        orangeCircle.beginFill(0xE88200, 1);
-        orangeCircle.drawCircle(225, 740, 75);
-        
-        //Creates a Blue circle
-        var blueCircle = this.game.add.graphics(0, 0);
-        blueCircle.beginFill(0x2D11FF, 1);
-        blueCircle.drawCircle(370, 740, 75);
-        
-        //Creates a Red circle
-      /*  var redCircle = this.game.add.graphics(0, 0);
-        redCircle.beginFill(0xFF0000, 1);
-        redCircle.drawCircle(880, 740, 75);*/
-        
         //Creates a Purple circle
         var purpleCircle = this.game.add.graphics(0, 0);
         purpleCircle.beginFill(0xCB5ED4, 1);
-        purpleCircle.drawCircle(515, 740, 75);
+        purpleCircle.drawCircle(225, 740, 75);
+        
+        //Creates a Blue circle
+       /* var blueCircle = this.game.add.graphics(0, 0);
+        blueCircle.beginFill(0x2D11FF, 1);
+        blueCircle.drawCircle(370, 740, 75);*/
+        
+        //Creates a Red circle
+        var redCircle = this.game.add.graphics(0, 0);
+        redCircle.beginFill(0xFF0000, 1);
+        redCircle.drawCircle(370, 740, 75);
+        
+        //Creates a Orange circle
+        var orangeCircle = this.game.add.graphics(0, 0);
+        orangeCircle.beginFill(0xE88200, 1);
+        orangeCircle.drawCircle(515, 740, 75);
         
         //Creates check marks for right answers
         checkMark = this.game.add.sprite(0, 0,"checkMark");
