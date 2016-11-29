@@ -20,6 +20,7 @@
             "wrong4": "NH\u2083SO\u2084",
             "wrong5": "(NH\u2083)\u2083SO\u2083",
             "wrong6": "(Am\u2084)\u2082SO\u2084"
+      
         },
 
         "formula3": {
@@ -29,11 +30,11 @@
             "wrong2": "CaC\u2082O\u2083",
             "wrong3": "C(Ca\u2082O\u2082)\u2082",
             "wrong4": "K(C\u2082H\u2083O\u2082)\u2082",
-            "wrong5": "KC\u2082H\u2083O\u208",
+            "wrong5": "KC\u2082H\u2083O\u2083",
             "wrong6": "Ca(CO\u2084)\u2082"
         },
         
-        "formula4": {
+         "formula4": {
             "name": "Ammonium Phosphate", 
             "right": "(NH\u2084)\u2083PO\u2084", 
             "wrong1": "(NH\u2083)\u2082PO\u2084",
@@ -54,8 +55,6 @@
             "wrong4": "K\u2087Cr\u2082O\u2082",
             "wrong5": "Po\u2082Cr\u2082",
             "wrong6": "KCr\u2083"
-    
-        }
-        
+        }   
     }
 }
