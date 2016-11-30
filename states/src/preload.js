@@ -75,6 +75,8 @@ preloadState.prototype = {
         
         this.game.load.image("Win_Logo","assets/Win_Logo.png");
         
+        this.game.load.audio("Winning_Sound", "assets/Winning_Sound.wav");
+        
         
         
         //GAMEOVER IMAGES

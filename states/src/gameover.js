@@ -46,6 +46,7 @@ gameOverState.prototype = {
             music.loop = true;
             music.volume = .5;
             music.play();
+            levelMusic.pause();
         }
         else{    
         }

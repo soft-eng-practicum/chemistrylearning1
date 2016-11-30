@@ -87,14 +87,10 @@ level1.prototype = {
         
         //Pauses the Game Title Music when Game starts
         music.pause();
-        
-        //Starts the Level Sound 
-        //if (!music.isPlaying){  
-           levelMusic.loop = true;
-           levelMusic.volume = .2;
-           levelMusic.play();
-      //  }
-       
+        levelMusic.loop = true;
+        levelMusic.volume = .5;
+        levelMusic.play();
+    
                 
         //Creates the Background Image
         levelBackground =  this.game.add.sprite(0,0,"level1Background");
@@ -307,10 +303,7 @@ level1.prototype = {
     *Kills or Destroys the Pause Menu
     */
     playTheGame: function(){
-        //menu.destroy();
-        //choiceLabel.destroy();
         resumeButton.destroy();
-       // quitButton.destroy();
         
         this.game.paused = false;
     },

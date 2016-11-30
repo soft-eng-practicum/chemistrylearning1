@@ -70,6 +70,9 @@ level5.prototype = {
         
         //Pauses the Game Title Music when Game starts
         music.pause();
+        levelMusic.loop = true;
+        levelMusic.volume = .5;
+        levelMusic.play();
         
         //Creates the Background Image
         levelBackground =  this.game.add.sprite(0,0,"level5Background");
@@ -176,12 +179,12 @@ level5.prototype = {
         //Creates a Green circle 
         var greenCircle = this.game.add.graphics(0, 0);
         greenCircle.beginFill(0x44FF0D, 1);
-        greenCircle.drawCircle(80, 740, 75);
+        greenCircle.drawCircle(70, 740, 75);
         
         //Creates a Purple circle
         var purpleCircle = this.game.add.graphics(0, 0);
         purpleCircle.beginFill(0xCB5ED4, 1);
-        purpleCircle.drawCircle(225, 740, 75);
+        purpleCircle.drawCircle(215, 740, 75);
         
         //Creates a Blue circle
        /* var blueCircle = this.game.add.graphics(0, 0);

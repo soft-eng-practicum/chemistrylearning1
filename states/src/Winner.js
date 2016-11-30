@@ -45,10 +45,12 @@ winState.prototype = {
         leaderBoardButton.scale.setTo(1, 1);
         
         //Starts music
-        if (!music.isPlaying){  
-            music.loop = true;
-            music.volume = .5;
-            music.play();
+        if (!winMusic.isPlaying){  
+            winMusic.loop = true;
+            winMusic.volume = .5;
+            winMusic.play();
+            music.pause();
+            levelMusic.pause();
         }
         else{    
         }  

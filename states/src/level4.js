@@ -115,6 +115,9 @@ level4.prototype = {
       
         // Pause the main theme music
         music.pause();
+        levelMusic.loop = true;
+        levelMusic.volume = .5;
+        levelMusic.play();
         
         // Assign value to the beep variables
         level_4_short_beep = this.game.add.audio('shortBeep');

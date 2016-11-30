@@ -11,6 +11,7 @@ var text;
 var tween;
 var sprite;
 var levelMusic;
+var winMusic;
    
 gameIntroState.prototype = {
     
@@ -34,7 +35,6 @@ gameIntroState.prototype = {
    
     //Creates a sprite in the middle of the screen 
     sprite = game.add.sprite(game.world.centerX - 300, game.world.centerY -100, 'XE1');
-   // sprite.scale.set(0.7, 0.5);
     sprite.alpha = 0.2;
 
     //Fades in sprite
@@ -44,6 +44,8 @@ gameIntroState.prototype = {
     music = this.game.add.audio("sound");
         
     levelMusic = this.game.add.audio("levelMusic");
+        
+    winMusic = this.game.add.audio("Winning_Sound");
 
     },
     

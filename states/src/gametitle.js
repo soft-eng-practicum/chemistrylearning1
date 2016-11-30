@@ -19,7 +19,6 @@ gameTitleState.prototype = {
         
         //Creates the Play Button
 		playButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY - 60,"play",this.playTheGame,this);
-		//playButton.anchor.setTo(0.5,0.5);
         playButton.scale.setTo(1, 1);
         
         //Creates the Leaderboard Button
@@ -41,6 +40,7 @@ gameTitleState.prototype = {
             music.loop = true;
             music.volume = .2;
             music.play();
+            winMusic.pause();
         }
         else{
             
@@ -83,10 +83,5 @@ gameTitleState.prototype = {
 	credits: function(){
         //Starts Credits
         this.game.state.start("Credits");
-	}
-
-    
-  
-    
-    
+	}   
 };

@@ -34,13 +34,10 @@ transitionState.prototype = {
     //Creates a sprite in the middle of the screen 
     sprite = game.add.sprite(game.world.centerX - 125, game.world.centerY - 50, 'Astronaut');
     
-    
+    //Pauses music
     music.pause();
-    //Creates audio
-   // music = this.game.add.audio("sound");
-        
-    //levelMusic = this.game.add.audio("levelMusic");
-
+    levelMusic.pause();
+    
     },
     
     /*Function: onComplete()
