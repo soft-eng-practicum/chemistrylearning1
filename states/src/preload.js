@@ -165,7 +165,7 @@ preloadState.prototype = {
         
         this.game.load.audio("longBeep", "assets/longBeep.wav");
         
-        this.game.load.audio("levelMusic", "assets/levelMusic.mp3");
+        this.game.load.audio("levelMusic", "assets/levelMusic.wav");
         
 
     
