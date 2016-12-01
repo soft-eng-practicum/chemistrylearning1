@@ -247,7 +247,7 @@ level5.prototype = {
                           
         //Code for the pause menu
         //Create a pause label to use as a button
-        pause_label = this.game.add.sprite(30, 40, "Pause_Button");
+        pause_label = this.game.add.sprite(30, 30, "Pause_Button");
         pause_label.scale.setTo(1,1);
         pause_label.inputEnabled = true;
 

@@ -90,8 +90,11 @@ level4.prototype = {
         
         // level_4_data = JSON.parse(this.game.cache.getText('level_4_JSON'));
        
-        level_4_background = this.game.add.sprite(0, 0,'rain_Background');
-        level_4_background.scale.setTo(.9, 1.6);
+       // level_4_background = this.game.add.sprite(0, 0,'rain_Background');
+        //level_4_background.scale.setTo(.9, 1.6);
+        
+        level_4_background = this.game.add.sprite(0, 0,'Space_Land_Background');
+        level_4_background.scale.setTo(.462, .61);
         
         level_4_count_down_label = this.game.add.text(this.game.world.centerX-60, 10, "", {font: "120px Courier", fill: "#ffffff"});
         
@@ -237,7 +240,7 @@ level4.prototype = {
         //Code for the pause menu
         //Create a pause label to use as a button
         // pause_label comes from levl1.js
-        pause_label = this.game.add.sprite(30, 40, "Pause_Button");
+        pause_label = this.game.add.sprite(30, 30, "Pause_Button");
         pause_label.scale.setTo(1,1);
         pause_label.inputEnabled = true;
 

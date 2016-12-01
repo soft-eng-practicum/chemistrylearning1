@@ -146,11 +146,13 @@ preloadState.prototype = {
         
         this.game.load.image("xMark", "assets/xMark.png");
         
-        this.game.load.image("Pause_Button","assets/Pause_Button.png");
+        this.game.load.image("Pause_Button","assets/Pause_Button_Redesign.png");
         
         this.game.load.image("planets_Background","assets/planets_Background.jpg");
         
         this.game.load.image("rain_Background","assets/rain_Background.png");
+        
+        this.game.load.image("Space_Land_Background","assets/Space_Land_Background.png");
         
         //Load Audio
         this.game.load.audio("correctSound", "assets/correctSound.wav");
