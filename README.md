@@ -34,9 +34,12 @@
 Xenon allows students to have the convince of learning on the go, any time of the day.  It’s availability on any mobile browser provides easy accessibility for all mobile drivers/platforms. The intent of Xenon puts the interest of students above everything else and continues to think of new convenient ways to reach bigger audiences and deliver new interesting ways to learn and retain information!
 
 ##  FEATURES
-<p align="left">
-<img src ="https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/states/assets/Features_Readme_1.png" width="480">
-</p>
+
+<section>
+    <img width="380" src="https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/states/assets/Features_Readme_1.png">
+   <img width="490" src="https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/states/assets/Features_Readme_2.png">
+</section>
+
 
 ##  DOCUMENTATION
 
