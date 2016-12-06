@@ -36,7 +36,7 @@ Xenon allows students to have the convince of learning on the go, any time of th
 ##  FEATURES
 
 <section>
-    <img width="380" src="https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/states/assets/Features_Readme_1.png">
+    <img width="355" src="https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/states/assets/Features_Readme_1.png">
    <img width="490" src="https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/states/assets/Features_Readme_2.png">
 </section>
 
