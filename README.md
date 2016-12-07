@@ -63,7 +63,7 @@ This project could not have been possible without the following indivduals and t
 * Dr. Cengiz Gunay [[@cengique]]  (https://github.com/cengique)    :  ***Sponsor***
 * Dr. Thomas Gluick                                                :  ***Partner***
 
-(*game/marketing produced/designed by Adele Francois)
+<sub><sup>*game/marketing graphics produced/designed by Adele Francois</sup></sub>
 
 ##  LICENSE
 
