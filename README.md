@@ -1,5 +1,5 @@
 <p align="center">
-<img src ="https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/states/assets/XE1.png">
+<img src ="assets/XE1.png">
 </p>
 
 # XENON
@@ -45,11 +45,11 @@ Xenon allows students to have the convince of learning on the go, any time of th
 
 Documentation process involves separate folders to accommodate the parties of:
 
-[***DEVELOPER***](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation/dev-docs)
+[***DEVELOPER***](official-documentation/dev-docs)
 |
-[***CLIENT***](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation/client-docs)
+[***CLIENT***](official-documentation/client-docs)
 |
-[***USER***](https://github.com/soft-eng-practicum/chemistrylearning1/tree/master/official-documentation/user-docs)
+[***USER***](official-documentation/user-docs)
 
 
 ##  CREDITS
@@ -70,4 +70,4 @@ This project could not have been possible without the following indivduals and t
 The properties of Xenon are protected under the following INTELLECTUAL PROPERTY AND LICENSING AGREEMENT:
 
 
-[XE1 Agreement](https://github.com/soft-eng-practicum/chemistrylearning1/blob/master/Final%20XE1%20Intellectual%20Property%20and%20Licensing%20Agreement.pdf)
+[XE1 Agreement](official-documentation/Final%20XE1%20Intellectual%20Property%20and%20Licensing%20Agreement.pdf)
