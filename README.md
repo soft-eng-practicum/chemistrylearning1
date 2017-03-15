@@ -3,7 +3,7 @@
 </p>
 
 # XENON
-[![npm](https://img.shields.io/badge/platform-mobile web-lightgrey.svg)](https://soft-eng-practicum.github.io/xenon/)
+[![npm](https://img.shields.io/badge/platform-mobile/web-lightgrey.svg)](https://soft-eng-practicum.github.io/xenon/)
 [![npm](https://img.shields.io/badge/docs-complete-brightgreen.svg)](official-documentation)
 [![npm](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg)](https://creativecommons.org/licenses/by-nc/4.0/legalcode)
 
@@ -22,11 +22,11 @@
 
 **Team Name:** XE1
 
-**Repository:**  [Check Out Our Code!] (https://github.com/soft-eng-practicum/xenon.git)
+**Repository:**  [Check Out Our Code!](https://github.com/soft-eng-practicum/xenon.git)
 
-**Process Tool:** [Pivotal Tracker] (https://www.pivotaltracker.com/n/projects/1858563)
+**Process Tool:** [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/1858563)
 
-**Communication Tool:** [Slack Channel] (https://ggc-dev.slack.com/messages/chemteam/details/)
+**Communication Tool:** [Slack Channel](https://ggc-dev.slack.com/messages/chemteam/details/)
 
 
 ##  OVERVIEW
