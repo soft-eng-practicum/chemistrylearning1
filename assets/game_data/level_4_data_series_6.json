@@ -1,0 +1,58 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Maganese(II) dioxide", 
+            "right": "MnO\u2082", 
+            "wrong1": "Mn\u2082O\u2082",
+            "wrong2": "MnO",
+            "wrong3": "MgO\u2082",
+            "wrong4": "OMn\u2082",
+            "wrong5": "Mn\u2082O",
+            "wrong6": "Mo\u2082O"
+        },
+
+        "formula2": {
+            "name": "Iron(III)Phosphide", 
+            "right": "FeP", 
+            "wrong1": "FeP\u2083",
+            "wrong2": "Fe\u2083P",
+            "wrong3": "F\u2083P",
+            "wrong4": "FP",
+            "wrong5": "IrP",
+            "wrong6": "InP"
+        },
+
+        "formula3": {
+            "name": "Mercury(II)Iodide", 
+            "right": "HgI\u2082", 
+            "wrong1": "HgI",
+            "wrong2": "MeI",
+            "wrong3": "Hg\u2082I",
+            "wrong4": "I\u2082Hg\u2082",
+            "wrong5": "Hg\u2082I",
+            "wrong6": "HgIO"
+        },
+        
+         "formula4": {
+            "name": "Chromium(III)Iodide", 
+            "right": "CrI\u2083", 
+            "wrong1": "CrIo\u2083",
+            "wrong2": "CrI\u2084",
+            "wrong3": "Cr\u2083I",
+            "wrong4": "Cr\u2082I",
+            "wrong5": "Cr\u2083I\u2083",
+            "wrong6": "CoIo\u2084"
+        },
+        
+        "formula5": {
+            "name": "Iron(III)Sulfide", 
+            "right": "Fe\u2082S\u2083", 
+            "wrong1": "Fe\u2083S\u2082",
+            "wrong2": "FeS\u2082",
+            "wrong3": "Fe\u2082S",
+            "wrong4": "Ir\u2082S\u2083",
+            "wrong5": "FeS",
+            "wrong6": "S\u2082Fe"
+        }   
+    }
+}

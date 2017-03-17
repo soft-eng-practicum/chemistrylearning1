@@ -1,15 +1,15 @@
 {
     "chemical_formulas": {
         "formula1": {
-            "name": "Magnesium Oxide", 
-            "right": "MgO", 
-            "wrong1": "MO",
-            "wrong2": "MnO",
-            "wrong3": "MgO\u2082",
-            "wrong4": "Mg\u2082O",
-            "wrong5": "Mg(II)O\u2082",
-            "wrong6": "Mg(I)O",
-            "wrong7": "Mn\u2082O"
+            "name": "Barium Oxide", 
+            "right": "BaO", 
+            "wrong1": "BO",
+            "wrong2": "BeO",
+            "wrong3": "BaO\u2082",
+            "wrong4": "Ba\u2082O",
+            "wrong5": "Br(II)O\u2082",
+            "wrong6": "Ba(I)O",
+            "wrong7": "B\u2082O"
         },
 
         "formula2": {

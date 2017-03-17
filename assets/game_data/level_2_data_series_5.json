@@ -1,0 +1,71 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Aluminum Oxide", 
+            "right": "Al\u2082O\u2083", 
+            "wrong1": "CaHe\u2082",
+            "wrong2": "CH\u2082",
+            "wrong3": "CaH",
+            "wrong4": "CH\u2082",
+            "wrong5": "Ca(II)H\u2082",
+            "wrong6": "Ca(I)H",
+            "wrong7": "HCa"
+        },
+
+        "formula2": {
+            "name": "Sulfur Difluoride", 
+            "right": "SF\u2082", 
+            "wrong1": "FS\u2082",
+            "wrong2": "SF",
+            "wrong3": "S\u2082F",
+            "wrong4": "SrF",
+            "wrong5": "SFl\u2082",
+            "wrong6": "Su\u2082F",
+            "wrong7": "F\u2082S\u2082",
+            "wrong8": "Sr\u2082F",
+            "wrong9": "SrF\u2083"
+        },
+
+        "formula3": {
+            "name": "Hydrogen Fluoride", 
+            "right": "HF", 
+            "wrong1": "H\u2082S",
+            "wrong2": "FH",
+            "wrong3": "HFo",
+            "wrong4": "HF\u2083",
+            "wrong5": "HF\u2084",
+            "wrong6": "HFO\u2084"
+        },
+        
+        "formula4": {
+            "name": "Sulfur Trioxide", 
+            "right": "SO\u2083", 
+            "wrong1": "SO",
+            "wrong2": "SrO",
+            "wrong3": "S\u2083O",
+            "wrong4": "SO\u2084",
+            "wrong5": "O\u2084S",
+            "wrong6": "OS\u2083",
+            "wrong7": "S\u2082O\u2083",
+            "wrong8": "Sb\u2083O",
+            "wrong9": "SbSO\u2083",
+            "wrong10": "SbO\u2084",
+            "wrong11": "S\u2082O"
+        },
+        
+        "formula5": {
+            "name": "Disulfur oxide", 
+            "right": "S\u2082O", 
+            "wrong1": "O\u2082S",
+            "wrong2": "SO",
+            "wrong3": "SO\u2082",
+            "wrong4": "O\u2082S\u2082",
+            "wrong5": "SrO\u2082",
+            "wrong6": "SuO",
+            "wrong7": "SuO\u2082",
+            "wrong8": "SrS\u2082"
+        }
+        
+    }
+}
+

@@ -1,0 +1,60 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Ni(II)Iodide", 
+            "right": "NiI\u2082", 
+            "wrong1": "Ni\u2082I\u2082",
+            "wrong2": "NiI",
+            "wrong3": "NoI\u2082",
+            "wrong4": "INi\u2082",
+            "wrong5": "Ni\u2082I",
+            "wrong6": "Nk\u2082I"
+        },
+
+        "formula2": {
+            "name": "Cobalt(II)Phosphide", 
+            "right": "Co\u2083P\u2082", 
+            "wrong1": "CoP\u2083",
+            "wrong2": "C\u2083P\u2082",
+            "wrong3": "Co\u2083P",
+            "wrong4": "CoP",
+            "wrong5": "Co\u2083P",
+            "wrong6": "Cb\u2083P"
+      
+        },
+
+        "formula3": {
+            "name": "Iron(III)Sulfide", 
+            "right": "Fe\u2082S\u2083", 
+            "wrong1": "FeS\u2082",
+            "wrong2": "IrS",
+            "wrong3": "Fe\u2082S",
+            "wrong4": "S\u2082Fe\u2082",
+            "wrong5": "Fe\u2084S",
+            "wrong6": "FeSu"
+        },
+        
+         "formula4": {
+            "name": "Tin(IV)Chloride", 
+            "right": "SnCl\u2084", 
+            "wrong1": "SnCl\u2083",
+            "wrong2": "TiCl\u2084",
+            "wrong3": "Sn\u2083Cl",
+            "wrong4": "Sn\u2082Cl",
+            "wrong5": "Ti\u2083Cl\u2083",
+            "wrong6": "SnC\u2084"
+            
+        },
+        
+        "formula5": {
+            "name": "Lead(II)Oxide", 
+            "right": "PbO", 
+            "wrong1": "Pb\u2082O\u2082",
+            "wrong2": "PbO\u2082",
+            "wrong3": "Pb\u2082O",
+            "wrong4": "P\u2082O",
+            "wrong5": "PO",
+            "wrong6": "O\u2082Pb"
+        }   
+    }
+}

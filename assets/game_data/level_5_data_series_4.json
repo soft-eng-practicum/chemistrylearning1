@@ -1,0 +1,67 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Silver Nitrite", 
+            "right": "AgNO\u2082", 
+            "wrong1": "AgNO\u2083",
+            "wrong2": "Ag\u2082NO\u2082",
+            "wrong3": "SiNO\u2082",
+            "wrong4": "AuNO\u2082",
+            "wrong5": "SiNO\u2083",
+            "wrong6": "Ag\u2082NO"
+        },
+
+        "formula2": {
+            "name": "Potassium Iodate", 
+            "right": "KIO\u2083", 
+            "wrong1": "KIO\u2084",
+            "wrong2": "KIO\u2082",
+            "wrong3": "KIO",
+            "wrong4": "K(IO\u2083)\u2082",
+            "wrong5": "K\u2082IO\u2083",
+            "wrong6": "KIo\u2083",
+            "wrong7": "PIO\u2083",
+            "wrong8": "KOI\u2083",
+            "wrong9": "KI"
+        },
+
+        "formula3": {
+            "name": "Copper (II) Nitrate", 
+            "right": "Cu(NO\u2083)\u2082", 
+            "wrong1": "CuNO\u2083",
+            "wrong2": "CuNO\u2082",
+            "wrong3": "Cu(NO\u2082)\u2083",
+            "wrong4": "CuN\u2082",
+            "wrong5": "Cu\u2083N\u2082",
+            "wrong6": "CNO\u2083"
+        },
+        
+        "formula4": {
+            "name": "Calcium Carbonate", 
+            "right": "CaCO\u2083", 
+            "wrong1": "CaHCO\u2083",
+            "wrong2": "CaCO\u2084",
+            "wrong3": "CaCO\u2082",
+            "wrong4": "CaCO",
+            "wrong5": "Ca\u2083CO\u2083",
+            "wrong6": "Ca\u2083(CO\u2083)\u2082",
+            "wrong7": "Ca\u2083HCO\u2083",
+            "wrong8": "CaSO\u2083"
+        },
+        
+        "formula5": {
+            "name": "Iron (III) Phosphate", 
+            "right": "FePO\u2084", 
+            "wrong1": "PO\u2084Fe\u2083",
+            "wrong2": "Fe\u2082HPO\u2084",
+            "wrong3": "Fe\u2082HPO\u2083",
+            "wrong4": "FePO\u2083",
+            "wrong5": "F\u2083PO\u2084",
+            "wrong6": "Fe\u2082PO\u2084",
+            "wrong7": "Fe\u2083P\u2083O",
+            "wrong8": "Fe\u2083Po\u2083O"
+        }
+        
+    }
+}
+

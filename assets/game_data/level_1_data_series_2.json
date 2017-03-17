@@ -1,7 +1,7 @@
 {
     "chemical_formulas": {
         "formula1": {
-            "name": "Calcium Bromide", 
+            "name": "Calcium Bomide", 
             "right": "CaBr\u2082", 
             "wrong1": "CBr\u2082",
             "wrong2": "Br\u2082Ca",
@@ -12,7 +12,7 @@
         },
 
         "formula2": {
-            "name": "Sodium Oxide", 
+            "name": "Sodium xide", 
             "right": "Na\u2082O", 
             "wrong1": "SO",
             "wrong2": "SO\u2082",
@@ -23,7 +23,7 @@
         },
 
         "formula3": {
-            "name": "Sodium Sulfide", 
+            "name": "Sodium Slfide", 
             "right": "Na\u2082S", 
             "wrong1": "NaS",
             "wrong2": "KS",
@@ -34,7 +34,7 @@
         },
         
         "formula4": {
-            "name": "Sodium Bromide", 
+            "name": "Sodium Bomide", 
             "right": "NaBr", 
             "wrong1": "NBr\u2083",
             "wrong2": "NBr",
@@ -45,7 +45,7 @@
         },
         
         "formula5": {
-            "name": "Tin(IV) Oxide", 
+            "name": "Tin(IV) Oide", 
             "right": "SnO\u2082", 
             "wrong1": "TiO\u2082",
             "wrong2": "TO\u2082",

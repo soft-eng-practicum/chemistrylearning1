@@ -1,26 +1,25 @@
 {
     "chemical_formulas": {
         "formula1": {
-            "name": "Aluminum Oxide", 
-            "right": "Al\u2082O\u2083", 
-            "wrong1": "AlO\u2082",
-            "wrong2": "Al\u2083O\u2082",
-            "wrong3": "AOx\u2082",
-            "wrong4": "Al\u2082O\u2082",
-            "wrong5": "A\u2082O\u2082",
+            "name": "Iron (III) Oxide", 
+            "right": "Fe\u2082O\u2083", 
+            "wrong1": "FeO\u2082",
+            "wrong2": "Fe\u2083O\u2082",
+            "wrong3": "FOx\u2082",
+            "wrong4": "Fe\u2082O\u2082",
+            "wrong5": "F\u2082O\u2082",
             "wrong6": "O\u2083Al\u2082"
         },
 
         "formula2": {
-            "name": "Sodium Hydride", 
-            "right": "NaH", 
-            "wrong1": "NH",
-            "wrong2": "So\u2082H\u2082",
-            "wrong3": "Na\u2082H",
-            "wrong4": "NaH\u2082",
-            "wrong5": "SH",
-            "wrong6": "Na\u2083H\u2082"
-      
+            "name": "Manganese (II) Chloride", 
+            "right": "MnCl\u2082", 
+            "wrong1": "MnCl",
+            "wrong2": "Mn\u2082Cl\u2082",
+            "wrong3": "Mn\u2082Cl",
+            "wrong4": "MgCl\u2083",
+            "wrong5": "MgCl",
+            "wrong6": "Cl\u2083Mn\u2082"
         },
 
         "formula3": {
@@ -46,14 +45,14 @@
         },
         
         "formula5": {
-            "name": "Sodium Hydrogen Phosphate", 
-            "right": "NaHPO\u2084", 
-            "wrong1": "NHPO\u2084",
-            "wrong2": "Na\u2082HP\u2082O\u2082",
-            "wrong3": "NaHPh\u2084",
-            "wrong4": "SoHPO\u2084",
-            "wrong5": "NaPHO\u2082",
-            "wrong6": "NaHPO\u2083"   
+            "name": "Copper (I) Nitride", 
+            "right": "Cu\u2083N", 
+            "wrong1": "Co\u2083N",
+            "wrong2": "C\u2083N",
+            "wrong3": "Cu\u2083N\u2082",
+            "wrong4": "C\u2083N\u2082",
+            "wrong5": "Co\u2083N\u2082",
+            "wrong6": "CuN"   
         }   
     }
 }

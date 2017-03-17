@@ -1,0 +1,60 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Iron (III) Bromide", 
+            "right": "FeBr\u2083", 
+            "wrong1": "FeBr\u2082",
+            "wrong2": "FeBr",
+            "wrong3": "BrFe\u2083",
+            "wrong4": "IrBr\u2083",
+            "wrong5": "Ir\u2083Br\u2083",
+            "wrong6": "IBr\u2083"
+        },
+
+        "formula2": {
+            "name": "Copper(I)Phosphide", 
+            "right": "Cu\u2083P", 
+            "wrong1": "CuP\u2083",
+            "wrong2": "C\u2083P",
+            "wrong3": "Co\u2083P",
+            "wrong4": "CuP",
+            "wrong5": "Cu\u2082P",
+            "wrong6": "Cl\u2083P"
+      
+        },
+
+        "formula3": {
+            "name": "Mercury(II)Sulfide", 
+            "right": "HgS", 
+            "wrong1": "HgS\u2082",
+            "wrong2": "MeCl",
+            "wrong3": "Hg\u2082S",
+            "wrong4": "S\u2082Hg\u2082",
+            "wrong5": "Hg\u2082S",
+            "wrong6": "MeS"
+        },
+        
+         "formula4": {
+            "name": "Tin(IV)Fluoride", 
+            "right": "SnF\u2084", 
+            "wrong1": "SnF\u2083",
+            "wrong2": "TiF\u2084",
+            "wrong3": "Sn\u2083F",
+            "wrong4": "Sn\u2082F",
+            "wrong5": "Ti\u2083F\u2083",
+            "wrong6": "SnFl\u2084"
+            
+        },
+        
+        "formula5": {
+            "name": "Lead(II)Oxide", 
+            "right": "PbO", 
+            "wrong1": "Pb\u2082O\u2082",
+            "wrong2": "PbO\u2082",
+            "wrong3": "Pb\u2082O",
+            "wrong4": "P\u2082O",
+            "wrong5": "PO",
+            "wrong6": "O\u2082Pb"
+        }   
+    }
+}

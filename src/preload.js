@@ -122,13 +122,22 @@ preloadState.prototype = {
            
         
         
-        //LEVEL 1 IMAGES, SOUNDS, & JSON
+        /*LEVEL 1 IMAGES, SOUNDS, & JSON  To increase number of files read 
+        for this level or any level must use this.game.load.text( string for the file
+        here)
+        */
+    
         
+                
         this.game.load.text('level_1_JSON', "assets/game_data/level_1_data.json");
         
         this.game.load.text('level_1_JSON_series_2', "assets/game_data/level_1_data_series_2.json");
         
         this.game.load.text('level_1_JSON_series_3', "assets/game_data/level_1_data_series_3.json");
+        
+        this.game.load.text('level_1_JSON_series_4', "assets/game_data/level_1_data_series_4.json");
+        
+        this.game.load.text('level_1_JSON_series_5', "assets/game_data/level_1_data_series_5.json");
         
         this.game.load.image("heart","assets/heart.png");
         
@@ -181,6 +190,12 @@ preloadState.prototype = {
         
         this.game.load.text('level_2_JSON_series_2', "assets/game_data/level_2_data_series_2.json");
         
+        this.game.load.text('level_2_JSON_series_3', "assets/game_data/level_2_data_series_3.json");
+        
+        this.game.load.text('level_2_JSON_series_4', "assets/game_data/level_2_data_series_4.json");
+        
+        this.game.load.text('level_2_JSON_series_5', "assets/game_data/level_2_data_series_5.json");
+        
         // spike image
         this.game.load.image('spike_image', "assets/spikes.png");
         
@@ -199,12 +214,26 @@ preloadState.prototype = {
         
         this.game.load.text('level_4_JSON_series_2', "assets/game_data/level_4_data_series_2.json");
         
+		this.game.load.text('level_4_JSON_series_3', "assets/game_data/level_4_data_series_3.json");
+		
+		this.game.load.text('level_4_JSON_series_4', "assets/game_data/level_4_data_series_4.json");
+		
+		this.game.load.text('level_4_JSON_series_5', "assets/game_data/level_4_data_series_5.json");
+		
+		this.game.load.text('level_4_JSON_series_6', "assets/game_data/level_4_data_series_6.json");
+		
         //LEVEL 5 IMAGES, SOUNDS, & JSON
         this.game.load.image("level5Background","assets/Lab_Background.jpg");
         
         this.game.load.text('level_5_JSON', "assets/game_data/level_5_data.json");
         
         this.game.load.text('level_5_JSON_series_2', "assets/game_data/level_5_data_series_2.json");
+        
+        this.game.load.text('level_5_JSON_series_3', "assets/game_data/level_5_data_series_3.json");
+        
+        this.game.load.text('level_5_JSON_series_4', "assets/game_data/level_5_data_series_4.json");
+        
+        this.game.load.text('level_5_JSON_series_5', "assets/game_data/level_5_data_series_5.json");
         
         this.game.load.image("blueFlask", "assets/blue_flask.png");
         

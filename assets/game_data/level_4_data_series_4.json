@@ -1,0 +1,60 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Tin (II) Oxide", 
+            "right": "SnO", 
+            "wrong1": "SNO",
+            "wrong2": "TiO",
+            "wrong3": "TiO\u2083",
+            "wrong4": "SnO\u2082",
+            "wrong5": "OSn\u2082",
+            "wrong6": "SbO\u2082"
+        },
+
+        "formula2": {
+            "name": "Lead (IV) Sulfide", 
+            "right": "PbS\u2082", 
+            "wrong1": "Pb\u2082S\u2084",
+            "wrong2": "PbS",
+            "wrong3": "PS\u2082",
+            "wrong4": "PS",
+            "wrong5": "LdS\u2082",
+            "wrong6": "LdS"
+      
+        },
+
+        "formula3": {
+            "name": "Mercury(II)Chloride", 
+            "right": "Hg\u2082Cl\u2082", 
+            "wrong1": "HgCl\u2082",
+            "wrong2": "HgCl",
+            "wrong3": "Hg\u2082Cl",
+            "wrong4": "Cl\u2082Hg\u2082",
+            "wrong5": "Hg\u2082C\u2082",
+            "wrong6": "Me\u2082Cl\u2082"
+        },
+        
+         "formula4": {
+            "name": "Manganese(IV)Iodide", 
+            "right": "MnI\u2084", 
+            "wrong1": "MnI\u2083",
+            "wrong2": "MgI\u2084",
+            "wrong3": "Mn\u2083I",
+            "wrong4": "Mg\u2083I",
+            "wrong5": "Ma\u2083I\u2083",
+            "wrong6": "MoI\u2083"
+            
+        },
+        
+        "formula5": {
+            "name": "Copper(I)Oxide", 
+            "right": "Cu\u2082O", 
+            "wrong1": "Cu\u2082O\u2082",
+            "wrong2": "CuO\u2082",
+            "wrong3": "Co\u2082O",
+            "wrong4": "Cr\u2082O",
+            "wrong5": "C\u2082O",
+            "wrong6": "O\u2082Cu"
+        }   
+    }
+}

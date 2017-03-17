@@ -1,59 +1,59 @@
 {
-    "chemical_formulas": {
-        "formula1": {
-            "name": "Potassium Chloride", 
-            "right": "KCl", 
-            "wrong1": "PCl",
-            "wrong2": "K\u2082Cl\u2082",
-            "wrong3": "K\u2082Cl",
-            "wrong4": "ClK",
-            "wrong5": "PC",
-            "wrong6": "KC"
-        },
-
+	"chemical_formulas": {
+   		"formula1": {
+            "name": "Magnesium Chloride", 
+            "right": "MgCl\u2082", 
+            "wrong1": "MgCl\u2083",
+            "wrong2": "MCl\u2082",
+            "wrong3": "MgC\u2082",
+            "wrong4": "MgCl",
+            "wrong5": "MCl\u2084O",
+            "wrong6": "MnCl\u2084O"
+        }, 
+        
         "formula2": {
-            "name": "Sodium Iodide", 
-            "right": "NaI", 
-            "wrong1": "SI",
-            "wrong2": "Na\u2082I",
-            "wrong3": "NaI\u2082",
-            "wrong4": "NaIO\u2083",
-            "wrong5": "Na\u2082I\u2082",
-            "wrong6": "N\u2082I\u2082"
+            "name": "Magnesium Fluoride", 
+            "right": "MgF\u2082", 
+            "wrong1": "MgF\u2083",
+            "wrong2": "MF\u2082",
+            "wrong3": "MgP\u2082",
+            "wrong4": "MgF",
+            "wrong5": "MnF\u2084O",
+            "wrong6": "MgF\u2084O"
         },
-
+           
         "formula3": {
-            "name": "Potassium Iodide", 
-            "right": "KI", 
-            "wrong1": "IK",
-            "wrong2": "PI",
-            "wrong3": "IP",
-            "wrong4": "KIO",
-            "wrong5": "K\u2082I\u2082",
-            "wrong6": "KIO\u2083"
+            "name": "Magnesium Bromide", 
+            "right": "MgBr\u2082", 
+            "wrong1": "MgBr\u2083",
+            "wrong2": "MB\u2082",
+            "wrong3": "MnBr\u2082",
+            "wrong4": "MgBr",
+            "wrong5": "MnBr\u2084O",
+            "wrong6": "MgBr\u2084O" 
+            
         },
-        
         "formula4": {
-            "name": "Aluminum Nitride", 
-            "right": "AlN", 
-            "wrong1": "AlNH\u2083",
-            "wrong2": "AN",
-            "wrong3": "NAl\u2083",
-            "wrong4": "AlNH\u2082",
-            "wrong5": "AlNO\u2083",
-            "wrong6": "AlNO\u2082"
+            "name": "Calcium Chloride", 
+            "right": "CaCl\u2082", 
+            "wrong1": "CCl\u2082",
+            "wrong2": "Cl\u2082Ca",
+            "wrong3": "Ca\u2082Cl\u2082",
+            "wrong4": "CaC\u2082",
+            "wrong5": "ClCa",
+            "wrong6": "CaCl\u2084O"
+            
         },
-        
         "formula5": {
-            "name": "Sodium Peroxide", 
-            "right": "Na\u2082O\u2082", 
-            "wrong1": "NaO",
-            "wrong2": "NaO\u2082",
-            "wrong3": "NO\u2082",
-            "wrong4": "NONO",
-            "wrong5": "Na\u2082O",
-            "wrong6": "Na\u2082O\u2083"
-        }    
-    }
-}
-
+            "name": "Calcium Iodide", 
+            "right": "CaI\u2082", 
+            "wrong1": "CI\u2082",
+            "wrong2": "I\u2082Ca",
+            "wrong3": "Ca\u2082I\u2082",
+            "wrong4": "CaIO\u2082",
+            "wrong5": "ICa",
+            "wrong6": "CaI\u2084O"
+            
+    	}
+    }	
+}          

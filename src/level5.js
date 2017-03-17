@@ -59,7 +59,7 @@ level5.prototype = {
   	create: function() { 
         
         //Creating JSON 
-        switchJSON = Math.floor(Math.random() * 2);
+        switchJSON = 4; //Math.floor(Math.random() * 2);
         
         if(switchJSON == 0){
             level_5_data = JSON.parse(this.game.cache.getText('level_5_JSON')); 
@@ -67,7 +67,15 @@ level5.prototype = {
         else if(switchJSON == 1){
             level_5_data = JSON.parse(this.game.cache.getText('level_5_JSON_series_2'));
         } 
-        
+        else if(switchJSON == 2){
+            level_5_data = JSON.parse(this.game.cache.getText('level_5_JSON_series_3'));
+        } 
+        else if(switchJSON == 3){
+            level_5_data = JSON.parse(this.game.cache.getText('level_5_JSON_series_4'));
+        } 
+        else if(switchJSON == 4){
+            level_5_data = JSON.parse(this.game.cache.getText('level_5_JSON_series_5'));
+        } 
         //Pauses the Game Title Music when Game starts
         music.pause();
         levelMusic.loop = true;

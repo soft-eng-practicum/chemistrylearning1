@@ -71,9 +71,9 @@ level1.prototype = {
     //Main Phaser Create Function
   	create: function(){ 
         
-        //Creating JSON
+        //Creating JSON-add another switch per file added.
         
-        switchJSON = Math.floor(Math.random() * 3);
+        switchJSON = 4; //Math.floor(Math.random() * 4);
         
         if(switchJSON == 0){
             level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON')); 
@@ -83,6 +83,12 @@ level1.prototype = {
         }  
         else if(switchJSON == 2){
             level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_3'));
+        }
+        else if(switchJSON == 3){
+            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_4'));
+        }
+        else if(switchJSON == 4){
+            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_5'));
         }
         
         //Pauses the Game Title Music when Game starts
@@ -892,6 +898,8 @@ level1.prototype = {
         }
         
 /////////////////////////////////////////////////////////////////////////////////////////
+//this is the handle data part. Johns call it a rund//
+
         if(randomElement == 1){
           instructions.setText(level_1_data.chemical_formulas.formula2.name);
             

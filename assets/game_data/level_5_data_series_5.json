@@ -1,0 +1,68 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Ammonium Phosphate", 
+            "right": "(NH\u2084)\u2083PO\u2084", 
+            "wrong1": "(NH\u2084)\u2083PO\u2083",
+            "wrong2": "(NH\u2084)\u2082PO\u2084",
+            "wrong3": "NH\u2084PO\u2084",
+            "wrong4": "NH\u2084(PO\u2084)\u2083",
+            "wrong5": "(NiH\u2084)\u2083PO\u2084",
+            "wrong6": "(NHe\u2084)\u2083PO\u2084"
+        },
+
+        "formula2": {
+            "name": "Potassium Iodate", 
+            "right": "KIO\u2083", 
+            "wrong1": "KIO\u2084",
+            "wrong2": "KIO\u2082",
+            "wrong3": "KIO",
+            "wrong4": "K(IO\u2083)\u2082",
+            "wrong5": "K\u2082IO\u2083",
+            "wrong6": "KIo\u2083",
+            "wrong7": "PIO\u2083",
+            "wrong8": "KOI\u2083",
+            "wrong9": "KI"
+        },
+
+        "formula3": {
+            "name": "Sodium Sulfite", 
+            "right": "Na\u2082(SO\u2083)", 
+            "wrong1": "Na\u2082(SO\u2084)",
+            "wrong2": "Na\u2082(SO\u2082)",
+            "wrong3": "Na(SO\u2083)\u2082",
+            "wrong4": "So\u2082(SO\u2083)",
+            "wrong5": "Na\u2083(SO\u2083)",
+            "wrong6": "Na\u2083(SO\u2084)"
+        },
+        
+        "formula4": {
+            "name": "Magnesium Hydrogen Carbonate", 
+            "right": "Mg(HCO\u2083)\u2082", 
+            "wrong1": "MgHCO\u2083",
+            "wrong2": "Mn(HCO\u2083)\u2082",
+            "wrong3": "Mg(CO\u2083)\u2082",
+            "wrong4": "MgCO\u2083",
+            "wrong5": "MnCO\u2083",
+            "wrong6": "Mg\u2082CO\u2083",
+            "wrong7": "Ma\u2083HCO\u2083",
+            "wrong8": "MgCaO\u2083"
+            
+        },
+        
+        "formula5": {
+            "name": "Tin (II) Sulfate", 
+            "right": "SnSO\u2084", 
+            "wrong1": "SnSO\u2083",
+            "wrong2": "SnSO\u2082",
+            "wrong3": "SnSO",
+            "wrong4": "TiSO\u2084",
+            "wrong5": "TiSO\u2083",
+            "wrong6": "Sn\u2082SO\u2084",
+            "wrong7": "Sn(SO\u2084)\u2082",
+            "wrong8": "Ti(SO\u2084)\u2082"
+        }
+        
+    }
+}
+

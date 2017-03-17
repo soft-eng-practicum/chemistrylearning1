@@ -1,58 +1,68 @@
 {
     "chemical_formulas": {
         "formula1": {
-            "name": "Potassium Perchlorate", 
-            "right": "KClO\u2084", 
-            "wrong1": "KClO\u2083",
-            "wrong2": "KClO\u2082",
-            "wrong3": "KClO",
-            "wrong4": "KCl",
-            "wrong5": "PClO",
-            "wrong6": "PClO\u2084"
+            "name": "Ammonium Sulfate", 
+            "right": "(NH\u2084)\u2082SO\u2084", 
+            "wrong1": "NH\u2084SO\u2082",
+            "wrong2": "NH\u2084SO",
+            "wrong3": "NO\u2083SH\u2084",
+            "wrong4": "(NH\u2084)\u2082SO\u2083",
+            "wrong5": "AmSO\u2083",
+            "wrong6": "NSO\u2083"
         },
 
         "formula2": {
-            "name": "Dinitrogen Tetraoxide", 
-            "right": "N\u2082O\u2084", 
-            "wrong1": "NO\u2084",
-            "wrong2": "N\u2084O\u2082",
-            "wrong3": "Ni\u2082O\u2084",
-            "wrong4": "Ni\u2084O\u2082",
-            "wrong5": "N\u2083O\u2084",
-            "wrong6": "NO\u2084"
-        },
-        
-        "formula3": {
-            "name": "Sulfur Trioxide", 
-            "right": "SO\u2083", 
-            "wrong1": "SO\u2082",
-            "wrong2": "S\u2082O\u2083",
-            "wrong3": "S\u2082O\u2082",
-            "wrong4": "Su\u2082Ox\u2083",
-            "wrong5": "S\u2083O\u2083",
-            "wrong6": "Su\u2083O"
+            "name": "Chromium(III) Perchlorate", 
+            "right": "Cr(ClO\u2084)\u2083", 
+            "wrong1": "CrClO\u2083",
+            "wrong2": "Cr(ClO)\u2083",
+            "wrong3": "Cr(ClO\u2082)\u2083",
+            "wrong4": "CrCl\u2082",
+            "wrong5": "ClO\u2084Cr",
+            "wrong6": "KrClO\u2084",
+            "wrong7": "CrClO\u2084",
+            "wrong8": "CuClO\u2084",
+            "wrong9": "CCl\u2084"
         },
 
+        "formula3": {
+            "name": "Mangnesium Nitrite", 
+            "right": "Mg(NO\u2082)\u2082", 
+            "wrong1": "MgNO\u2083",
+            "wrong2": "MnNO\u2082",
+            "wrong3": "Mg(NO\u2082)\u2083",
+            "wrong4": "MnNi\u2082",
+            "wrong5": "Mn(NO\u2083)\u2082",
+            "wrong6": "MgNO\u2084"
+        },
+        
         "formula4": {
-            "name": "Lead(IV) Iodide", 
-            "right": "PbI\u2084", 
-            "wrong1": "I\u2084Pb",
-            "wrong2": "LdI\u2084",
-            "wrong3": "LaI\u2084",
-            "wrong4": "Pb\u2084I",
-            "wrong5": "PbIO\u2084",
-            "wrong6": "PbIO\u2083"
+            "name": "Aluminum Carbonate", 
+            "right": "Al(CO\u2083)\u2083", 
+            "wrong1": "AlCrO",
+            "wrong2": "AlCrO\u2084",
+            "wrong3": "Al(Cr\u2082O\u2086)\u2083",
+            "wrong4": "AlCO\u2087",
+            "wrong5": "AlCO\u2082",
+            "wrong6": "Al(CO\u2083)\u2082",
+            "wrong7": "Al(SO\u2083)\u2083",
+            "wrong8": "Al\u2083CO\u2083"
+            
         },
         
         "formula5": {
-            "name": "Phosphorus Pentachloride", 
-            "right": "PCl\u2085", 
-            "wrong1": "P\u2085Cl\u2085",
-            "wrong2": "P\u2082Cl\u2083",
-            "wrong3": "PBr\u2085",
-            "wrong4": "PClO\u2085",
-            "wrong5": "PCl",
-            "wrong6": "P\u2085ClO"
+            "name": "Sodium Permanganate", 
+            "right": "NaMnO\u2084", 
+            "wrong1": "MnO\u2084Na",
+            "wrong2": "Na\u2082MnO\u2084",
+            "wrong3": "NaMnO\u2083",
+            "wrong4": "Na(MnO\u2084)\u2082",
+            "wrong5": "Na\u2083MnO\u2084",
+            "wrong6": "Na\u2082MnO\u2082",
+            "wrong7": "NMnO\u2084",
+            "wrong8": "SoMnO\u2084"
         }
+        
     }
 }
+

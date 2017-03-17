@@ -1,0 +1,68 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Ammonium Carbonate", 
+            "right": "(NH\u2084)\u2082CO\u2083", 
+            "wrong1": "NH\u2084CO\u2083",
+            "wrong2": "NH\u2084CO",
+            "wrong3": "(NH\u2083)\u2083CO\u2083",
+            "wrong4": "N\u2083CO\u2083",
+            "wrong5": "NH\u2084HCO\u2083",
+            "wrong6": "NNO\u2083"
+        },
+
+        "formula2": {
+            "name": "Silver Acetate", 
+            "right": "AgC\u2082H\u2083O\u2082", 
+            "wrong1": "AgCH\u2083O\u2082",
+            "wrong2": "AgC\u2082H\u2083O\u2083",
+            "wrong3": "AgC\u2082H\u2084O\u2082",
+            "wrong4": "AgC\u2082H\u2083O",
+            "wrong5": "SiC\u2082H\u2083O\u2082",
+            "wrong6": "AgCo\u2082H\u2083O\u2082",
+            "wrong7": "AgAcO\u2083",
+            "wrong8": "AuC\u2082H\u2083O\u2082",
+            "wrong9": "AgC\u2083H\u2083O\u2082"
+        },
+
+        "formula3": {
+            "name": "Nickel(III) Sulfite", 
+            "right": "Ni\u2082(SO\u2083)\u2083", 
+            "wrong1": "Ni\u2083(SO\u2083)\u2082",
+            "wrong2": "Ni\u2083(SO\u2083)\u2083",
+            "wrong3": "Ni(SO\u2083)\u2083",
+            "wrong4": "Ni\u2082(SO\u2084)\u2083",
+            "wrong5": "Ni(SO\u2084)\u2083",
+            "wrong6": "N\u2082(SO\u2084)\u2083"
+        },
+        
+        "formula4": {
+            "name": "Iron(III) Chromate", 
+            "right": "Fe\u2082(CrO\u2084)\u2083", 
+            "wrong1": "FeCr\u2082O\u2087",
+            "wrong2": "Fe\u2082Cr\u2082O\u2087",
+            "wrong3": "Fe(CrO\u2084)\u2083",
+            "wrong4": "Fe\u2082(CrO\u2084)\u2082",
+            "wrong5": "Fe\u2083(CrO\u2084)\u2083",
+            "wrong6": "Fe\u2082Cr\u2082O\u2087",
+            "wrong7": "Fe\u2083Cr\u2082O\u2087",
+            "wrong8": "Fe\u2083(Cr\u2082O\u2087)\u20823"
+            
+        },
+        
+        "formula5": {
+            "name": "Aluminum Hydroxide", 
+            "right": "Al(OH)\u2083", 
+            "wrong1": "Al(OH)\u2084",
+            "wrong2": "Al(OH)\u2082",
+            "wrong3": "AlOH",
+            "wrong4": "Au(OH)\u2083",
+            "wrong5": "Ag(OH)\u2083",
+            "wrong6": "Sb(OH)\u2083",
+            "wrong7": "Al(HO)\u2083",
+            "wrong8": "Al\u2082(OH)\u2083"
+        }
+        
+    }
+}
+

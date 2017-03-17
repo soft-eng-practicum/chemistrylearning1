@@ -1,0 +1,71 @@
+{
+    "chemical_formulas": {
+        "formula1": {
+            "name": "Calcium Oxide", 
+            "right": "CaO", 
+            "wrong1": "CO",
+            "wrong2": "ClO",
+            "wrong3": "CaO\u2082",
+            "wrong4": "Ca\u2082O",
+            "wrong5": "Cr(II)O\u2082",
+            "wrong6": "Ca(I)O",
+            "wrong7": "C\u2082O"
+        },
+
+        "formula2": {
+            "name": "Magnesium Hydride", 
+            "right": "MgH\u2082", 
+            "wrong1": "MoH\u2082",
+            "wrong2": "MnH",
+            "wrong3": "H\u2082Mg",
+            "wrong4": "HMg",
+            "wrong5": "MgH\u2082",
+            "wrong6": "Mn\u2082H",
+            "wrong7": "Mo\u2082H\u2082",
+            "wrong8": "M\u2082H",
+            "wrong9": "MgH\u2083"
+        },
+
+        "formula3": {
+            "name": "Strontium Sulfide", 
+            "right": "SrS", 
+            "wrong1": "Sr\u2082S",
+            "wrong2": "StS",
+            "wrong3": "SrSO",
+            "wrong4": "SrSO\u2083",
+            "wrong5": "SrSO\u2084",
+            "wrong6": "SmSO\u2084"
+        },
+        
+        "formula4": {
+            "name": "Potassium Sulfide", 
+            "right": "K\u2082S", 
+            "wrong1": "KO",
+            "wrong2": "KS",
+            "wrong3": "SK",
+            "wrong4": "KSO\u2084",
+            "wrong5": "Ka\u2084S",
+            "wrong6": "KS\u2083",
+            "wrong7": "K\u2082S\u2082",
+            "wrong8": "K\u2083O",
+            "wrong9": "KSO\u2083",
+            "wrong10": "SO\u2084K",
+            "wrong11": "Ka\u2082O"
+        },
+        
+        "formula5": {
+            "name": "Sodium Oxide", 
+            "right": "Na\u2082O", 
+            "wrong1": "O\u2082Na",
+            "wrong2": "SoO\u2082",
+            "wrong3": "SO\u2082",
+            "wrong4": "SO",
+            "wrong5": "NO\u2082",
+            "wrong6": "NaOx",
+            "wrong7": "SOx\u2082",
+            "wrong8": "SoO\u2082"
+        }
+        
+    }
+}
+

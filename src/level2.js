@@ -80,7 +80,7 @@ level2.prototype = {
     create: function () {
         
         // Parse the text back to a JSON object
-        switchJSON = Math.floor(Math.random() * 2);
+        switchJSON = 4; //Math.floor(Math.random() * 2);
         
         if(switchJSON == 0){
             level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON')); 
@@ -88,7 +88,15 @@ level2.prototype = {
         else if(switchJSON == 1){
             level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON_series_2'));
         }
-       
+        else if(switchJSON == 2){
+            level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON_series_3'));
+        }
+         else if(switchJSON == 3){
+            level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON_series_4'));
+        }
+       else if(switchJSON == 4){
+            level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON_series_5'));
+        }
         background = this.game.add.sprite(0, 0,'level_2_background_image');
         background.scale.setTo(.27,.51);
     

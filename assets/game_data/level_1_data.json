@@ -1,70 +1,59 @@
 {
     "chemical_formulas": {
         "formula1": {
-            "name": "Calcium Chloride", 
-            "right": "CaCl\u2082", 
-            "wrong1": "CCl\u2082",
-            "wrong2": "CaCl",
-            "wrong3": "CaCl\u2083",
-            "wrong4": "Ca\u2082Cl\u2082",
-            "wrong5": "CCl",
-            "wrong6": "Ca\u2082Cl"
+            "name": "Beryllium Iodide", 
+            "right": "BeI\u2082", 
+            "wrong1": "BaI\u2082",
+            "wrong2": "I\u2082Be",
+            "wrong3": "Ba\u2082I\u2082",
+            "wrong4": "BI\u2082",
+            "wrong5": "IBe",
+            "wrong6": "BeI"
         },
 
         "formula2": {
-            "name": "Sodium Chloride", 
-            "right": "NaCl", 
-            "wrong1": "NCl",
-            "wrong2": "NiCl\u2082",
-            "wrong3": "NaCl\u2082",
-            "wrong4": "NaCl\u2083",
-            "wrong5": "NCl\u2082",
-            "wrong6": "SCl\u2082",
-            "wrong7": "SCl",
-            "wrong8": "SoCl\u2082",
-            "wrong9": "SoCl"
+            "name": "Rubidium Chloride", 
+            "right": "RbCl", 
+            "wrong1": "RCl",
+            "wrong2": "RuCl\u2082",
+            "wrong3": "RbCl\u2082",
+            "wrong4": "RuCl",
+            "wrong5": "RdCl\u2082",
+            "wrong6": "RbCl\u2082"
         },
 
         "formula3": {
-            "name": "Carbon Disulfide", 
-            "right": "CS\u2082", 
-            "wrong1": "CaS\u2082",
-            "wrong2": "CS",
-            "wrong3": "C\u2082S",
-            "wrong4": "C\u2082S\u2082",
-            "wrong5": "CuS\u2082",
-            "wrong6": "Ca\u2082S\u2082"
+            "name": "Potassium Iodide", 
+            "right": "KI", 
+            "wrong1": "KIo",
+            "wrong2": "KaI",
+            "wrong3": "PI\u2082",
+            "wrong4": "KIO",
+            "wrong5": "KIO\u2084",
+            "wrong6": "KIO\u2083"
         },
         
         "formula4": {
-            "name": "Potassium Chlorite", 
-            "right": "KClO\u2082", 
-            "wrong1": "PClO\u2082",
-            "wrong2": "KClO",
-            "wrong3": "KClO\u2083",
-            "wrong4": "KClO\u2084",
-            "wrong5": "PClO\u2084",
-            "wrong6": "NaClO",
-            "wrong7": "CaClO",
-            "wrong8": "PClO\u2083",
-            "wrong9": "KCl",
-            "wrong10": "PCl",
-            "wrong11": "PCl\u2084"
+            "name": "Calcium Fluoride", 
+            "right": "CaF\u2082", 
+            "wrong1": "CaF\u2083",
+            "wrong2": "CaF",
+            "wrong3": "CF\u2082",
+            "wrong4": "Cl\u2082Br\u2082",
+            "wrong5": "ClFl\u2082",
+            "wrong6": "Ca\u2082Fu\u2082"
         },
         
         "formula5": {
-            "name": "Tin(IV) Bromide", 
-            "right": "SnBr\u2084", 
-            "wrong1": "TiBr\u2084",
-            "wrong2": "TlBr\u2084",
-            "wrong3": "Sn\u2082Br\u2082",
-            "wrong4": "Ti\u2082Cl\u2082",
-            "wrong5": "Sn\u2084Cl",
-            "wrong6": "Ti\u2084Cl",
-            "wrong7": "Br\u2084Sn",
-            "wrong8": "SnBrO"
+            "name": "Bromine monochloride", 
+            "right": "BrCl", 
+            "wrong1": "BrCl\u2082",
+            "wrong2": "BeCl\u2082",
+            "wrong3": "BCl\u2082",
+            "wrong4": "BmCl",
+            "wrong5": "BsCl\u2084O",
+            "wrong6": "Br\u2084O" 
         }
-        
     }
 }
 
