@@ -59,7 +59,7 @@ level5.prototype = {
   	create: function() { 
         
         //Creating JSON 
-        switchJSON = 4; //Math.floor(Math.random() * 2);
+        switchJSON = Math.floor(Math.random() * 5);
         
         if(switchJSON == 0){
             level_5_data = JSON.parse(this.game.cache.getText('level_5_JSON')); 

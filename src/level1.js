@@ -73,7 +73,7 @@ level1.prototype = {
         
         //Creating JSON-add another switch per file added.
         
-        switchJSON = 4; //Math.floor(Math.random() * 4);
+        switchJSON = Math.floor(Math.random() * 5);
         
         if(switchJSON == 0){
             level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON')); 

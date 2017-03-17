@@ -79,7 +79,7 @@ level4.prototype = {
   	create: function(){ 
 		
  // Parse the text back to a JSON object
-        switchJSON = 5; // Math.floor(Math.random() * 3);
+        switchJSON = Math.floor(Math.random() * 6);
         
         if (switchJSON == 0) {
             level_4_data = JSON.parse(this.game.cache.getText('level_4_JSON')); 
