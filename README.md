@@ -54,6 +54,9 @@ Documentation process involves separate folders to accommodate the parties of:
 
 ##  CREDITS
 
+
+
+
 * Caitlin "Cat" Windham [[https://github.com/CWindham19]] OR [[https://bitbucket.org/cwindham19/]] : ***Code Architect/Lead Programmer/Testing***
 Also helping with documentation
 
