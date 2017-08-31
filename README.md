@@ -54,12 +54,20 @@ Documentation process involves separate folders to accommodate the parties of:
 
 ##  CREDITS
 
+<<<<<<< HEAD
 
 
 
 * Caitlin "Cat" Windham [[https://github.com/CWindham19]] OR [[https://bitbucket.org/cwindham19/]] : ***Code Architect/Lead Programmer/Testing***
 Also helping with documentation
+=======
+<<<<<<< HEAD
+* Chinelo "ChinChin" Obiamalu [[https://github.com/cobiamalu]] OR [[https://bitbucket.org/Chineloo/]] *** UI/UX design *** & ***Also helping w/ Programming and Code Architect***
+=======
+* Charneaka Lewis [[@cslewis1]] [[https://github.com/cslewis1]]OR [[(https://bitbucket.org/clewis20)]]  ***Data modeler*** & ***UI/UX design***
+>>>>>>> 92c2ada5c0a4034ba5231b8ead11de2b8c33e54c
 
+>>>>>>> e930fbeeee860366a589546ddb2748107a325729
 This project could not have been possible without the following indivduals and their assigned roles:
 
 * Adele Francois [[@skyyfall007]](https://github.com/skyyfall007) :  ***Documentation Specialist*** & ***Project Manager***
