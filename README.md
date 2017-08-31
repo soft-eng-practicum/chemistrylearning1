@@ -54,6 +54,8 @@ Documentation process involves separate folders to accommodate the parties of:
 
 ##  CREDITS
 
+* Chinelo "ChinChin" Obiamalu [[https://github.com/cobiamalu]] OR [[https://bitbucket.org/Chineloo/]] *** UI/UX design ***
+     Also helping with Programming and Code Architect.
 This project could not have been possible without the following indivduals and their assigned roles:
 
 * Adele Francois [[@skyyfall007]](https://github.com/skyyfall007) :  ***Documentation Specialist*** & ***Project Manager***
