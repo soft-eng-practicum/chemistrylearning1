@@ -79,16 +79,16 @@ TBA
 * [Cat Windham](https://bitbucket.org/cwindham19/) **(Lead)**
 * [Laura Arevalo](https://bitbucket.org/latrevalo/)
 * [Chinelo Obiamalu](https://bitbucket.org/Chineloo/)
-* Charneaka Lewis
+* [Charneaka Lewis](https://bitbucket.org/clewis20/)
 
 ###**UI/UX Design**
 ####(User Interface and User eXperience. Make mock UI designs and user-friendly navigation)
 * [Chinelo Obiamalu](https://bitbucket.org/Chineloo/) **(Lead)**
 * [Laura Arevalo](https://bitbucket.org/latrevalo/)
-* [Charneaka Lewis]((https://bitbucket.org/clewis20)
+* [Charneaka Lewis](https://bitbucket.org/clewis20/)
 ###**Data Modeler**
 ####(Database, data files, server-client structure)
-* [Charneaka Lewis]((https://bitbucket.org/clewis20) **(Lead)**
+* [Charneaka Lewis](https://bitbucket.org/clewis20/) **(Lead)**
 * [Chinelo Obiamalu](https://bitbucket.org/Chineloo/)
 * [Laura Arevalo](https://bitbucket.org/latrevalo/)
 * [Cat Windham](https://bitbucket.org/cwindham19/)
@@ -102,7 +102,7 @@ TBA
 * [Cat Windham](https://bitbucket.org/cwindham19/)
 ###**Testing**
 ####Setup testing framework and conventions. Use continuous integration to test at each commit/push.
-* [Charneaka Lewis]((https://bitbucket.org/clewis20)
+* [Charneaka Lewis](https://bitbucket.org/clewis20/)
 **(Lead)**
 * [Chinelo Obiamalu](https://bitbucket.org/Chineloo/)
     
