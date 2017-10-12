@@ -4,6 +4,11 @@
         {"formulaName":"Rubidium Chloride", "right":"RbCl", "wrong":["RCl", "RuCl", "RdCl", "RbC"] }, 
         {"formulaName":"Potassium Iodide", "right":"KI", "wrong":["KIO", "PoI", "KaI", "PI"] }, 
         {"formulaName":"Calcium Fluoride", "right":"CaF\u2082", "wrong":["CaF\u2083", "CaF", "Cl\u2082Br\u2082", "ClFl\u2082"] }, 
-        {"formulaName":"Bromine monochloride", "right":"BrCl", "wrong":["BrCl\u2082", "BCl\u2082", "BmCl", "BsCl\u2084O"] }
+        {"formulaName":"Bromine monochloride", "right":"BrCl", "wrong":["BrCl\u2082", "BCl\u2082", "BmCl", "BsCl\u2084O"] },
+        {"formulaName":"Calcium Bromide", "right":"CaBr\u2082", "wrong":["CBr\u2082", "Ca\u2082Br\u2082", "CaB\u2082", "CaBr"] },
+        {"formulaName":"Sodium Oxide", "right":"Na\u2082O", "wrong":["NaO", "NO\u2082", "SO\u2082", "NO"] },
+        {"formulaName":"Sodium Sulfide", "right":"Na\u2082S", "wrong":["NaS", "NaS\u2084", "NaSO\u2083", "NaS\u2083"] },
+        {"formulaName":"Sodium Bromide", "right":"NaBr", "wrong":["NaBr\u2082", "Na\u2082Br\u2082", "NBr\u2082", "NBr"] },
+        {"formulaName":"Tin(IV) Oxide", "right":"SnO\u2082", "wrong":["TiO\u2082", "Sn\u2084O", "Ti\u2084O", "SnO\u2083"] }
     ]
 }

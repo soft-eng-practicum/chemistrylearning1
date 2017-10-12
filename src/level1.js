@@ -47,9 +47,13 @@ var wrong = false;
 var paused = 150;
 var isTimerPaused = false;
 var checkMark;
+var a1CheckLocation = false;
+var a2CheckLocation = false;
+var a3CheckLocation = false;
 var xMark;
-var pos1 = false;
-var pos2 = false;
+var a1XLocation = false;
+var a2XLocation = false;
+var a3XLocation = false;
 
 var heart1;
 var heart2;
@@ -242,7 +246,7 @@ level1.prototype = {
         correct = false;
         wrong = false;
         isFiring = true;
-        pos1 = false;
+        a1XLocation = false;
         pos2 = false;
         level_2_Transition = true;
                   
@@ -513,15 +517,30 @@ level1.prototype = {
     */
     handleData: function() {
         //Sets asteroid 1 visible to false
-        if(a1.visible == false) {
+        if((a1.visible == false && a1Correct) || 
+           (a2.visible == false && a2Correct ) ||
+           (a3.visible == false && a3Correct)) {
             //Sets True if correct answer
             correct = true; 
             //Adds score for correct answer
             score = score + 50;
             //Sets asteroid 1 visible to true
-            a1.visible = true;
-            //Sets text 1 visible to true
-            text1.visible = true;
+            if(a1.visible == false) {
+                a1.visible = true;
+                //Sets text 1 visible to true
+                text1.visible = true;
+                a1CheckLocation = true;
+            }
+            if(a2.visible == false) {
+                a2.visible = true;
+                text2.visible = true;
+                a2CheckLocation = true;
+            }
+            if(a3.visible == false) {
+                a3.visible = true;
+                text3.visible = true;
+                a3CheckLocation = true;
+            }
             //Pauses time 
             timer.pause();
             //Sets true to display correct answer
@@ -530,21 +549,30 @@ level1.prototype = {
             correctSound.play(); 
         }
         //Sets asteroid 2 visible to false
-        if(a2.visible == false || a3.visible == false) {
-            if(a2.visible == false) {
+        //I've separated the conditions to make it more readable
+        if((a1.visible == false && a1Wrong1) || 
+           (a2.visible == false && a2Wrong1) || 
+           (a2.visible == false && a2Wrong2) || 
+           (a3.visible == false && a3Wrong2)) {
+            if(a1.visible == false) {
                 //Sets text 2 visible to true
                 text2.visible = true;
                 //Sets True if its the first wrong answer instead of the second wrong
-                pos1 = true;
+                a1XLocation = true;
                 //Sets asteroid 2 visible to true
+                a1.visible = true;
+            }
+            if(a2.visible == false) {
+                //Shows the text3
+                text2.visible = true;
+                //Sets true if it's the second wrong answer instead of the first wrong
+                a2XLocation = true;
+                //Sets asteroid 3 visible to true
                 a2.visible = true;
             }
             if(a3.visible == false) {
-                //Shows the text3
                 text3.visible = true;
-                //Sets true if it's the second wrong answer instead of the first wrong
-                pos2 = true;
-                //Sets asteroid 3 visible to true
+                a3XLocation = true;
                 a3.visible = true;
             }
             //Decrease score
@@ -569,8 +597,19 @@ level1.prototype = {
 
                  //Set check mark to true and display correct positioning on asteroid
                  checkMark.visible = true;
+                
+                if(a1CheckLocation) {
                  checkMark.x = Math.floor((a1.x + a1.width / 2) - 15);
                  checkMark.y = Math.floor(a1.y + a1.height / 1.3);
+                }
+                if(a2CheckLocation) {
+                 checkMark.x = Math.floor((a2.x + a2.width / 2) - 15);
+                 checkMark.y = Math.floor(a2.y + a2.height / 1.3);
+                }
+                if(a3CheckLocation) {
+                 checkMark.x = Math.floor((a3.x + a3.width / 2) - 15);
+                 checkMark.y = Math.floor(a3.y + a3.height / 1.3);
+                }
 
                   //Restores counter back to 10
                   counter = 10;
@@ -580,14 +619,20 @@ level1.prototype = {
                 paused--;
                 //Set X mark to true and display correct positioning on asteroid
                 xMark.visible = true;
-                        
-                //Positon of first wrong answer
-                if(pos1){
+                
+                //Position of the first wrong answer
+                if(a1XLocation) {
+                    xMark.x = Math.floor((a1.x + a1.width / 2) - 15);
+                    xMark.y = Math.floor(a1.y + a1.height / 1.3);
+                }
+                
+                //Positon of second wrong answer
+                if(a2XLocation){
                     xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
                     xMark.y = Math.floor(a2.y + a2.height / 1.3);
                 }
-                //Positon of second wrong answer
-                if(pos2){
+                //Positon of third wrong answer
+                if(a3XLocation){
                     xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
                     xMark.y = Math.floor(a3.y + a3.height / 1.3);
                 }
@@ -613,10 +658,16 @@ level1.prototype = {
             xMark.visible = false;
             //Sets the pause delay to false to stop pausing
             isTimerPaused = false;
-            //Sets the position of the first wrong to false
-            pos1 = false;
-            //Sets the position of the second wrong to false
-            pos2 = false;
+            
+        //Resetting all the booleans
+            //Sets the position of the check mark locations to false
+            a1CheckLocation = false;
+            a2CheckLocation = false;
+            a3CheckLocation = false;
+            //Sets the positions of the X mark locations to false
+            a1XLocation = false;
+            a2XLocation = false;
+            a3XLocation = false
             //Resets the pause timer for correct and wrong answers 
             paused = 150;
             //Sets the correct answer to false
@@ -629,7 +680,7 @@ level1.prototype = {
     },
     
     setQuestion: function() {
-        randomElement = Math.floor(Math.random() * 4);
+        randomElement = Math.floor(Math.random() * 10);
         randomFormula = Math.floor(Math.random() * 3);
         
         //This is testing lines
@@ -641,7 +692,10 @@ level1.prototype = {
         randomWrong1 = Math.floor(Math.random() * 4);
         //Setting the random wrong answer 2
         randomWrong2 = Math.floor(Math.random() * 4);
-        console.log('randomW1: ' + randomWrong1 + ', ' + randomWrong2);
+        //Making sure the two wrong answers are matching
+        while(randomWrong1 == randomWrong2) {
+           randomWrong2 = Math.floor(Math.random() * 4); 
+        }
         //Adjusting Instruction label color 
         instructions.addColor("Yellow", 0);
         instructions.anchor.setTo(-0.1, 0.2);
