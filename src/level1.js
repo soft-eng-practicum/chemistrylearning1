@@ -66,30 +66,30 @@ var shortBeep;
 var longBeep;
 //var levelMusic;
 
+//A variable to track the length of "instructions" text
+var instructionsLength;
+
+//A variable to set a random first wrong answer
+var randomWrong1;
+//A variable to set a random second wrong answer
+var randomWrong2;
+
+//Creating the booleans that will track if an asteroid is wrong or correct
+var a1Correct;
+var a1Wrong1;
+var a2Correct;
+var a2Wrong1;
+var a2Wrong2;
+var a3Correct;
+var a3Wrong2;
+
 level1.prototype = {  
    
     //Main Phaser Create Function
   	create: function(){ 
         
-        //Creating JSON-add another switch per file added.
-        
-        switchJSON = Math.floor(Math.random() * 5);
-        
-        if(switchJSON == 0){
-            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON')); 
-        }
-        else if(switchJSON == 1){
-            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_2'));
-        }  
-        else if(switchJSON == 2){
-            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_3'));
-        }
-        else if(switchJSON == 3){
-            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_4'));
-        }
-        else if(switchJSON == 4){
-            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_5'));
-        }
+        //Adding the JSON file in
+        level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON')); 
         
         //Pauses the Game Title Music when Game starts
         music.pause();
@@ -262,6 +262,15 @@ level1.prototype = {
             //Creates the pause menu picture
             menu = this.game.add.sprite(pauseW/2 + 135, pauseH/2 + 90, "menu");
             menu.anchor.setTo(1, 1);
+            
+            //Setting all my correct/wrong booleans to false
+            a1Correct = false;
+            a1Wrong1 = false;
+            a2Correct = false;
+            a2Wrong1 = false;
+            a2Wrong2 = false;
+            a3Correct = false;
+            a3Wrong2 = false;
 
         });
 
@@ -314,11 +323,7 @@ level1.prototype = {
         this.game.paused = false;
     },
 
-    
-    
-    
 
-    
     /*Function: update()
     *
     *Main Phaser Update Function
@@ -437,15 +442,6 @@ level1.prototype = {
     },
     
     
-    /*Function: collisionHandlerSpaceCraft()
-    *
-    *SpaceCraft and Asteroid Collision
-    */
-    collisionHandlerSpaceCraft: function(spaceCraft, asteroid) {
-        spaceCraft.kill();
-    },
-
-    
     /*Function: render()
     *
     *Renders labels and colors in the level
@@ -478,32 +474,24 @@ level1.prototype = {
             if(counter < 1){
                 shortBeep.pause();
                 longBeep.play();
+                
             }
             
             if(counter <= 0) { 
                 counter = 10;
                 started = true;
+                this.setQuestion();
             }
         }
         //Game Time has started 
         else if(started == true) {
-                counter--;
+            counter--;
             
             if(counter < 1) {
                 wrongSound.play();
                 
-                if(lives == 3){
-                    lives=2;
-                    counter = 10;
-                    }
-                else if(lives == 2){
-                    lives=1;
-                    counter = 10;
-               }
-                else{
-                    lives=0;
-                    counter = 0;
-                }
+                lives--;
+                counter = 10;
             }
         }
     },
@@ -524,1637 +512,188 @@ level1.prototype = {
     *Handles the data from JSON files, and right and wrong answers
     */
     handleData: function() {
+        //Sets asteroid 1 visible to false
+        if(a1.visible == false) {
+            //Sets True if correct answer
+            correct = true; 
+            //Adds score for correct answer
+            score = score + 50;
+            //Sets asteroid 1 visible to true
+            a1.visible = true;
+            //Sets text 1 visible to true
+            text1.visible = true;
+            //Pauses time 
+            timer.pause();
+            //Sets true to display correct answer
+            isTimerPaused = true;
+            //Plays Correct Sound
+            correctSound.play(); 
+        }
+        //Sets asteroid 2 visible to false
+        if(a2.visible == false || a3.visible == false) {
+            if(a2.visible == false) {
+                //Sets text 2 visible to true
+                text2.visible = true;
+                //Sets True if its the first wrong answer instead of the second wrong
+                pos1 = true;
+                //Sets asteroid 2 visible to true
+                a2.visible = true;
+            }
+            if(a3.visible == false) {
+                //Shows the text3
+                text3.visible = true;
+                //Sets true if it's the second wrong answer instead of the first wrong
+                pos2 = true;
+                //Sets asteroid 3 visible to true
+                a3.visible = true;
+            }
+            //Decrease score
+            score = score - 50;
+            //Looses 1 life 
+            lives --;
+            //Sets True if wrong answer
+            wrong = true;
+            //Sets true to display wrong answer
+            isTimerPaused = true;
+            //Pauses time 
+            timer.pause();
+            //Plays Wrong Sound
+            wrongSound.play();
+        }
+                
+        //A pause delay to display Correct or Wrong Answers
+        if(isTimerPaused){
+            //If correct answer
+            if(correct){
+                paused--;
+
+                 //Set check mark to true and display correct positioning on asteroid
+                 checkMark.visible = true;
+                 checkMark.x = Math.floor((a1.x + a1.width / 2) - 15);
+                 checkMark.y = Math.floor(a1.y + a1.height / 1.3);
+
+                  //Restores counter back to 10
+                  counter = 10;
+            }
+            //If wrong answer
+            if(wrong){
+                paused--;
+                //Set X mark to true and display correct positioning on asteroid
+                xMark.visible = true;
+                        
+                //Positon of first wrong answer
+                if(pos1){
+                    xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
+                    xMark.y = Math.floor(a2.y + a2.height / 1.3);
+                }
+                //Positon of second wrong answer
+                if(pos2){
+                    xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
+                    xMark.y = Math.floor(a3.y + a3.height / 1.3);
+                }
+                
+                //Restores counter back to 10
+                counter = 10;
+            }
+            //Stops firing when delayed
+            isFiring = false;
+        }
         
+        //Stops delay for showing correct or wrong answers
+        if(paused < 1){
+            //Selects a random formula for the next sequence
+            if(correct){
+                this.setQuestion();
+            }
+            //Resumes the Timer
+            timer.resume();
+            //Sets check mark visible to false
+            checkMark.visible = false;
+            //Sets X mark visible to false
+            xMark.visible = false;
+            //Sets the pause delay to false to stop pausing
+            isTimerPaused = false;
+            //Sets the position of the first wrong to false
+            pos1 = false;
+            //Sets the position of the second wrong to false
+            pos2 = false;
+            //Resets the pause timer for correct and wrong answers 
+            paused = 150;
+            //Sets the correct answer to false
+            correct = false;
+            //Sets the wrong answer to false
+            wrong = false;
+            //Restores firing
+            isFiring = true;
+        }
+    },
+    
+    setQuestion: function() {
+        randomElement = Math.floor(Math.random() * 4);
+        randomFormula = Math.floor(Math.random() * 3);
+        
+        //This is testing lines
+//        console.log('randomE: ' + randomElement);
+//        console.log('RandomOrder: ' + randomFormula);
+        
+        
+        //Setting the random wrong answer 1
+        randomWrong1 = Math.floor(Math.random() * 4);
+        //Setting the random wrong answer 2
+        randomWrong2 = Math.floor(Math.random() * 4);
+        console.log('randomW1: ' + randomWrong1 + ', ' + randomWrong2);
         //Adjusting Instruction label color 
         instructions.addColor("Yellow", 0);
         instructions.anchor.setTo(-0.1, 0.2);
-               
-        if(randomElement == 0){
-
-          instructions.setText(level_1_data.chemical_formulas.formula1.name);
-            
-          if(level_1_data.chemical_formulas.formula1.name.length < 20){
-            
-                //Adjusting Instruction label Font Size
-                instructions.fontSize = 47;  
-            }
-            else{
-                //Adjusting Instruction label for Chemical Names
-                instructions.anchor.setTo(0, 0.3);
-                //Adjusting Instruction label Font Size
-                instructions.fontSize = 42;
-            }
-
-            if(randomFormula == 0){ 
-                text1.setText(level_1_data.chemical_formulas.formula1.right);
-                text2.setText(level_1_data.chemical_formulas.formula1.wrong1);
-                text3.setText(level_1_data.chemical_formulas.formula1.wrong2);
-
-                //Sets asteroid 1 visible to false
-                if(a1.visible == false) {
-                     //Sets True if correct answer
-                     correct = true; 
-                     //Adds score for correct answer
-                     score = score + 50;
-                     //Sets asteroid 1 visible to true
-                     a1.visible = true;
-                     //Sets text 1 visible to true
-                     text1.visible = true;
-                     //Pauses time 
-                     timer.pause();
-                     //Sets true to display correct answer
-                     isTimerPaused = true;
-                     //Plays Correct Sound
-                     correctSound.play();
-                    }
-                //Sets asteroid 2 visible to false
-                if(a2.visible == false) {
-                    //Decrease score
-                    score = score - 50;
-                    //Looses 1 life 
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    //Sets True if wrong answer
-                    wrong = true;
-                    //Sets true to display wrong answer
-                    isTimerPaused = true;
-                    //Pauses time 
-                    timer.pause();
-                    //Sets asteroid 2 visible to true
-                    a2.visible = true;
-                    //Sets text 2 visible to true
-                    text2.visible = true;
-                    //Sets True if its the first wrong answer instead of the second wrong
-                    pos1 = true;
-                    //Plays Wrong Sound
-                    wrongSound.play();
-                }
-                //Sets asteroid 3 visible to false
-                if(a3.visible == false) {
-                    //Decrease score
-                    score = score - 50;
-                    //Looses 1 life 
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    //Sets true to display wrong answer
-                    wrong = true;
-                    //Sets true to display wrong answer
-                    isTimerPaused = true;
-                    //Pauses time 
-                    timer.pause();
-                    //Sets asteroid 3 visible to true
-                    a3.visible = true;
-                    //Sets text 3 visible to true
-                    text3.visible = true;
-                    //Sets True if its the second wrong answer instead of the first wrong
-                    pos2 = true;
-                    //Plays Wrong Sound
-                    wrongSound.play();
-                    }
-                
-                //A pause delay to display Correct or Wrong Answers
-                if(isTimerPaused){
-                    //If correct answer
-                    if(correct){
-                        paused--;
-
-                        //Set check mark to true and display correct positioning on asteroid
-                        checkMark.visible = true;
-                        checkMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                        checkMark.y = Math.floor(a1.y + a1.height / 1.3);
-
-                        //Restores counter back to 10
-                        counter = 10;
-                    }
-                    //If wrong answer
-                    if(wrong){
-                        paused--;
-                        
-                        //Set X mark to true and display correct positioning on asteroid
-                        xMark.visible = true;
-                        
-                        //Positon of first wrong answer
-                        if(pos1){
-                            xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                            xMark.y = Math.floor(a2.y + a2.height / 1.3);
-                        }
-                        //Positon of second wrong answer
-                        if(pos2){
-                            xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                            xMark.y = Math.floor(a3.y + a3.height / 1.3);
-                        }
-
-                        //Restores counter back to 10
-                        counter = 10; 
-                    }
-                    //Stops firing when delayed
-                    isFiring = false;
-                }
-
-                //Stops delay for showing correct or wrong answers
-                if(paused < 1){
-                    //Selects a random formula for the next sequence
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        //Proceeds to the next Element
-                        randomElement = 1;
-                    }
-                    //Resumes the Timer
-                    timer.resume();
-                    //Sets check mark visible to false
-                    checkMark.visible = false;
-                    //Sets X mark visible to false
-                    xMark.visible = false;
-                    //Sets the pause delay to false to stop pausing
-                    isTimerPaused = false;
-                    //Sets the position of the first wrong to false
-                    pos1 = false;
-                    //Sets the position of the second wrong to false
-                    pos2 = false;
-                    //Resets the pause timer for correct and wrong answers 
-                    paused = 150;
-                    //Sets the correct answer to false
-                    correct = false;
-                    //Sets the wrong answer to false
-                    wrong = false;
-                    //Restores firing
-                    isFiring = true;
-                }
-            }
-            
-//NEXT FORMULA
-            else if(randomFormula == 1){ 
-                text1.setText(level_1_data.chemical_formulas.formula1.wrong3);
-                text2.setText(level_1_data.chemical_formulas.formula1.right);
-                text3.setText(level_1_data.chemical_formulas.formula1.wrong4);
-
-                if(a1.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a1.visible = true;
-                    text1.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a2.visible == false) {
-                    correct = true;
-                    score = score + 50;
-                    text2.visible = true;
-                    a2.visible = true;
-                    timer.pause();
-                    isTimerPaused = true;
-                    correctSound.play();
-                }
-                if(a3.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a3.visible = true;
-                    text3.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                    checkMark.y = Math.floor(a2.y + a2.height / 1.3);
-                    
-                    counter = 10;
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                            xMark.y = Math.floor(a1.y + a1.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                            xMark.y = Math.floor(a3.y + a3.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        randomElement = 1;
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
-            }
-    
-//NEXT FORMULA
-            else if(randomFormula == 2){ 
-                text1.setText(level_1_data.chemical_formulas.formula1.wrong5);
-                text2.setText(level_1_data.chemical_formulas.formula1.wrong6);
-                text3.setText(level_1_data.chemical_formulas.formula1.right);
-
-                if(a1.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a1.visible = true;
-                    text1.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a2.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a2.visible = true;
-                    text2.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                if(a3.visible == false) {
-                    correct = true;
-                    score = score + 50;
-                    text3.visible = true;
-                    a3.visible = true;
-                    timer.pause();
-                    isTimerPaused = true;
-                    correctSound.play();
-                }
-                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                        checkMark.visible = true;
-                        checkMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                        checkMark.y = Math.floor(a3.y + a3.height / 1.3);
-
-                        counter = 10;
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                            xMark.y = Math.floor(a1.y + a1.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                            xMark.y = Math.floor(a2.y + a2.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        randomElement = 1;
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
-            }
-        }
+         
+        console.log(level_1_data);
+        //Resetting all my correct/wrong booleans to false
+        a1Correct = false;
+        a1Wrong1 = false;
+        a2Correct = false;
+        a2Wrong1 = false;
+        a2Wrong2 = false;
+        a3Correct = false;
+        a3Wrong2 = false;
         
-/////////////////////////////////////////////////////////////////////////////////////////
-//this is the handle data part. Johns call it a rund//
-
-        if(randomElement == 1){
-          instructions.setText(level_1_data.chemical_formulas.formula2.name);
+        //Choosing the formula and what
+            instructions.setText(level_1_data.formulas[randomElement].formulaName);
+            instructionsLength = instructions.length;
             
-        if(level_1_data.chemical_formulas.formula2.name.length < 20){
-
-            //Adjusting Instruction label Font Size
-            instructions.fontSize = 47;  
-        }
-        else{
-            //Adjusting Instruction label for Chemical Names
-            instructions.anchor.setTo(0, 0.3);
-            //Adjusting Instruction label Font Size
-            instructions.fontSize = 42;
-        }
-          
-
-            if(randomFormula == 0){ 
-                text1.setText(level_1_data.chemical_formulas.formula2.right);
-                text2.setText(level_1_data.chemical_formulas.formula2.wrong1);
-                text3.setText(level_1_data.chemical_formulas.formula2.wrong2);
-
-                 if(a1.visible == false) {
-                     correct = true;
-                     score = score + 50;
-                     a1.visible = true;
-                     text1.visible = true;
-                     timer.pause();
-                     isTimerPaused = true;
-                     correctSound.play();
-                }
-                if(a2.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a2.visible = true;
-                    text2.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a3.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a3.visible = true;
-                    text3.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                    checkMark.y = Math.floor(a1.y + a1.height / 1.3);
-                    
-                    counter = 10;
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                            xMark.y = Math.floor(a2.y + a2.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                            xMark.y = Math.floor(a3.y + a3.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        randomElement = 2;
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
+            if(randomFormula == 0){
+                text1.setText(level_1_data.formulas[randomElement].right);
+                a1Correct = true;
+                text2.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
+                a2Wrong1 = true;
+                text3.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
+                a3Wrong2 = true;
             }
-            
-//NEXT FORMULA
-            else if(randomFormula == 1){ 
-                text1.setText(level_1_data.chemical_formulas.formula2.wrong3);
-                text2.setText(level_1_data.chemical_formulas.formula2.right);
-                text3.setText(level_1_data.chemical_formulas.formula2.wrong4);
-
-                if(a1.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a1.visible = true;
-                    text1.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a2.visible == false) {
-                    correct = true;
-                    score = score + 50;
-                    a2.visible = true;
-                    text2.visible = true;
-                    timer.pause();
-                    isTimerPaused = true;
-                    correctSound.play();
-                }
-                if(a3.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a3.visible = true;
-                    text3.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                    checkMark.y = Math.floor(a2.y + a2.height / 1.3);
-                    
-                    counter = 10;
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                            xMark.y = Math.floor(a1.y + a1.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                            xMark.y = Math.floor(a3.y + a3.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        randomElement = 2;
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
+            if(randomFormula == 1) {
+                text1.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
+                a1Wrong1 = true;
+                text2.setText(level_1_data.formulas[randomElement].right);
+                a2Correct = true;
+                text3.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
+                a3Wrong2 = true;
             }
-
-//NEXT FORMULA
-            else if(randomFormula == 2){ 
-                text1.setText(level_1_data.chemical_formulas.formula2.wrong5);
-                text2.setText(level_1_data.chemical_formulas.formula2.wrong6);
-                text3.setText(level_1_data.chemical_formulas.formula2.right);
-
-                if(a1.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a1.visible = true;
-                    text1.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a2.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a2.visible = true;
-                    text2.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                if(a3.visible == false) {
-                    correct = true;
-                    score = score + 50;
-                    a3.visible = true;
-                    text3.visible = true; 
-                    timer.pause();
-                    isTimerPaused = true;
-                    correctSound.play();
-                }
-                                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                        checkMark.visible = true;
-                        checkMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                        checkMark.y = Math.floor(a3.y + a3.height / 1.3);
-
-                        counter = 10;
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                            xMark.y = Math.floor(a1.y + a1.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                            xMark.y = Math.floor(a2.y + a2.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        randomElement = 2;
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
+            if(randomFormula == 2) {
+                text1.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
+                a1Wrong1 = true;
+                text2.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
+                a2Wrong2 = true;
+                text3.setText(level_1_data.formulas[randomElement].right);
+                a3Correct = true;
             }
-        }
         
-//////////////////////////////////////////////////////////////////////////////////////////
-        if(randomElement == 2){
-          instructions.setText(level_1_data.chemical_formulas.formula3.name);
-            
-          if(level_1_data.chemical_formulas.formula3.name.length < 20){
-            
-                //Adjusting Instruction label Font Size
-                instructions.fontSize = 47;  
-            }
-            else{
+          if(instructionsLength < 20){
+                  //Adjusting Instruction label Font Size
+                  instructions.fontSize = 47;  
+              }
+              else{
                 //Adjusting Instruction label for Chemical Names
                 instructions.anchor.setTo(0, 0.3);
                 //Adjusting Instruction label Font Size
                 instructions.fontSize = 42;
             }
-
-            if(randomFormula == 0){ 
-                text1.setText(level_1_data.chemical_formulas.formula3.right);
-                text2.setText(level_1_data.chemical_formulas.formula3.wrong1);
-                text3.setText(level_1_data.chemical_formulas.formula3.wrong2);
-
-                 if(a1.visible == false) {
-                     correct = true;
-                     score = score + 50;
-                     a1.visible = true;
-                     text1.visible = true;
-                     timer.pause();
-                     isTimerPaused = true;
-                     correctSound.play();
-                }
-                if(a2.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a2.visible = true;
-                    text2.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a3.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a3.visible = true;
-                    text3.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                    checkMark.y = Math.floor(a1.y + a1.height / 1.3);
-                    
-                    counter = 10;
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                            xMark.y = Math.floor(a2.y + a2.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                            xMark.y = Math.floor(a3.y + a3.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        randomElement = 3;
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
-            }
-            
-//NEXT FORMULA
-            else if(randomFormula == 1){ 
-                text1.setText(level_1_data.chemical_formulas.formula3.wrong3);
-                text2.setText(level_1_data.chemical_formulas.formula3.right);
-                text3.setText(level_1_data.chemical_formulas.formula3.wrong4);
-
-                if(a1.visible == false) {
-                    score = score - 50;
-                   if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a1.visible = true;
-                    text1.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a2.visible == false) {
-                    correct = true;
-                    score = score + 50;
-                    a2.visible = true;
-                    text2.visible = true; 
-                    timer.pause();
-                    isTimerPaused = true;
-                    correctSound.play();
-                }
-                if(a3.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a3.visible = true;
-                    text3.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                    checkMark.y = Math.floor(a2.y + a2.height / 1.3);
-                    
-                    counter = 10;
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                            xMark.y = Math.floor(a1.y + a1.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                            xMark.y = Math.floor(a3.y + a3.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        randomElement = 3;
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
-            }
-            
-//NEXT FORMULA
-            else if(randomFormula == 2){ 
-                text1.setText(level_1_data.chemical_formulas.formula3.wrong5);
-                text2.setText(level_1_data.chemical_formulas.formula3.wrong6);
-                text3.setText(level_1_data.chemical_formulas.formula3.right);
-
-                if(a1.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a1.visible = true;
-                    text1.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a2.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a2.visible = true;
-                    text2.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                if(a3.visible == false) {
-                    correct = true;
-                    score = score + 50;
-                    a3.visible = true;
-                    text3.visible = true;
-                    timer.pause();
-                    isTimerPaused = true;
-                    correctSound.play();
-                }
-                                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                    checkMark.y = Math.floor(a3.y + a3.height / 1.3);
-                    
-                    counter = 10;
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                            xMark.y = Math.floor(a1.y + a1.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                            xMark.y = Math.floor(a2.y + a2.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        randomElement = 3;
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
-            }
-        }
- 
-////////////////////////////////////////////////////////////////////////////////////////      
-        if(randomElement == 3){
-          instructions.setText(level_1_data.chemical_formulas.formula4.name);
-            
-          if(level_1_data.chemical_formulas.formula4.name.length < 20){
-            
-                //Adjusting Instruction label Font Size
-                instructions.fontSize = 47;  
-            }
-            else{
-                //Adjusting Instruction label for Chemical Names
-                instructions.anchor.setTo(0, 0.3);
-                //Adjusting Instruction label Font Size
-                instructions.fontSize = 42;
-            }
-
-            if(randomFormula == 0){ 
-                text1.setText(level_1_data.chemical_formulas.formula4.right);
-                text2.setText(level_1_data.chemical_formulas.formula4.wrong1);
-                text3.setText(level_1_data.chemical_formulas.formula4.wrong2);
-
-                 if(a1.visible == false) {
-                     correct = true;
-                     score = score + 50;
-                     a1.visible = true;
-                     text1.visible = true;
-                     timer.pause();
-                     isTimerPaused = true;
-                     correctSound.play();
-                }
-                if(a2.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a2.visible = true;
-                    text2.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a3.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a3.visible = true;
-                    text3.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                    checkMark.y = Math.floor(a1.y + a1.height / 1.3);
-                    
-                    counter = 10;
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                            xMark.y = Math.floor(a2.y + a2.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                            xMark.y = Math.floor(a3.y + a3.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        randomElement = 4;
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
-            }
-            
-//NEXT FORMULA
-            else if(randomFormula == 1){ 
-                text1.setText(level_1_data.chemical_formulas.formula4.wrong3);
-                text2.setText(level_1_data.chemical_formulas.formula4.right);
-                text3.setText(level_1_data.chemical_formulas.formula4.wrong4);
-
-                if(a1.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a1.visible = true;
-                    text1.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a2.visible == false) {
-                    correct = true;
-                    score = score + 50;
-                    a2.visible = true;
-                    text2.visible = true; 
-                    timer.pause();
-                    isTimerPaused = true;
-                    correctSound.play();
-                }
-                if(a3.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a3.visible = true;
-                    text3.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                    checkMark.y = Math.floor(a2.y + a2.height / 1.3);
-                    
-                    counter = 10;
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                            xMark.y = Math.floor(a1.y + a1.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                            xMark.y = Math.floor(a3.y + a3.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        randomElement = 4;
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
-            }
-            
-//NEXT FORMULA
-            else if(randomFormula == 2){ 
-                text1.setText(level_1_data.chemical_formulas.formula4.wrong5);
-                text2.setText(level_1_data.chemical_formulas.formula4.wrong6);
-                text3.setText(level_1_data.chemical_formulas.formula4.right);
-
-                if(a1.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a1.visible = true;
-                    text1.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a2.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a2.visible = true;
-                    text2.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                if(a3.visible == false) {
-                    correct = true;
-                    score = score + 50;
-                    a3.visible = true;
-                    text3.visible = true;
-                    timer.pause();
-                    isTimerPaused = true;
-                    correctSound.play();
-                }
-                                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                    checkMark.y = Math.floor(a3.y + a3.height / 1.3);
-                    
-                    counter = 10;
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                            xMark.y = Math.floor(a1.y + a1.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                            xMark.y = Math.floor(a2.y + a2.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        randomFormula = Math.floor(Math.random() * 3);
-                        randomElement = 4;
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
-            }
-        }
- 
-//////////////////////////////////////////////////////////////////////////////////////        
-        if(randomElement == 4){
-          instructions.setText(level_1_data.chemical_formulas.formula5.name);
-            
-          if(level_1_data.chemical_formulas.formula5.name.length < 20){
-            
-                //Adjusting Instruction label Font Size
-                instructions.fontSize = 47;  
-            }
-            else{
-                //Adjusting Instruction label for Chemical Names
-                instructions.anchor.setTo(0, 0.3);
-                //Adjusting Instruction label Font Size
-                instructions.fontSize = 42;
-            }
-
-            if(randomFormula == 0){ 
-                text1.setText(level_1_data.chemical_formulas.formula5.right);
-                text2.setText(level_1_data.chemical_formulas.formula5.wrong1);
-                text3.setText(level_1_data.chemical_formulas.formula5.wrong2);
-
-                 if(a1.visible == false) {
-                    correct = true;
-                    score = score + 50;
-                    a1.visible = true;
-                    text1.visible = true;
-                    timer.pause();
-                    isTimerPaused = true;
-                    correctSound.play();
-                }
-                if(a2.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a2.visible = true;
-                    text2.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a3.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a3.visible = true;
-                    text3.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                    checkMark.y = Math.floor(a1.y + a1.height / 1.3);
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                            xMark.y = Math.floor(a2.y + a2.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                            xMark.y = Math.floor(a3.y + a3.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        this.game.state.start("Transition");
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
-            }
-            
-//NEXT FORMULA
-            else if(randomFormula == 1){ 
-                text1.setText(level_1_data.chemical_formulas.formula5.wrong3);
-                text2.setText(level_1_data.chemical_formulas.formula5.right);
-                text3.setText(level_1_data.chemical_formulas.formula5.wrong4);
-
-                if(a1.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a1.visible = true;
-                    text1.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a2.visible == false) {
-                    correct = true;
-                    score = score + 50;
-                    a2.visible = true;
-                    text2.visible = true;
-                    timer.pause();
-                    isTimerPaused = true;
-                    correctSound.play();
-                }
-                if(a3.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a3.visible = true;
-                    text3.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                    checkMark.y = Math.floor(a2.y + a2.height / 1.3);
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                            xMark.y = Math.floor(a1.y + a1.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                            xMark.y = Math.floor(a3.y + a3.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-                
-
-                if(paused < 1){
-                    if(correct){
-                        this.game.state.start("Transition");
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
-                
-            }
-            
-//NEXT FORMULA
-            else if(randomFormula == 2){ 
-                text1.setText(level_1_data.chemical_formulas.formula5.wrong5);
-                text2.setText(level_1_data.chemical_formulas.formula5.wrong6);
-                text3.setText(level_1_data.chemical_formulas.formula5.right);
-
-                if(a1.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a1.visible = true;
-                    text1.visible = true;
-                    pos1 = true;
-                    wrongSound.play();
-                }
-                if(a2.visible == false) {
-                    score = score - 50;
-                    if(lives == 2){
-                        lives=1;
-                    }
-                    else if(lives == 1){
-                        lives=0;
-                    }
-                    else{
-                        lives=2;
-                    }
-                    wrong = true;
-                    isTimerPaused = true;
-                    timer.pause();
-                    a2.visible = true;
-                    text2.visible = true;
-                    pos2 = true;
-                    wrongSound.play();
-                }
-                if(a3.visible == false) {
-                    correct = true;
-                    score = score + 50;
-                    a3.visible = true;
-                    text3.visible = true;
-                    timer.pause();
-                    isTimerPaused = true;
-                    correctSound.play();
-                }
-                                
-                if(isTimerPaused){
-                    paused--;
-
-                    if(correct){
-                    checkMark.visible = true;
-                    checkMark.x = Math.floor((a3.x + a3.width / 2) - 15);
-                    checkMark.y = Math.floor(a3.y + a3.height / 1.3);
-                    }
-                    if(wrong){
-                        paused--;
-                        xMark.visible = true;
-
-                        if(pos1){
-                            xMark.x = Math.floor((a1.x + a1.width / 2) - 15);
-                            xMark.y = Math.floor(a1.y + a1.height / 1.3);
-                        }
-                        if(pos2){
-                            xMark.x = Math.floor((a2.x + a2.width / 2) - 15);
-                            xMark.y = Math.floor(a2.y + a2.height / 1.3);
-                        }
-
-                        counter = 10;    
-                    }
-                    isFiring = false;
-                }
-
-                if(paused < 1){
-                    if(correct){
-                        this.game.state.start("Transition");
-                    }
-                    timer.resume();
-                    checkMark.visible = false;
-                    xMark.visible = false;
-                    isTimerPaused = false;
-                    pos1 = false;
-                    pos2 = false;
-                    paused = 150;
-                    correct = false;
-                    wrong = false;
-                    isFiring = true;
-                }
-            }
-        } 
     }
 };
