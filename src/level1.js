@@ -74,30 +74,22 @@ var randomWrong1;
 //A variable to set a random second wrong answer
 var randomWrong2;
 
+//Creating the booleans that will track if an asteroid is wrong or correct
+var a1Correct;
+var a1Wrong1;
+var a2Correct;
+var a2Wrong1;
+var a2Wrong2;
+var a3Correct;
+var a3Wrong2;
+
 level1.prototype = {  
    
     //Main Phaser Create Function
   	create: function(){ 
         
-        //Creating JSON-add another switch per file added.
-        
-        switchJSON = 0; //Math.floor(Math.random() * 5);
-        
-        if(switchJSON == 0){
-            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON')); 
-        }
-        else if(switchJSON == 1){
-            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_2'));
-        }  
-        else if(switchJSON == 2){
-            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_3'));
-        }
-        else if(switchJSON == 3){
-            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_4'));
-        }
-        else if(switchJSON == 4){
-            level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON_series_5'));
-        }
+        //Adding the JSON file in
+        level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON')); 
         
         //Pauses the Game Title Music when Game starts
         music.pause();
@@ -270,6 +262,15 @@ level1.prototype = {
             //Creates the pause menu picture
             menu = this.game.add.sprite(pauseW/2 + 135, pauseH/2 + 90, "menu");
             menu.anchor.setTo(1, 1);
+            
+            //Setting all my correct/wrong booleans to false
+            a1Correct = false;
+            a1Wrong1 = false;
+            a2Correct = false;
+            a2Wrong1 = false;
+            a2Wrong2 = false;
+            a3Correct = false;
+            a3Wrong2 = false;
 
         });
 
@@ -440,15 +441,6 @@ level1.prototype = {
         }
     },
     
-    
-    /*Function: collisionHandlerSpaceCraft()
-    *
-    *SpaceCraft and Asteroid Collision
-    */
-    collisionHandlerSpaceCraft: function(spaceCraft, asteroid) {
-        spaceCraft.kill();
-    },
-
     
     /*Function: render()
     *
@@ -638,7 +630,13 @@ level1.prototype = {
     
     setQuestion: function() {
         randomElement = Math.floor(Math.random() * 4);
-        console.log('randomE: ' + randomElement);
+        randomFormula = Math.floor(Math.random() * 3);
+        
+        //This is testing lines
+//        console.log('randomE: ' + randomElement);
+//        console.log('RandomOrder: ' + randomFormula);
+        
+        
         //Setting the random wrong answer 1
         randomWrong1 = Math.floor(Math.random() * 4);
         //Setting the random wrong answer 2
@@ -649,35 +647,53 @@ level1.prototype = {
         instructions.anchor.setTo(-0.1, 0.2);
          
         console.log(level_1_data);
+        //Resetting all my correct/wrong booleans to false
+        a1Correct = false;
+        a1Wrong1 = false;
+        a2Correct = false;
+        a2Wrong1 = false;
+        a2Wrong2 = false;
+        a3Correct = false;
+        a3Wrong2 = false;
+        
         //Choosing the formula and what
             instructions.setText(level_1_data.formulas[randomElement].formulaName);
-            //instructionsLength = instructions.length;
+            instructionsLength = instructions.length;
             
             if(randomFormula == 0){
                 text1.setText(level_1_data.formulas[randomElement].right);
+                a1Correct = true;
                 text2.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
+                a2Wrong1 = true;
                 text3.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
+                a3Wrong2 = true;
             }
             if(randomFormula == 1) {
                 text1.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
-                text2.setText(level_1_data.chemical_formulas.formula1.right);
+                a1Wrong1 = true;
+                text2.setText(level_1_data.formulas[randomElement].right);
+                a2Correct = true;
                 text3.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
+                a3Wrong2 = true;
             }
             if(randomFormula == 2) {
                 text1.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
+                a1Wrong1 = true;
                 text2.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
-                text3.setText(level_1_data.chemical_formulas.formula1.right);
+                a2Wrong2 = true;
+                text3.setText(level_1_data.formulas[randomElement].right);
+                a3Correct = true;
             }
         
-//        if(instructionsLength < 20){
-//                //Adjusting Instruction label Font Size
-//                instructions.fontSize = 47;  
-//            }
-//            else{
+          if(instructionsLength < 20){
+                  //Adjusting Instruction label Font Size
+                  instructions.fontSize = 47;  
+              }
+              else{
                 //Adjusting Instruction label for Chemical Names
                 instructions.anchor.setTo(0, 0.3);
                 //Adjusting Instruction label Font Size
                 instructions.fontSize = 42;
-           // }
+            }
     }
 };
