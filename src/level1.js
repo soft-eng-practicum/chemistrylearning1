@@ -688,14 +688,11 @@ level1.prototype = {
     },
     
     setQuestion: function() {
-        randomElement = Math.floor(Math.random() * 10);
+        //In order to add more questions, change randomElement random number generator to the number of questions you have
+        randomElement = Math.floor(Math.random() * 21);
+        
         randomFormula = Math.floor(Math.random() * 3);
-        
-        //This is testing lines
-//        console.log('randomE: ' + randomElement);
-//        console.log('RandomOrder: ' + randomFormula);
-        
-        
+
         //Setting the random wrong answer 1
         randomWrong1 = Math.floor(Math.random() * 4);
         //Setting the random wrong answer 2

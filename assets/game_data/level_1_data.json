@@ -9,6 +9,18 @@
         {"formulaName":"Sodium Oxide", "right":"Na\u2082O", "wrong":["NaO", "NO\u2082", "SO\u2082", "NO"] },
         {"formulaName":"Sodium Sulfide", "right":"Na\u2082S", "wrong":["NaS", "NaS\u2084", "NaSO\u2083", "NaS\u2083"] },
         {"formulaName":"Sodium Bromide", "right":"NaBr", "wrong":["NaBr\u2082", "Na\u2082Br\u2082", "NBr\u2082", "NBr"] },
-        {"formulaName":"Tin(IV) Oxide", "right":"SnO\u2082", "wrong":["TiO\u2082", "Sn\u2084O", "Ti\u2084O", "SnO\u2083"] }
+        {"formulaName":"Tin(IV) Oxide", "right":"SnO\u2082", "wrong":["TiO\u2082", "Sn\u2084O", "Ti\u2084O", "SnO\u2083"] },
+        {"formulaName":"Magnesium Chloride", "right":"MgCl\u2082", "wrong":["MgCl\u2083", "MCl\u2082", "MgCl", "MgC\u2082"] },
+        {"formulaName":"Magnesium Flouride", "right":"MgF\u2082", "wrong":["MgF\u2083", "MF\u2082", "MgF", "MnF\u2084"] },
+        {"formulaName":"Magnesium Bromide", "right":"MgBr\u2082", "wrong":["MgBr\u2083", "MgBr", "MB\u2082", "MnBr\u2082"] },
+        {"formualName":"Calcium Chloride", "right":"CaCl\u2082", "wrong":["CCl\u2082", "Ca\u2082Cl\u2082", "CaC\u2082", "CaCl\u2084"]},
+        {"formulaName":"Calcium Iodide", "right":"CaI\u2082", "wrong":["Ca\u2082I\u2082", "CaI", "Ca\u2082I", "CaI\u2083"]},
+        {"formulaName":"Calcium Bromide", "right":"CaBr\u2082", "wrong":["CBr\u2082", "Ca\u2082Br\u2082", "Br\u2082Ca", "Br\u2082Ca"]},
+        {"formulaName":"Iodine Monochloride", "right":"ICl", "wrong":["ICl\u2083", "ClI", "ICa", "I\u2083Cl"] },
+        {"formulaName":"Chorine Monofluoride", "right":"ClF", "wrong":["ClF\u2082", "Cl\u2082F", "ClFu", "CF"] },
+        {"formulaName":"Lithium Bromide", "right":"LiBr", "wrong":["LiBr\u2082", "Li\u2082Br\u2082", "LBr", "LB\u2082"]},
+        {"formulaName":"Cesium Iodide", "right":"CsI", "wrong":["CI", "CeI\u2082", "CeIO", "CsI\u2083"]},
+        {"formulaName":"Beryllium Chloride", "right":"BeCl\u2082", "wrong":["BeCl", "BeCl\u2083", "Be\u2082Cl", "BCl\u2082"]}
+        
     ]
 }
