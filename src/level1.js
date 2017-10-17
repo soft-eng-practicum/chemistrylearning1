@@ -60,8 +60,6 @@ var heart2;
 var heart3;
 var lives = 3;
 
-var switchJSON;
-
 var correctSound;
 var wrongSound;
 var bulletSound;
@@ -652,7 +650,7 @@ level1.prototype = {
             //Selects a random formula for the next sequence
             if(correct){
                 correctCount++;
-                console.log("The number of questions correct: " + correctCount);
+//To change the number of questions that need to be answered correctly, change the number for correctCount >= numRight
                 if(correctCount >= 5) {
                    this.game.state.start("Transition");
                 }
@@ -689,7 +687,7 @@ level1.prototype = {
     
     setQuestion: function() {
         //In order to add more questions, change randomElement random number generator to the number of questions you have
-        randomElement = Math.floor(Math.random() * 21);
+        randomElement = Math.floor(Math.random() * (level_1_data.formulas.length - 1));
         
         randomFormula = Math.floor(Math.random() * 3);
 
