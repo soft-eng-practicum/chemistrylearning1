@@ -85,6 +85,8 @@ var a2Wrong2;
 var a3Correct;
 var a3Wrong2;
 
+//This is the length of the json array so that it will automatically work with json file changes
+var jsonLength;
 //A count to determine if the player can proceed to the next level
 var correctCount = 0;
 
@@ -92,7 +94,6 @@ level1.prototype = {
    
     //Main Phaser Create Function
   	create: function(){ 
-        
         //Adding the JSON file in
         level_1_data = JSON.parse(this.game.cache.getText('level_1_JSON')); 
         
@@ -396,6 +397,7 @@ level1.prototype = {
         }
         else if(lives == 0){            
             this.game.state.start("GameOver");
+            correctCount = 0;
         }
     },
     
@@ -653,6 +655,7 @@ level1.prototype = {
 //To change the number of questions that need to be answered correctly, change the number for correctCount >= numRight
                 if(correctCount >= 5) {
                    this.game.state.start("Transition");
+                    correctCount = 0;
                 }
                  this.setQuestion();
             }
@@ -687,7 +690,8 @@ level1.prototype = {
     
     setQuestion: function() {
         //In order to add more questions, change randomElement random number generator to the number of questions you have
-        randomElement = Math.floor(Math.random() * (level_1_data.formulas.length - 1));
+        randomElement = Math.floor(Math.random() * 20);
+        console.log("The random Element is: " + randomElement);
         
         randomFormula = Math.floor(Math.random() * 3);
 
