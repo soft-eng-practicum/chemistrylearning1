@@ -87,6 +87,9 @@ var a2Wrong2;
 var a3Correct;
 var a3Wrong2;
 
+//A count to determine if the player can proceed to the next level
+var correctCount = 0;
+
 level1.prototype = {  
    
     //Main Phaser Create Function
@@ -275,7 +278,7 @@ level1.prototype = {
             a2Wrong2 = false;
             a3Correct = false;
             a3Wrong2 = false;
-
+            
         });
 
     // An input listener that returns from being paused
@@ -648,7 +651,12 @@ level1.prototype = {
         if(paused < 1){
             //Selects a random formula for the next sequence
             if(correct){
-                this.setQuestion();
+                correctCount++;
+                console.log("The number of questions correct: " + correctCount);
+                if(correctCount >= 5) {
+                   this.game.state.start("Transition");
+                }
+                 this.setQuestion();
             }
             //Resumes the Timer
             timer.resume();
@@ -680,14 +688,11 @@ level1.prototype = {
     },
     
     setQuestion: function() {
-        randomElement = Math.floor(Math.random() * 10);
+        //In order to add more questions, change randomElement random number generator to the number of questions you have
+        randomElement = Math.floor(Math.random() * 21);
+        
         randomFormula = Math.floor(Math.random() * 3);
-        
-        //This is testing lines
-//        console.log('randomE: ' + randomElement);
-//        console.log('RandomOrder: ' + randomFormula);
-        
-        
+
         //Setting the random wrong answer 1
         randomWrong1 = Math.floor(Math.random() * 4);
         //Setting the random wrong answer 2
