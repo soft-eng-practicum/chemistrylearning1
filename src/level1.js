@@ -717,9 +717,9 @@ level1.prototype = {
         a3Correct = false;
         a3Wrong2 = false;
         
-        //Choosing the formula and what
-            instructions.setText(level_1_data.formulas[randomElement].formulaName);
-            instructionsLength = instructions.length;
+        //Choosing the formula
+        instructions.setText(level_1_data.formulas[randomElement].formulaName);
+        instructionsLength = instructions.length;
             
             if(randomFormula == 0){
                 text1.setText(level_1_data.formulas[randomElement].right);
