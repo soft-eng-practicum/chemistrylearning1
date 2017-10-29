@@ -5,7 +5,6 @@
         {"formulaName":"Carbon Disulfide", "right":"CS\u2082", "wrong":["CaS\u2082", "C\u2082S", "C\u2082S\u2082", "Ca\u2082S\u2082"] },
         {"formulaName":"Potassium Chlorite", "right":"KClO\u2082", "wrong":["KClO", "KClO\u2083", "KClO\u2084", "PClO\u2082"]},
         {"formulaName":"Tin(IV) Bromide", "right":"SnBr\u2084", "wrong":["Sn\u2082Br\u2082", "SnBrO", "Sn\u2084Br", "TiBr\u2084"]},
-        //Here is where the new formulas are
         {"formulaName":"Aluminum Sulfide", "right":"Al\u2082S\u2083", "wrong":["AlS", "Al\u2083S\u2082", "Al\u2082S\u2082", "Al\u2082Se\u2082"] },
         {"formulaName":"Aluminum Hydroxide", "right":"Al(OH)\u2083", "wrong":["AL(OH)\u2082", "AlOH", "Al\u2082(OH)\u2083", "AL\u2083O\u2082"]},
         {"formulaName":"Aluminum Chloride", "right":"AlCl\u2083", "wrong":["AlCl\u2083", "AlCl", "AlC\u2083", "AlCo\u2083"]},
