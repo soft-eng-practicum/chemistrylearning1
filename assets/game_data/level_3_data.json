@@ -1,72 +1,19 @@
 {
-    "chemical_formulas": {
-        "formula1": {
-            "name": "Potassium Chloride", 
-            "right": "KCl", 
-            "wrong1": "PCl",
-            "wrong2": "K\u2082Cl\u2082",
-            "wrong3": "K\u2082Cl",
-            "wrong4": "ClK",
-            "wrong5": "ClP",
-            "wrong6": "K\u2082Cl\u2082",
-            "wrong7": "PC",
-            "wrong8": "KC"
-        },
-
-        "formula2": {
-            "name": "Sodium Chloride", 
-            "right": "NaCl", 
-            "wrong1": "NCl",
-            "wrong2": "NiCl\u2082",
-            "wrong3": "NaCl\u2082",
-            "wrong4": "NaCl\u2082",
-            "wrong5": "NCl\u2082",
-            "wrong6": "SCl\u2082",
-            "wrong7": "SCl",
-            "wrong8": "SoCl\u2082",
-            "wrong9": "SoCl"
-        },
-
-        "formula3": {
-            "name": "Carbon Disulfide", 
-            "right": "CS\u2082", 
-            "wrong1": "CaS\u2082",
-            "wrong2": "CS",
-            "wrong3": "C\u2082S",
-            "wrong4": "C\u2082S\u2082",
-            "wrong5": "CuS\u2082",
-            "wrong6": "Ca\u2082S\u2082"
-        },
-        
-        "formula4": {
-            "name": "Potassium Chlorite", 
-            "right": "KClO\u2082", 
-            "wrong1": "PClO\u2082",
-            "wrong2": "KClO",
-            "wrong3": "KClO\u2083",
-            "wrong4": "KClO\u2084",
-            "wrong5": "PClO\u2084",
-            "wrong6": "NaClO",
-            "wrong7": "CaClO",
-            "wrong8": "PClO\u2083",
-            "wrong9": "KCl",
-            "wrong10": "PCl",
-            "wrong11": "PCl\u2084"
-        },
-        
-        "formula5": {
-            "name": "Tin(IV) Bromide", 
-            "right": "SnBr\u2084", 
-            "wrong1": "TiBr\u2084",
-            "wrong2": "TlBr\u2084",
-            "wrong3": "Sn\u2082Br\u2082",
-            "wrong4": "Ti\u2082Cl\u2082",
-            "wrong5": "Sn\u2084Cl",
-            "wrong6": "Ti\u2084Cl",
-            "wrong7": "Br\u2084Sn",
-            "wrong8": "SnBrO"
-        }
-        
-    }
+    "formulas": [
+        {"formulaName":"Potassium Chloride", "right":"KCl", "wrong":["PCl", "K\u2082Cl\u2082", "K\u2082Cl", "K\u2082Cl\u2082"] },
+        {"formulaName":"Sodium Chloride", "right":"NaCl", "wrong":["NCl", "NaCl\u2082", "Na\u2083Cl\u2082", "Na\u2082Cl"]},
+        {"formulaName":"Carbon Disulfide", "right":"CS\u2082", "wrong":["CaS\u2082", "C\u2082S", "C\u2082S\u2082", "Ca\u2082S\u2082"] },
+        {"formulaName":"Potassium Chlorite", "right":"KClO\u2082", "wrong":["KClO", "KClO\u2083", "KClO\u2084", "PClO\u2082"]},
+        {"formulaName":"Tin(IV) Bromide", "right":"SnBr\u2084", "wrong":["Sn\u2082Br\u2082", "SnBrO", "Sn\u2084Br", "TiBr\u2084"]},
+        {"formulaName":"Aluminum Sulfide", "right":"Al\u2082S\u2083", "wrong":["AlS", "Al\u2083S\u2082", "Al\u2082S\u2082", "Al\u2082Se\u2082"] },
+        {"formulaName":"Aluminum Hydroxide", "right":"Al(OH)\u2083", "wrong":["AL(OH)\u2082", "AlOH", "Al\u2082(OH)\u2083", "AL\u2083O\u2082"]},
+        {"formulaName":"Aluminum Chloride", "right":"AlCl\u2083", "wrong":["AlCl\u2083", "AlCl", "AlC\u2083", "AlCo\u2083"]},
+        {"formulaName":"Aluminum Bromide", "right":"AlBr\u2083", "wrong":["Al\u2082Br\u2083", "AlBr", "AlB\u2083", "Al\u2083Br\u2082"]},
+        {"formulaName":"Aluminun Nitride", "right":"AlN", "wrong":["Al\u2082N\u2083", "Al\u2082No\u2083", "Al\u2082N\u2082", "Al\u2082N"]},
+        {"formulaName":"Aluminum Phosphide", "right":"AlP", "wrong":["Al\u2082Po\u2083", "Al\u2082P\u2083", "AlP\u2083", "AN"]},
+        {"formulaName":"Aluminum Oxide", "right":"Al\u2082O\u2083", "wrong":["Al\u2082O\u2082", "AlO", "Al\u2083O\u2082", "AlO\u2083"]},
+        {"formulaName":"Phosphorous Trihydride", "right":"PH\u2083", "wrong":["PhH\u2083", "FH\u2083", "PoH\u2083", "KH\u2083"]},
+        {"formulaName":"Nitrogen Trichloride", "right":"NCl\u2083", "wrong":["NCl\u2082", "NCl", "NlCl\u2083", "ClN\u2083"]},
+        {"formulaName":"Selenium Trioxide", "right":"SeO\u2083", "wrong":["Se\u2083O", "Se\u2082O\u2083", "Se\u2083O\u2082", "SeO"]}
+    ]
 }
-

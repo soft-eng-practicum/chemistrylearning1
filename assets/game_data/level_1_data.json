@@ -13,7 +13,7 @@
         {"formulaName":"Magnesium Chloride", "right":"MgCl\u2082", "wrong":["MgCl\u2083", "MCl\u2082", "MgCl", "MgC\u2082"] },
         {"formulaName":"Magnesium Flouride", "right":"MgF\u2082", "wrong":["MgF\u2083", "MF\u2082", "MgF", "MnF\u2084"] },
         {"formulaName":"Magnesium Bromide", "right":"MgBr\u2082", "wrong":["MgBr\u2083", "MgBr", "MB\u2082", "MnBr\u2082"] },
-        {"formualName":"Calcium Chloride", "right":"CaCl\u2082", "wrong":["CCl\u2082", "Ca\u2082Cl\u2082", "CaC\u2082", "CaCl\u2084"]},
+        {"formulaName":"Calcium Chloride", "right":"CaCl\u2082", "wrong":["CCl\u2082", "Ca\u2082Cl\u2082", "CaC\u2082", "CaCl\u2084"]},
         {"formulaName":"Calcium Iodide", "right":"CaI\u2082", "wrong":["Ca\u2082I\u2082", "CaI", "Ca\u2082I", "CaI\u2083"]},
         {"formulaName":"Calcium Bromide", "right":"CaBr\u2082", "wrong":["CBr\u2082", "Ca\u2082Br\u2082", "Br\u2082Ca", "Br\u2082Ca"]},
         {"formulaName":"Iodine Monochloride", "right":"ICl", "wrong":["ICl\u2083", "ClI", "ICa", "I\u2083Cl"] },

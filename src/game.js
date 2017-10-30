@@ -12,6 +12,7 @@ var game = new Phaser.Game(width, height, Phaser.CANVAS, "gameDiv");
     game.state.add("Credits",creditsState);
     game.state.add("Leaderboard",leaderboardState);
     game.state.add("Winner",winState);
+    game.state.add("LevelSelect", levelSelectState);
     game.state.add("Level1",level1);
     game.state.add("Level2",level2);
     game.state.add("Level3",level3);
