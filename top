@@ -1,0 +1,575 @@
+[33mcommit 5e5f2584643f23c3d12b0dac0127153b85ab3f91[m[33m ([m[1;36mHEAD -> [m[1;32mAdminReview[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m, [m[1;32mLaura[m[33m)[m
+Author: Charneaka Lewis <clewis20@ggc.edu>
+Date:   Mon Sep 4 16:34:48 2017 -0400
+
+    Modified the format of my name.
+
+[33mcommit cefc3a362b8e5bab5c708d998e849b7946e3af53[m
+Merge: 3f821e0 cc2d89e
+Author: theantlaura <larevalo@ggc.edu>
+Date:   Mon Sep 4 03:22:06 2017 -0400
+
+    Complete rehaul and added my name to project roles
+
+[33mcommit 3f821e034629b73e7ae584b11a5c382850300f41[m
+Author: theantlaura <larevalo@ggc.edu>
+Date:   Mon Sep 4 03:18:01 2017 -0400
+
+    Adding my name and total redo of file
+
+[33mcommit cc2d89e72d462ffeb1f87e62ed09a5ffdf6da27e[m
+Author: laura arevalo <larevalo@ggc.edu>
+Date:   Mon Sep 4 03:21:02 2017 +0000
+
+    ~$non Requirements.docx deleted online with Bitbucket
+
+[33mcommit 41703d6e2dae9e0c6fa508077c0a4384fecc9a11[m
+Merge: 15e1821 92c2ada
+Author: cwindham19 <cwindham1@ggc.edu>
+Date:   Thu Aug 31 19:13:30 2017 -0400
+
+    Did it work now?
+
+[33mcommit 15e18217d8dc81ca1a067c6cc32cd3ae571cd975[m
+Merge: e363eca e930fbe
+Author: cwindham19 <cwindham1@ggc.edu>
+Date:   Thu Aug 31 19:11:53 2017 -0400
+
+    Merge branch 'master' of https://bitbucket.org/cgunay-ggc/xenon
+
+[33mcommit 92c2ada5c0a4034ba5231b8ead11de2b8c33e54c[m
+Merge: b64c68c e930fbe
+Author: cobiamalu <cobiamalu@ggc.edu>
+Date:   Thu Aug 31 19:05:55 2017 -0400
+
+    This is my role for the project
+
+[33mcommit b64c68c77e541987ceb517f1c0976e17a3ecad87[m
+Author: cobiamalu <cobiamalu@ggc.edu>
+Date:   Thu Aug 31 18:57:48 2017 -0400
+
+    This is what I will be doing for this project
+
+[33mcommit e363eca3dd06d2a2b78092916c5557caf3dd5468[m
+Author: cwindham19 <cwindham1@ggc.edu>
+Date:   Thu Aug 31 18:57:08 2017 -0400
+
+    Turning in my part for the team
+
+[33mcommit e930fbeeee860366a589546ddb2748107a325729[m
+Author: Charneaka Lewis <clewis20@ggc.edu>
+Date:   Thu Aug 31 18:56:36 2017 -0400
+
+    Added my name and team roles
+
+[33mcommit a9a6ead80c18548f55857b51109a5d2a2c316b32[m
+Author: theantlaura <larevalo@ggc.edu>
+Date:   Tue Aug 29 18:27:55 2017 -0400
+
+    Adding updated Dev Requirements
+
+[33mcommit 87cfda23c50913f8757399a36efe658be9762b5f[m
+Author: theantlaura <larevalo@ggc.edu>
+Date:   Tue Aug 29 18:05:57 2017 -0400
+
+    Adding Requirements doc
+
+[33mcommit 2e73fcf64fb14a218667d585bf0cbc2047ce8117[m
+Author: Cengiz Gunay <cengique@users.sf.net>
+Date:   Fri Mar 17 12:26:59 2017 -0400
+
+    Dr Gluick's corrections to level file random selections
+
+[33mcommit da921806f9bee73e525c758423657a2989f94593[m
+Author: Cengiz Gunay <cengique@users.sf.net>
+Date:   Fri Mar 17 12:25:49 2017 -0400
+
+    Dr Gluick's new level files
+
+[33mcommit 7c1ecbd445414875ce21fff2a0d7dafbcd66d805[m
+Author: Cengiz Gunay <cengique@users.sf.net>
+Date:   Tue Mar 14 22:31:00 2017 -0400
+
+    corrected author links
+
+[33mcommit fc92dc61f8baafa3709b9ecf0053a8f670086845[m
+Author: Cengiz Gunay <cengique@users.sf.net>
+Date:   Tue Mar 14 22:29:17 2017 -0400
+
+    more corrections to MD links
+
+[33mcommit 8e717eb7f0fac65b064ddd211471d893c391a0f0[m
+Author: Cengiz Gunay <cengique@users.sf.net>
+Date:   Fri Mar 10 13:12:19 2017 -0500
+
+    corrected links after reorganization and converted everything to relative links
+
+[33mcommit 2aba4f9ba22c2373465c07920d4f1ab207c55cc0[m
+Author: Cengiz Gunay <cengique@users.sf.net>
+Date:   Fri Mar 10 13:09:17 2017 -0500
+
+    testing correction of readme links
+
+[33mcommit c28b92139e48a7b16eea1fc4f8acc8acab76a46a[m
+Author: Cengiz Gunay <cengique@users.sf.net>
+Date:   Fri Mar 10 12:22:44 2017 -0500
+
+    reorganized directory structure for serving on Github pages and deleted node_modules
+
+[33mcommit aa87c9042037c3e2b76992eb202855913e234310[m
+Author: cengique <cengique@users.sf.net>
+Date:   Fri Mar 10 12:18:26 2017 -0500
+
+    Adele's prototypes (#6)
+    
+    prototyping images
+
+[33mcommit 9eefc635be1f7f989ed89abbbb825440efbbcdb0[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Thu Dec 8 14:59:09 2016 -0500
+
+    Requirement Elicitation Documentation
+
+[33mcommit 6607b5b4ed62a031c373aca9b849c23d1aee855e[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Thu Dec 8 14:55:50 2016 -0500
+
+    Delete Xenon User Guide.pdf
+
+[33mcommit fe4a2d259b306ba37448510d08798723a071304c[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Thu Dec 8 14:55:40 2016 -0500
+
+    Final User Guide Instructions.
+
+[33mcommit 8184bfc1d0928ac21825e96c1be9251ec3d0711d[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Thu Dec 8 14:52:48 2016 -0500
+
+    JSON How To.
+    
+    brief explanation on how to edit JSON files.
+
+[33mcommit 82e0b437d9c3fdfcb481f98515b97e10de3f3a7c[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Thu Dec 8 14:51:08 2016 -0500
+
+    JSON HOW TO
+    
+    brief explanation on how to edit JSON files.
+
+[33mcommit 17876b33fa1a818e429f02e99967b4290a3f8d3b[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Thu Dec 8 13:55:46 2016 -0500
+
+    Final Signed IP Agreement
+    
+    Client failed to sign the agreement when contacted via email and presented with contract during CREATE demo.
+
+[33mcommit cf820b11d6792f01bc602e58fdb1c97beaab69e6[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Wed Dec 7 15:30:14 2016 -0500
+
+    Update README.md
+
+[33mcommit b607ced7fa0e8f2cc19b5121621bf1e16d9efff5[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Wed Dec 7 15:27:04 2016 -0500
+
+    Update README.md
+
+[33mcommit bf7f98ea7bf28dca067f9f3a8363f878714e07ad[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Tue Dec 6 19:20:23 2016 -0500
+
+    Delete Final XE1 Intellectual Property and Licensing Agreement.pdf
+
+[33mcommit 926ec63cf59eb7945335968eedfcc4d7c917d5a8[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Tue Dec 6 19:20:08 2016 -0500
+
+    final agreement signed added
+
+[33mcommit 13937df237bb11cf79e112d07af0e4b04e10407d[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Tue Dec 6 19:19:24 2016 -0500
+
+    Delete Final XE1 Intellectual Property and Licensing Agreement.pdf
+
+[33mcommit 98c1bcf0a9dacbfb4cf644ef6fbca3c1e79cedcf[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Tue Dec 6 19:19:04 2016 -0500
+
+    final signed agreement added
+
+[33mcommit b26707f51aac7902be7fa0ae6d22bfc9cc6444f4[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Tue Dec 6 09:09:09 2016 -0500
+
+    Update README.md
+
+[33mcommit f702fd931ee922599804a6cd6df38616bf44693f[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Mon Dec 5 21:35:26 2016 -0500
+
+    Update README.md
+
+[33mcommit 2cef7cdc3b04dfac65c89821915e402093d39612[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Mon Dec 5 21:20:05 2016 -0500
+
+    read me graphics added
+
+[33mcommit 3ff47394db949ec99354f61cf2b4a0918d8098bf[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Mon Dec 5 19:38:28 2016 -0500
+
+    Update README.md
+
+[33mcommit c982a8e8100fafc233fa75acd7a7d28f4cdf7525[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Mon Dec 5 19:31:53 2016 -0500
+
+    readme graphics features
+
+[33mcommit 6a7e4c1c6b39db27bd5cfe79701e3c8a14fcc1d1[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Mon Dec 5 18:58:13 2016 -0500
+
+    Update README.md
+
+[33mcommit 759d0cf9d232ab7f10164cc5e3d533888ad9825e[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Wed Nov 30 21:49:42 2016 -0500
+
+    Fixed level sounds
+
+[33mcommit 2b9a90d16d4b78de1d2daee7bef5dec5fb97fd0b[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Wed Nov 30 21:25:59 2016 -0500
+
+    Adding new pause image and image background for level 4
+
+[33mcommit d00ef85e0ffbcb3ed5db43b584fa22ece2ea2050[m
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Wed Nov 30 20:42:13 2016 -0500
+
+    graphics added
+    
+    newly updated graphics
+
+[33mcommit 66cae55cb31ef60899cae7225f714d1c5fd3c7e2[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Wed Nov 30 14:58:16 2016 -0500
+
+    Fixed incorrect formula
+
+[33mcommit fa733582799d9c73dba026db57227127cb71e43b[m
+Merge: f2e84c6 40a03c7
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Wed Nov 30 12:14:54 2016 -0500
+
+    Merge commit
+
+[33mcommit f2e84c6a1748edfade54b24e13058243fff45b73[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Wed Nov 30 12:13:08 2016 -0500
+
+    Added winning sound
+
+[33mcommit 8da29423e399641d7bcdf17cca8c7d871fbd6343[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Wed Nov 30 12:12:00 2016 -0500
+
+    Added music to all levels
+
+[33mcommit 40a03c74fab7585e8c5f3f13a47249277abcf07a[m
+Merge: 0cea04e 351a708
+Author: Adele Francois <afrancois@ggc.edu>
+Date:   Tue Nov 29 10:21:10 2016 -0500
+
+    Merge pull request #5 from skyyfall007/master
+    
+    pull
+
+[33mcommit 0cea04eec154cf8f21887e5b58c0796d4a9b7ee2[m
+Merge: 3e59c91 48c7254
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Mon Nov 28 23:13:16 2016 -0500
+
+    Added image backgrounds
+
+[33mcommit 3e59c9108430bb5c70be69a07a8626792ce73e43[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Mon Nov 28 23:12:46 2016 -0500
+
+    Added image backgrounds
+
+[33mcommit 48c72548b50dac46f818c67a37f9c3aec0750cd5[m
+Author: John Rose <jrose@ggc.edu>
+Date:   Mon Nov 28 20:54:12 2016 -0500
+
+    Fixed issue with data file
+
+[33mcommit 13093378775f8c0e7658542a9d9f5ddec1cc0cd0[m
+Merge: d53cbc4 51108cb
+Author: John Rose <jrose@ggc.edu>
+Date:   Mon Nov 28 20:52:35 2016 -0500
+
+    Merge branch 'master' of https://github.com/soft-eng-practicum/chemistrylearning1
+
+[33mcommit d53cbc43925a0b6d2f9cde8dac73ce8f0657a3f5[m
+Author: John Rose <jrose@ggc.edu>
+Date:   Mon Nov 28 20:49:44 2016 -0500
+
+    Fixed the syntax error
+
+[33mcommit 51108cbcb5d204b904548173d4be738e192938e0[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Mon Nov 28 20:00:33 2016 -0500
+
+    scaling background
+
+[33mcommit 0d3328a289dbb87e15927129e7481c168f41087d[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Mon Nov 28 19:52:00 2016 -0500
+
+    test commit
+
+[33mcommit 06240b220ce15981dbb5259110e537c1404c3227[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Mon Nov 28 19:40:09 2016 -0500
+
+    Getting rid of deleted items
+
+[33mcommit d7c7e94d8348befa1cccf8277f554effa4794117[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Mon Nov 28 19:02:45 2016 -0500
+
+    Test commit
+
+[33mcommit 6c856205e563aafc37868aa4c77425b9835ba612[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Mon Nov 28 16:49:56 2016 -0500
+
+    Test commit
+
+[33mcommit 7d613f361cd8843d9e0e5cb650a24d960f968c4f[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Mon Nov 28 15:13:29 2016 -0500
+
+    Changed image layout
+
+[33mcommit 9359e61af231489fde965d9cec756e7f982bbad6[m
+Author: John Rose <jrose@ggc.edu>
+Date:   Mon Nov 28 09:01:23 2016 -0500
+
+    Removed series 2 data file code
+
+[33mcommit 1065a5ce27ddf97f1870eca2bdb67234826f17d0[m
+Author: John Rose <jrose@ggc.edu>
+Date:   Mon Nov 28 09:00:29 2016 -0500
+
+    Adjusted scaling of game over image
+
+[33mcommit efdd0a02435a9648b3bf7db7c12d4979b655f46d[m
+Author: John Rose <jrose@ggc.edu>
+Date:   Mon Nov 28 08:59:22 2016 -0500
+
+    Fixed error in formula 5
+
+[33mcommit ff0d7a5e1730e41c3d361d17ca74dc7a71e3f7a3[m
+Merge: abffa81 f5e15f0
+Author: John Rose <jrose@ggc.edu>
+Date:   Mon Nov 28 06:55:52 2016 -0500
+
+    Merge branch 'master' of https://github.com/soft-eng-practicum/chemistrylearning1
+
+[33mcommit abffa81e6747ccba539fc7d56cf87c007a0626bc[m
+Author: John Rose <jrose@ggc.edu>
+Date:   Mon Nov 28 06:55:18 2016 -0500
+
+    Got em
+
+[33mcommit ad9df0a1d3a7c743fed39d2d244e7a4809797d11[m
+Author: John Rose <jrose@ggc.edu>
+Date:   Mon Nov 28 06:53:26 2016 -0500
+
+    Updated data for level 4
+
+[33mcommit f5e15f01f765de421b66e744768dbe7ba4474796[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Mon Nov 28 00:12:26 2016 -0500
+
+    Adding Script
+
+[33mcommit d406b8b277bfca3684ecf4f88f5be60030925f3e[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Mon Nov 28 00:11:12 2016 -0500
+
+    Adding Script
+
+[33mcommit ea073dc008cea4ef4a04cf090ec63435bd82b2c9[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 23:46:36 2016 -0500
+
+    Adding Script
+
+[33mcommit 0d55f628b913e2c17600b044d7a200ab61f27840[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 23:36:54 2016 -0500
+
+    Adding Script
+
+[33mcommit 585cf4ef61e2bdf62a96d38f862a4b5875bfebb7[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 23:17:35 2016 -0500
+
+    Adding Script
+
+[33mcommit 5e76dcbf83383e015e020a30faa2ad03d3c1dab7[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 23:13:51 2016 -0500
+
+    Adding Script
+
+[33mcommit a01a5a3d9627c500a6999a5f5228e10156a6f0e7[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 23:12:34 2016 -0500
+
+    Adding Script
+
+[33mcommit 75cf57e3db831754191b57c4330f10f0f74c9443[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 23:00:39 2016 -0500
+
+    Adding Script
+
+[33mcommit 5ae67621748983c85b1d2f1da8c4ee33bf3e0c1c[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 22:43:59 2016 -0500
+
+    Adding Script
+
+[33mcommit b9579d90c8793bb4dc67660ac241f27f0e1e24d9[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 22:41:39 2016 -0500
+
+    Adding Script
+
+[33mcommit a4bcb3c2ab892a807121184ab1238d7ed252dbfd[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 22:36:39 2016 -0500
+
+    Adding Script
+
+[33mcommit 208c1c5b15ef5194f2a345ceaf64f92515872c3c[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 22:22:48 2016 -0500
+
+    Adding Script
+
+[33mcommit 8ac7802cb526594ea8885e4629a309984c048919[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 22:19:18 2016 -0500
+
+    Adding Script
+
+[33mcommit 76a2b57f4d21ce01144faa86abf323d5806c114b[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 21:41:34 2016 -0500
+
+    Adding Script
+
+[33mcommit 6e6715735e1cd14cdf541d844a18d21f9e1cdf7b[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 21:37:02 2016 -0500
+
+    Adding Script
+
+[33mcommit 546f4ac469b90afdf654d16ebb2b06b09155003a[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 21:35:09 2016 -0500
+
+    Adding Script
+
+[33mcommit 519747009bb6b53e71e8f5e33554ef4e0364688d[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 21:33:45 2016 -0500
+
+    Adding Script
+
+[33mcommit 0a28be2c77ef3495dc9901761bb29fc74967419e[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 21:30:16 2016 -0500
+
+    Adding Script
+
+[33mcommit 4f20d84f660133fc3f778345b095431d37942a22[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 21:28:55 2016 -0500
+
+    Adding Script
+
+[33mcommit 684ca72e744d73ed1a2b0a75e6281577efe9ca31[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 21:24:47 2016 -0500
+
+    Commiting package.json for Travisci
+
+[33mcommit 6c766df104f5e3c71d24343894b406ee910319b1[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 20:16:27 2016 -0500
+
+    Fixed Level 5 formula
+
+[33mcommit 6332933485b24895fde113e80bcd27fe8eb20b8f[m
+Merge: f97df62 a01f7b5
+Author: John Rose <jrose@ggc.edu>
+Date:   Sun Nov 27 19:43:58 2016 -0500
+
+    Merge branch 'master' of https://github.com/soft-eng-practicum/chemistrylearning1
+
+[33mcommit f97df62a308f535c2e6aa491a603e6364f900751[m
+Author: John Rose <jrose@ggc.edu>
+Date:   Sun Nov 27 19:43:21 2016 -0500
+
+    Fixed logic for transition
+
+[33mcommit a01f7b516e16490f4ac3fea9931e3649278b241c[m
+Merge: 8f421b5 6d901db
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 19:38:32 2016 -0500
+
+    Commiting the Merge
+
+[33mcommit 8f421b5d5dce1c598bb88a628b1594fd826174f7[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 19:38:02 2016 -0500
+
+    Add images to winner screen
+
+[33mcommit 6d901db2a18e649d3d1dab6a08e1c6e8f99b75ac[m
+Author: John Rose <jrose@ggc.edu>
+Date:   Sun Nov 27 19:15:10 2016 -0500
+
+    Added level 4 data files
+
+[33mcommit fac03600c955aedf06e57d1211f42255f3bf7f17[m
+Author: John Rose <jrose@ggc.edu>
+Date:   Sun Nov 27 19:12:57 2016 -0500
+
+    Oh yeahgit add transition.js
+
+[33mcommit ae6cd44e43d425db86e790f344b366de91212784[m
+Merge: 548d182 1da0d13
+Author: John Rose <jrose@ggc.edu>
+Date:   Sun Nov 27 18:55:31 2016 -0500
+
+    Merge branch 'master' of https://github.com/soft-eng-practicum/chemistrylearning1
+
+[33mcommit 1da0d13d253da7efa656c85fb8d95dbf1ab82a9d[m
+Author: Jawan Higgins <Jhiggin3@ggc.edu>
+Date:   Sun Nov 27 17:34:15 2016 -0500
+
+    Adding scri
