@@ -126,18 +126,7 @@ preloadState.prototype = {
         for this level or any level must use this.game.load.text( string for the file
         here)
         */
-    
-        
-                
         this.game.load.text('level_1_JSON', "assets/game_data/level_1_data.json");
-        
-        this.game.load.text('level_1_JSON_series_2', "assets/game_data/level_1_data_series_2.json");
-        
-        this.game.load.text('level_1_JSON_series_3', "assets/game_data/level_1_data_series_3.json");
-        
-        this.game.load.text('level_1_JSON_series_4', "assets/game_data/level_1_data_series_4.json");
-        
-        this.game.load.text('level_1_JSON_series_5', "assets/game_data/level_1_data_series_5.json");
         
         this.game.load.image("heart","assets/heart.png");
         
