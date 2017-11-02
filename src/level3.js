@@ -1,11 +1,15 @@
 var level3 = function(game){
     
 };
+
+//Create the variable for the background
+var background; 
+var instructions;
+var countDownLabel
+
 //Create variable for group of spiders
 var spiders;
 var spidersSpeed;
-
-
 
 //Create variables for individual spiders
 
@@ -50,7 +54,6 @@ var gameStart = false;
 //Create variable to contain counter value
 
 var counterLevel3 = 5;
-
 //Create variable to hold heart image
 var heart1;
 var heart2;
@@ -82,17 +85,32 @@ level3.prototype = {
         //Parse the text back to a JSON object
         level_3_data = JSON.parse(this.game.cache.getText('level_3_JSON')); 
         
-        background = this.game.add.sprite(0,0,'Nebula2');
-        background.scale.setTo(.27,.51);
+        //Pause main theme music
+        music.pause();
+        levelMusic.loop = true;
+        levelMusic.volume = .5;
+        levelMusic.play();
         
+        //Creates the Background Image
+        background = this.game.add.sprite(0,0,'Nebula2');
+        background.scale.setTo(.83,1.12);
+        
+        //Creates the label for the countdown
         countDownLabel = this.game.add.text(this.game.world.centerX-60,10, "", {font: "120px Courier", fill: "#ffffff"});
+        
+        //Creates the Instructions Label
+        instructions = this.game.add.text(this.game.world.centerX-290, 130, "Choose The Correct Spider", {font: "34px Courier", fill: "#ffffff"});
+        
+        //Creates the timer for the game 
         gameTimer = this.game.time.create(false);
-        gameTimer.loop(1000, updateCounter, this);
+        gameTimer.loop(1000, this.updateCounter, this);
         gameTimer.start();
         
+        //Creates the hearts for the lives
         heart1 = this.game.add.sprite(this.game.world.centerX+120, this.game.world.centerY-320, 'heart');
         heart2 = this.game.add.sprite(this.game.world.centerX+170, this.game.world.centerY-320, 'heart');
         heart3 = this.game.add.sprite(this.game.world.centerX+220, this.game.world.centerY-320, 'heart');
+        
         correctSound = this.game.add.audio('correctSound');
         correctSound.volume = 0.1;
         
@@ -101,12 +119,7 @@ level3.prototype = {
         
         //Initializing display chemical formula to a value
         displayChemicalFormula = (this.game.world.centerX-290, 130, "Select The Correct Spider", {font: "37px Courier", fill: "White"});
-        //Pause main theme music
-        music.pause();
-        levelMusic.loop = true;
-        levelMusic.volume = .5;
-        levelMusic.play();
-        
+         
         //Assign value to the beep variables
         
         shortBeep = this.game.add.audio('shortBeep');
@@ -127,13 +140,26 @@ level3.prototype = {
         scoreText = this.game.add.text(this.game.width-195, 30, "", {font: "30px Courier", fill: "Yellow"});
         scoreText.setText("Score: " + score);
 
-        //Create a group of garden spiders
+        //Create a group of spiders
         spiders = this.game.add.group();
-
-        //Clicking spiders input actions on the group of spiders
-        spiders.inputEnableChildren = true;
         spiders.enableBody = true;
         spiders.physicsBodyType = Phaser.Physics.ARCADE;
+        spiders.inputEnabled = true;
+        
+        //Create the individual spiders
+        spider1 = this.game.add.sprite(200, game.world.height - 600, 'Garden spider');
+        spider1.scale.setTo(.2, .2);
+        
+        spider2 = this.game.add.sprite(400, game.world.height - 400, 'Garden spider1');
+        spider2.scale.setTo(.2, .2);
+        
+        spider3 = this.game.add.sprite(150, game.world.height - 200, 'Garden spider2');
+        spider3.scale.setTo(.2, .2); 
+            
+        
+        //Clicking spiders input actions on the group of spiders
+        //spiders.inputEnableChildren = true;
+        
 
         //Set spider speed
         spidersSpeed = 0.7317;
@@ -143,8 +169,7 @@ level3.prototype = {
         spiderLabels.enableBody = true;
         spiderLabels.physicsBodyType = Phaser.Physics.ARCADE;
 
-        // Create 3 individual spiders and allow them to be selected and add them to the spiders group
-        spider1 = spiders.create(this.game.width/30, -50, 'Garden spider');
+       
        
     //Set the SCALE_FOR_ANSER_SPIDER to default doesn't seem to be needed so I commented it out for now as well as the other scales
        // spider1.scale.setTo(SCALE_FOR_ANSWER_SPIDER, SCALE_FOR_ANSWER_SPIDER);

@@ -194,6 +194,11 @@ preloadState.prototype = {
         
         //LEVEL 3 IMAGES & SOUNDS
 	    this.game.load.text('level_3_JSON', "assets/game_data/level_3_data.json");
+        this.game.load.image('Nebula2', "assets/Nebula2.png");
+        this.game.load.image('Garden spider', "assets/Garden Spider.png");
+        this.game.load.image('Garden spider1', "assets/Garden spider 1.png");
+        this.game.load.image('Garden spider2', "assets/Garden spider2.png");
+        
         
         
         //LEVEL 4 IMAGES & SOUNDS
