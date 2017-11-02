@@ -136,6 +136,11 @@ level3.prototype = {
         //Assign value to the random variable
         randomFormula = Math.floor(Math.random() * 3);
 
+        //Setting the score to zero in the event that a player skipped to this level
+        if(score == null) {
+            score = 0;
+        }
+        
         //Assign score a value and display score text
         scoreText = this.game.add.text(this.game.width-195, 30, "", {font: "30px Courier", fill: "Yellow"});
         scoreText.setText("Score: " + score);
