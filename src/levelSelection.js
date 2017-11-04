@@ -8,7 +8,7 @@ var level2Button;
 var level3Button;
 var level4Button;
 var level5Button;
-var returnHomeButton;
+var homeButton;
 var music;
 
 levelSelectState.prototype = {
@@ -43,8 +43,8 @@ levelSelectState.prototype = {
         /*Creating the "Return Home" Button
         * I made it significantly lower than the Level buttons because I feel that is more natural
         */
-        returnHomeButton = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY + 240, "Return Home", this.returnToMain,this);
-        returnHomeButton.scale.setTo(1, 1);
+        homeButton = this.game.add.button(this.game.world.centerX-100, this.game.world.centerY + 240,"Gameover_Home",this.playTheGame,this);
+        homeButton.scale.setTo(1, 1);
         
           //Starts the Game Sound 
         if (!music.isPlaying){  
