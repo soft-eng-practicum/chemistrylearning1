@@ -21,29 +21,29 @@ levelSelectState.prototype = {
         levelSelectBackground.scale.setTo(1, 1.35);
         
         //Creating the level 1 Button
-        level1Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY - 100, "level_1", this.playLevel1,this);
+        level1Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY - 100,"Level 1", this.playLevel1,this);
         level1Button.scale.setTo(1, 1);
         
         //Creating the Level 2 Button
-        level2Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY - 60, "Level 2", this.playLevel2,this);
+        level2Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY - 30,"Level 2", this.playLevel2,this);
         level2Button.scale.setTo(1, 1);
         
         //Creating the Level 3 Button
-        level3Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY - 20, "Level 3", this.playLevel3,this);
+        level3Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY + 40,"Level 3", this.playLevel3,this);
         level3Button.scale.setTo(1, 1);
         
         //Creating the Level 4 Button
-        level4Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY + 20, "Level 4", this.playLevel4,this);
+        level4Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY + 110,"Level 4", this.playLevel4,this);
         level4Button.scale.setTo(1, 1);
         
         //Creating the Level 5 Button
-        level5Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY + 60, "Level 5", this.playLevel5,this);
+        level5Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY + 180,"Level 5", this.playLevel5,this);
         level5Button.scale.setTo(1, 1);
         
         /*Creating the "Return Home" Button
         * I made it significantly lower than the Level buttons because I feel that is more natural
         */
-        homeButton = this.game.add.button(this.game.world.centerX-100, this.game.world.centerY + 240,"Gameover_Home",this.playTheGame,this);
+        homeButton = this.game.add.button(this.game.world.centerX-95, this.game.world.centerY + 280,"Gameover_Home",this.playTheGame,this);
         homeButton.scale.setTo(1, 1);
         
           //Starts the Game Sound 
