@@ -21,7 +21,7 @@ levelSelectState.prototype = {
         levelSelectBackground.scale.setTo(1, 1.35);
         
         //Creating the level 1 Button
-        level1Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY - 100, "Level 1", this.playLevel1,this);
+        level1Button = this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY - 100, "level_1", this.playLevel1,this);
         level1Button.scale.setTo(1, 1);
         
         //Creating the Level 2 Button
