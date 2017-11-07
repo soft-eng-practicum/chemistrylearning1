@@ -77,10 +77,20 @@ preloadState.prototype = {
         
         this.game.load.audio("Winning_Sound", "assets/Winning_Sound.wav");
         
+        //LEVEL BOARD SELECTION IMAGES
+        this.game.load.image("Level 1","assets/Level 1.png"); 
         
+        this.game.load.image("Level 2","assets/Level 2.png"); 
+        
+        this.game.load.image("Level 3","assets/Level 3.png"); 
+        
+        this.game.load.image("Level 4","assets/Level 4.png"); 
+        
+        this.game.load.image("Level 5","assets/Level 5.png"); 
         
         //GAMEOVER IMAGES
-        this.game.load.image("Gameover_Home","assets/Gameover_Home.png");   
+        this.game.load.image("Gameover_Home",
+        "assets/Gameover_Home.png");   
         this.game.load.image("Gameover_Label","assets/Game_Over_Pink.png");
         
         
@@ -194,9 +204,13 @@ preloadState.prototype = {
         
         //LEVEL 3 IMAGES & SOUNDS
 	    this.game.load.text('level_3_JSON', "assets/game_data/level_3_data.json");
-        this.game.load.image('Nebula2', "assets/Nebula2.png");
+        
+        this.game.load.image('NebulaWeb', "assets/NebulaWeb.png");
+        
         this.game.load.image('Garden spider', "assets/Garden Spider.png");
+        
         this.game.load.image('Garden spider1', "assets/Garden spider 1.png");
+        
         this.game.load.image('Garden spider2', "assets/Garden spider2.png");
         
         

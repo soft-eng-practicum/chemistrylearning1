@@ -5,17 +5,6 @@
 [![npm](https://img.shields.io/badge/docs-complete-brightgreen.svg)](official-documentation)
 [![npm](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg)](https://creativecommons.org/licenses/by-nc/4.0/legalcode)
 
-<p align="center">
-<b><a href="#overview">Overview</a></b>
-|
-<b><a href="#features">Features</a></b>
-|
-<b><a href="#documentation">Documentation</a></b>
-|
-<b><a href="#credits">Credits</a></b>
-|
-<b><a href="#license">License</a></b>
-</p>
 
 ##**Repo location**
 
@@ -66,13 +55,11 @@ No installation needed.  Simply visit the website [Xenon](www.TOBEANNOUNCED.com)
 
 ## **API Reference**
 TBA
-## **Tests**
 
-TBA
 
 ==================================================
 
-## **Team Roles** (Cast 2)
+## **Team Roles** (Cast 2) **XENAMORPHS**
 
 ###**Code Architecture/Lead Programmer**
 ####(Framework, components, coding style)
@@ -83,14 +70,14 @@ TBA
 
 ###**UI/UX Design**
 ####(User Interface and User eXperience. Make mock UI designs and user-friendly navigation)
-* [Magdalena Ledezma](https://bitbucket.org/Mledezma) **(Lead)88
+* [Magdalena Ledezma](https://bitbucket.org/Mledezma) **(Lead)**
 * [Chinelo Obiamalu](https://bitbucket.org/Chineloo/) 
 
 ###**Data Modeler**
 ####(Database, data files, server-client structure)
 * [Charneaka Lewis](https://bitbucket.org/clewis20/) **(Lead)**
 * [Chinelo Obiamalu](https://bitbucket.org/Chineloo/)
-* [Laura Arevalo](https://bitbucket.org/latrevalo/)
+* [Laura Arevalo](https://bitbucket.org/larevalo/)
 * [Cat Windham](https://bitbucket.org/cwindham19/)
 
 ###**Team Manager/Client Liaison**
@@ -106,8 +93,6 @@ TBA
 http://itec-gunay.duckdns.org:8080/secure/RapidBoard.jspa?rapidView=17&projectKey=XEN&view=planning.nodetail
 * [Chinelo Obiamalu](https://bitbucket.org/Chineloo/) **(Lead)**
 * [Charneaka Lewis](https://bitbucket.org/clewis20/)
-
-
     
 
 ## License
@@ -122,7 +107,6 @@ The properties of Xenon are protected under the following INTELLECTUAL PROPERTY 
 
 [Assets](assets/Features_Readme_1.png)
 [Freatures](assets/Features_Readme_2.png)
-
 
 
 ##  DOCUMENTATION
@@ -144,5 +128,6 @@ This project could not have been possible without the following indivduals and t
 * [Jawan Higgins](https://github.com/Jwork26)    :  ***Code Architect & Software Testing***
 * [John Rose](https://github.com/jrose27)    :  ***Client Liaison & Lead Developer***
 * [Adem Abafogi](https://github.com/aabafogi)    :  ***Database Modeler & UI/UX Design***
-* [Dr. Cengiz Gunay](https://github.com/cengique)    :  ***Sponsor***
-* Dr. Thomas Gluick:  ***Partner***
+ ***Sponsors***
+* Dr. Thomas Gluick
+* [Dr. Cengiz Gunay](https://github.com/cengique) 

@@ -92,7 +92,7 @@ level3.prototype = {
         levelMusic.play();
         
         //Creates the Background Image
-        background = this.game.add.sprite(0,0,'Nebula2');
+        background = this.game.add.sprite(0,0,'NebulaWeb');
         background.scale.setTo(.83,1.12);
         
         //Creates the label for the countdown
