@@ -49,7 +49,7 @@ preloadState.prototype = {
         
         this.game.load.image('Astronaut', "assets/Astronaut.png");
         
-        this.game.load.image('XE1', "assets/XE1.png");
+        this.game.load.image('XenonMorphs Logo', "assets/XenonMorphs Logo.png");
         
         
         
