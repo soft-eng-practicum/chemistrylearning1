@@ -207,11 +207,17 @@ preloadState.prototype = {
         
         this.game.load.image('NebulaWeb', "assets/NebulaWeb.png");
         
-        this.game.load.image('Garden spider', "assets/Garden Spider.png");
+        this.game.load.image('spider', "assets/gardenSpider1.png");
         
-        this.game.load.image('Garden spider1', "assets/Garden spider 1.png");
+        this.game.load.image('spider1', "assets/gardenSpider2.png");
         
-        this.game.load.image('Garden spider2', "assets/Garden spider2.png");
+        this.game.load.image('spider2', "assets/gardenSpider3.png");
+        
+        this.game.load.image('fly1', "assets/flyy1.png");
+        
+        this.game.load.image('fly2', "assets/flyy2.png");
+    
+        this.game.load.image('fly3', "assets/flyy3.png");
         
         
         
