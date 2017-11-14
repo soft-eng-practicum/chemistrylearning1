@@ -13,7 +13,7 @@ var game = new Phaser.Game(width, height, Phaser.CANVAS, "gameDiv");
     game.state.add("Leaderboard",leaderboardState);
     game.state.add("Winner",winState);
     game.state.add("LevelSelect", levelSelectState);
-    //game.state.add("SignUpState", signUpState);
+    game.state.add("Signup", signUpState);
     game.state.add("Level1",level1);
     game.state.add("Level2",level2);
     game.state.add("Level3",level3);
@@ -21,6 +21,7 @@ var game = new Phaser.Game(width, height, Phaser.CANVAS, "gameDiv");
     game.state.add("Level5",level5);
     game.state.add("Transition",transitionState);
     game.state.add("GameOver",gameOverState);
+    //game.add.plugin(PhaserInput.Plugin);
 
 
     //Starts Boot
