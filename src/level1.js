@@ -17,7 +17,6 @@ var instructions;
 //This is the timer for all events such as how long you have to get
 //a question right, how long the game pauses, and if the game is paused
 var timer;
-<<<<<<< HEAD
 //This determines if the game has started or not
 var gameStarted = false;
 
