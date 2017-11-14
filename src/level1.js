@@ -4,8 +4,7 @@ var level1 = function(game){
 
 // Create transition variables and set them to false
 var level_2_Transition = false;
-var level_5_Transition = false;
-var level_4_Transition = false;
+
 
 //Creates the level's background
 var levelBackground;
@@ -18,8 +17,9 @@ var instructions;
 //This is the timer for all events such as how long you have to get
 //a question right, how long the game pauses, and if the game is paused
 var timer;
+<<<<<<< HEAD
 //This determines if the game has started or not
-var started = false;
+var gameStarted = false;
 
 //This is the timer associated with the spacecraft
 var spaceShipTimer;
@@ -178,10 +178,6 @@ level1.prototype = {
         //Sets styling for Text Answers on Asteroids
         var style = { font: "37px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a1.width, align: "center", backgroundColor: "" };
         
-        var style = { font: "37px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a2.width, align: "center", backgroundColor: "" };
-        
-        var style = { font: "37px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a3.width, align: "center", backgroundColor: "" };
-
         //Creates Text1 on Asteroids
         text1 = this.game.add.text(a1.x, a1.y, "", style, asteroidGroup);
         text1.anchor.set(0.35);
@@ -352,7 +348,7 @@ level1.prototype = {
     update: function () {
         
         //Spacecraft Movement Up and Down
-        if(started) {
+        if(gameStarted) {
             if(moveDown) {
                 this.spaceCraft.y += spaceshipSpeed;
 
@@ -399,7 +395,7 @@ level1.prototype = {
         this.game.physics.arcade.overlap(this.spaceCraft, asteroidGroup, this.collisionHandlerSpaceCraft, null, this);
 
         //Retrieves data when game starts
-        if(started) {
+        if(gameStarted) {
             this.handleData(); 
         }
         
@@ -488,8 +484,8 @@ level1.prototype = {
     */
     updateCounter: function() {  
         
-        //Game Time not started 
-        if(started == false) {
+        //Game Time not gameStarted 
+        if(gameStarted == false) {
             counter--;
             shortBeep.play();
             
@@ -501,12 +497,12 @@ level1.prototype = {
             
             if(counter <= 0) { 
                 counter = 10;
-                started = true;
+                gameStarted = true;
                 this.setQuestion();
             }
         }
-        //Game Time has started 
-        else if(started == true) {
+        //Game Time has gameStarted 
+        else if(gameStarted == true) {
             counter--;
             
             if(counter < 1) {
