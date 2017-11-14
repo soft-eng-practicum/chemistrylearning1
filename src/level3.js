@@ -76,16 +76,6 @@ var wrong = false;
 
 var firstToGo = true;
 
-//Creating the booleans that will track if an asteroid is wrong or correct
-var a1Correct;
-var a1Wrong1;
-var a2Correct;
-var a2Wrong1;
-var a2Wrong2;
-var a3Correct;
-var a3Wrong2;
-
-
 //Create function that runs one time
 
 level3.prototype = {
@@ -173,6 +163,7 @@ level3.prototype = {
         spiderLabels.enableBody = true;
         spiderLabels.physicsBodyType = Phaser.Physics.ARCADE;
 
+        //***********I recommend making the spiders bigger so the text can fit**********
         //Create attributes for Spider1
         spider1 = spiders.create(game.world.width - 610, game.world.height - 500, 'spider');
         //spider1.event.onInputDown.add(selectedSpider, this);
@@ -292,6 +283,9 @@ level3.prototype = {
 
 
     },
+    
+    //This function will determine if the spiders have hit the flies
+    spiderEatFly: function()
 
     //This will determine if a spider was selected on a collision of some sort. In this case, the pointer. Reference level 2's collisonHandler for bubbles
     collisionHandlerSpider: function (selectedSpider) {
@@ -358,7 +352,7 @@ level3.prototype = {
         randomWrong1 = Math.floor(Math.random() * 4);
         //Setting the random wrong answer 2
         randomWrong2 = Math.floor(Math.random() * 4);
-        //Making sure the two wrong answers are matching
+        //Making sure the two wrong answer aren't matching
         while (randomWrong1 == randomWrong2) {
             randomWrong2 = Math.floor(Math.random() * 4);
         }
@@ -368,6 +362,7 @@ level3.prototype = {
 
         console.log(level_3_data);
         //Resetting all my correct/wrong booleans to false
+        //*********************These shouldn't be asteriods****************************************
         a1Correct = false;
         a1Wrong1 = false;
         a2Correct = false;
