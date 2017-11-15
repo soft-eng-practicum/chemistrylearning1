@@ -75,7 +75,6 @@ var wrong = false;
 
 var firstToGo = true;
 
-<<<<<<< HEAD
 //A variable to track the length of "instructions" text
 var instructionsLength;
 
@@ -99,8 +98,7 @@ var fly3Wrong2;
 var started;
 
 
-=======
->>>>>>> 250d2631320353c525e6414577f4df6fe75c26d4
+
 //Create function that runs one time
 
 level3.prototype = {
@@ -183,17 +181,16 @@ level3.prototype = {
         //Set the speed for the spiders
         spidersSpeed = 0.7317;
 
-<<<<<<< HEAD
+
         //Create the individual Spiders
-=======
+
         //Create the text labels for the spider group
         spiderLabels = this.game.add.group();
         spiderLabels.enableBody = true;
         spiderLabels.physicsBodyType = Phaser.Physics.ARCADE;
 
-        //***********I recommend making the spiders bigger so the text can fit**********
         //Create attributes for Spider1
->>>>>>> 250d2631320353c525e6414577f4df6fe75c26d4
+
         spider1 = spiders.create(game.world.width - 610, game.world.height - 500, 'spider');
         spider1.scale.setTo(.60, .60);
 
@@ -343,8 +340,6 @@ level3.prototype = {
 
     },
     
-    //This function will determine if the spiders have hit the flies
-    spiderEatFly: function()
 
 
     //This will determine if a spider was selected on a collision of some sort. In this case, the pointer. Reference level 2's collisonHandler for bubbles
@@ -420,7 +415,7 @@ level3.prototype = {
 
         console.log(level_3_data);
         //Resetting all my correct/wrong booleans to false
-<<<<<<< HEAD
+
         fly1Correct = false;
         fl1Wrong1 = false;
         fly2Correct = false;
@@ -428,16 +423,6 @@ level3.prototype = {
         fly2Wrong2 = false;
         fly3Correct = false;
         fly3Wrong2 = false;
-=======
-        //*********************These shouldn't be asteriods****************************************
-        a1Correct = false;
-        a1Wrong1 = false;
-        a2Correct = false;
-        a2Wrong1 = false;
-        a2Wrong2 = false;
-        a3Correct = false;
-        a3Wrong2 = false;
->>>>>>> 250d2631320353c525e6414577f4df6fe75c26d4
 
         //Choosing the formula
         instructions.setText(level_3_data.formulas[randomElement].formulaName);
