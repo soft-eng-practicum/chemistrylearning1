@@ -80,15 +80,15 @@ preloadState.prototype = {
         this.game.load.audio("Winning_Sound", "assets/Winning_Sound.wav");
         
         //LEVEL BOARD SELECTION IMAGES
-        this.game.load.image("Level 1","assets/Level 1.png"); 
+        this.game.load.image("Level 1","assets/LEVEL1.png"); 
         
-        this.game.load.image("Level 2","assets/Level 2.png"); 
+        this.game.load.image("Level 2","assets/LEVEL2.png"); 
         
-        this.game.load.image("Level 3","assets/Level 3.png"); 
+        this.game.load.image("Level 3","assets/LEVEL3.png"); 
         
-        this.game.load.image("Level 4","assets/Level 4.png"); 
+        this.game.load.image("Level 4","assets/LEVEL4.png"); 
         
-        this.game.load.image("Level 5","assets/Level 5.png"); 
+        this.game.load.image("Level 5","assets/LEVEL5.png"); 
         
         //GAMEOVER IMAGES
         this.game.load.image("Gameover_Home",
