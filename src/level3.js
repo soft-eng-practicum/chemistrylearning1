@@ -2,8 +2,10 @@ var level3 = function (game) {
 
 };
 
+
 //Create the variable for the background
 var background;
+var pauseBackground;
 var instructions;
 var countDownLabel
 var countDown = 5;
@@ -11,35 +13,31 @@ var countDown = 5;
 //Create variable for group of spiders
 var spiders;
 var spidersSpeed;
-var moveCount;
-var moveCount = 0;
 
 //Create variables for individual spiders
-
 var spider1;
 var spider2;
 var spider3;
 
+//Create variables for the group of flies and the individual flies
 var flies;
 var fly1;
 var fly2;
 var fly3;
 
-//Create variables for spider labels
-var spiderText1;
-var spiderText2;
-var spiderText3;
+//Create variables for the text of the Flies
+var fly1Text;
+var fly2Text;
+var fly3Text;
 
 //Create variable for score text to display
-
 var scoreText;
+var score;
 
 //Create variable to display chemical formula name
-
 var displayChemicalFormula;
 
 // Create random variables for the formulas and the name
-
 var currentRound;
 var randomFormula;
 
@@ -48,11 +46,9 @@ var wrongAnswer;
 var emitter;
 
 //Create variable for timer
-
 var gameTimer;
 
 //Create boolean for the start of the game
-
 var gameStart = false;
 
 //Create variable to hold heart image
@@ -60,8 +56,11 @@ var heart1;
 var heart2;
 var heart3;
 
+//Create variables for the level audio
 var shortBeep;
 var longBeep;
+var music;
+var levelMusic;
 
 var correctSound;
 var incorrectSound;
@@ -76,14 +75,28 @@ var wrong = false;
 
 var firstToGo = true;
 
+//A variable to track the length of "instructions" text
+var instructionsLength;
+
+//A variable to set a random first wrong answer
+var randomWrong1;
+
+//A variable to set a random second wrong answer
+var randomWrong2;
+
+var phaserJSON;
+
 //Creating the booleans that will track if an asteroid is wrong or correct
-var a1Correct;
-var a1Wrong1;
-var a2Correct;
-var a2Wrong1;
-var a2Wrong2;
-var a3Correct;
-var a3Wrong2;
+var fly1Correct;
+var fly1Wrong1;
+var fly2Correct;
+var fly2Wrong1;
+var fly2Wrong2;
+var fly3Correct;
+var fly3Wrong2;
+
+var started;
+
 
 
 //Create function that runs one time
@@ -112,7 +125,7 @@ level3.prototype = {
         });
 
         //Creates the Instructions Label
-        instructions = this.game.add.text(this.game.world.centerX - 290, 130, "Choose The Correct Spider", {
+        instructions = this.game.add.text(this.game.world.centerX - 240, 130, "Choose The Correct Fly", {
             font: "34px Courier",
             fill: "#ffffff"
         });
@@ -168,42 +181,27 @@ level3.prototype = {
         //Set the speed for the spiders
         spidersSpeed = 0.7317;
 
+
+        //Create the individual Spiders
+
         //Create the text labels for the spider group
         spiderLabels = this.game.add.group();
         spiderLabels.enableBody = true;
         spiderLabels.physicsBodyType = Phaser.Physics.ARCADE;
 
         //Create attributes for Spider1
+
         spider1 = spiders.create(game.world.width - 610, game.world.height - 500, 'spider');
-        //spider1.event.onInputDown.add(selectedSpider, this);
         spider1.scale.setTo(.60, .60);
 
         spider2 = spiders.create(game.world.width - 390, game.world.height - 500, 'spider1');
-        // spider2.event.onInputDown.add(selectedSpider, this);
         spider2.scale.setTo(.60, .60);
 
         spider3 = spiders.create(game.world.width - 175, game.world.height - 500, 'spider2');
-        // spider3.event.onInputDown.add(selectedSpider, this);
         spider3.scale.setTo(.60, .60);
 
-
-        var style1 = {
-            font: "50px Arial",
-            fill: "Yellow",
-            wordWrap: true,
-            wordWrapWidth: spider1.width,
-            align: "center",
-            backgroundColor: "rgba(0,0,0,0)"
-        };
-
-        //spiderText1 = this.game.add.text(Math.floor(spider1.x + spider1.width/2), Math.floor(spider1.y + spider1.height/2), "", style1, spiderLabels);
-        //spiderText1.anchor.set(0.5);
-        //spiderText1.scale.setTo(.5, .5);
-
-
-
         //Set spiders not visible
-        //spiders.visible = false;    
+        //  spiders.visible = false;    
 
         //Create a group of flies
         flies = this.game.add.group();
@@ -212,25 +210,46 @@ level3.prototype = {
         flies.inputEnableChildren = true;
 
         //Create the individual flies
-        fly1 = flies.create(game.world.width - 590, game.world.height - 150, 'fly1', flies);
+        fly1 = flies.create(game.world.width - 590, game.world.height - 100, 'fly1', flies);
         fly1.scale.setTo(.60, .60);
 
-        fly2 = flies.create(game.world.width - 370, game.world.height - 150, 'fly2', flies);
+        fly2 = flies.create(game.world.width - 370, game.world.height - 100, 'fly2', flies);
         fly2.scale.setTo(.60, .60);
 
-        fly3 = flies.create(game.world.width - 160, game.world.height - 150, 'fly3', flies);
+        fly3 = flies.create(game.world.width - 160, game.world.height - 100, 'fly3', flies);
         fly3.scale.setTo(.60, .60);
 
+        //Create the text style for the 
+        var style = {
+            font: "37px Arial",
+            fill: "Yellow",
+            wordWrap: true,
+            wordWrapWidth: fly1.width,
+            align: "center",
+            backgroundColor: ""
+        };
 
+        //Create the text for the answer choices on the flies.
+        fly1Text = this.game.add.text(fly1.x + 70, fly1.y, "", style, flies);
+        fly1Text.anchor.set(.75);
+
+        fly2Text = this.game.add.text(fly2.x + 70, fly2.y, "", style, flies);
+        fly2Text.anchor.set(.75);
+
+        fly3Text = this.game.add.text(fly3.x + 75, fly3.y, "", style, flies);
+        fly3Text.anchor.set(.75);
+
+        //Create the checkmarks for the correct answers
         checkMark = this.game.add.sprite(0, 0, "checkMark");
         checkMark.visible = false;
         checkMark.scale.setTo(0.6, 0.6);
 
+        //Create the X for the incorrect answers
         xMark = this.game.add.sprite(0, 0, "xMark");
         xMark.visible = false;
         xMark.scale.setTo(0.8, 0.8);
 
-        pauseLabel = this.game.add.sprite(30, 30, "Pause_Button");
+        var pauseLabel = this.game.add.sprite(30, 30, "Pause_Button");
         pauseLabel.scale.setTo(1, 1);
         pauseLabel.inputEnabled = true;
 
@@ -238,11 +257,11 @@ level3.prototype = {
             //Game is paused when pause button is pressed
             this.game.paused = true;
 
-            pauseBackground = this.game.add.sprite(0, 0, "space_background");
+            var pauseBackground = this.game.add.sprite(0, 0, "space_background");
             pauseBackground.scale.setTo(0.6, 0.8);
 
             //Creates the pause menu picture. I stop at 261 line 
-            menu = this.game.add.sprite(pauseW / 2 + 135, pauseH / 2 + 90, "menu");
+            var menu = this.game.add.sprite(pauseW / 2 + 135, pauseH / 2 + 90, "menu");
             menu.anchor.setTo(1, 1);
         });
 
@@ -255,11 +274,40 @@ level3.prototype = {
          *Handles the functions in the pause menu
          */
         function unpause(event) {
-            
+            // Only act if paused
+            if (this.game.paused) {
+
+                //calculate corners of menu
+                var x1 = pauseW / 2 - 270 / 2,
+                    x2 = pauseW / 2 + 270 / 2,
+                    y1 = pauseH / 2 - 180 / 2,
+                    y2 = pauseH / 2 + 180 / 2;
+
+                //Check if the click was inside the menu
+                if (event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2) {
+                    var choiceMap = ['Resume', 'Resume', 'Resume', 'Quit', 'Quit', 'Quit'];
+
+                    var x = event.x - x1;
+                    var y = event.y - y1;
+
+                    var choice = Math.floor(x / 90) + 3 * Math.floor(y / 90);
+
+                    if (choiceMap[choice] == "Quit") {
+                        this.game.paused = false;
+                        this.game.state.start("GameOver");
+                    }
+                    if (choiceMap[choice] == "Resume") {
+                        this.game.paused = false;
+                        pauseBackground.visible = false;
+                        menu.destroy();
+                    }
+                }
+            }
+
         };
 
         countDown = 5;
-        isStarted = false;
+        started = false;
         pauseDelay = 150;
         correct = false;
         wrong = false;
@@ -272,26 +320,27 @@ level3.prototype = {
 
     //This will resume the game and unpause it
     playTheGame: function () {
-       
+
+        resumeButton.destroy();
+        this.game.paused = false;
+
     },
 
     //This function will be what runs the game. It will be the function that runs every second. Other functions will not run every second unless called on in the update function
     update: function () {
 
         spiders.y += spidersSpeed;
-        spiderLabels.y += spidersSpeed;
         checkMark.y += spidersSpeed;
         xMark.y += spidersSpeed;
-
 
     },
 
     //This function will be to destroy a spider
     breakSpider: function () {
 
-
-
     },
+    
+
 
     //This will determine if a spider was selected on a collision of some sort. In this case, the pointer. Reference level 2's collisonHandler for bubbles
     collisionHandlerSpider: function (selectedSpider) {
@@ -345,8 +394,6 @@ level3.prototype = {
     },
 
 
-
-
     //This function should choose a question from the json file. Use level one's setQuestion for reference, the array is the same for the level_3_data.json already
     setQuestion: function () {
         randomElement = Math.floor(Math.random() * 20);
@@ -358,7 +405,7 @@ level3.prototype = {
         randomWrong1 = Math.floor(Math.random() * 4);
         //Setting the random wrong answer 2
         randomWrong2 = Math.floor(Math.random() * 4);
-        //Making sure the two wrong answers are matching
+        //Making sure the two wrong answer aren't matching
         while (randomWrong1 == randomWrong2) {
             randomWrong2 = Math.floor(Math.random() * 4);
         }
@@ -368,41 +415,42 @@ level3.prototype = {
 
         console.log(level_3_data);
         //Resetting all my correct/wrong booleans to false
-        a1Correct = false;
-        a1Wrong1 = false;
-        a2Correct = false;
-        a2Wrong1 = false;
-        a2Wrong2 = false;
-        a3Correct = false;
-        a3Wrong2 = false;
+
+        fly1Correct = false;
+        fl1Wrong1 = false;
+        fly2Correct = false;
+        fly2Wrong1 = false;
+        fly2Wrong2 = false;
+        fly3Correct = false;
+        fly3Wrong2 = false;
 
         //Choosing the formula
         instructions.setText(level_3_data.formulas[randomElement].formulaName);
         instructionsLength = instructions.length;
 
         if (randomFormula == 0) {
-            text1.setText(level_3_data.formulas[randomElement].right);
-            a1Correct = true;
-            text2.setText(level_3_data.formulas[randomElement].wrong[randomWrong1]);
-            a2Wrong1 = true;
-            text3.setText(level_3_data.formulas[randomElement].wrong[randomWrong2]);
-            a3Wrong2 = true;
+            fly1Text.setText(level_3_data.formulas[randomElement].right);
+            fly1Correct = true;
+            fly2Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong1]);
+            fly2Wrong1 = true;
+            fly3Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong2]);
+            fly3Wrong2 = true;
         }
         if (randomFormula == 1) {
-            text1.setText(level_3_data.formulas[randomElement].wrong[randomWrong1]);
-            a1Wrong1 = true;
-            text2.setText(level_3_data.formulas[randomElement].right);
-            a2Correct = true;
-            text3.setText(level_3_data.formulas[randomElement].wrong[randomWrong2]);
-            a3Wrong2 = true;
+            fly1Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong1]);
+            fly1Wrong1 = true;
+            fly2Text.setText(level_3_data.formulas[randomElement].right);
+            fly2Correct = true;
+            fly3Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong2]);
+            fly3Wrong2 = true;
         }
         if (randomFormula == 2) {
-            text1.setText(level_3_data.formulas[randomElement].wrong[randomWrong1]);
-            a1Wrong1 = true;
-            text2.setText(level_3_data.formulas[randomElement].wrong[randomWrong2]);
-            a2Wrong2 = true;
-            text3.setText(level_3_data.formulas[randomElement].right);
-            a3Correct = true;
+            fly1Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong1]);
+            fly1Wrong1 = true;
+            fly2Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong2]);
+            fly2Wrong2 = true;
+            fly3Text.setText(level_3_data.formulas[randomElement].right);
+            fly3Correct = true;
         }
 
         if (instructionsLength < 20) {

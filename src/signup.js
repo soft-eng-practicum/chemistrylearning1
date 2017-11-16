@@ -1,53 +1,46 @@
-var signUpState = function(game){
-    
+var signUpState = function(game) {
+
 };
 
 var signupBackground;
-var text;
-var tween = null;
-var sprite;
-var createBUtton
+var signupTitle;
+var createButton;
 var cancelButton;
-var startButton;
-var music;
+var input; 
 
-gameIntroState.prototype = {
+signUpState.prototype = {
 
-    //Create Function
-  	create: function(){
-  
-    //Creates Background
-    signupBackground = this.game.add.sprite(0,0,"gameTitleBackground");
-    signupBackground.scale.setTo(.83,1.12);
-    
-    leaderboard_title = this.game.add.sprite(this.game.world.centerX - 250, 20, "Create_User_Title");
-    signup_title.scale.setTo(1, 1);
-    
-    //Create the Create button
-    createButton = this.game.add.button(this.game.world.centerX-100, this.game.world.centerY - 50,"Create Player",this.playTheGame,this);
-    playButton.scale.setTo(1, 1);
-    
-    //Create the Cancel button
-     backButton = this.game.add.button(this.game.world.centerX-250, this.game.world.centerY+240, "Cancel Button", this.returnHome,this);
-    backButton.scale.setTo(1, 1);
-    
-    
-  //Function: CreatePayer() to create a new player profile
-//  createPlayer: function()
-  //{
-  //Create new player in the database.
-  //this.game.state.start("GameTitle");
-  //}
-  
-  //Function: Cancel()
-  returntoMain: function()
-  {
-  this.game.state.start("GameTitle");
-  }    
-    
-};
+        //Create Function
+        create: function () {
+
+            //Creates Background
+            signupBackground = this.game.add.sprite(0, 0, "titleBackground");
+            signupBackground.scale.setTo(1, 1.35);
+
+            signupTitle = this.game.add.text(this.game.world.centerX-290, 300, "Complete The Fields To Create A New User", {font: "30px Courier", fill: "#ffffff", wordWrap: true, wordWrapWidth: 600, align: "center"});
+            signupTitle.scale.setTo(1, 1);     
+
+            //Create the Create button
+            createButton = this.game.add.button(80, 700, "Gameover_Home", this.returntoMain, this);
+            createButton.scale.setTo(1, 1);
+
+            //Create the Cancel button
+            cancelButton = this.game.add.button(300, 700, "play", this.returntoMain, this);
+            cancelButton.scale.setTo(.9, .9);
+            
+            
+        }, 
 
 
+            //Function: CreatePayer() to create a new player profile
+            //  createPlayer: function()
+            //{
+            //Create new player in the database.
+            //this.game.state.start("GameTitle");
+            //}
 
-
-
+            //Function: Cancel()
+            returntoMain: function () {
+                this.game.state.start("GameTitle");
+            }
+        };

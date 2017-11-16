@@ -65,6 +65,8 @@ preloadState.prototype = {
         
         this.game.load.image("credits","assets/Home_Screen_Credits.png");
         
+        this.game.load.image("signup","assets/Signup.png");
+        
         
         //Load Audio
         this.game.load.audio("sound", "assets/Autumn Nights.mp3");
@@ -129,6 +131,11 @@ preloadState.prototype = {
         
         //TRANSITION SCREEN IMAGES
         this.game.load.image("transitionBackground","assets/transitionBackground.png");
+        
+        //SIGNUP SCREEN IMAGES
+        this.game.load.image("createUser","assets/createUser.png");
+        
+        this.game.load.image("cancel","assets/.png");
            
         
         
@@ -213,11 +220,14 @@ preloadState.prototype = {
         
         this.game.load.image('spider2', "assets/gardenSpider3.png");
         
-        this.game.load.image('fly1', "assets/flyy1.png");
+        this.game.load.image('fly1', "assets/flyy2.png");
         
-        this.game.load.image('fly2', "assets/flyy2.png");
+        this.game.load.image('fly2', "assets/flyy1.png");
     
         this.game.load.image('fly3', "assets/flyy3.png");
+        
+        this.game.load.spritesheet('fly4', "assets/flySprite1.png");
+        
         
         
         
