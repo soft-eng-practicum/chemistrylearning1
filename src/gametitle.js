@@ -3,7 +3,7 @@ var gameTitleState = function(game){
 };
 
 var gameTitleBackground;
-var titleLabel;
+
 var playButton;
 var settingsButton;
 var music;

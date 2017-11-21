@@ -20,7 +20,6 @@ var isDown = true;
 var counter = 5;
 
 var asteroid;
-var asteroidTween;
 var bullets;
 var bulletTime = 0;
 var isFiring = true;
@@ -29,15 +28,15 @@ var a1, a2, a3;
 var score;
 
 var pause_label;
-var choiceLabel;
+
 var menu;
 var resumeButton;
-var quitButton;
+
 var pauseW = 30;
 var pauseH = 600;
 var pauseBackground;
 
-var phaserJSON;
+
 var randomElement;
 var randomFormula;
 var correct = false;
