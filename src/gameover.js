@@ -7,7 +7,6 @@ var gameOverBackground;
 var titleLabel;
 var scoreLabel;
 var homeButton;
-var settingsButton;
 var leaderBoardButton;
 var music;
 

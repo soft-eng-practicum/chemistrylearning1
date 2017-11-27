@@ -8,7 +8,6 @@ var timeTween;
 var background_velocity;
 var logo;
 var text;
-var tween;
 var sprite;
 var levelMusic;
 var winMusic;
