@@ -2,7 +2,6 @@ var level3 = function (game) {
 
 };
 
-
 //Create the variable for the background
 var background;
 var pauseBackground;
@@ -34,42 +33,40 @@ var fly3Text;
 var scoreText;
 var score;
 
-//Create variable to display chemical formula name
-var displayChemicalFormula;
-
 // Create random variables for the formulas and the name
 var currentRound;
 var randomFormula;
-
-var correctAnswer;
-var wrongAnswer;
-var emitter;
+var randomElement;
 
 //Create variable for timer
 var gameTimer;
 
 //Create boolean for the start of the game
-var gameStart = false;
+var started = false;
 
 //Create variable to hold heart image
 var heart1;
 var heart2;
 var heart3;
 
+//Create variables for the lives
+var lives;
+
 //Create variables for the level audio
 var shortBeep;
 var longBeep;
 var music;
 var levelMusic;
-
 var correctSound;
 var incorrectSound;
 
 var pauseDelay = 150;
 
+//Create the variables for the answer selections(check marks and x marks)
 var checkMark;
 var xMark;
 
+//Create the booleans for the correct or wrong answer
 var correct = false;
 var wrong = false;
 
@@ -84,23 +81,8 @@ var randomWrong1;
 //A variable to set a random second wrong answer
 var randomWrong2;
 
-var phaserJSON;
-
-//Creating the booleans that will track if an asteroid is wrong or correct
-var fly1Correct;
-var fly1Wrong1;
-var fly2Correct;
-var fly2Wrong1;
-var fly2Wrong2;
-var fly3Correct;
-var fly3Wrong2;
-
-var started;
-
-
 
 //Create function that runs one time
-
 level3.prototype = {
 
     //This function will initiate all the variables. Also important for initilizing the graphics and audio
@@ -124,16 +106,16 @@ level3.prototype = {
             fill: "#ffffff"
         });
 
+        //Creates the timer for the game 
+        gameTimer = this.game.time.create(false);
+        gameTimer.loop(1000, this.updateCounter, this);
+        gameTimer.start();
+
         //Creates the Instructions Label
         instructions = this.game.add.text(this.game.world.centerX - 240, 130, "Choose The Correct Fly", {
             font: "34px Courier",
             fill: "#ffffff"
         });
-
-        //Creates the timer for the game 
-        gameTimer = this.game.time.create(false);
-        gameTimer.loop(1000, this.updateCounter, this);
-        gameTimer.start();
 
         //Creates the hearts for the lives
         heart1 = this.game.add.sprite(this.game.world.centerX + 120, this.game.world.centerY - 320, 'heart');
@@ -147,9 +129,9 @@ level3.prototype = {
         incorrectSound.volume = 0.1;
 
         //Assign value to the beep variables
-
         shortBeep = this.game.add.audio('shortBeep');
         shortBeep.volume = 0.1;
+
         longBeep = this.game.add.audio('longBeep');
         longBeep.volume = 0.1;
 
@@ -157,6 +139,7 @@ level3.prototype = {
         currentRound = 0;
 
         //Assign value to the random variable
+        randomElement = 0;
         randomFormula = Math.floor(Math.random() * 3);
 
         //Setting the score to zero in the event that a player skipped to this level
@@ -177,49 +160,42 @@ level3.prototype = {
         spiders.physicsBodyType = Phaser.Physics.ARCADE;
         spiders.inputEnableChildren = true;
 
-
         //Set the speed for the spiders
-        spidersSpeed = 0.7317;
-
+        spidersSpeed = 0.68;
 
         //Create the individual Spiders
-
-        //Create the text labels for the spider group
-        spiderLabels = this.game.add.group();
-        spiderLabels.enableBody = true;
-        spiderLabels.physicsBodyType = Phaser.Physics.ARCADE;
-
-        //Create attributes for Spider1
-
-        spider1 = spiders.create(game.world.width - 610, game.world.height - 500, 'spider');
+        spider1 = spiders.create(game.world.width - 610, game.world.height - 800, 'spider');
         spider1.scale.setTo(.60, .60);
 
-        spider2 = spiders.create(game.world.width - 390, game.world.height - 500, 'spider1');
+        spider2 = spiders.create(game.world.width - 390, game.world.height - 800, 'spider1');
         spider2.scale.setTo(.60, .60);
 
-        spider3 = spiders.create(game.world.width - 175, game.world.height - 500, 'spider2');
+        spider3 = spiders.create(game.world.width - 175, game.world.height - 800, 'spider2');
         spider3.scale.setTo(.60, .60);
 
         //Set spiders not visible
-        //  spiders.visible = false;    
+        spiders.visible = false;
 
         //Create a group of flies
         flies = this.game.add.group();
+        flies.inputEnableChildren = true;
         flies.enableBody = true;
         flies.physicsBodyType = Phaser.Physics.ARCADE;
-        flies.inputEnableChildren = true;
 
         //Create the individual flies
-        fly1 = flies.create(game.world.width - 590, game.world.height - 100, 'fly1', flies);
+        fly1 = flies.create(this.game.world.width - 590, this.game.world.height - 100, 'fly1');
         fly1.scale.setTo(.60, .60);
+        fly1.events.onInputDown.add(this.collisionHandlerFly, this);        
 
-        fly2 = flies.create(game.world.width - 370, game.world.height - 100, 'fly2', flies);
+        fly2 = flies.create(this.game.world.width - 370, this.game.world.height - 100, 'fly2');
         fly2.scale.setTo(.60, .60);
+        fly2.events.onInputDown.add(this.collisionHandlerFly, this);
 
-        fly3 = flies.create(game.world.width - 160, game.world.height - 100, 'fly3', flies);
+        fly3 = flies.create(this.game.world.width - 160, this.game.world.height - 100, 'fly3');
         fly3.scale.setTo(.60, .60);
+        fly3.events.onInputDown.add(this.collisionHandlerFly, this);
 
-        //Create the text style for the 
+        //Create the text style for the answer choices on the flies.
         var style = {
             font: "37px Arial",
             fill: "Yellow",
@@ -303,7 +279,6 @@ level3.prototype = {
                     }
                 }
             }
-
         };
 
         countDown = 5;
@@ -313,43 +288,135 @@ level3.prototype = {
         wrong = false;
         firstToGo = true;
         level3Transition = false;
-        level5Transition = true;
+        level4Transition = true;
 
     },
-
 
     //This will resume the game and unpause it
     playTheGame: function () {
 
         resumeButton.destroy();
         this.game.paused = false;
-
     },
 
     //This function will be what runs the game. It will be the function that runs every second. Other functions will not run every second unless called on in the update function
     update: function () {
 
+        //Controll the speed of the spiders
         spiders.y += spidersSpeed;
-        checkMark.y += spidersSpeed;
-        xMark.y += spidersSpeed;
 
-    },
+        //Set the text of the score
+        scoreText.setText("Score: " + score);
 
-    //This function will be to destroy a spider
-    breakSpider: function () {
 
+        //Appies overlap physics for collision of spiders and flies
+        this.game.physics.arcade.overlap(spiders, flies, this.breakSpider, null, this);
+
+        if (started) {
+            if (firstToGo) {
+                this.setQuestion();
+                firstToGo = false;
+            }
+            spiders.visible = true;
+
+            //If the answer is correct, show the checkmark and stop the spiders.
+            if (correct == true) {
+                pauseDelay--;
+                gameTimer.pause();
+
+                if (fly1.visible == false) {
+                    checkMark.x = fly1.x;
+                    checkMark.y = fly1.y;
+                    checkMark.visible = true;   
+                    fly1.visible = true;
+                    spidersSpeed = 0;
+                } else if (fly2.visible == false) {
+                    checkMark.x = fly2.x;
+                    checkMark.y = fly2.y;
+                    checkMark.visible = true;
+                    fly2.visible = true;
+                    spidersSpeed = 0;
+                } else if (fly3.visible == false) {
+                    checkMark.x = fly3.x;
+                    checkMark.y = fly3.y;
+                    checkMark.visible = true;
+                    fly3.visible = true;
+                    spidersSpeed = 0;
+                }
+
+                if (pauseDelay < 1) {
+                    checkMark.visible = false;
+                    correct = false;
+                    pauseDelay = 150;
+                    spidersSpeed = 0.7317;
+                    countDown = 7;
+                    gameTimer.resume();
+
+                    if (currentRound < 5) {
+                        this.setQuestion();
+                    } else if (currentRound > 4) {
+                        this.game.state.start('Transition');
+                    }
+                }
+            }
+
+            //If the answer is incorrect, show the x mark
+            if (wrong == true) {
+                pauseDelay = pauseDelay - 10;
+
+                if (fly1.visible == false) {
+                    xMark.x = fly1.x;
+                    xMark.y += fly1.y;
+                    xMark.visible = true;
+                    fly1.visible = true;
+
+                } else if (fly2.visible == false) {
+                    xMark.x = fly2.x;
+                    xMark.y += fly2.y;
+                    xMark.visible = true;
+                    fly2.visible = true;
+                    
+                } else if (fly3.visible == false) {
+                    xMark.x = fly3.x;
+                    xMark.y = fly3.y;
+                    xMark.visible = true;
+                    fly3.visible = true;
+                }
+
+                if (pauseDelay < 1) {
+                    xMark.visible = false;
+                    xMark.y = flies.y;
+                    wrong = false;
+                    pauseDelay = 150;
+                }
+            }
+        }
+
+        //Stopping score from being Negative
+        if (score < 0) {
+            score = 0;
+        }
+
+        //Deduct lives with each wrong answer
+        if (lives == 2) {
+            heart1.visible = false;
+        } else if (lives == 1) {
+            heart2.visible = false;
+        } else if (lives == 0) {
+            this.game.state.start("GameOver");
+        }
     },
     
+    shake: function() {
 
+    //  Make the camera shake to appear as if the flies are making the web shake. 
+    game.camera.shake(0.01, 50);
 
-    //This will determine if a spider was selected on a collision of some sort. In this case, the pointer. Reference level 2's collisonHandler for bubbles
-    collisionHandlerSpider: function (selectedSpider) {
-
-    },
+},
 
     //This function will be the timer for the level
-    countDownText: function () {
-
+    render: function () {
+        //Set the count
         countDownLabel.setText(countDown);
 
         //Changes Count Down Label Red
@@ -374,9 +441,8 @@ level3.prototype = {
             }
 
             if (countDown <= 0) {
-                countDown = 10;
+                countDown = 7;
                 started = true;
-                this.setQuestion();
             }
         }
 
@@ -384,12 +450,86 @@ level3.prototype = {
         else if (started == true) {
             countDown--;
 
+            //Add a tween for the flies to shake
+            if (countDown <= 10) {
+                this.shake();
+                //fliesTween = this.game.add.tween(flies).to({
+                    //x: 5
+                //}, 20, Phaser.Easing.Linear.None, true, 0, 0, true);
+            }
+
             if (countDown < 1) {
-                wrongSound.play();
+                incorrectSound.play();
 
                 lives--;
-                countDown = 10;
+                countDown = 7;
             }
+        }
+    },
+
+    //This function will be to destroy a spider
+    breakSpider: function () {
+
+        spiders.y = spiders.height + 10;
+    },
+
+    //This will determine if a fly was selected on a collision of some sort. In this case, the pointer. Reference level 2's collisonHandler for bubbles
+    collisionHandlerFly: function (selectedFly) {
+
+        /*Stops user from clicking when the check is displayed
+      IMPORTANT!!!!*/
+        if (correct == false) {
+            if (selectedFly == fly1) {
+                fly1.visible = false;
+                this.correctFly(fly1Text.text);
+            }
+            if (selectedFly == fly2) {
+                fly2.visible = false;
+                this.correctFly(fly2Text.text);
+            }
+            if (selectedFly == fly3) {
+                fly3.visible = false;
+                this.correctFly(fly3Text.text);
+            }
+        }
+    },
+
+    correctFly: function (selectedFlyText) {
+        if (selectedFlyText == level_3_data.formulas[randomElement].right) {
+            // Increase score by 50 
+            score += 50;
+
+            //Increase the round
+            currentRound++;
+
+            // Reset the postion of the spiders by calling the breakSpider function
+            this.breakSpider();
+
+            // Reset the counter to 8
+            countDown = 7;
+
+            // Play sound for correct answer
+            correctSound.play();
+
+            //Set the correct boolean to true to trigger update for corect answer(see update function).
+            correct = true;
+
+            //Choose another question
+            this.setQuestion();
+        }
+
+        if (selectedFlyText == level_3_data.formulas[randomElement].wrong[randomWrong1] || selectedFlyText == level_3_data.formulas[randomElement].wrong[randomWrong2]) {
+            // Decrease score by 50
+            score -= 50;
+
+            // Play sound for wrong answer
+            incorrectSound.play();
+
+            // Decrease lives by one
+            lives--;
+
+            //Set the wrong boolean to true to trigger update for wrong answer(see update function)
+            wrong = true;
         }
     },
 
@@ -416,41 +556,24 @@ level3.prototype = {
         console.log(level_3_data);
         //Resetting all my correct/wrong booleans to false
 
-        fly1Correct = false;
-        fl1Wrong1 = false;
-        fly2Correct = false;
-        fly2Wrong1 = false;
-        fly2Wrong2 = false;
-        fly3Correct = false;
-        fly3Wrong2 = false;
-
         //Choosing the formula
         instructions.setText(level_3_data.formulas[randomElement].formulaName);
         instructionsLength = instructions.length;
 
         if (randomFormula == 0) {
             fly1Text.setText(level_3_data.formulas[randomElement].right);
-            fly1Correct = true;
             fly2Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong1]);
-            fly2Wrong1 = true;
             fly3Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong2]);
-            fly3Wrong2 = true;
         }
         if (randomFormula == 1) {
             fly1Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong1]);
-            fly1Wrong1 = true;
             fly2Text.setText(level_3_data.formulas[randomElement].right);
-            fly2Correct = true;
             fly3Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong2]);
-            fly3Wrong2 = true;
         }
         if (randomFormula == 2) {
             fly1Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong1]);
-            fly1Wrong1 = true;
             fly2Text.setText(level_3_data.formulas[randomElement].wrong[randomWrong2]);
-            fly2Wrong2 = true;
             fly3Text.setText(level_3_data.formulas[randomElement].right);
-            fly3Correct = true;
         }
 
         if (instructionsLength < 20) {
@@ -462,6 +585,5 @@ level3.prototype = {
             //Adjusting Instruction label Font Size
             instructions.fontSize = 42;
         }
-
     }
 };

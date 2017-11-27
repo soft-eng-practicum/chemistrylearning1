@@ -51,6 +51,9 @@ transitionState.prototype = {
         if (level_2_Transition === true) {
             this.game.state.start("Level2");
         }
+        else if (level_3_Transition == true) {
+            this.game.state.start("Level3");
+        }
         else if (level_4_Transition == true) {
             this.game.state.start("Level4");
         }
