@@ -185,7 +185,7 @@ level3.prototype = {
         //Create the individual flies
         fly1 = flies.create(this.game.world.width - 590, this.game.world.height - 100, 'fly1');
         fly1.scale.setTo(.60, .60);
-        fly1.events.onInputDown.add(this.collisionHandlerFly, this);        
+        fly1.events.onInputDown.add(this.collisionHandlerFly, this);
 
         fly2 = flies.create(this.game.world.width - 370, this.game.world.height - 100, 'fly2');
         fly2.scale.setTo(.60, .60);
@@ -327,7 +327,7 @@ level3.prototype = {
                 if (fly1.visible == false) {
                     checkMark.x = fly1.x;
                     checkMark.y = fly1.y;
-                    checkMark.visible = true;   
+                    checkMark.visible = true;
                     fly1.visible = true;
                     spidersSpeed = 0;
                 } else if (fly2.visible == false) {
@@ -375,7 +375,7 @@ level3.prototype = {
                     xMark.y += fly2.y;
                     xMark.visible = true;
                     fly2.visible = true;
-                    
+
                 } else if (fly3.visible == false) {
                     xMark.x = fly3.x;
                     xMark.y = fly3.y;
@@ -406,13 +406,13 @@ level3.prototype = {
             this.game.state.start("GameOver");
         }
     },
-    
-    shake: function() {
 
-    //  Make the camera shake to appear as if the flies are making the web shake. 
-    game.camera.shake(0.01, 50);
+    shake: function () {
 
-},
+        //  Make the camera shake to appear as if the flies are making the web shake. 
+        game.camera.shake(0.01, 50);
+
+    },
 
     //This function will be the timer for the level
     render: function () {
@@ -454,7 +454,7 @@ level3.prototype = {
             if (countDown <= 10) {
                 this.shake();
                 //fliesTween = this.game.add.tween(flies).to({
-                    //x: 5
+                //x: 5
                 //}, 20, Phaser.Easing.Linear.None, true, 0, 0, true);
             }
 
@@ -536,7 +536,7 @@ level3.prototype = {
 
     //This function should choose a question from the json file. Use level one's setQuestion for reference, the array is the same for the level_3_data.json already
     setQuestion: function () {
-        randomElement = Math.floor(Math.random() * 20);
+        randomElement = Math.floor(Math.random() * 14);
         console.log("The random Element is: " + randomElement);
 
         randomFormula = Math.floor(Math.random() * 3);
@@ -586,4 +586,5 @@ level3.prototype = {
             instructions.fontSize = 42;
         }
     }
+
 };
