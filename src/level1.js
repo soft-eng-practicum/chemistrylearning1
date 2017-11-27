@@ -33,13 +33,11 @@ var moveDown = true;
 //the game unpauses from a wrong or right answer being selected
 var counter = 5;
 
-<<<<<<< HEAD
 var asteroid;
-=======
+
 //This is a group that contains all of the asteroids
 var asteroidGroup;
-//
->>>>>>> 048b780342a130228e2aac4e4dedecb032e65eb7
+
 var bullets;
 var bulletTime = 0;
 var isFiring = true;

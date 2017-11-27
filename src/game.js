@@ -4,6 +4,7 @@ var height = 800;
 //Creating Game with Width & Height parameters
 var game = new Phaser.Game(width, height, Phaser.CANVAS, "gameDiv");
 
+    
     game.state.add("Boot",bootState);
     game.state.add("Preload",preloadState);
     game.state.add("GameIntro",gameIntroState);
@@ -21,8 +22,7 @@ var game = new Phaser.Game(width, height, Phaser.CANVAS, "gameDiv");
     game.state.add("Level5",level5);
     game.state.add("Transition",transitionState);
     game.state.add("GameOver",gameOverState);
-    //game.add.plugin(PhaserInput.Plugin);
-
-
+    
     //Starts Boot
     game.state.start("Boot");
+    //game.add.plugin(PhaserInput.Plugin);

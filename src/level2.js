@@ -310,7 +310,7 @@ level2.prototype = {
         wrong = false;
         first_go = true;
         level_2_Transition = false;
-        level_4_Transition = true;
+        level_3_Transition = true;
 
     },
 
