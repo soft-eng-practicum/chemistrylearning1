@@ -6,20 +6,40 @@ var level1 = function(game){
 var level_2_Transition = false;
 
 
+//Creates the level's background
 var levelBackground;
+//This is the label that displays the counter's number
 var countDownLabel;
+//This is the label that displays the player's score
 var scoreLabel;
+//This variable displays the instructions and then the formula name
 var instructions;
+//This is the timer for all events such as how long you have to get
+//a question right, how long the game pauses, and if the game is paused
 var timer;
+//This determines if the game has started or not
 var gameStarted = false;
 
-var moveTimer;
-var moveCount = 0;
-var isUp = false;
-var isDown = true;
+//This is the timer associated with the spacecraft
+var spaceShipTimer;
+//This determines how fast the spaceship moves
+var spaceshipSpeed = 0;
+//This determines if the spaceship is supposed to move up
+var moveUp = false;
+//This determines if the spaceship is supposed to move down
+var moveDown = true;
+//The counter that determines how much time you have left to
+//either start a round/level or how long it'll be until
+//the game unpauses from a wrong or right answer being selected
 var counter = 5;
 
+<<<<<<< HEAD
 var asteroid;
+=======
+//This is a group that contains all of the asteroids
+var asteroidGroup;
+//
+>>>>>>> 048b780342a130228e2aac4e4dedecb032e65eb7
 var bullets;
 var bulletTime = 0;
 var isFiring = true;
@@ -141,28 +161,28 @@ level1.prototype = {
         this.game.physics.enable(this.spaceCraft, Phaser.Physics.ARCADE);
         
         //Spaceship move timer
-        moveTimer = this.game.time.create(false);
-        moveTimer.loop(1, this.updateMove, this);
-        moveTimer.start();
+        spaceShipTimer = this.game.time.create(false);
+        spaceShipTimer.loop(1, this.updateMove, this);
+        spaceShipTimer.start();
         
         //Creating a Group of Asteroids
-        asteroid = this.game.add.group();
-        asteroid.enableBody = true;
-        asteroid.physicsBodyType = Phaser.Physics.ARCADE;
-        asteroid.inputEnabled = true;
+        asteroidGroup = this.game.add.group();
+        asteroidGroup.enableBody = true;
+        asteroidGroup.physicsBodyType = Phaser.Physics.ARCADE;
+        asteroidGroup.inputEnabled = true;
         
         //Created 3 Asteroids from Group
-        a1 = asteroid.create(this.game.width-160, this.game.height-610, "asteroid"); 
+        a1 = asteroidGroup.create(this.game.width-160, this.game.height-610, "asteroid"); 
 
-        a2 = asteroid.create(this.game.width-160, this.game.height-390, "asteroid"); 
+        a2 = asteroidGroup.create(this.game.width-160, this.game.height-390, "asteroid"); 
 
-        a3 = asteroid.create(this.game.width-160, this.game.height-170, "asteroid"); 
+        a3 = asteroidGroup.create(this.game.width-160, this.game.height-170, "asteroid"); 
 
         //Sets styling for Text Answers on Asteroids
         var style = { font: "37px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: a1.width, align: "center", backgroundColor: "" };
         
         //Creates Text1 on Asteroids
-        text1 = this.game.add.text(a1.x, a1.y, "", style, asteroid);
+        text1 = this.game.add.text(a1.x, a1.y, "", style, asteroidGroup);
         text1.anchor.set(0.35);
         
         //Positions Text1
@@ -170,7 +190,7 @@ level1.prototype = {
         text1.y = Math.floor(a1.y + a1.height / 2);
 
         //Creates Text2 on Asteroids
-        text2 = this.game.add.text(a2.x, a2.y, "", style, asteroid);
+        text2 = this.game.add.text(a2.x, a2.y, "", style, asteroidGroup);
         text2.anchor.set(0.35);
         
         //Positions Text2
@@ -178,7 +198,7 @@ level1.prototype = {
         text2.y = Math.floor(a2.y + a2.height / 2);
 
         //Creates Text3 on Asteroids
-        text3 = this.game.add.text(a3.x, a3.y, "", style, asteroid);
+        text3 = this.game.add.text(a3.x, a3.y, "", style, asteroidGroup);
         text3.anchor.set(0.35);
 
         //Positions Text3
@@ -236,7 +256,7 @@ level1.prototype = {
         
         //Resets time and delay for formulas
         counter = 5;
-        isDown = true;
+        moveDown = true;
         isTimerPaused = false;
         lives = 3;
         correct = false;
@@ -332,27 +352,27 @@ level1.prototype = {
         
         //Spacecraft Movement Up and Down
         if(gameStarted) {
-            if(isDown) {
-                this.spaceCraft.y += moveCount;
+            if(moveDown) {
+                this.spaceCraft.y += spaceshipSpeed;
 
                 if(this.spaceCraft.y >= (this.game.height - 120)) {
-                    isDown = false;
-                    isUp = true;  
+                    moveDown = false;
+                    moveUp = true;  
                 }
             }
 
-            if(isUp) {
-                this.spaceCraft.y -= moveCount;
+            if(moveUp) {
+                this.spaceCraft.y -= spaceshipSpeed;
 
                 if(this.spaceCraft.y <= 140) {
-                    isUp = false;
-                    isDown = true;
+                    moveUp = false;
+                    moveDown = true;
                 }
             }
 
             //Controls the delay in speed of the Spacecraft
-            if(moveCount > 1) {
-                moveCount = 0;
+            if(spaceshipSpeed > 1) {
+                spaceshipSpeed = 0;
             }
             
             //Stopping score from being Negative
@@ -372,10 +392,10 @@ level1.prototype = {
         scoreLabel.setText("Score: " + score);
         
         //Applies overlap physics for Collision of Bullets & Asteroids
-        this.game.physics.arcade.overlap(bullets, asteroid, this.collisionHandlerBullet, null, this);
+        this.game.physics.arcade.overlap(bullets, asteroidGroup, this.collisionHandlerBullet, null, this);
         
         //Applies overlap physics for Collision of Spacecraft & Asteroids
-        this.game.physics.arcade.overlap(this.spaceCraft, asteroid, this.collisionHandlerSpaceCraft, null, this);
+        this.game.physics.arcade.overlap(this.spaceCraft, asteroidGroup, this.collisionHandlerSpaceCraft, null, this);
 
         //Retrieves data when game starts
         if(gameStarted) {
@@ -424,19 +444,19 @@ level1.prototype = {
     *
     *Bullet and Asteroid Collision detection
     */
-    collisionHandlerBullet: function(bullet, asteroid) {
-        asteroid.visible = false;
+    collisionHandlerBullet: function(bullet, asteroidGroup) {
+        asteroidGroup.visible = false;
         bullet.kill(); 
         
-        if(asteroid.visible == false){
+        if(asteroidGroup.visible == false){
             
-            if(asteroid.y == 200){   
+            if(asteroidGroup.y == 200){   
                 text1.visible = false;
             }
-            if(asteroid.y == 380){   
+            if(asteroidGroup.y == 380){   
                 text2.visible = false;
             }
-            if(asteroid.y == 560){   
+            if(asteroidGroup.y == 560){   
                 text3.visible = false;
             }
         }
@@ -504,7 +524,7 @@ level1.prototype = {
     */
     updateMove: function() {            
         //Increment number for spacecraft speed
-        moveCount += 7; 
+        spaceshipSpeed += 7; 
     }, 
     
     

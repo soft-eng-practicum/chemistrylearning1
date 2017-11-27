@@ -27,6 +27,7 @@
     "q": "1.4.1"
   },
   "devDependencies": {
+    "@orange-games/phaser-input": "^2.0.5",
     "chai": "^3.2.0",
     "coveralls": "latest",
     "grunt": "~0.4.4",
@@ -59,7 +60,7 @@
     "bin",
     "examples",
     "lib",
- "README.md",
+    "README.md",
     "LICENSE.md",
     "index.js"
   ]
