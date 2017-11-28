@@ -287,8 +287,8 @@ level3.prototype = {
         correct = false;
         wrong = false;
         firstToGo = true;
-        level3Transition = false;
-        level4Transition = true;
+        level_3_Transition = false;
+        level_4_Transition = true;
 
     },
 
@@ -351,10 +351,9 @@ level3.prototype = {
                     spidersSpeed = 0.7317;
                     countDown = 7;
                     gameTimer.resume();
+                    this.setQuestion();
 
-                    if (currentRound < 5) {
-                        this.setQuestion();
-                    } else if (currentRound > 4) {
+                    if (currentRound > 4) {
                         this.game.state.start('Transition');
                     }
                 }
@@ -452,7 +451,7 @@ level3.prototype = {
 
             //Add a tween for the flies to shake
             if (countDown <= 10) {
-                this.shake();
+                //this.shake();
                 //fliesTween = this.game.add.tween(flies).to({
                 //x: 5
                 //}, 20, Phaser.Easing.Linear.None, true, 0, 0, true);
@@ -514,8 +513,6 @@ level3.prototype = {
             //Set the correct boolean to true to trigger update for corect answer(see update function).
             correct = true;
 
-            //Choose another question
-            this.setQuestion();
         }
 
         if (selectedFlyText == level_3_data.formulas[randomElement].wrong[randomWrong1] || selectedFlyText == level_3_data.formulas[randomElement].wrong[randomWrong2]) {

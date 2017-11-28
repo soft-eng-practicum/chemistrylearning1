@@ -8,7 +8,7 @@ var switchScreen;
 bootState.prototype = {
     preload: function(){
         this.game.load.image("orientation","assets/orientation.png");
-        this.game.add.plugin(PhaserInput.Plugin);
+        //this.game.add.plugin(PhaserInput.Plugin);
     },
     
     //Main Phaser Create Function

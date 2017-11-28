@@ -13,7 +13,7 @@ var music;
 gameOverState.prototype = {
     
   	create: function(){
-        
+        lives = 3;
         //Creates the Game Over Background
 		gameOverBackground = this.game.add.sprite(0,0,"settingsBackground");
         gameOverBackground.scale.setTo(.83, 1.1);
