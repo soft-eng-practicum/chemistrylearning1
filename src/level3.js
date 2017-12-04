@@ -452,9 +452,9 @@ level3.prototype = {
             //Add a tween for the flies to shake
             if (countDown <= 10) {
                 //this.shake();
-                //fliesTween = this.game.add.tween(flies).to({
-                //x: 5
-                //}, 20, Phaser.Easing.Linear.None, true, 0, 0, true);
+                fliesTween = this.game.add.tween(flies).to({
+                x: 5
+                }, 20, Phaser.Easing.Linear.None, true, 0, 0, true);
             }
 
             if (countDown < 1) {

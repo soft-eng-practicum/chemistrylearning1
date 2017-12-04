@@ -30,29 +30,39 @@ leaderboardState.prototype = {
         leaderboard_data = JSON.parse(this.game.cache.getText('leaderboard_JSON'));
 
         try {
-
+            var phaserthis = this;
+            
+            $.ajax({            
+             url: "https://api.mlab.com/api/1/databases/xenon/collections/leaderboard?apiKey=pG3dyrtnobnPgqHa7HvuUXA1mNADzxgM",             
+            type: "GET",
+            data: {
+            },
+                
+            success: function( result ) {
             // Create text fields and put them into the leaderboard_text_array
-            for (var i = 0; i < leaderboard_data.leaderboard.length; i++) {
+            for (var i = 0; i < result.length; i++) {
 
-                leaderboard_text_array[i] = this.game.add.text(this.game.world.centerX, 125 + (60 * i), "", {
+                leaderboard_text_array[i] = phaserthis.game.add.text(phaserthis.game.world.centerX, 125 + (60 * i), "", {
                     font: "53px Arial",
                     fill: "#ffffff",
                     align: "center"
                 });
 
                 leaderboard_text_array[i].anchor.setTo(0.5, 0);
+                
+                // Iterate through leaderboard_text_array and set the text with data from the JSON file
+                leaderboard_text_array[i].setText(result[i].name + "  " + result[i].high_score);
             }
-
-            // Iterate through leaderboard_text_array and set the text with data from the JSON file
-            for (var i = 0; leaderboard_data.leaderboard.length; i++) {
-
-                leaderboard_text_array[i].setText(leaderboard_data.leaderboard[i].name + "  " + leaderboard_data.leaderboard[i].high_score);
+                 
             }
+        });
+            
+            
 
         } catch (err) {
             console.log("This is the problem --> " + err.name);
         }
-
+        
 
         backButton = this.game.add.button(this.game.world.centerX - 250, this.game.world.centerY + 240, "backButton", this.returnHome, this);
         backButton.scale.setTo(1, 1);
