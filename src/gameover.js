@@ -10,8 +10,12 @@ var homeButton;
 var leaderBoardButton;
 var music;
 
+
+
 gameOverState.prototype = {
-    
+
+    name: "",
+
   	create: function(){
         lives = 3;
         //Creates the Game Over Background
@@ -30,9 +34,18 @@ gameOverState.prototype = {
         //Creates the High Score label
         scoreLabel = this.game.add.text(this.game.world.centerX-230, 300, "HIGH SCORE: " + score, {font: "55px Courier", fill: "#ffffff"});
         
-        //Creates the Home Button
+         //Create input text boxes
+        this.name = game.add.inputField(this.game.world.centerX-150, 400, {font: '18px Arial', fill: '#212121', fontWeight: 'bold', width: 300, padding: 8, borderWidth: 1, borderColor:'#FFFF', borderRadius: 6, placeHolder: 'Enter Name', type: PhaserInput.InputType.name});
+        
+       
+                
+        //Creates the Home Button   
 		homeButton = this.game.add.button(this.game.world.centerX-100,500,"Gameover_Home",this.playTheGame,this);
         homeButton.scale.setTo(1, 1);
+        
+        //Create Submit button
+        submitButton = this.game.add.button(this.game.world.centerX-100,600,"Level 3",this.submit,this);
+        submitButton.scale.setTo(1, 1);
         
         //Creates the Leaderboard Button
 
@@ -57,6 +70,25 @@ gameOverState.prototype = {
         level_5_Transition = false;
 	},
     
+    submit: function(){
+        if(score > 0)
+            console.log("field: " + this.name.value);
+            $.ajax({
+                url: "https://api.mlab.com/api/1/databases/xenon/collections/leaderboard?apiKey=pG3dyrtnobnPgqHa7HvuUXA1mNADzxgM",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    "name": this.name.value, 
+                    "high_score": score
+                }),
+                success: function (result) {
+                    console.log(result);
+                }
+            });   
+        
+    }, 
+  
+    
     /*Function: playTheGame()
     *
     *Starts the Game Title Screen
@@ -65,6 +97,8 @@ gameOverState.prototype = {
         
         //Start Level 1
         this.game.state.start("GameTitle");
+    
+   
 	},
     
     /*Function: leaderboard()

@@ -40,7 +40,7 @@ leaderboardState.prototype = {
                 
             success: function( result ) {
             // Create text fields and put them into the leaderboard_text_array
-            for (var i = 0; i < result.length; i++) {
+            for (var i = 0; i < 10; i++) {
 
                 leaderboard_text_array[i] = phaserthis.game.add.text(phaserthis.game.world.centerX, 125 + (60 * i), "", {
                     font: "53px Arial",
