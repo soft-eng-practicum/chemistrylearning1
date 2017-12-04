@@ -51,7 +51,7 @@ level1.prototype = {
 ```
 ## **Installation**
 
-No installation needed.  Simply visit the website [Xenon](www.TOBEANNOUNCED.com)
+No installation needed.  Simply visit the website [Xenon](https://soft-eng-practicum.github.io/xenon/)
 
 ## **API Reference**
 TBA
