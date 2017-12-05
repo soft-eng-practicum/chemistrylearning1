@@ -102,6 +102,9 @@ gameOverState.prototype = {
             {
                 this.name.resetText(); 
             }
+        
+        this.game.state.start("Leaderboard");
+        
     },
     
     /*Function: playTheGame()
