@@ -33,7 +33,7 @@ leaderboardState.prototype = {
             var phaserthis = this;
             
             $.ajax({            
-             url: "https://api.mlab.com/api/1/databases/xenon/collections/leaderboard?apiKey=pG3dyrtnobnPgqHa7HvuUXA1mNADzxgM",             
+             url: 'https://api.mlab.com/api/1/databases/xenon/collections/leaderboard?s={"high_score": -1}&l=10&apiKey=pG3dyrtnobnPgqHa7HvuUXA1mNADzxgM',             
             type: "GET",
             data: {
             },

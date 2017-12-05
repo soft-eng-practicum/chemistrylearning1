@@ -17,7 +17,9 @@ gameOverState.prototype = {
     name: "",
 
   	create: function(){
+        //Resets the lives to three when restarting the levels.
         lives = 3;
+        
         //Creates the Game Over Background
 		gameOverBackground = this.game.add.sprite(0,0,"settingsBackground");
         gameOverBackground.scale.setTo(.83, 1.1);
@@ -40,16 +42,16 @@ gameOverState.prototype = {
        
                 
         //Creates the Home Button   
-		homeButton = this.game.add.button(this.game.world.centerX-100,500,"Gameover_Home",this.playTheGame,this);
+		homeButton = this.game.add.button(this.game.world.centerX-90,550,"Gameover_Home",this.playTheGame,this);
         homeButton.scale.setTo(1, 1);
         
         //Create Submit button
-        submitButton = this.game.add.button(this.game.world.centerX-100,600,"Level 3",this.submit,this);
-        submitButton.scale.setTo(1, 1);
+        submitButton = this.game.add.button(this.game.world.centerX-90,450,"submitButton",this.submit,this);
+        submitButton.scale.setTo(.15, .15);
         
         //Creates the Leaderboard Button
 
-		leaderBoardButton = this.game.add.button(this.game.world.centerX-140,650,"leaderboardButton",this.leaderboard,this);
+		leaderBoardButton = this.game.add.button(this.game.world.centerX-130,650,"leaderboardButton",this.leaderboard,this);
         
         leaderBoardButton.scale.setTo(1, 1);
         
@@ -70,24 +72,37 @@ gameOverState.prototype = {
         level_5_Transition = false;
 	},
     
-    submit: function(){
+   /*Function: submit()
+    *
+    *Posts the name and score of the player in the database. 
+    */
+    submit: function () {
+        //Only submit scores that are more than 0.
         if(score > 0)
-            console.log("field: " + this.name.value);
-            $.ajax({
-                url: "https://api.mlab.com/api/1/databases/xenon/collections/leaderboard?apiKey=pG3dyrtnobnPgqHa7HvuUXA1mNADzxgM",
-                type: "POST",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    "name": this.name.value, 
-                    "high_score": score
-                }),
-                success: function (result) {
-                    console.log(result);
-                }
-            });   
+            {
         
-    }, 
-  
+        console.log("field: " + this.name.value);
+        $.ajax({
+            url: "https://api.mlab.com/api/1/databases/xenon/collections/leaderboard?apiKey=pG3dyrtnobnPgqHa7HvuUXA1mNADzxgM",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                "name": this.name.value,
+                "high_score": score
+            }),
+            success: function (result) {
+                console.log(result);
+            }
+        });
+                
+        //Reset text field when the name is submitted. 
+        this.name.resetText();
+            } 
+        else
+            {
+                this.name.resetText(); 
+            }
+    },
     
     /*Function: playTheGame()
     *
@@ -96,8 +111,7 @@ gameOverState.prototype = {
 	playTheGame: function(){
         
         //Start Level 1
-        this.game.state.start("GameTitle");
-    
+        this.game.state.start("GameTitle");    
    
 	},
     
