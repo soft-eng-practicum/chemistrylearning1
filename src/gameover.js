@@ -97,14 +97,16 @@ gameOverState.prototype = {
                 
         //Reset text field when the name is submitted. 
         this.name.resetText();
+        
+        //Start the leaderboard after the user submits their name. 
+        this.game.state.start("Leaderboard");
+
             } 
         else
             {
+                //Reset the text box if the user tries to submit with no score. 
                 this.name.resetText(); 
-            }
-        
-        this.game.state.start("Leaderboard");
-        
+            }        
     },
     
     /*Function: playTheGame()
