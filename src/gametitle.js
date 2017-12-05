@@ -36,8 +36,13 @@ gameTitleState.prototype = {
         creditsButton.scale.setTo(1, 1);
         
         //Creates the Signup Button
+<<<<<<< HEAD
        // signupButton = this.game.add.button(this.game.world.centerX-130,this.game.world.centerY - 160,"signup",this.signup,this);
        // signupButton.scale.setTo(.75, .5);
+=======
+        //signupButton = this.game.add.button(this.game.world.centerX-130,this.game.world.centerY - 160,"signup",this.signup,this);
+        //signupButton.scale.setTo(.75, .5);
+>>>>>>> database
 
         
         //Starts the Game Sound 

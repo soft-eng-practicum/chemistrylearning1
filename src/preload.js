@@ -94,6 +94,7 @@ preloadState.prototype = {
         this.game.load.image("Gameover_Home",
         "assets/Gameover_Home.png");   
         this.game.load.image("Gameover_Label","assets/Game_Over_Pink.png");
+        this.game.load.image("submitButton", "assets/submit.png");
         
         
         //LEADERBOARD IMAGES & JSON

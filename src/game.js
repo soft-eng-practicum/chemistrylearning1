@@ -25,4 +25,4 @@ var game = new Phaser.Game(width, height, Phaser.CANVAS, "gameDiv");
     
     //Starts Boot
     game.state.start("Boot");
-    //game.add.plugin(PhaserInput.Plugin);
+    
