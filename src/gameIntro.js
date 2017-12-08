@@ -8,7 +8,6 @@ var timeTween;
 var background_velocity;
 var logo;
 var text;
-var tween;
 var sprite;
 var levelMusic;
 var winMusic;
@@ -34,7 +33,7 @@ gameIntroState.prototype = {
     
    
     //Creates a sprite in the middle of the screen 
-    sprite = game.add.sprite(game.world.centerX - 300, game.world.centerY -100, 'XE1');
+    sprite = game.add.sprite(game.world.centerX - 300, game.world.centerY -100, 'XenonMorphs Logo');
     sprite.alpha = 0.2;
 
     //Fades in sprite

@@ -108,11 +108,15 @@ level5.prototype = {
         timerLevel5.loop(1000, this.updateCounter, this);
         timerLevel5.start();
        
+        //Setting the score to 0 in the event that the player skipped to this level
+        if(score == null) {
+            score = 0;
+        }
+        
         //Creates the Score Label
         scoreLabel = this.game.add.text(this.game.width-195, 30, "Score: ", {font: "30px Courier", fill: "Yellow"});
         
         //Declaring and setting text to Score
-        //score = 0;
         scoreLabel.setText("Score: " + score);
         
         //Created the GUY

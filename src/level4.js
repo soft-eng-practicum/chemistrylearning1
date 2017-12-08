@@ -149,6 +149,11 @@ level4.prototype = {
         // Assign value to the random variable
         level_4_randomFormula = Math.floor(Math.random() * 3);
         
+        //Setting the score to 0 if the player has skipped to this level
+        if(score == null){
+            score = 0;
+        }
+            
         // Assign score a value and the score text display
         level_4_score_text = this.game.add.text(this.game.width-195, 30, "", {font: "30px Courier", fill: "Yellow"});
         level_4_score_text.setText("Score: " + score);

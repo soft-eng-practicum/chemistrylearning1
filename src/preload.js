@@ -49,7 +49,7 @@ preloadState.prototype = {
         
         this.game.load.image('Astronaut', "assets/Astronaut.png");
         
-        this.game.load.image('XE1', "assets/XE1.png");
+        this.game.load.image('XenonMorphs Logo', "assets/XenonMorphs Logo.png");
         
         
         
@@ -65,6 +65,8 @@ preloadState.prototype = {
         
         this.game.load.image("credits","assets/Home_Screen_Credits.png");
         
+        this.game.load.image("signup","assets/Signup.png");
+        
         
         //Load Audio
         this.game.load.audio("sound", "assets/Autumn Nights.mp3");
@@ -77,11 +79,22 @@ preloadState.prototype = {
         
         this.game.load.audio("Winning_Sound", "assets/Winning_Sound.wav");
         
+        //LEVEL BOARD SELECTION IMAGES
+        this.game.load.image("Level 1","assets/LEVEL1.png"); 
         
+        this.game.load.image("Level 2","assets/LEVEL2.png"); 
+        
+        this.game.load.image("Level 3","assets/LEVEL3.png"); 
+        
+        this.game.load.image("Level 4","assets/LEVEL4.png"); 
+        
+        this.game.load.image("Level 5","assets/LEVEL5.png"); 
         
         //GAMEOVER IMAGES
-        this.game.load.image("Gameover_Home","assets/Gameover_Home.png");   
+        this.game.load.image("Gameover_Home",
+        "assets/Gameover_Home.png");   
         this.game.load.image("Gameover_Label","assets/Game_Over_Pink.png");
+        this.game.load.image("submitButton", "assets/submit.png");
         
         
         //LEADERBOARD IMAGES & JSON
@@ -119,6 +132,11 @@ preloadState.prototype = {
         
         //TRANSITION SCREEN IMAGES
         this.game.load.image("transitionBackground","assets/transitionBackground.png");
+        
+        //SIGNUP SCREEN IMAGES
+        this.game.load.image("createUser","assets/createUser.png");
+        
+        this.game.load.image("cancel","assets/.png");
            
         
         
@@ -126,18 +144,7 @@ preloadState.prototype = {
         for this level or any level must use this.game.load.text( string for the file
         here)
         */
-    
-        
-                
         this.game.load.text('level_1_JSON', "assets/game_data/level_1_data.json");
-        
-        this.game.load.text('level_1_JSON_series_2', "assets/game_data/level_1_data_series_2.json");
-        
-        this.game.load.text('level_1_JSON_series_3', "assets/game_data/level_1_data_series_3.json");
-        
-        this.game.load.text('level_1_JSON_series_4', "assets/game_data/level_1_data_series_4.json");
-        
-        this.game.load.text('level_1_JSON_series_5', "assets/game_data/level_1_data_series_5.json");
         
         this.game.load.image("heart","assets/heart.png");
         
@@ -205,6 +212,24 @@ preloadState.prototype = {
         
         //LEVEL 3 IMAGES & SOUNDS
 	    this.game.load.text('level_3_JSON', "assets/game_data/level_3_data.json");
+        
+        this.game.load.image('NebulaWeb', "assets/NebulaWeb.png");
+        
+        this.game.load.image('spider', "assets/gardenSpider1.png");
+        
+        this.game.load.image('spider1', "assets/gardenSpider2.png");
+        
+        this.game.load.image('spider2', "assets/gardenSpider3.png");
+        
+        this.game.load.image('fly1', "assets/flyy2.png");
+        
+        this.game.load.image('fly2', "assets/flyy1.png");
+    
+        this.game.load.image('fly3', "assets/flyy3.png");
+        
+        this.game.load.spritesheet('fly4', "assets/flySprite1.png");
+        
+        
         
         
         //LEVEL 4 IMAGES & SOUNDS

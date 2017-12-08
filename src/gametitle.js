@@ -3,9 +3,10 @@ var gameTitleState = function(game){
 };
 
 var gameTitleBackground;
-var titleLabel;
+
 var playButton;
 var settingsButton;
+var signupButton; 
 var music;
 
 gameTitleState.prototype = {
@@ -33,6 +34,10 @@ gameTitleState.prototype = {
         //Creates the Play Button
 		creditsButton = this.game.add.button(this.game.world.centerX-100,this.game.world.centerY+250,"credits",this.credits,this);
         creditsButton.scale.setTo(1, 1);
+        
+        //Creates the Signup Button
+        //signupButton = this.game.add.button(this.game.world.centerX-130,this.game.world.centerY - 160,"signup",this.signup,this);
+        //signupButton.scale.setTo(.75, .5);
 
         
         //Starts the Game Sound 
@@ -54,7 +59,7 @@ gameTitleState.prototype = {
     */
 	playTheGame: function(){
         //Starts Level 1
-        this.game.state.start("Level1");
+        this.game.state.start("LevelSelect");
 	},
     
     /*Function: leaderBoard()
@@ -83,5 +88,14 @@ gameTitleState.prototype = {
 	credits: function(){
         //Starts Credits
         this.game.state.start("Credits");
-	}   
+	},
+    
+     /*Function: createUser()
+    *
+    *Starts Signup
+    */
+	signup: function(){
+        //Starts signup
+        this.game.state.start("Signup");
+	}       
 };
