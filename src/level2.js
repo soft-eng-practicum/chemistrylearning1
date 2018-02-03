@@ -71,7 +71,18 @@ var correct = false;
 var wrong  = false;
 
 var first_go = true;
- 
+
+//This is to determine if the player has answered enough questions to proceed to the next level
+correctCount = 0;
+
+//A set of booleans to determine if a bubble is correct or not. I admit, I used the b1, b2, b3 naming convention so the code I copied would only need to be tweaked a little
+var b1Correct;
+var b1Wrong1;
+var b2Correct;
+var b2Wrong1;
+var b2Wrong2;
+var b3Correct;
+var b3Wrong2;
 
 // Create an array of the main functions of the game 
 level2.prototype = {
@@ -80,23 +91,8 @@ level2.prototype = {
     create: function () {
         
         // Parse the text back to a JSON object
-        switchJSON = Math.floor(Math.random() * 5);
+        level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON'));
         
-        if(switchJSON == 0){
-            level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON')); 
-        }
-        else if(switchJSON == 1){
-            level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON_series_2'));
-        }
-        else if(switchJSON == 2){
-            level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON_series_3'));
-        }
-         else if(switchJSON == 3){
-            level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON_series_4'));
-        }
-       else if(switchJSON == 4){
-            level_2_data = JSON.parse(this.game.cache.getText('level_2_JSON_series_5'));
-        }
         background = this.game.add.sprite(0, 0,'level_2_background_image');
         background.scale.setTo(.27,.51);
     
@@ -175,7 +171,7 @@ level2.prototype = {
         bubble_01.events.onInputDown.add(selectedBubble, this);
         bubble_01.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
-        // Create variable to hold the font style crap
+        // Create variable to hold the font style
         var style_01 = { font: "50px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: bubble_01.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
        
         // Create a text label and add it to the bubble_labels group
@@ -329,7 +325,7 @@ level2.prototype = {
       
        if (is_started) {
            if (first_go) {
-                handleData();
+                setQuestion();
                 first_go = false;
            }
            bubbles.visible = true;
@@ -371,10 +367,10 @@ level2.prototype = {
                     counter_level_2 = 8;
                     game_timer.resume();
                   
-                    if(current_round < 5){
-                        handleData();
+                    if(correctCount < 5){
+                        setQuestion();
                     }
-                    else if (current_round > 4) {
+                    else if (correctCount >= 5) {
                         this.game.state.start('Transition');
                     } 
                }
@@ -470,18 +466,8 @@ function updateCounter() {
             
             incorrect_sound.play();
             
-            if (lives == 3) {
-                lives = 2;
-                counter_level_2 = 8;
-                }
-            else if (lives == 2) {
-                lives = 1;
-                counter_level_2 = 8;
-            }
-            else {
-                lives = 0;
-                counter_level_2 = 0;
-            }
+            lives--;
+            counter_level_2 = 0;
         }
     }
 // Closes method
@@ -558,18 +544,44 @@ function stuffThatHappensWhenAnswerIsCorrect() {
 */
 function stuffThatHappensWhenAnswerIsWrong() {
     
-    // Decrease score by 50
-    score -= 50;
-    // Increase bubbles velocity
-    //bubbles_velocity += 0.5;
-    //bubbles_velocity = 0.7;
-    // Play sound for wrong answer
-    incorrect_sound.play();
-    
-    // Decrease lives by one
-    lives--;
-    
-    wrong = true;
+    if((a1.visible == false && a1Wrong1) || 
+           (a2.visible == false && a2Wrong1) || 
+           (a2.visible == false && a2Wrong2) || 
+           (a3.visible == false && a3Wrong2)) {
+            if(a1.visible == false) {
+                //Sets text 2 visible to true
+                text2.visible = true;
+                //Sets True if its the first wrong answer instead of the second wrong
+                a1XLocation = true;
+                //Sets asteroid 2 visible to true
+                a1.visible = true;
+            }
+            if(a2.visible == false) {
+                //Shows the text3
+                text2.visible = true;
+                //Sets true if it's the second wrong answer instead of the first wrong
+                a2XLocation = true;
+                //Sets asteroid 3 visible to true
+                a2.visible = true;
+            }
+            if(a3.visible == false) {
+                text3.visible = true;
+                a3XLocation = true;
+                a3.visible = true;
+            }
+            //Decrease score
+            score = score - 50;
+            //Looses 1 life 
+            lives --;
+            //Sets True if wrong answer
+            wrong = true;
+            //Sets true to display wrong answer
+            isTimerPaused = true;
+            //Pauses time 
+            timer.pause();
+            //Plays Wrong Sound
+            wrongSound.play();
+        }
  
 }
 
@@ -681,183 +693,71 @@ function resetBubblesPosition() {
     bubble_labels.y = bubble_01.height + 55;
 }
 
-/* 
-    Function handles the data for the bubble lables 
-    assigning a different value for the bubble labels
-    from a JSON data file
-*/
-function handleData() {
-    
-    //Adjusting Instruction label color
-    chemical_formula_text_display.anchor.setTo(-0.1, 0.2);
-    chemical_formula_text_display.addColor("Yellow", 0);
-    
-    if (current_round == 0) {
-        chemical_formula_text_display.setText(level_2_data.chemical_formulas.formula1.name);
+setQuestion: function() {
+    //In order to add more questions, change randomElement random number generator to the number of questions you have
+    randomElement = Math.floor(Math.random() * 20);
+    console.log("The random Element is: " + randomElement);
         
-        if(level_2_data.chemical_formulas.formula1.name.length < 20){
-            
-            //Adjusting Instruction label Font Size
-            chemical_formula_text_display.fontSize = 47;  
-        }
-        else{
-            //Adjusting Instruction label for Chemical Names
-            chemical_formula_text_display.anchor.setTo(0, 0.3);
-            //Adjusting Instruction label Font Size
-            chemical_formula_text_display.fontSize = 42;
-        }
-            
-        if (randomFormula == 0) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula1.right);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula1.wrong1);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula1.wrong2);
-        }
-        else if (randomFormula == 1) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula1.wrong3);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula1.right);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula1.wrong4);
-        }
-        else if (randomFormula == 2) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula1.wrong5);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula1.wrong6);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula1.right);
-        }
-    }
-        
-        
-/////////////////////////////////////////////////////////////////////////////////////////
-    if (current_round == 1) {
-        chemical_formula_text_display.setText(level_2_data.chemical_formulas.formula2.name);
-        
-        if(level_2_data.chemical_formulas.formula2.name.length < 20){
-            
-            //Adjusting Instruction label Font Size
-            chemical_formula_text_display.fontSize = 47;  
-        }
-        else{
-            //Adjusting Instruction label for Chemical Names
-            chemical_formula_text_display.anchor.setTo(0, 0.3);
-            //Adjusting Instruction label Font Size
-            chemical_formula_text_display.fontSize = 42;
-        }
+    randomFormula = Math.floor(Math.random() * 3);
 
-        if (randomFormula == 0) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula2.right);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula2.wrong1);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula2.wrong2);
-               
-        }
-        else if (randomFormula == 1) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula2.wrong3);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula2.right);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula2.wrong4);
-                
-               
-        }
-        else if (randomFormula == 2) { 
-               bubble_text_01.setText(level_2_data.chemical_formulas.formula2.wrong5);
-               bubble_text_02.setText(level_2_data.chemical_formulas.formula2.wrong6);
-               bubble_text_03.setText(level_2_data.chemical_formulas.formula2.right);
-           } 
-      }
-//////////////////////////////////////////////////////////////////////////////////////////
-       if (current_round == 2) {
-         chemical_formula_text_display.setText(level_2_data.chemical_formulas.formula3.name);
-           
-           if(level_2_data.chemical_formulas.formula3.name.length < 20){
-            
-            //Adjusting Instruction label Font Size
-            chemical_formula_text_display.fontSize = 47;  
-            }
-            else{
-                //Adjusting Instruction label for Chemical Names
-                chemical_formula_text_display.anchor.setTo(0, 0.3);
-                //Adjusting Instruction label Font Size
-                chemical_formula_text_display.fontSize = 42;
-            }
-
-           if (randomFormula == 0) { 
-               bubble_text_01.setText(level_2_data.chemical_formulas.formula3.right);
-               bubble_text_02.setText(level_2_data.chemical_formulas.formula3.wrong1);
-               bubble_text_03.setText(level_2_data.chemical_formulas.formula3.wrong2);
-           }
-        else if (randomFormula == 1) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula3.wrong3);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula3.right);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula3.wrong4);
-        }
-        else if (randomFormula == 2) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula3.wrong5);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula3.wrong6);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula3.right);2
-        }
+    //Setting the random wrong answer 1
+    randomWrong1 = Math.floor(Math.random() * 4);
+    //Setting the random wrong answer 2
+    randomWrong2 = Math.floor(Math.random() * 4);
+    //Making sure the two wrong answers are matching
+    while(randomWrong1 == randomWrong2) {
+        randomWrong2 = Math.floor(Math.random() * 4); 
     }
- 
-////////////////////////////////////////////////////////////////////////////////////////      
-    if (current_round == 3) {
-        chemical_formula_text_display.setText(level_2_data.chemical_formulas.formula4.name);
-        
-        if(level_2_data.chemical_formulas.formula4.name.length < 20){
-            
-            //Adjusting Instruction label Font Size
-            chemical_formula_text_display.fontSize = 47;  
-        }
-        else{
-            //Adjusting Instruction label for Chemical Names
-            chemical_formula_text_display.anchor.setTo(0, 0.3);
-            //Adjusting Instruction label Font Size
-            chemical_formula_text_display.fontSize = 42;
-        }
-
-        if (randomFormula == 0) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula4.right);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula4.wrong1);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula4.wrong2);
-        }
-        else if (randomFormula == 1) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula4.wrong3);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula4.right);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula4.wrong4);
-        }
-        else if (randomFormula == 2) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula4.wrong5);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula4.wrong6);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula4.right);
-        } 
-    }
- 
-//////////////////////////////////////////////////////////////////////////////////////        
-    if (current_round == 4) {
+    //Adjusting Instruction label color 
+    instructions.addColor("Yellow", 0);
+    instructions.anchor.setTo(-0.1, 0.2);
          
-        chemical_formula_text_display.setText(level_2_data.chemical_formulas.formula5.name);
+    console.log(level_1_data);
+    //Resetting all my correct/wrong booleans to false
+    b1Correct = false;
+    b1Wrong1 = false;
+    b2Correct = false;
+    b2Wrong1 = false;
+    b2Wrong2 = false;
+    b3Correct = false;
+    b3Wrong2 = false;
         
-        if(level_2_data.chemical_formulas.formula5.name.length < 20){
-            
-            //Adjusting Instruction label Font Size
-            chemical_formula_text_display.fontSize = 47;  
-        }
-        else{
-            //Adjusting Instruction label for Chemical Names
-            chemical_formula_text_display.anchor.setTo(0, 0.3);
-            //Adjusting Instruction label Font Size
-            chemical_formula_text_display.fontSize = 42;
-        }
-
-        if (randomFormula == 0) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula5.right);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula5.wrong1);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula5.wrong2);
-        }
-        else if (randomFormula == 1) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula5.wrong3);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula5.right);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula5.wrong4);
-        }
-        else if (randomFormula == 2) { 
-            bubble_text_01.setText(level_2_data.chemical_formulas.formula5.wrong5);
-            bubble_text_02.setText(level_2_data.chemical_formulas.formula5.wrong6);
-            bubble_text_03.setText(level_2_data.chemical_formulas.formula5.right);
-        }   
+    //Choosing the formula
+    instructions.setText(level_1_data.formulas[randomElement].formulaName);
+    instructionsLength = instructions.length;
+    if(randomFormula == 0){
+        text1.setText(level_1_data.formulas[randomElement].right);
+        b1Correct = true;
+        text2.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
+        b2Wrong1 = true;
+        text3.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
+        b3Wrong2 = true;
+    }
+    if(randomFormula == 1) {
+        text1.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
+        b1Wrong1 = true;
+        text2.setText(level_1_data.formulas[randomElement].right);
+        b2Correct = true;
+        text3.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
+        b3Wrong2 = true;
+    }
+    if(randomFormula == 2) {
+        text1.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
+        b1Wrong1 = true;
+        text2.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
+        b2Wrong2 = true;
+        text3.setText(level_1_data.formulas[randomElement].right);
+        b3Correct = true;
+    }
+    if(instructionsLength < 20){
+        //Adjusting Instruction label Font Size
+        instructions.fontSize = 47;  
+    }
+    else{
+        //Adjusting Instruction label for Chemical Names
+        instructions.anchor.setTo(0, 0.3);
+        //Adjusting Instruction label Font Size
+        instructions.fontSize = 42;
     }
 }
 

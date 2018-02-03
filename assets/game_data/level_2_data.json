@@ -1,71 +1,31 @@
 {
-    "chemical_formulas": {
-        "formula1": {
-            "name": "Aluminum Sulfide", 
-            "right": "Al\u2082S\u2083", 
-            "wrong1": "AlS\u2082",
-            "wrong2": "SAl\u2082",
-            "wrong3": "AlS",
-            "wrong4": "AgS\u2082",
-            "wrong5": "Al(III)S\u2082",
-            "wrong6": "Al(III)S(II)",
-            "wrong7": "AuS"
-        },
-
-        "formula2": {
-            "name": "Iodine Dioxide", 
-            "right": "IO\u2082", 
-            "wrong1": "OI\u2082",
-            "wrong2": "IO",
-            "wrong3": "O\u2082I",
-            "wrong4": "IOO",
-            "wrong5": "IO\u2082I",
-            "wrong6": "In\u0082O",
-            "wrong7": "In\u2082O\u2082",
-            "wrong8": "In\u2082O",
-            "wrong9": "IF\u2083"
-        },
-
-        "formula3": {
-            "name": "Hydrogen Bromide", 
-            "right": "HBr", 
-            "wrong1": "H\u2082Br",
-            "wrong2": "BrH",
-            "wrong3": "HyBro",
-            "wrong4": "HBr\u2083",
-            "wrong5": "HBr\u2084",
-            "wrong6": "HBrO\u2084"
-        },
+    "formulas": [
+        {"formulaName":"Aluminum Sulfide", "right":"Al\u2082S\u2083", "wrong":["AlS\u2082", "SAl\u2082","Al(III)S(II)", "Al(III)S\u2082" ] },
+        {"formulaName":"Iodine Dioxide", "right":"IO\u2082", "wrong"["OI\u2082", "In\u0082O", "IO", "I\u0082O"]},
+        {"formulaName":"Hydrogen Bromide", "right":"HBr", "wrong"["H\u2082Br", "HBrO\u2084", "HBr\u2083", "BrH"]},
+        {"formulaName":"Sulfur Dioxide", "right":"SO\u2082", "wrong"["SO", "S\u2083O", "O\u2082S", "S\u2082O"]},
+        {"formulaName":"Sodium Hydride", "right":"NaH", "wrong"["NaH\u2082", "SoH", "Na\u2082H\u2082", "Na\u2082H"]},
+        {"formulaName":"Magnesium Oxide", "right":"MgO", "wrong"["MO", "MnO", "MgO\u2082", "MnO\u2082"]},
+        {"formulaName":"Barium Hydride", "right":"BaH\u2082", "wrong"["BaH", "BrH\u2082", "B\u2082H", "BH\u2082"]},
+        {"formulaName":"Calcium Sulfide", "right":"CaS", "wrong"["Ca\u2082S", "CS", "CaSO\u2083", "CaS\u2082"]},
+        {"formulaName":"Lithium Sulfide", "right":"Li\u2082S", "wrong"["LiS", "LiS\u2082", "Li\u2082S\u2082", "L\u2082S"]},
+        {"formulaName":"Beryllium Sulfide", "right":"BeS", "wrong"["BeS\u2082", "BrS", "BrS\u2082", "Be\u2082S"]},
+        {"formulaName":"Barium Oxide", "right":"BaO", "wrong"["BO", "BaO\u2082", "Ba\u2082O", "B\u2082O"]},
+        {"formulaName":"Barium Hydride", "right":"BaH\u2082", "wrong"["BaH", "BH\u2082", "B\u2082H", "Ba\u2082H"]},
+        {"formulaName":"Calcium Sulfide", "right":"CaS", "wrong"["Ca\u2082S", "CaS\u2082", "CaSO\u2083", "CaS\u2083"]},
+        {"formulaName":"Lithium Oxide", "right":"Li\u2082O", "wrong"["LiO", "LiO\u2082", "L\u2082O", "LO\u2082"]},
+        {"formulaName":"Beryllium Sulfide", "right":"BeS", "wrong"["BeS\u2082", "BrS\u2082", "BrS", "BS\u2082"]},
+        {"formulaName":"Calcium Oxide", "right":"CaO", "wrong"["CO", "CaO\u2082", "Ca\u2082O", "C\u2082O"]},
+        {"formulaName":"Magnesium Hydride", "right":"MgH\u2082", "wrong"["MnH\u2082", "MgH", "MgH\u2083", "Mg\u2082H"]},
+        {"formulaName":"Strontium Sulfide", "right":"SrS", "wrong"["StS", "Sr\u2082S", "St\u2082S", "SmS\u2084"]},
+        {"formulaName":"Potassium Sulfide", "right":"K\u2082S", "wrong"["KS", "Ka\u2082S", "P\u2082S", "KS\u2082"]},
+        {"formulaName":"Sodium Oxide", "right":"Na\u2082O", "wrong"["S\u2082O", "SO", "NaO", "NaO\u2082"]},
+        {"formulaName":"Aluminum Oxide", "right":"Al\u2082O\u2083", "wrong":["AlO\u2083", "Al\u2082O", "AlO", "Al\u2083O\u2082"]},
+        {"formulaName":"Sulfur Difluoride", "right":"SF\u2082", "wrong":["SF", "S\u2082F", "SFl\u2082", "Su\u2082F"]},
+        {"formulaName":"Hydrogen Fluoride", "right":"HF", "wrong":["HF\u2082", "H\u2082F", "H\u2082F\u2083", "HFO\u2084"]},
+        {"formulaName":"Sulfur Trioxide", "right":"SO\u2083", "wrong":["SO", "S\u2083O", "SuO\u2083", "S\u2082O\u2083"]},
+        {"formulaName":"Disulfur oxide", "right":"S\u2082O", "wrong":["Su\u2082O", "SO\u2082", "SO", "S\u2082O\u2082"]},
         
-        "formula4": {
-            "name": "Sulfur Dioxide", 
-            "right": "SO\u2082", 
-            "wrong1": "SO",
-            "wrong2": "SrO",
-            "wrong3": "S\u2083O",
-            "wrong4": "SO\u2084",
-            "wrong5": "O\u2082S",
-            "wrong6": "OS\u2083",
-            "wrong7": "S\u2082O\u2083",
-            "wrong8": "Sb\u2083O",
-            "wrong9": "SbSO\u2083",
-            "wrong10": "SbO\u2084",
-            "wrong11": "S\u2082O"
-        },
-        
-        "formula5": {
-            "name": "Sodium Hydride", 
-            "right": "NaH", 
-            "wrong1": "H\u2082Na",
-            "wrong2": "HNa",
-            "wrong3": "NaH\u2082",
-            "wrong4": "Na\u2082H\u2082",
-            "wrong5": "SoH\u2082",
-            "wrong6": "SoH",
-            "wrong7": "SH\u2082",
-            "wrong8": "SrH\u2082"
-        }
-        
-    }
-}
+    ]
 
+        
