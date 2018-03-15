@@ -99,7 +99,7 @@ level2.prototype = {
         count_down_label = this.game.add.text(this.game.world.centerX-60, 10, "", {font: "120px Courier", fill: "#ffffff"});
         
         game_timer = this.game.time.create(false);
-        game_timer.loop(1000, updateCounter, this);
+        game_timer.loop(1000, this.updateCounter2, this);
         game_timer.start();
         
         heart_1 = this.game.add.sprite(this.game.world.centerX+120, this.game.world.centerY-320, 'heart');
@@ -168,7 +168,7 @@ level2.prototype = {
         
         // Create 3 individual bubbles and allow them to be selected and add them to the bubbles group
         bubble_01 = bubbles.create(this.game.width/30, -50, 'bubble_image');
-        bubble_01.events.onInputDown.add(selectedBubble, this);
+        bubble_01.events.onInputDown.add(this.selectedBubble, this);
         bubble_01.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
         // Create variable to hold the font style
@@ -182,7 +182,7 @@ level2.prototype = {
        
         // Create a text label and add it to the bubble_labels group
         bubble_02 = bubbles.create(bubble_01.x + 200, -50, 'bubble_image');
-        bubble_02.events.onInputDown.add(selectedBubble, this);    
+        bubble_02.events.onInputDown.add(this.selectedBubble, this);    
         bubble_02.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
         var style_02 = { font: "50px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: bubble_02.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
@@ -193,7 +193,7 @@ level2.prototype = {
         
         // Create a text label and add it to the bubble_labels group
         bubble_03 = bubbles.create(bubble_02.x + 200, -50, 'bubble_image');
-        bubble_03.events.onInputDown.add(selectedBubble, this);
+        bubble_03.events.onInputDown.add(this.selectedBubble, this);
         bubble_03.scale.setTo(SCALE_FOR_ANSWER_BUBBLE, SCALE_FOR_ANSWER_BUBBLE);
         
         var style_03 = { font: "50px Arial", fill: "Yellow", wordWrap: true, wordWrapWidth: bubble_03.width, align: "center", backgroundColor: "rgba(0,0,0,0)" };
@@ -319,13 +319,13 @@ level2.prototype = {
         x_mark.y += bubbles_velocity;
         
         // Set whats happens when bubbles hit spikes
-        this.game.physics.arcade.overlap(bubbles, spike_group, bubbleHitSpike, null, this);
+        this.game.physics.arcade.overlap(bubbles, spike_group, this.bubbleHitSpike, null, this);
        
         score_text.setText("Score: " + score);
       
        if (is_started) {
            if (first_go) {
-                setQuestion();
+                this.setQuestion();
                 first_go = false;
            }
            bubbles.visible = true;
@@ -366,13 +366,6 @@ level2.prototype = {
                     bubbles_velocity = 0.7317;
                     counter_level_2 = 8;
                     game_timer.resume();
-                  
-                    if(correctCount < 5){
-                        setQuestion();
-                    }
-                    else if (correctCount >= 5) {
-                        this.game.state.start('Transition');
-                    } 
                }
              }
            
@@ -409,7 +402,6 @@ level2.prototype = {
 
         // Handle hearts and lives 
         if (lives == 2) {
-            
             heart_1.visible = false;
         } else if (lives == 1) {
            
@@ -438,14 +430,11 @@ level2.prototype = {
         else if (counter_level_2 > 5) {
             count_down_label.addColor("#ffffff", 0);
         } 
-    } 
-};
-
-function updateCounter() {  
-        
+    },
+    updateCounter2: function() {  
     //Game Time not started 
-    if(is_started == false) {
-        counter_level_2--;
+    if(is_started == false){
+    counter_level_2--;
         short_beep.play();
             
         if(counter_level_2 < 1){
@@ -470,230 +459,86 @@ function updateCounter() {
             counter_level_2 = 0;
         }
     }
-// Closes method
-}
-
-// Collision handler for bubbles and spikes
-function bubbleHitSpike(input_bubble) {
+},
+    
+    // Collision handler for bubbles and spikes
+    bubbleHitSpike: function(input_bubble) {
   //  input_bubble.visible = false;
   //  bubble_labels.visible = false;
-    bubbles.y = bubble_01.height + 55;
-    bubble_labels.y = bubble_01.height + 55;
-}
-
-// Collision handler for selected bubble
-function selectedBubble(input_bubble) {
-
-    /*Stops user from clicking when the check is displayed
-      IMPORTANT!!!!*/
-    if(correct == false){
-        if (input_bubble === bubble_01) { 
+        bubbles.y = bubble_01.height + 55;
+        bubble_labels.y = bubble_01.height + 55;
+    },
+    
+    // Collision handler for selected bubble
+    selectedBubble: function (input_bubble) {
+        
+    //Stops user from clicking when the check is displayed
+    //IMPORTANT!!!!
+        if(correct == false){
+            if (input_bubble === bubble_01) { 
             bubble_01.visible = false;
-            checkIfSelectedBubbleIsCorrect(bubble_text_01.text);
+            this.checkAnswer();
             } 
-
-        if (input_bubble === bubble_02) {
-            bubble_02.visible = false;
-            checkIfSelectedBubbleIsCorrect(bubble_text_02.text);    
-        } 
-
-        if (input_bubble === bubble_03) { 
-            bubble_03.visible = false;
-            checkIfSelectedBubbleIsCorrect(bubble_text_03.text);
+            if (input_bubble === bubble_02) {
+                bubble_02.visible = false;
+                checkAnswer();
+            } 
+            if (input_bubble === bubble_03) {
+                bubble_03.visible = false;
+                checkAnswer();
+            }
         }
+    },
+    checkAnswer: function(){
+        if((bubble_01.visible == false && b1Correct) || 
+           (bubble_02.visible == false && b2Correct ) ||
+           (bubble_03.visible == false && b3Correct)) {
+            //Sets True if correct answer
+                correct = true; 
+                //Adds score for correct answer
+                score = score + 50;
+                //Pauses time 
+                timer.pause();
+                //Sets true to display correct answer
+                isTimerPaused = true;
+                //Plays Correct Sound
+                correctSound.play(); 
+            }
+        if((b1.visible == false && b1Wrong1) || 
+           (b2.visible == false && b2Wrong1) || 
+           (b2.visible == false && b2Wrong2) || 
+           (b3.visible == false && b3Wrong2)) {
+        //Decrease score
+        score = score - 50;
+        //Looses 1 life 
+        lives --;
+        //Sets True if wrong answer
+        wrong = true;
+        //Sets true to display wrong answer
+        isTimerPaused = true;
+        //Pauses time 
+        timer.pause();
+        //Plays Wrong Sound
+        wrongSound.play();
     }
-}
-
-/* Function holds the functionality for what happens
-    when the user gets the answer correct 
-*/
-function stuffThatHappensWhenAnswerIsCorrect() {
-   
-    // Increase score by 50 
-    score += 50;
-    
-    /* 
-        Check to see if it is the last round,
-        if it is then advance to the next
-        level
-    */ 
-    current_round++;
-    
-    // Changes the data values 
-    randomFormula = Math.floor(Math.random() * 3);
-    
-    // Reset the postion of the bubble group
-    resetBubblesPosition();
-    
-    // Reset the velocity of the bubbles
-   // bubbles_velocity = 0.7;
-    
-    // Reset the counter to 8
-    counter_level_2 = 8;
-        // is_correct = true;
-       // game_timer.pause();
-    // Play sound for correct answer
-    correct_sound.play();
-    
-    correct = true;
-
-}
-
-/* Function holds the functionality for what happens
-    when the user gets the answer wrong 
-*/
-function stuffThatHappensWhenAnswerIsWrong() {
-    
-    if((a1.visible == false && a1Wrong1) || 
-           (a2.visible == false && a2Wrong1) || 
-           (a2.visible == false && a2Wrong2) || 
-           (a3.visible == false && a3Wrong2)) {
-            if(a1.visible == false) {
-                //Sets text 2 visible to true
-                text2.visible = true;
-                //Sets True if its the first wrong answer instead of the second wrong
-                a1XLocation = true;
-                //Sets asteroid 2 visible to true
-                a1.visible = true;
-            }
-            if(a2.visible == false) {
-                //Shows the text3
-                text2.visible = true;
-                //Sets true if it's the second wrong answer instead of the first wrong
-                a2XLocation = true;
-                //Sets asteroid 3 visible to true
-                a2.visible = true;
-            }
-            if(a3.visible == false) {
-                text3.visible = true;
-                a3XLocation = true;
-                a3.visible = true;
-            }
-            //Decrease score
-            score = score - 50;
-            //Looses 1 life 
-            lives --;
-            //Sets True if wrong answer
-            wrong = true;
-            //Sets true to display wrong answer
-            isTimerPaused = true;
-            //Pauses time 
-            timer.pause();
-            //Plays Wrong Sound
-            wrongSound.play();
+        if(correct){
+        correctCount++;
+        //To change the number of questions that need to be answered correctly, change the number for correctCount >= numRight
+        if(correctCount >= 5) {
+            this.game.state.start("Transition");
+            correctCount = 0;
         }
- 
-}
+        this.setQuestion();
+    }
+    },
 
-function checkIfSelectedBubbleIsCorrect(input_bubble_text) {
-    
-    // Condition for what happens if user gets formula 1 right
-    if (input_bubble_text === level_2_data.chemical_formulas.formula1.right) {
-
-        stuffThatHappensWhenAnswerIsCorrect();
-    } 
-
-    
-    // Condition for what happens if user gets formula 1 wrong
-    if (input_bubble_text === level_2_data.chemical_formulas.formula1.wrong1 ||      
-        input_bubble_text === level_2_data.chemical_formulas.formula1.wrong2 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula1.wrong3 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula1.wrong4 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula1.wrong5 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula1.wrong6 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula1.wrong7 ) {
-        
-        stuffThatHappensWhenAnswerIsWrong();
-    }
-    
-     // Condition for what happens if user gets formula 2 right
-	if (input_bubble_text === level_2_data.chemical_formulas.formula2.right) {
-        
-        stuffThatHappensWhenAnswerIsCorrect();
-    }
-    
-    // Condition for what happens if user gets formula 2 wrong
-    if (input_bubble_text === level_2_data.chemical_formulas.formula2.wrong1 ||      
-        input_bubble_text === level_2_data.chemical_formulas.formula2.wrong2 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula2.wrong3 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula2.wrong4 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula2.wrong5 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula2.wrong6 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula2.wrong7 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula2.wrong8 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula2.wrong9 ) {
-        
-        stuffThatHappensWhenAnswerIsWrong();
-    }
-    
-     // Condition for what happens if user gets formula 3 right
-    if (input_bubble_text === level_2_data.chemical_formulas.formula3.right) {
-        
-        stuffThatHappensWhenAnswerIsCorrect();
-    }
-    
-    // Condition for what happens if user gets formula 3 wrong
-    if (input_bubble_text === level_2_data.chemical_formulas.formula3.wrong1 ||      
-        input_bubble_text === level_2_data.chemical_formulas.formula3.wrong2 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula3.wrong3 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula3.wrong4 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula3.wrong5 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula3.wrong6 ) {
-       
-        stuffThatHappensWhenAnswerIsWrong();
-    }
-    
-     // Condition for what happens if user gets formula 4 right
-    if (input_bubble_text === level_2_data.chemical_formulas.formula4.right) {
-   
-        stuffThatHappensWhenAnswerIsCorrect();
-    } 
-    
-     // Condition for what happens if user gets formula 4 wrong
-    if (input_bubble_text ===  level_2_data.chemical_formulas.formula4.wrong1  ||      
-        input_bubble_text === level_2_data.chemical_formulas.formula4.wrong2  ||
-        input_bubble_text === level_2_data.chemical_formulas.formula4.wrong3  ||
-        input_bubble_text === level_2_data.chemical_formulas.formula4.wrong4  ||
-        input_bubble_text === level_2_data.chemical_formulas.formula4.wrong5  ||
-        input_bubble_text === level_2_data.chemical_formulas.formula4.wrong6  ||
-        input_bubble_text === level_2_data.chemical_formulas.formula4.wrong7  ||
-        input_bubble_text === level_2_data.chemical_formulas.formula4.wrong8  ||
-        input_bubble_text === level_2_data.chemical_formulas.formula4.wrong9  ||
-        input_bubble_text === level_2_data.chemical_formulas.formula4.wrong10 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula4.wrong11 ) {
-        
-        stuffThatHappensWhenAnswerIsWrong();
-    }
-     // Condition for what happens if user gets formula 5 right
-    if (input_bubble_text === level_2_data.chemical_formulas.formula5.right) {
-
-        stuffThatHappensWhenAnswerIsCorrect();
-    }
-    
-     // Condition for what happens if user gets formula 5 wrong
-    if (input_bubble_text === level_2_data.chemical_formulas.formula5.wrong1 ||      
-        input_bubble_text === level_2_data.chemical_formulas.formula5.wrong2 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula5.wrong3 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula5.wrong4 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula5.wrong5 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula5.wrong6 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula5.wrong7 ||
-        input_bubble_text === level_2_data.chemical_formulas.formula5.wrong8 ) {
-        
-        stuffThatHappensWhenAnswerIsWrong();
-    }
-   
-    console.log("This is the value passed to checkIfSelectedBubbleIsCorrect(): " + input_bubble_text);
-      
-}
-
-// Function will reset the y position of the bubbles
-function resetBubblesPosition() {
+        // Function will reset the y position of the bubbles
+    resetBubblesPosition: function() {
     bubbles.y =  bubble_01.height + 55;
     bubble_labels.y = bubble_01.height + 55;
-}
-
-setQuestion: function() {
+},
+    
+    setQuestion: function() {
     //In order to add more questions, change randomElement random number generator to the number of questions you have
     randomElement = Math.floor(Math.random() * 20);
     console.log("The random Element is: " + randomElement);
@@ -709,10 +554,8 @@ setQuestion: function() {
         randomWrong2 = Math.floor(Math.random() * 4); 
     }
     //Adjusting Instruction label color 
-    instructions.addColor("Yellow", 0);
-    instructions.anchor.setTo(-0.1, 0.2);
-         
-    console.log(level_1_data);
+    chemical_formula_text_display.addColor("Yellow", 0);
+    chemical_formula_text_display.anchor.setTo(-0.1, 0.2);
     //Resetting all my correct/wrong booleans to false
     b1Correct = false;
     b1Wrong1 = false;
@@ -723,45 +566,42 @@ setQuestion: function() {
     b3Wrong2 = false;
         
     //Choosing the formula
-    instructions.setText(level_1_data.formulas[randomElement].formulaName);
-    instructionsLength = instructions.length;
+    chemical_formula_text_display.setText(level_2_data.formulas[randomElement].formulaName);
+    instructionsLength = chemical_formula_text_display.length;
     if(randomFormula == 0){
-        text1.setText(level_1_data.formulas[randomElement].right);
+        text1.setText(level_2_data.formulas[randomElement].right);
         b1Correct = true;
-        text2.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
+        text2.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
         b2Wrong1 = true;
-        text3.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
+        text3.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
         b3Wrong2 = true;
     }
     if(randomFormula == 1) {
-        text1.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
+        text1.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
         b1Wrong1 = true;
-        text2.setText(level_1_data.formulas[randomElement].right);
+        text2.setText(level_2_data.formulas[randomElement].right);
         b2Correct = true;
-        text3.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
+        text3.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
         b3Wrong2 = true;
     }
     if(randomFormula == 2) {
-        text1.setText(level_1_data.formulas[randomElement].wrong[randomWrong1]);
+        text1.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
         b1Wrong1 = true;
-        text2.setText(level_1_data.formulas[randomElement].wrong[randomWrong2]);
+        text2.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
         b2Wrong2 = true;
-        text3.setText(level_1_data.formulas[randomElement].right);
+        text3.setText(level_2_data.formulas[randomElement].right);
         b3Correct = true;
     }
     if(instructionsLength < 20){
         //Adjusting Instruction label Font Size
-        instructions.fontSize = 47;  
+        chemical_formula_text_display.fontSize = 47;  
     }
     else{
         //Adjusting Instruction label for Chemical Names
-        instructions.anchor.setTo(0, 0.3);
+        chemical_formula_text_display.anchor.setTo(0, 0.3);
         //Adjusting Instruction label Font Size
         instructions.fontSize = 42;
     }
 }
-
-// Closes method        
-
     
-
+};

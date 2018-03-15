@@ -195,14 +195,6 @@ preloadState.prototype = {
         // JSON file as a text file
         this.game.load.text('level_2_JSON', "assets/game_data/level_2_data.json");
         
-        this.game.load.text('level_2_JSON_series_2', "assets/game_data/level_2_data_series_2.json");
-        
-        this.game.load.text('level_2_JSON_series_3', "assets/game_data/level_2_data_series_3.json");
-        
-        this.game.load.text('level_2_JSON_series_4', "assets/game_data/level_2_data_series_4.json");
-        
-        this.game.load.text('level_2_JSON_series_5', "assets/game_data/level_2_data_series_5.json");
-        
         // spike image
         this.game.load.image('spike_image', "assets/spikes.png");
         
