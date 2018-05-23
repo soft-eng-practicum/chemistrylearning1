@@ -481,11 +481,11 @@ level2.prototype = {
             } 
             if (input_bubble === bubble_02) {
                 bubble_02.visible = false;
-                checkAnswer();
+                this.checkAnswer();
             } 
             if (input_bubble === bubble_03) {
                 bubble_03.visible = false;
-                checkAnswer();
+                this.checkAnswer();
             }
         }
     },
@@ -498,16 +498,16 @@ level2.prototype = {
                 //Adds score for correct answer
                 score = score + 50;
                 //Pauses time 
-                timer.pause();
+                game_timer.pause();
                 //Sets true to display correct answer
                 isTimerPaused = true;
                 //Plays Correct Sound
-                correctSound.play(); 
+                correct_sound.play(); 
             }
-        if((b1.visible == false && b1Wrong1) || 
-           (b2.visible == false && b2Wrong1) || 
-           (b2.visible == false && b2Wrong2) || 
-           (b3.visible == false && b3Wrong2)) {
+        if((bubble_01.visible == false && b1Wrong1) || 
+           (bubble_02.visible == false && b2Wrong1) || 
+           (bubble_02.visible == false && b2Wrong2) || 
+           (bubble_03.visible == false && b3Wrong2)) {
         //Decrease score
         score = score - 50;
         //Looses 1 life 
@@ -517,19 +517,19 @@ level2.prototype = {
         //Sets true to display wrong answer
         isTimerPaused = true;
         //Pauses time 
-        timer.pause();
+        game_timer.pause();
         //Plays Wrong Sound
-        wrongSound.play();
+        incorrect_sound.play();
     }
         if(correct){
-        correctCount++;
-        //To change the number of questions that need to be answered correctly, change the number for correctCount >= numRight
-        if(correctCount >= 5) {
-            this.game.state.start("Transition");
-            correctCount = 0;
+            correctCount++;
+            //To change the number of questions that need to be answered correctly, change the number for correctCount >= numRight
+            if(correctCount >= 5) {
+                this.game.state.start("Transition");
+                correctCount = 0;
+            }
+            this.setQuestion();
         }
-        this.setQuestion();
-    }
     },
 
         // Function will reset the y position of the bubbles
@@ -589,7 +589,7 @@ level2.prototype = {
         b1Wrong1 = true;
         bubble_text_02.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
         b2Wrong2 = true;
-        bubble_text_03(level_2_data.formulas[randomElement].right);
+        bubble_text_03.setText(level_2_data.formulas[randomElement].right);
         b3Correct = true;
     }
     if(instructionsLength < 20){
