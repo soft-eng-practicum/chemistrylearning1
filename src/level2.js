@@ -569,27 +569,27 @@ level2.prototype = {
     chemical_formula_text_display.setText(level_2_data.formulas[randomElement].formulaName);
     instructionsLength = chemical_formula_text_display.length;
     if(randomFormula == 0){
-        text1.setText(level_2_data.formulas[randomElement].right);
+        bubble_text_01.setText(level_2_data.formulas[randomElement].right);
         b1Correct = true;
-        text2.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
+        bubble_text_02.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
         b2Wrong1 = true;
-        text3.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
+        bubble_text_03.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
         b3Wrong2 = true;
     }
     if(randomFormula == 1) {
-        text1.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
+        bubble_text_01.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
         b1Wrong1 = true;
-        text2.setText(level_2_data.formulas[randomElement].right);
+        bubble_text_02.setText(level_2_data.formulas[randomElement].right);
         b2Correct = true;
-        text3.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
+        bubble_text_03.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
         b3Wrong2 = true;
     }
     if(randomFormula == 2) {
-        text1.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
+        bubble_text_01.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
         b1Wrong1 = true;
-        text2.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
+        bubble_text_02.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
         b2Wrong2 = true;
-        text3.setText(level_2_data.formulas[randomElement].right);
+        bubble_text_03(level_2_data.formulas[randomElement].right);
         b3Correct = true;
     }
     if(instructionsLength < 20){
@@ -600,7 +600,7 @@ level2.prototype = {
         //Adjusting Instruction label for Chemical Names
         chemical_formula_text_display.anchor.setTo(0, 0.3);
         //Adjusting Instruction label Font Size
-        instructions.fontSize = 42;
+        chemical_formula_text_display.fontSize = 42;
     }
 }
     
