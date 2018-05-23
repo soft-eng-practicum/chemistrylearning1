@@ -1,7 +1,7 @@
 {
     "formulas": [
         {"formulaName":"Aluminum Sulfide", "right":"Al\u2082S\u2083", "wrong":["AlS\u2082", "SAl\u2082","Al(III)S(II)", "Al(III)S\u2082" ] },
-        {"formulaName":"Iodine Dioxide", "right":"IO\u2082", "wrong":["OI\u2082", "In\u0082O", "IO", "I\u0082O"]},
+        {"formulaName":"Iodine Dioxide", "right":"IO\u2082", "wrong":["OI\u2082", "In\u2082O", "IO", "I\u2082O"]},
         {"formulaName":"Hydrogen Bromide", "right":"HBr", "wrong":["H\u2082Br", "HBrO\u2084", "HBr\u2083", "BrH"]},
         {"formulaName":"Sulfur Dioxide", "right":"SO\u2082", "wrong":["SO", "S\u2083O", "O\u2082S", "S\u2082O"]},
         {"formulaName":"Sodium Hydride", "right":"NaH", "wrong":["NaH\u2082", "SoH", "Na\u2082H\u2082", "Na\u2082H"]},
