@@ -456,7 +456,7 @@ level2.prototype = {
             incorrect_sound.play();
             
             lives--;
-            counter_level_2 = 0;
+            counter_level_2 = 8;
         }
     }
 },
@@ -528,6 +528,8 @@ level2.prototype = {
                 this.game.state.start("Transition");
                 correctCount = 0;
             }
+            //Resetting the bubble position
+            this.resetBubblesPosition();
             this.setQuestion();
         }
     },
@@ -539,69 +541,69 @@ level2.prototype = {
 },
     
     setQuestion: function() {
-    //In order to add more questions, change randomElement random number generator to the number of questions you have
-    randomElement = Math.floor(Math.random() * 20);
-    console.log("The random Element is: " + randomElement);
+        //In order to add more questions, change randomElement random number generator to the number of questions you have
+        randomElement = Math.floor(Math.random() * 20);
+        console.log("The random Element is: " + randomElement);
         
-    randomFormula = Math.floor(Math.random() * 3);
+        randomFormula = Math.floor(Math.random() * 3);
 
-    //Setting the random wrong answer 1
-    randomWrong1 = Math.floor(Math.random() * 4);
-    //Setting the random wrong answer 2
-    randomWrong2 = Math.floor(Math.random() * 4);
-    //Making sure the two wrong answers are matching
-    while(randomWrong1 == randomWrong2) {
-        randomWrong2 = Math.floor(Math.random() * 4); 
-    }
-    //Adjusting Instruction label color 
-    chemical_formula_text_display.addColor("Yellow", 0);
-    chemical_formula_text_display.anchor.setTo(-0.1, 0.2);
-    //Resetting all my correct/wrong booleans to false
-    b1Correct = false;
-    b1Wrong1 = false;
-    b2Correct = false;
-    b2Wrong1 = false;
-    b2Wrong2 = false;
-    b3Correct = false;
-    b3Wrong2 = false;
+        //Setting the random wrong answer 1
+        randomWrong1 = Math.floor(Math.random() * 4);
+        //Setting the random wrong answer 2
+        randomWrong2 = Math.floor(Math.random() * 4);
+        //Making sure the two wrong answers are matching
+        while(randomWrong1 == randomWrong2) {
+            randomWrong2 = Math.floor(Math.random() * 4); 
+        }
+        //Adjusting Instruction label color 
+        chemical_formula_text_display.addColor("Yellow", 0);
+        chemical_formula_text_display.anchor.setTo(-0.1, 0.2);
+        //Resetting all my correct/wrong booleans to false
+        b1Correct = false;
+        b1Wrong1 = false;
+        b2Correct = false;
+        b2Wrong1 = false;
+        b2Wrong2 = false;
+        b3Correct = false;
+        b3Wrong2 = false;
         
-    //Choosing the formula
-    chemical_formula_text_display.setText(level_2_data.formulas[randomElement].formulaName);
-    instructionsLength = chemical_formula_text_display.length;
-    if(randomFormula == 0){
-        bubble_text_01.setText(level_2_data.formulas[randomElement].right);
-        b1Correct = true;
-        bubble_text_02.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
-        b2Wrong1 = true;
-        bubble_text_03.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
-        b3Wrong2 = true;
+        //Choosing the formula
+        chemical_formula_text_display.setText(level_2_data.formulas[randomElement].formulaName);
+        instructionsLength = chemical_formula_text_display.length;
+        if(randomFormula == 0){
+            bubble_text_01.setText(level_2_data.formulas[randomElement].right);
+            b1Correct = true;
+            bubble_text_02.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
+            b2Wrong1 = true;
+            bubble_text_03.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
+            b3Wrong2 = true;
+        }
+        if(randomFormula == 1) {
+            bubble_text_01.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
+            b1Wrong1 = true;
+            bubble_text_02.setText(level_2_data.formulas[randomElement].right);
+            b2Correct = true;
+            bubble_text_03.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
+            b3Wrong2 = true;
+        }
+        if(randomFormula == 2) {
+            bubble_text_01.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
+            b1Wrong1 = true;
+            bubble_text_02.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
+            b2Wrong2 = true;
+            bubble_text_03.setText(level_2_data.formulas[randomElement].right);
+            b3Correct = true;
+        }
+        if(instructionsLength < 20){
+            //Adjusting Instruction label Font Size
+            chemical_formula_text_display.fontSize = 47;  
+        }
+        else{
+            //Adjusting Instruction label for Chemical Names
+            chemical_formula_text_display.anchor.setTo(0, 0.3);
+            //Adjusting Instruction label Font Size
+            chemical_formula_text_display.fontSize = 42;
+        }
     }
-    if(randomFormula == 1) {
-        bubble_text_01.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
-        b1Wrong1 = true;
-        bubble_text_02.setText(level_2_data.formulas[randomElement].right);
-        b2Correct = true;
-        bubble_text_03.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
-        b3Wrong2 = true;
-    }
-    if(randomFormula == 2) {
-        bubble_text_01.setText(level_2_data.formulas[randomElement].wrong[randomWrong1]);
-        b1Wrong1 = true;
-        bubble_text_02.setText(level_2_data.formulas[randomElement].wrong[randomWrong2]);
-        b2Wrong2 = true;
-        bubble_text_03.setText(level_2_data.formulas[randomElement].right);
-        b3Correct = true;
-    }
-    if(instructionsLength < 20){
-        //Adjusting Instruction label Font Size
-        chemical_formula_text_display.fontSize = 47;  
-    }
-    else{
-        //Adjusting Instruction label for Chemical Names
-        chemical_formula_text_display.anchor.setTo(0, 0.3);
-        //Adjusting Instruction label Font Size
-        chemical_formula_text_display.fontSize = 42;
-    }
-}
     
 };
