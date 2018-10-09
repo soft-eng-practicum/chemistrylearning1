@@ -768,5 +768,9 @@ level1.prototype = {
                 //Adjusting Instruction label Font Size
                 instructions.fontSize = 42;
             }
+    },
+    
+    uploadStats: function(){
+        
     }
 };

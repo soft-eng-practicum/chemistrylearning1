@@ -26,8 +26,8 @@ leaderboardState.prototype = {
         leaderboard_title = this.game.add.sprite(this.game.world.centerX - 250, 20, "High_Scores_Label");
         leaderboard_title.scale.setTo(1, 1);
 
-        // Grab the data from the file and display it to the screen
-        leaderboard_data = JSON.parse(this.game.cache.getText('leaderboard_JSON'));
+//        // Grab the data from the file and display it to the screen
+//        leaderboard_data = JSON.parse(this.game.cache.getText('leaderboard_JSON'));
 
         try {
             var phaserthis = this;
@@ -67,11 +67,11 @@ leaderboardState.prototype = {
         backButton = this.game.add.button(this.game.world.centerX - 250, this.game.world.centerY + 240, "backButton", this.returnHome, this);
         backButton.scale.setTo(1, 1);
 
-        console.log("This is the first value in JSON file: " + leaderboard_data.leaderboard[0].name +
-            " " + leaderboard_data.leaderboard[0].high_score);
-
-        console.log("This is the length of the array in the JSON file: " +
-            leaderboard_data.leaderboard.length);
+//        console.log("This is the first value in JSON file: " + leaderboard_data.leaderboard[0].name +
+//            " " + leaderboard_data.leaderboard[0].high_score);
+//
+//        console.log("This is the length of the array in the JSON file: " +
+//            leaderboard_data.leaderboard.length);
     },
 
     update: function () {
