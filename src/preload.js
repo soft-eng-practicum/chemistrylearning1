@@ -1,5 +1,4 @@
-var preloadState = function(game){
-    
+var preloadState = function(game){    
 };
 
 var loadingLabel;
@@ -9,6 +8,12 @@ var timerEvt;
 var backgroundColor;
 var loggedIn; //Game variable called throughout the game to show that the player is logged in.
 var statsButton;
+var playerStats; 
+var d = new Date();
+var startTime;
+var endTime; 
+var playerName;//Variable to call the players profile
+var totalLevelTime;
 
 
 
@@ -279,8 +284,12 @@ preloadState.prototype = {
         this.game.load.spritesheet("guy", "assets/man_walking.png", 124, 254);
         
         this.game.sha1 = this.sha1;
-        
+        this.game.startTime = this.startTime;
+        this.game.elapsedTime = this.elapsedTime;
+        this.game.storeStats = this.storeStats;         
         this.game.loggedIn = false; 
+        this.game.playerName = this.playerName;
+        this.game.totalLevelTime = this.totalLevelTime;
         
 	},
     
@@ -331,7 +340,35 @@ preloadState.prototype = {
         return tohex(H0) + tohex(H1) + tohex(H2) + tohex(H3) + tohex(H4);
     },    
     
+startTime: function() {
+    startTime = new Date();
+},
+
+ elapsedTime: function() {
+     endTime = new Date();
+     var timeDiff = endTime - startTime; 
+     timeDiff /= 1000;
+
+  // get seconds 
+  var seconds = Math.round(timeDiff);
+  console.log(seconds + " seconds");
+     return seconds;
+},
     
+storeStats: function(){
+     var that = this;
+    $.ajax({
+            url: "https://api.mlab.com/api/1/databases/xenon/collections/login?apiKey=pG3dyrtnobnPgqHa7HvuUXA1mNADzxgM&q={\"email\":\""+that.playerName+"\"}",
+            type: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify({
+               "$set":{"stats.0.level_time":that.elapsedTime()}
+            }),
+            success: function (result) {
+                console.log("Stats successfully updated!");
+            }
+        });
+},  
     
     //Main Phaser Create Function
   	create: function(){

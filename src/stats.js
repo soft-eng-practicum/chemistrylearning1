@@ -38,8 +38,9 @@ statsState.prototype = {
             contentType: "application/json",
                 
             success: function( result ) {
+                console.log(result);
             // Create text fields and put them into the leaderboard_text_array
-            for (var i = 0; i < 100; i++) {
+            for (var i = 0; i < 1; i++) {
 
                 stats_text_array[i] = phaserthis.game.add.text(phaserthis.game.world.centerX, 125 + (60 * i), "", {
                     font: "53px Arial",
@@ -50,9 +51,8 @@ statsState.prototype = {
                 stats_text_array[i].anchor.setTo(0.5, 0);
                 
                 // Iterate through stats_text_array and set the text with data from the JSON file
-                stats_text_array[i].setText(result[i].email + "  " + result[i].password);
-            }
-                 
+                stats_text_array[i].setText(result[0].stats[i].score);
+            }                 
             }
         });            
             
@@ -64,11 +64,6 @@ statsState.prototype = {
         backButton = this.game.add.button(this.game.world.centerX - 250, this.game.world.centerY + 240, "backButton", this.returnHome, this);
         backButton.scale.setTo(1, 1);
 
-        console.log("This is the first value in JSON file: " + stats_data.login[0].email +
-            " " + stats_data.stats[0].password);
-
-        console.log("This is the length of the array in the JSON file: " +
-            stats_data.stats.length);
     },
 
     update: function () {

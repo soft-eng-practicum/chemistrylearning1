@@ -53,8 +53,8 @@ gameTitleState.prototype = {
         loginButton.scale.setTo(.45, .5);      
         
         
-        statsButton = this.game.add.button(this.game.world.centerX-60,
-        this.game.world.centerY + 250,"stats",this.stats,this);
+        statsButton = this.game.add.button(this.game.world.centerX-85,
+        this.game.world.centerY + 260,"stats",this.stats,this);
         statsButton.scale.setTo(.1, .1);  
         statsButton.visible = false;
         

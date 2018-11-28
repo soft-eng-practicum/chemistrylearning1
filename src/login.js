@@ -84,10 +84,11 @@ loginState.prototype = {
             success: function (result) {  
                 console.log(result);
                 
-                if(result.length > 0 && that.email.value===result[0].email)
+                if(result.length > 0 && that.email.value === result[0].email)
                     {
                         console.log("I'm logged in");
-                        loginSuccess.visible = true;                 
+                        loginSuccess.visible = true;
+                        that.game.playerName = that.email.value;               
                         that.game.state.start("GameTitle");    
                         that.game.loggedIn = true; 
                     }

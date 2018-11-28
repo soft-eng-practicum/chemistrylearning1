@@ -100,11 +100,14 @@ var a2Wrong1;
 var a2Wrong2;
 var a3Correct;
 var a3Wrong2;
-
+var d = new Date();
 //This is the length of the json array so that it will automatically work with json file changes
 var jsonLength;
 //A count to determine if the player can proceed to the next level
 var correctCount = 0;
+       
+
+
 
 level1.prototype = {  
    
@@ -145,6 +148,8 @@ level1.prototype = {
 	    timer = this.game.time.create(false);
         timer.loop(1000, this.updateCounter, this);
         timer.start();
+        game.startTime();
+        
        
         //Creates the Score Label
         scoreLabel = this.game.add.text(this.game.width-195, 30, "Score: ", {font: "30px Courier", fill: "Yellow"});
@@ -357,6 +362,7 @@ level1.prototype = {
                     moveDown = false;
                     moveUp = true;  
                 }
+                
             }
 
             if(moveUp) {
@@ -398,6 +404,7 @@ level1.prototype = {
         //Retrieves data when game starts
         if(gameStarted) {
             this.handleData(); 
+            
         }
         
         //Deduct lives with each wrong answer
@@ -407,17 +414,21 @@ level1.prototype = {
         else if(lives == 1){
             heart2.visible = false;
         }
-        else if(lives == 0){            
+        else if(lives == 0){
+            //Show the amount of time the level is played. 
+            game.elapsedTime();
+            //Store the time that the game is played.
+            game.storeStats();
             this.game.state.start("GameOver");
-            correctCount = 0;
-        }
+            correctCount = 0;          
+        }   
     },
     
     
     /*Function: fireBullet()
     *
     *Fires bullets
-    */
+    */  
     fireBullet: function() {
 
         if (this.game.time.now > bulletTime) {
@@ -500,6 +511,7 @@ level1.prototype = {
                 counter = 10;
                 gameStarted = true;
                 this.setQuestion();
+                
             }
         }
         //Game Time has gameStarted 
@@ -769,8 +781,4 @@ level1.prototype = {
                 instructions.fontSize = 42;
             }
     },
-    
-    uploadStats: function(){
-        
-    }
 };

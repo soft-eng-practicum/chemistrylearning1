@@ -101,6 +101,7 @@ level2.prototype = {
         game_timer = this.game.time.create(false);
         game_timer.loop(1000, this.updateCounter2, this);
         game_timer.start();
+        game.startTime();
         
         heart_1 = this.game.add.sprite(this.game.world.centerX+120, this.game.world.centerY-320, 'heart');
         heart_2 = this.game.add.sprite(this.game.world.centerX+170, this.game.world.centerY-320, 'heart');
@@ -409,7 +410,7 @@ level2.prototype = {
             heart_2.visible = false;
         
         } else if (lives == 0) {
-            
+            game.elapsedTime();
             this.game.state.start('GameOver');
         }
         
