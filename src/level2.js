@@ -370,10 +370,10 @@ level2.prototype = {
                     counter_level_2 = 8;
                     game_timer.resume();
 
-                  if(current_round < 5){
-                        handleData();
+                  if(correctCount < 5){
+                        this.setQuestion();
                     }
-                    else if (current_round > 4) {
+                    else if (correctCount >= 5) {
                         
                         this.game.state.start('Transition');
                     } 
@@ -543,7 +543,6 @@ level2.prototype = {
           }
             //Resetting the bubble position
             this.resetBubblesPosition();
-            this.setQuestion();
         }
     },
 
