@@ -107,6 +107,9 @@ level5.prototype = {
 	    timerLevel5 = this.game.time.create(false);
         timerLevel5.loop(1000, this.updateCounter, this);
         timerLevel5.start();
+        
+        //Record the time when the player starts the level
+        game.startTime();
        
         //Setting the score to 0 in the event that the player skipped to this level
         if(score == null) {
@@ -356,7 +359,9 @@ level5.prototype = {
             heart1.visible = false;
             heart2.visible = false;
         }
-        else if (lives == 0) {            
+        else if (lives == 0) {  
+            //Show the amount of time the level is played. 
+            game.elapsedTime();
             this.game.state.start("GameOver");
         }
         

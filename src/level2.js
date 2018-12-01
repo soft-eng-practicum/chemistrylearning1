@@ -101,6 +101,8 @@ level2.prototype = {
         game_timer = this.game.time.create(false);
         game_timer.loop(1000, this.updateCounter2, this);
         game_timer.start();
+        
+        //Record the time when the player starts the level
         game.startTime();
         
         heart_1 = this.game.add.sprite(this.game.world.centerX+120, this.game.world.centerY-320, 'heart');
@@ -367,6 +369,14 @@ level2.prototype = {
                     bubbles_velocity = 0.7317;
                     counter_level_2 = 8;
                     game_timer.resume();
+
+                  if(current_round < 5){
+                        handleData();
+                    }
+                    else if (current_round > 4) {
+                        
+                        this.game.state.start('Transition');
+                    } 
                }
              }
            
@@ -525,10 +535,12 @@ level2.prototype = {
         if(correct){
             correctCount++;
             //To change the number of questions that need to be answered correctly, change the number for correctCount >= numRight
-            if(correctCount >= 5) {
-                this.game.state.start("Transition");
-                correctCount = 0;
-            }
+          if(correctCount >= 5) {
+	    //Show the amount of time the level is played. 
+            game.elapsedTime();
+            this.game.state.start("Transition");
+            correctCount = 0;
+          }
             //Resetting the bubble position
             this.resetBubblesPosition();
             this.setQuestion();

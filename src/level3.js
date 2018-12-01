@@ -110,6 +110,10 @@ level3.prototype = {
         gameTimer = this.game.time.create(false);
         gameTimer.loop(1000, this.updateCounter, this);
         gameTimer.start();
+        
+        //Record the time when the player starts the level
+        game.startTime();
+        
 
         //Creates the Instructions Label
         instructions = this.game.add.text(this.game.world.centerX - 240, 130, "Choose The Correct Fly", {
@@ -354,6 +358,9 @@ level3.prototype = {
                     this.setQuestion();
 
                     if (currentRound > 4) {
+                        //Show the amount of time the level is played. 
+                        game.elapsedTime();
+                        
                         this.game.state.start('Transition');
                     }
                 }
@@ -402,6 +409,8 @@ level3.prototype = {
         } else if (lives == 1) {
             heart2.visible = false;
         } else if (lives == 0) {
+            //Show the amount of time the level is played. 
+            game.elapsedTime();
             this.game.state.start("GameOver");
         }
     },

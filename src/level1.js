@@ -148,6 +148,8 @@ level1.prototype = {
 	    timer = this.game.time.create(false);
         timer.loop(1000, this.updateCounter, this);
         timer.start();
+        
+        //Record the time when the player starts the level
         game.startTime();
         
        
@@ -678,6 +680,9 @@ level1.prototype = {
                 correctCount++;
 //To change the number of questions that need to be answered correctly, change the number for correctCount >= numRight
                 if(correctCount >= 5) {
+                    //Show the amount of time the level is played. 
+                    game.elapsedTime();
+                    
                    this.game.state.start("Transition");
                     correctCount = 0;
                 }

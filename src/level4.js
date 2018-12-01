@@ -111,6 +111,9 @@ level4.prototype = {
         level_4_game_timer.loop(1000, level4UpdateCounter, this);
         level_4_game_timer.start();
         
+        //Record the time when the player starts the level
+        game.startTime();
+        
         level_4_heart_1 = this.game.add.sprite(this.game.world.centerX+120, this.game.world.centerY-320, 'heart');
         level_4_heart_2 = this.game.add.sprite(this.game.world.centerX+170, this.game.world.centerY-320, 'heart');
         level_4_heart_3 = this.game.add.sprite(this.game.world.centerX+220, this.game.world.centerY-320, 'heart');
@@ -381,6 +384,9 @@ level4.prototype = {
                         level4HandleData();
                     }
                     else if (level_4_current_round > 4) {
+                        //Show the amount of time the level is played. 
+                        game.elapsedTime();
+                        
                         this.game.state.start('Transition');
                     } 
                }
@@ -428,6 +434,8 @@ level4.prototype = {
             level_4_heart_2.visible = false;
         
         } else if (lives == 0) {
+             //Show the amount of time the level is played. 
+            game.elapsedTime();
             
             this.game.state.start('GameOver');
         }
