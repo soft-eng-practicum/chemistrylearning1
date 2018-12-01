@@ -2,6 +2,5 @@
 - load orange-games plugin from node_modules folder
 - remove IP files from repo
 - fix README; add start instructions
-- Level 2 cleanup caused bug with resetting of bubbles with new question
 - After login, username should show instead of login button
-- Stats didn't work for new user registered
+- Stats works for new user registered only if stats entry is added manually
