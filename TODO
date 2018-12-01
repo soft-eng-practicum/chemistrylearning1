@@ -1,5 +1,7 @@
 - add phaser to package.json and delete files
+- load orange-games plugin from node_modules folder
 - remove IP files from repo
-- merge Bitbucket and Github histories together
-  git log --graph --decorate=full master bb/master bb/editXenon origin/inProgress
-- fix README
+- fix README; add start instructions
+- Level 2 cleanup caused bug with resetting of bubbles with new question
+- After login, username should show instead of login button
+- Stats didn't work for new user registered
