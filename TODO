@@ -1,1 +1,5 @@
 - add phaser to package.json and delete files
+- remove IP files from repo
+- merge Bitbucket and Github histories together
+  git log --graph --decorate=full master bb/master bb/editXenon origin/inProgress
+- fix README
